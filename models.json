@@ -1,0 +1,34 @@
+[
+  {
+    "id": "svm",
+    "name": "SVM",
+    "nameFa": "ماشین بردار پشتیبان",
+    "description": "Linear Support Vector Machine (LinearSVC) trained on TF-IDF features of Persian text to distinguish AI-generated content from human writing.",
+    "descriptionFa": "ماشین بردار پشتیبان خطی که روی ویژگی‌های TF-IDF متن فارسی آموزش دیده تا متن تولیدشده توسط هوش مصنوعی را از نوشته انسان جدا کند.",
+    "algorithm": "LinearSVC",
+    "version": "1.0",
+    "filename": "svModel.joblib",
+    "vectorizer": "tfidf_vectorizer.joblib",
+    "metrics": {
+      "accuracy": 0.9906,
+      "precision": 0.9971,
+      "recall": 0.984,
+      "f1Score": 0.9905
+    },
+    "training": {
+      "totalSamples": 21092,
+      "trainSamples": 12655,
+      "testSamples": 8437,
+      "featureCount": 9385611,
+      "testSplitRatio": 0.4,
+      "randomSeed": 42,
+      "dataset": "persian_ai_generated_final.csv + blogs.csv"
+    },
+    "confusionMatrix": {
+      "trueNegative": 4237,
+      "falsePositive": 12,
+      "falseNegative": 67,
+      "truePositive": 4121
+    }
+  }
+]

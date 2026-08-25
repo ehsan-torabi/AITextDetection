@@ -1,0 +1,15 @@
+# Python virtualenv
+.env
+
+# Python
+__pycache__/
+.ipynb_checkpoints/
+
+# IDE
+.idea/
+
+# Datasets and trained artifacts (too large for git)
+*.csv
+*.joblib
+*.mdl
+edt_params.txt
