@@ -41,7 +41,18 @@ export function ModelStats({ model }: { model: Model | undefined }) {
             <BrainCircuit className="size-4 text-muted-foreground" />
             مشخصات مدل: {model.nameFa ?? model.name}
           </CardTitle>
-          <Badge variant="secondary">نسخه {model.version}</Badge>
+          <div className="flex items-center gap-1.5">
+            {model.type && (
+              <Badge variant={model.type === "dl" ? "default" : "outline"}>
+                {model.type === "ensemble"
+                  ? "ترکیبی"
+                  : model.type === "dl"
+                    ? "یادگیری عمیق"
+                    : "یادگیری ماشین"}
+              </Badge>
+            )}
+            <Badge variant="secondary">نسخه {model.version}</Badge>
+          </div>
         </div>
         <CardDescription className="text-xs leading-relaxed">
           {model.descriptionFa ?? model.description}
@@ -89,7 +100,11 @@ export function ModelStats({ model }: { model: Model | undefined }) {
                 value={formatNumber(model.training.testSamples)}
               />
               <InfoItem
-                label="ویژگی‌های TF-IDF"
+                label={
+                  model.type === "dl"
+                    ? "ابعاد بردار ویژگی"
+                    : "ویژگی‌های TF-IDF"
+                }
                 value={formatNumber(model.training.featureCount)}
               />
               <InfoItem

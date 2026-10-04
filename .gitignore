@@ -12,4 +12,9 @@ __pycache__/
 *.csv
 *.joblib
 *.mdl
+*.pt
+*.pth
 edt_params.txt
+
+# Local safety backups of model artifacts before retraining
+backups/

@@ -3,32 +3,281 @@
     "id": "svm",
     "name": "SVM",
     "nameFa": "ماشین بردار پشتیبان",
-    "description": "Linear Support Vector Machine (LinearSVC) trained on TF-IDF features of Persian text to distinguish AI-generated content from human writing.",
-    "descriptionFa": "ماشین بردار پشتیبان خطی که روی ویژگی‌های TF-IDF متن فارسی آموزش دیده تا متن تولیدشده توسط هوش مصنوعی را از نوشته انسان جدا کند.",
+    "description": "Linear Support Vector Machine (LinearSVC), hyperparameter-tuned via cross-validation on a unigram-to-trigram TF-IDF space, trained on Persian text to distinguish AI-generated content from human writing. Augmented with 4 stylometric text-style features (entropy, sentence variety, repetition, coherence).",
+    "descriptionFa": "ماشین بردار پشتیبان خطی با تنظیم هایپرپارامتر از طریق اعتبارسنجی متقابل روی فضای TF-IDF یک‌گرم تا سه‌گرم، آموزش‌دیده برای تشخیص متن تولیدشده توسط هوش مصنوعی از نوشته انسان. همراه با ۴ ویژگی سبک‌شناسی متن (آنتروپی، تنوع جملات، تکرار، انسجام).",
     "algorithm": "LinearSVC",
-    "version": "1.0",
+    "type": "ml",
+    "version": "3.0",
     "filename": "svModel.joblib",
+    "runtime": "sklearn-tfidf",
+    "ensembleWeight": 1.0,
     "vectorizer": "tfidf_vectorizer.joblib",
     "metrics": {
-      "accuracy": 0.9906,
-      "precision": 0.9971,
-      "recall": 0.984,
-      "f1Score": 0.9905
+      "accuracy": 0.995,
+      "precision": 0.9948,
+      "recall": 0.9953,
+      "f1Score": 0.995
+    },
+    "confusionMatrix": {
+      "trueNegative": 2099,
+      "falsePositive": 11,
+      "falseNegative": 10,
+      "truePositive": 2099
     },
     "training": {
       "totalSamples": 21092,
-      "trainSamples": 12655,
-      "testSamples": 8437,
-      "featureCount": 9385611,
-      "testSplitRatio": 0.4,
+      "trainSamples": 16873,
+      "testSamples": 4219,
+      "featureCount": 150004,
+      "testSplitRatio": 0.2,
       "randomSeed": 42,
       "dataset": "persian_ai_generated_final.csv + blogs.csv"
+    }
+  },
+  {
+    "id": "logreg",
+    "name": "Logistic Regression",
+    "nameFa": "رگرسیون لجستیک",
+    "description": "Logistic Regression, hyperparameter-tuned via cross-validation on a unigram-to-trigram TF-IDF space, trained on Persian text to distinguish AI-generated content from human writing. Augmented with 4 stylometric text-style features (entropy, sentence variety, repetition, coherence).",
+    "descriptionFa": "رگرسیون لجستیک با تنظیم هایپرپارامتر از طریق اعتبارسنجی متقابل روی فضای TF-IDF یک‌گرم تا سه‌گرم، آموزش‌دیده برای تشخیص متن تولیدشده توسط هوش مصنوعی از نوشته انسان. همراه با ۴ ویژگی سبک‌شناسی متن (آنتروپی، تنوع جملات، تکرار، انسجام).",
+    "algorithm": "LogisticRegression",
+    "type": "ml",
+    "version": "3.0",
+    "filename": "logregModel.joblib",
+    "runtime": "sklearn-tfidf",
+    "ensembleWeight": 1.0,
+    "vectorizer": "tfidf_vectorizer.joblib",
+    "metrics": {
+      "accuracy": 0.9955,
+      "precision": 0.9971,
+      "recall": 0.9938,
+      "f1Score": 0.9955
     },
     "confusionMatrix": {
-      "trueNegative": 4237,
-      "falsePositive": 12,
-      "falseNegative": 67,
-      "truePositive": 4121
+      "trueNegative": 2104,
+      "falsePositive": 6,
+      "falseNegative": 13,
+      "truePositive": 2096
+    },
+    "training": {
+      "totalSamples": 21092,
+      "trainSamples": 16873,
+      "testSamples": 4219,
+      "featureCount": 150004,
+      "testSplitRatio": 0.2,
+      "randomSeed": 42,
+      "dataset": "persian_ai_generated_final.csv + blogs.csv"
+    }
+  },
+  {
+    "id": "naive_bayes",
+    "name": "Naive Bayes",
+    "nameFa": "بیز ساده",
+    "description": "Multinomial Naive Bayes, alpha-tuned via cross-validation on a unigram-to-trigram TF-IDF space, trained on Persian text to distinguish AI-generated content from human writing. Augmented with 4 stylometric text-style features (entropy, sentence variety, repetition, coherence).",
+    "descriptionFa": "بیز ساده چندجمله‌ای با تنظیم آلفا از طریق اعتبارسنجی متقابل روی فضای TF-IDF یک‌گرم تا سه‌گرم، آموزش‌دیده برای تشخیص متن تولیدشده توسط هوش مصنوعی از نوشته انسان. همراه با ۴ ویژگی سبک‌شناسی متن (آنتروپی، تنوع جملات، تکرار، انسجام).",
+    "algorithm": "MultinomialNB",
+    "type": "ml",
+    "version": "3.0",
+    "filename": "nbModel.joblib",
+    "runtime": "sklearn-tfidf",
+    "ensembleWeight": 1.0,
+    "vectorizer": "tfidf_vectorizer.joblib",
+    "metrics": {
+      "accuracy": 0.9808,
+      "precision": 0.9889,
+      "recall": 0.9725,
+      "f1Score": 0.9806
+    },
+    "confusionMatrix": {
+      "trueNegative": 2087,
+      "falsePositive": 23,
+      "falseNegative": 58,
+      "truePositive": 2051
+    },
+    "training": {
+      "totalSamples": 21092,
+      "trainSamples": 16873,
+      "testSamples": 4219,
+      "featureCount": 150004,
+      "testSplitRatio": 0.2,
+      "randomSeed": 42,
+      "dataset": "persian_ai_generated_final.csv + blogs.csv"
+    }
+  },
+  {
+    "id": "random_forest",
+    "name": "Random Forest",
+    "nameFa": "جنگل تصادفی",
+    "description": "Random Forest, hyperparameter-tuned (including bounded tree depth to fight overfitting) via cross-validation on the top 30,000 chi2-selected TF-IDF features, trained on Persian text to distinguish AI-generated content from human writing. Augmented with 4 stylometric text-style features (entropy, sentence variety, repetition, coherence).",
+    "descriptionFa": "جنگل تصادفی با تنظیم هایپرپارامتر (از جمله محدودسازی عمق درخت برای کاهش بیش‌برازش) روی ۳۰٬۰۰۰ ویژگی برتر TF-IDF (انتخاب‌شده با chi2)، آموزش‌دیده برای تشخیص متن تولیدشده توسط هوش مصنوعی از نوشته انسان. همراه با ۴ ویژگی سبک‌شناسی متن (آنتروپی، تنوع جملات، تکرار، انسجام).",
+    "algorithm": "RandomForestClassifier",
+    "type": "ml",
+    "version": "3.0",
+    "filename": "rfModel.joblib",
+    "runtime": "sklearn-tfidf",
+    "ensembleWeight": 1.0,
+    "vectorizer": "tfidf_vectorizer.joblib",
+    "metrics": {
+      "accuracy": 0.9836,
+      "precision": 0.988,
+      "recall": 0.9791,
+      "f1Score": 0.9836
+    },
+    "confusionMatrix": {
+      "trueNegative": 2085,
+      "falsePositive": 25,
+      "falseNegative": 44,
+      "truePositive": 2065
+    },
+    "training": {
+      "totalSamples": 21092,
+      "trainSamples": 16873,
+      "testSamples": 4219,
+      "featureCount": 30004,
+      "testSplitRatio": 0.2,
+      "randomSeed": 42,
+      "dataset": "persian_ai_generated_final.csv + blogs.csv"
+    }
+  },
+  {
+    "id": "gradient_boosting",
+    "name": "Gradient Boosting",
+    "nameFa": "گرادیان بوستینگ",
+    "description": "Gradient Boosting, hyperparameter-tuned via cross-validation on the top 30,000 chi2-selected TF-IDF features, trained on Persian text to distinguish AI-generated content from human writing. Augmented with 4 stylometric text-style features (entropy, sentence variety, repetition, coherence).",
+    "descriptionFa": "گرادیان بوستینگ با تنظیم هایپرپارامتر از طریق اعتبارسنجی متقابل روی ۳۰٬۰۰۰ ویژگی برتر TF-IDF (انتخاب‌شده با chi2)، آموزش‌دیده برای تشخیص متن تولیدشده توسط هوش مصنوعی از نوشته انسان. همراه با ۴ ویژگی سبک‌شناسی متن (آنتروپی، تنوع جملات، تکرار، انسجام).",
+    "algorithm": "GradientBoostingClassifier",
+    "type": "ml",
+    "version": "3.0",
+    "filename": "gbModel.joblib",
+    "runtime": "sklearn-tfidf",
+    "ensembleWeight": 1.0,
+    "vectorizer": "tfidf_vectorizer.joblib",
+    "metrics": {
+      "accuracy": 0.9919,
+      "precision": 0.9976,
+      "recall": 0.9862,
+      "f1Score": 0.9919
+    },
+    "confusionMatrix": {
+      "trueNegative": 2105,
+      "falsePositive": 5,
+      "falseNegative": 29,
+      "truePositive": 2080
+    },
+    "training": {
+      "totalSamples": 21092,
+      "trainSamples": 16873,
+      "testSamples": 4219,
+      "featureCount": 30004,
+      "testSplitRatio": 0.2,
+      "randomSeed": 42,
+      "dataset": "persian_ai_generated_final.csv + blogs.csv"
+    }
+  },
+  {
+    "id": "bilstm",
+    "name": "BiLSTM",
+    "nameFa": "شبکه دوسویه LSTM",
+    "description": "A bidirectional LSTM with its own learned word embeddings, trained from scratch on GPU with early stopping against a held-out validation set (not the test set), on lemmatized Persian text, to distinguish AI-generated content from human writing.",
+    "descriptionFa": "شبکه عصبی LSTM دوسویه با embedding آموخته‌شده اختصاصی، آموزش‌دیده از ابتدا روی GPU با early stopping بر پایه مجموعه اعتبارسنجی جداگانه (نه مجموعه آزمون)، روی متن فارسی نرمال‌شده و ریشه‌یابی‌شده، برای تشخیص متن تولیدشده توسط هوش مصنوعی از نوشته انسان.",
+    "algorithm": "BiLSTM",
+    "type": "dl",
+    "version": "2.0",
+    "filename": "lstmModel.pt",
+    "runtime": "pytorch-lstm",
+    "ensembleWeight": 1.0,
+    "metrics": {
+      "accuracy": 0.9832,
+      "precision": 0.9894,
+      "recall": 0.9768,
+      "f1Score": 0.9831
+    },
+    "confusionMatrix": {
+      "trueNegative": 2088,
+      "falsePositive": 22,
+      "falseNegative": 49,
+      "truePositive": 2060
+    },
+    "training": {
+      "totalSamples": 21092,
+      "trainSamples": 16873,
+      "testSamples": 4219,
+      "featureCount": 40002,
+      "testSplitRatio": 0.2,
+      "randomSeed": 42,
+      "dataset": "persian_ai_generated_final.csv + blogs.csv"
+    }
+  },
+  {
+    "id": "gpt2_transformer",
+    "name": "GPT-2 Transformer (fine-tuned)",
+    "nameFa": "ترنسفورمر GPT-2 (فاین‌تیون‌شده)",
+    "description": "HooshvareLab/gpt2-fa (a 12-layer, 124M-parameter Persian GPT-2) fully fine-tuned (all 12 transformer blocks) on the full training set with 128 tokens of context, GPU + mixed precision, and validation-based early stopping. Text is normalized (not lemmatized) before tokenizing with GPT-2's own fast tokenizer, to match its pretraining distribution.",
+    "descriptionFa": "مدل GPT-2 فارسی (HooshvareLab/gpt2-fa) با ۱۲ لایه و ۱۲۴ میلیون پارامتر که تمام ۱۲ بلوک ترنسفورمر آن روی کل مجموعه آموزشی با ۱۲۸ توکن زمینه، GPU و دقت مختلط، و early stopping بر پایه مجموعه اعتبارسنجی فاین‌تیون شده است. متن پیش از توکن‌سازی با توکنایزر سریع خود GPT-2 تنها نرمال‌سازی می‌شود (نه ریشه‌یابی) تا با توزیع پیش‌آموزش مدل سازگار بماند.",
+    "algorithm": "GPT2ForSequenceClassification (full fine-tune)",
+    "type": "dl",
+    "version": "2.0",
+    "filename": "gpt2ClassifierModel.pt",
+    "runtime": "pytorch-gpt2",
+    "ensembleWeight": 3.0,
+    "metrics": {
+      "accuracy": 0.9969,
+      "precision": 0.9962,
+      "recall": 0.9976,
+      "f1Score": 0.9969
+    },
+    "confusionMatrix": {
+      "trueNegative": 2102,
+      "falsePositive": 8,
+      "falseNegative": 5,
+      "truePositive": 2104
+    },
+    "training": {
+      "totalSamples": 21092,
+      "trainSamples": 16873,
+      "testSamples": 4219,
+      "featureCount": 768,
+      "testSplitRatio": 0.2,
+      "randomSeed": 42,
+      "dataset": "persian_ai_generated_final.csv + blogs.csv"
+    }
+  },
+  {
+    "id": "jev_system_one",
+    "name": "JEV System One (Decision Head)",
+    "nameFa": "مدل تصمیم سیستم-یک (JEV)",
+    "description": "JEV-style 'System One' decision model: the Persian GPT-2 backbone (HooshvareLab/gpt2-fa, last 4 blocks fine-tuned) pooled into three typed decision heads answered in a single forward pass -- a choice question (human vs AI, as a probability distribution), a score question (machine-likeness on a 5-level scale, answered as a probability-weighted value between levels) and a noul question (probability that human review is needed). Trained on a stratified subsample with soft targets distilled from the TF-IDF + Logistic Regression pipeline; excluded from the ensemble because its choice head overlaps the GPT-2 classifier.",
+    "descriptionFa": "مدل تصمیم «سیستم-یک» به سبک JEV: بک‌بون GPT-2 فارسی (HooshvareLab/gpt2-fa با فاین‌تیون ۴ بلوک آخر) که بازنمایی تجمیع‌شده آن به سه سر تصمیم نوع‌بندی‌شده می‌رود و همه در یک گذر رو به جلو پاسخ داده می‌شوند -- سؤال انتخاب (انسان در برابر هوش مصنوعی به شکل توزیع احتمال)، سؤال امتیاز (ماشین‌مانندبودن روی طیف ۵ سطحی با مقدار وزن‌دار احتمالاتی که می‌تواند بین سطوح بیفتد) و سؤانول (احتمال نیاز به بازبینی انسانی). آموزش روی نمونه طبقه‌بندی‌شده‌ای از داده با هدف‌های نرم تقطیرشده از خط لوله TF-IDF + رگرسیون لجستیک؛ به دلیل هم‌پوشانی سر انتخاب با دسته‌بند GPT-2، از ترکیب مدل‌ها حذف شده است.",
+    "algorithm": "GPT2 + typed decision heads (choice/score/noul)",
+    "type": "dl",
+    "version": "1.0",
+    "filename": "jevModel.pt",
+    "runtime": "pytorch-jev",
+    "ensembleWeight": 1.0,
+    "metrics": {
+      "accuracy": 0.984,
+      "precision": 0.9853,
+      "recall": 0.9827,
+      "f1Score": 0.984,
+      "scoreMae": 0.1212,
+      "noulAuc": 0.6079,
+      "choiceEce": 0.0182,
+      "noulAveragePrecision": 0.0246
+    },
+    "confusionMatrix": {
+      "trueNegative": 739,
+      "falsePositive": 11,
+      "falseNegative": 13,
+      "truePositive": 737
+    },
+    "training": {
+      "totalSamples": 7500,
+      "trainSamples": 6000,
+      "testSamples": 1500,
+      "featureCount": 768,
+      "testSplitRatio": 0.2,
+      "randomSeed": 42,
+      "dataset": "processedDataset.csv (JEV JSONL, teacher-distilled soft targets)"
     }
   }
 ]

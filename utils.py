@@ -1,14 +1,22 @@
 import json
 import math
+import os
+import pickle
 import re
 from collections import Counter
 
 import joblib
 import numpy as np
+import torch
+import torch.nn as nn
 from pydantic import BaseModel
+from scipy.sparse import hstack
 from shekar import Normalizer, WordTokenizer, Lemmatizer, SentenceTokenizer
 from shekar.preprocessing import EmojiRemover, PunctuationRemover, NonPersianRemover
 from sklearn.metrics.pairwise import cosine_similarity
+from transformers import AutoModel, AutoTokenizer, BertConfig
+
+torch.set_num_threads(4)
 
 
 class DetectionDetail(BaseModel):
@@ -17,6 +25,56 @@ class DetectionDetail(BaseModel):
     value: float  # normalized 0..1
     raw: str
     description: str
+
+
+class EnsembleVote(BaseModel):
+    modelId: str
+    label: str
+    labelFa: str
+    aiProbability: float
+    weight: float
+
+
+class JevChoiceAnswer(BaseModel):
+    question: str
+    questionFa: str
+    candidates: list[str]
+    candidateLabelsFa: list[str]
+    probabilities: list[float]
+    answer: str
+    answerFa: str
+
+
+class JevScoreAnswer(BaseModel):
+    question: str
+    questionFa: str
+    levels: list[str]
+    levelLabelsFa: list[str]
+    probabilities: list[float]
+    value: float  # probability-weighted value on the 0..(n-1) ordinal scale
+    answer: str
+    answerFa: str
+
+
+class JevNoulAnswer(BaseModel):
+    question: str
+    questionFa: str
+    probability: float
+    answer: bool
+    answerFa: str
+
+
+class JevPolicyDecision(BaseModel):
+    tier: str
+    tierFa: str
+    descriptionFa: str
+
+
+class JevTypedAnswers(BaseModel):
+    choice: JevChoiceAnswer
+    score: JevScoreAnswer
+    noul: JevNoulAnswer
+    policy: JevPolicyDecision
 
 
 class DetectionResponse(BaseModel):
@@ -28,13 +86,138 @@ class DetectionResponse(BaseModel):
     modelUsed: str
     textLength: int
     wordCount: int
+    ensembleVotes: list[EnsembleVote] | None = None
+    # Filled only for the JEV System-One decision model (jev_system_one):
+    # typed answers to its three questions instead of a plain probability.
+    typedAnswers: JevTypedAnswers | None = None
 
+
+ENSEMBLE_ID = "ensemble"
+
+# JEV typed-question schema. Keep in sync with training/prepare_jev_data.py
+# and training/train_jev.py (the same lists appear in the JSONL targets).
+JEV_CHOICE_CANDIDATES = ["human_written", "ai_generated"]
+JEV_CHOICE_CANDIDATES_FA = ["نوشته انسان", "تولیدشده توسط هوش مصنوعی"]
+JEV_SCORE_LEVELS = [
+    "definitely_human",
+    "probably_human",
+    "mixed_signals",
+    "probably_ai",
+    "definitely_ai",
+]
+JEV_SCORE_LEVELS_FA = [
+    "قطعاً انسان",
+    "احتمالاً انسان",
+    "سیگنال‌های ترکیبی",
+    "احتمالاً هوش مصنوعی",
+    "قطعاً هوش مصنوعی",
+]
+JEV_QUESTIONS = {
+    "choice": {
+        "en": "Where does this text come from?",
+        "fa": "این متن از کجا آمده است؟",
+    },
+    "score": {
+        "en": "How machine-like is the writing style?",
+        "fa": "سبک نوشتار چقدر ماشین‌مانند است؟",
+    },
+    "noul": {
+        "en": "Does this text need human review?",
+        "fa": "آیا این متن نیاز به بازبینی انسانی دارد؟",
+    },
+}
 
 vectorizer = None
-models_cache: dict[str, object] = {}  # model_id -> loaded model object
+models_cache: dict[str, object] = {}  # model_id -> loaded model object/bundle
 models_dict: dict[str, dict] = {}  # model_id -> metadata from models.json
 
 _preprocess_pipeline = None
+_gpt2_tokenizer = None  # shared across any pytorch-gpt2 models
+
+
+# ---------------------------------------------------------------------------
+# Deep learning model architectures (must match training/train_*.py exactly
+# so saved state_dicts load correctly).
+# ---------------------------------------------------------------------------
+class BiLSTMClassifier(nn.Module):
+    def __init__(self, vocab_size, embed_dim, hidden_dim, pad_idx=0):
+        super().__init__()
+        self.embedding = nn.Embedding(vocab_size, embed_dim, padding_idx=pad_idx)
+        self.lstm = nn.LSTM(
+            embed_dim, hidden_dim, batch_first=True, bidirectional=True
+        )
+        self.dropout = nn.Dropout(0.3)
+        self.fc = nn.Linear(hidden_dim * 2, 1)
+
+    def forward(self, x):
+        emb = self.embedding(x)
+        _, (h_n, _) = self.lstm(emb)
+        h = torch.cat([h_n[-2], h_n[-1]], dim=1)
+        h = self.dropout(h)
+        return self.fc(h).squeeze(-1)
+
+
+class GPT2Classifier(nn.Module):
+    """GPT2 backbone (causal, so pooled on the last real token) + linear head."""
+
+    def __init__(self, backbone, hidden_size):
+        super().__init__()
+        self.backbone = backbone
+        self.head = nn.Linear(hidden_size, 1)
+
+    def forward(self, input_ids, attention_mask):
+        hidden = self.backbone(
+            input_ids=input_ids, attention_mask=attention_mask
+        ).last_hidden_state
+        last_idx = attention_mask.sum(dim=1) - 1
+        pooled = hidden[torch.arange(hidden.size(0)), last_idx]
+        return self.head(pooled).squeeze(-1)
+
+
+class ParsBERTClassifier(nn.Module):
+    """ParsBERT backbone (bidirectional, so pooled on the [CLS] token) + linear head."""
+
+    def __init__(self, backbone, hidden_size):
+        super().__init__()
+        self.backbone = backbone
+        self.head = nn.Linear(hidden_size, 1)
+
+    def forward(self, input_ids, attention_mask):
+        hidden = self.backbone(
+            input_ids=input_ids, attention_mask=attention_mask
+        ).last_hidden_state
+        cls_repr = hidden[:, 0]
+        return self.head(cls_repr).squeeze(-1)
+
+
+class JevDecisionModel(nn.Module):
+    """JEV-style 'System One' decision model: GPT2 backbone (causal, pooled on
+    the last real token) whose pooled representation feeds three typed decision
+    heads -- choice (distribution over candidate answers), score (distribution
+    over an ordinal scale, answered as a probability-weighted value) and noul
+    (yes/no probability). All heads are scored in one forward pass. Must match
+    training/train_jev.py exactly so the saved state_dict loads correctly."""
+
+    def __init__(self, backbone, hidden_size, n_choice, n_score_levels):
+        super().__init__()
+        self.backbone = backbone
+        self.dropout = nn.Dropout(0.1)
+        self.choice_head = nn.Linear(hidden_size, n_choice)
+        self.score_head = nn.Linear(hidden_size, n_score_levels)
+        self.noul_head = nn.Linear(hidden_size, 1)
+
+    def forward(self, input_ids, attention_mask):
+        hidden = self.backbone(
+            input_ids=input_ids, attention_mask=attention_mask
+        ).last_hidden_state
+        last_idx = attention_mask.sum(dim=1) - 1
+        pooled = hidden[torch.arange(hidden.size(0)), last_idx]
+        pooled = self.dropout(pooled)
+        return (
+            self.choice_head(pooled),
+            self.score_head(pooled),
+            self.noul_head(pooled).squeeze(-1),
+        )
 
 
 def _get_preprocess_pipeline():
@@ -51,6 +234,144 @@ def _get_preprocess_pipeline():
     return _preprocess_pipeline
 
 
+_gpt2_normalizer = None
+
+
+def _normalize_for_gpt2(text: str) -> str:
+    # GPT-2 was pretrained on natural Persian text, so unlike the TF-IDF/BiLSTM
+    # pipeline above we deliberately do NOT lemmatize or word-tokenize here —
+    # that would strip inflection/morphology and feed the model text unlike
+    # anything it saw during pretraining. Just character-level normalization
+    # (Arabic->Persian unification, digit/punctuation normalization, ZWNJ and
+    # spacing fixes) to clean up inconsistent real-world typing, matching how
+    # training/colab_retrain.ipynb preprocesses text for GPT-2 fine-tuning.
+    global _gpt2_normalizer
+    if _gpt2_normalizer is None:
+        _gpt2_normalizer = Normalizer()
+    text = re.sub(r"\n", " ", text)
+    return _gpt2_normalizer(text)
+
+
+def _load_sklearn_model(md: dict):
+    return joblib.load(md["filename"])
+
+
+def _load_lstm_model(md: dict):
+    checkpoint = torch.load(md["filename"], map_location="cpu", weights_only=False)
+    config = checkpoint["config"]
+    vocab = checkpoint["vocab"]
+    model = BiLSTMClassifier(
+        vocab_size=len(vocab),
+        embed_dim=config["embed_dim"],
+        hidden_dim=config["hidden_dim"],
+        pad_idx=config["pad_idx"],
+    )
+    model.load_state_dict(checkpoint["state_dict"])
+    model.eval()
+    return {"model": model, "vocab": vocab, "config": config}
+
+
+def _get_gpt2_tokenizer():
+    global _gpt2_tokenizer
+    if _gpt2_tokenizer is None:
+        # Prefer an offline fast (Rust-backed) tokenizer exported by
+        # training/colab_retrain.ipynb via tokenizer.save_pretrained(), which is
+        # both faster and less prone to slow-tokenizer pathologies on long
+        # documents than the pickled slow GPT2Tokenizer. Falls back to the
+        # pickle when that export isn't present.
+        if os.path.isdir("gpt2_tokenizer"):
+            _gpt2_tokenizer = AutoTokenizer.from_pretrained("gpt2_tokenizer")
+        else:
+            with open("gpt2-fa-tokenizer.mdl", "rb") as f:
+                _gpt2_tokenizer = pickle.load(f)
+            _gpt2_tokenizer.pad_token = "<pad>"
+    return _gpt2_tokenizer
+
+
+def _load_gpt2_backbone():
+    """Load the base Persian GPT-2 transformer + tokenizer once, shared by
+    every pytorch-gpt2 model entry."""
+    with open("gpt2-fa.mdl", "rb") as f:
+        lm = pickle.load(f)
+    _get_gpt2_tokenizer()
+    return lm.transformer
+
+
+def _load_gpt2_model(md: dict):
+    backbone = _load_gpt2_backbone()
+    checkpoint = torch.load(md["filename"], map_location="cpu", weights_only=False)
+    config = checkpoint["config"]
+    model = GPT2Classifier(backbone, hidden_size=config["hidden_size"])
+    model.load_state_dict(checkpoint["state_dict"])
+    model.eval()
+    return {"model": model, "config": config}
+
+
+def _load_jev_model(md: dict):
+    # Deliberately NOT using _load_gpt2_backbone(): that helper hands every
+    # pytorch-gpt2 model the SAME backbone object, and load_state_dict copies
+    # weights into it in place -- a second checkpoint would silently overwrite
+    # the first model's fine-tuned blocks. JEV therefore loads its own private
+    # backbone copy from the pickle (~500 MB extra RAM).
+    with open("gpt2-fa.mdl", "rb") as f:
+        lm = pickle.load(f)
+    checkpoint = torch.load(md["filename"], map_location="cpu", weights_only=False)
+    config = checkpoint["config"]
+    model = JevDecisionModel(
+        lm.transformer,
+        hidden_size=config["hidden_size"],
+        n_choice=config.get("n_choice", 2),
+        n_score_levels=config.get("n_score_levels", 5),
+    )
+    model.load_state_dict(checkpoint["state_dict"])
+    model.eval()
+    _get_gpt2_tokenizer()
+    return {"model": model, "config": config}
+
+
+_parsbert_tokenizer = None
+
+
+def _load_parsbert_tokenizer():
+    global _parsbert_tokenizer
+    if _parsbert_tokenizer is None:
+        # Prefer the tokenizer exported by training/colab_retrain.ipynb via
+        # save_pretrained(), so the server needs no Hub access at startup --
+        # same offline-first pattern as the gpt2_tokenizer/ folder above.
+        if os.path.isdir("parsbert_tokenizer"):
+            _parsbert_tokenizer = AutoTokenizer.from_pretrained("parsbert_tokenizer")
+        else:
+            _parsbert_tokenizer = AutoTokenizer.from_pretrained(
+                "HooshvareLab/bert-fa-base-uncased"
+            )
+    return _parsbert_tokenizer
+
+
+def _load_parsbert_model(md: dict):
+    checkpoint = torch.load(md["filename"], map_location="cpu", weights_only=False)
+    config = checkpoint["config"]
+    # The saved checkpoint carries the full backbone config (layers, heads,
+    # vocab size, ...), so the backbone can be rebuilt with the right shape
+    # purely offline -- its fine-tuned weights are about to be loaded from
+    # state_dict anyway, so no pretrained checkpoint download is needed here.
+    backbone_config = BertConfig.from_dict(config["backbone_config"])
+    backbone = AutoModel.from_config(backbone_config)
+    model = ParsBERTClassifier(backbone, hidden_size=config["hidden_size"])
+    model.load_state_dict(checkpoint["state_dict"])
+    model.eval()
+    _load_parsbert_tokenizer()
+    return {"model": model, "config": config}
+
+
+_LOADERS = {
+    "sklearn-tfidf": _load_sklearn_model,
+    "pytorch-lstm": _load_lstm_model,
+    "pytorch-gpt2": _load_gpt2_model,
+    "pytorch-parsbert": _load_parsbert_model,
+    "pytorch-jev": _load_jev_model,
+}
+
+
 def init() -> None:
     """Load the vectorizer and all models once at startup."""
     global vectorizer, models_cache, models_dict
@@ -61,7 +382,9 @@ def init() -> None:
     models_dict = {md["id"]: md for md in metadata_list}
 
     for model_id, md in models_dict.items():
-        models_cache[model_id] = joblib.load(md["filename"])
+        runtime = md.get("runtime", "sklearn-tfidf")
+        loader = _LOADERS.get(runtime, _load_sklearn_model)
+        models_cache[model_id] = loader(md)
 
 
 def get_model_metadata(model_id: str) -> dict:
@@ -70,10 +393,36 @@ def get_model_metadata(model_id: str) -> dict:
     return models_dict[model_id]
 
 
+def get_ensemble_metadata() -> dict:
+    """Virtual "model" metadata for the weighted ensemble, exposed to clients
+    alongside the real models so it can be listed/selected like any other."""
+    return {
+        "id": ENSEMBLE_ID,
+        "name": "Ensemble (All Models)",
+        "nameFa": "مدل ترکیبی (رأی‌گیری وزن‌دار)",
+        "description": (
+            "Weighted-vote ensemble that combines the prediction of every "
+            "trained model, giving extra weight to the fine-tuned GPT-2 model."
+        ),
+        "descriptionFa": (
+            "ترکیب وزن‌دار پیش‌بینی همه مدل‌های آموزش‌دیده، با وزن بیشتر برای "
+            "مدل GPT-2 ریزتنظیم‌شده که معمولاً دقیق‌ترین مدل است."
+        ),
+        "algorithm": "WeightedEnsemble",
+        "type": "ensemble",
+        "version": "1.0",
+    }
+
+
 def preprocess_persian_text(text: str) -> str:
     text = re.sub(r"\n", " ", text)
     tokens = _get_preprocess_pipeline()(text)
     return " ".join(tokens)
+
+
+def _tokenize_persian_text(text: str) -> list[str]:
+    text = re.sub(r"\n", " ", text)
+    return list(_get_preprocess_pipeline()(text))
 
 
 def shannon_entropy(text: str) -> float:
@@ -124,8 +473,35 @@ def text_coherence(text: str) -> float:
     return min(max(float(np.mean(similarities)), 0.0), 1.0)
 
 
+# Stylometric features appended to the TF-IDF vector for every sklearn-tfidf
+# model (SVM, Logistic Regression, Naive Bayes, Random Forest, Gradient
+# Boosting). Order here MUST match training/build_style_features.py and the
+# column order every sklearn-tfidf .joblib bundle was fit on -- changing it
+# (or the formulas below) without retraining those models will silently feed
+# them garbage.
+STYLE_FEATURE_NAMES = ["entropy", "sentence_variety", "repetition", "coherence"]
+
+
+def compute_style_features(text: str, cleaned_text: str) -> dict[str, float]:
+    """Normalized (0..1) stylometric features for one document."""
+    entropy = shannon_entropy(text)
+    max_entropy = math.log2(max(len(set(cleaned_text.replace(" ", ""))), 2))
+    return {
+        "entropy": round(min(entropy / max_entropy, 1.0), 4),
+        "sentence_variety": round(sentence_variety(text), 4),
+        "repetition": round(pattern_repetition(text, n=3), 4),
+        "coherence": round(text_coherence(text), 4),
+    }
+
+
+def style_features_vector(style_features: dict[str, float]) -> np.ndarray:
+    """dict -> ordered (1, len(STYLE_FEATURE_NAMES)) array, ready to hstack
+    onto a TF-IDF row for sklearn-tfidf models."""
+    return np.array([[style_features[name] for name in STYLE_FEATURE_NAMES]])
+
+
 def predict_ai_probability(model, vect_text) -> tuple[bool, float]:
-    """Return (is_ai, confidence) for a fitted classifier."""
+    """Return (is_ai, confidence) for a fitted sklearn classifier."""
     if hasattr(model, "predict_proba"):
         proba = model.predict_proba(vect_text)[0]
         ai_prob = float(proba[1]) if len(proba) > 1 else float(proba[0])
@@ -140,10 +516,242 @@ def predict_ai_probability(model, vect_text) -> tuple[bool, float]:
     return is_ai, round(confidence, 4)
 
 
+def _predict_sklearn(bundle, text: str, cleaned_text: str, style_features: dict) -> float:
+    # Every sklearn-tfidf model (SVM, LogReg, NB directly; RF/GB via an
+    # internal ColumnTransformer that chi2-selects the TF-IDF slice and
+    # passes the style slice through) was fit on TF-IDF columns followed by
+    # the 4 style columns, in that order -- see training/colab_retrain.ipynb.
+    tfidf_vect = vectorizer.transform([cleaned_text])
+    vect_text = hstack([tfidf_vect, style_features_vector(style_features)]).tocsr()
+    if hasattr(bundle, "predict_proba"):
+        proba = bundle.predict_proba(vect_text)[0]
+        return float(proba[1]) if len(proba) > 1 else float(proba[0])
+    if hasattr(bundle, "decision_function"):
+        score = float(bundle.decision_function(vect_text)[0])
+        return 1 / (1 + np.exp(-score))
+    return 1.0 if bundle.predict(vect_text)[0] else 0.0
+
+
+def _predict_lstm(bundle, text: str, cleaned_text: str, style_features: dict) -> float:
+    model = bundle["model"]
+    vocab = bundle["vocab"]
+    config = bundle["config"]
+    tokens = cleaned_text.split()[: config["max_len"]]
+    ids = [vocab.get(t, config["unk_idx"]) for t in tokens]
+    if len(ids) < config["max_len"]:
+        ids = ids + [config["pad_idx"]] * (config["max_len"] - len(ids))
+    with torch.no_grad():
+        logits = model(torch.tensor([ids], dtype=torch.long))
+        prob = torch.sigmoid(logits).item()
+    return prob
+
+
+def _predict_gpt2(bundle, text: str, cleaned_text: str, style_features: dict) -> float:
+    model = bundle["model"]
+    config = bundle["config"]
+    normalized = _normalize_for_gpt2(text)
+    # Guards against the slow-tokenizer fallback path (see _load_gpt2_backbone):
+    # the pickled GPT2Tokenizer BPE-encodes the entire string before truncating,
+    # so pre-truncate at the character level (generous upper bound for seq_len
+    # tokens) to keep it fast. A no-op for the fast tokenizer, which handles
+    # long strings efficiently on its own.
+    char_budget = config["seq_len"] * 8
+    enc = _gpt2_tokenizer(
+        normalized[:char_budget],
+        return_tensors="pt",
+        truncation=True,
+        max_length=config["seq_len"],
+        padding="max_length",
+    )
+    with torch.no_grad():
+        logits = model(enc["input_ids"], enc["attention_mask"])
+        prob = torch.sigmoid(logits).item()
+    return prob
+
+
+def _predict_parsbert(bundle, text: str, cleaned_text: str, style_features: dict) -> float:
+    model = bundle["model"]
+    config = bundle["config"]
+    # Same rationale as _predict_gpt2: ParsBERT was fine-tuned on lightly
+    # normalized (not lemmatized) text, so reuse that normalization here.
+    normalized = _normalize_for_gpt2(text)
+    enc = _parsbert_tokenizer(
+        normalized,
+        return_tensors="pt",
+        truncation=True,
+        max_length=config["seq_len"],
+        padding="max_length",
+    )
+    with torch.no_grad():
+        logits = model(enc["input_ids"], enc["attention_mask"])
+        prob = torch.sigmoid(logits).item()
+    return prob
+
+
+def _predict_jev(bundle, text: str, cleaned_text: str, style_features: dict) -> dict:
+    """One forward pass answers all three typed JEV questions at once. Returns
+    a dict (not a plain probability like the other predictors) -- detection()
+    turns it into the typed-answer block of the response."""
+    model = bundle["model"]
+    config = bundle["config"]
+    normalized = _normalize_for_gpt2(text)
+    # Same slow-tokenizer guard as _predict_gpt2: pre-truncate at the
+    # character level (generous bound for seq_len tokens in Persian).
+    char_budget = config["seq_len"] * 8
+    enc = _get_gpt2_tokenizer()(
+        normalized[:char_budget],
+        return_tensors="pt",
+        truncation=True,
+        max_length=config["seq_len"],
+        padding="max_length",
+    )
+    with torch.no_grad():
+        choice_logits, score_logits, noul_logit = model(
+            enc["input_ids"], enc["attention_mask"]
+        )
+        choice_probs = torch.softmax(choice_logits, dim=-1)[0]
+        score_probs = torch.softmax(score_logits, dim=-1)[0]
+        noul_prob = torch.sigmoid(noul_logit)[0]
+    score_value = float(
+        (score_probs * torch.arange(len(score_probs), dtype=torch.float32)).sum()
+    )
+    return {
+        # choice probabilities follow JEV_CHOICE_CANDIDATES order
+        # (index 1 == "ai_generated")
+        "aiProbability": float(choice_probs[1]),
+        "choiceProbs": [float(p) for p in choice_probs],
+        "scoreProbs": [float(p) for p in score_probs],
+        "scoreValue": score_value,
+        "noulProbability": float(noul_prob),
+    }
+
+
+_PREDICTORS = {
+    "sklearn-tfidf": _predict_sklearn,
+    "pytorch-lstm": _predict_lstm,
+    "pytorch-gpt2": _predict_gpt2,
+    "pytorch-parsbert": _predict_parsbert,
+    "pytorch-jev": _predict_jev,
+}
+
+
+def _predict_single(
+    model_id: str, text: str, cleaned_text: str, style_features: dict
+):
+    """Run one model: returns its AI probability as a float, except the JEV
+    decision model which returns the full typed-answers dict."""
+    bundle = models_cache[model_id]
+    md = models_dict[model_id]
+    runtime = md.get("runtime", "sklearn-tfidf")
+    predictor = _PREDICTORS.get(runtime, _predict_sklearn)
+    return predictor(bundle, text, cleaned_text, style_features)
+
+
+def _jev_typed_answers(bundle, result: dict) -> JevTypedAnswers:
+    """Wrap the raw JEV forward-pass output into the typed-answer response
+    block, including the three-tier decision policy (proceed / needs review /
+    low confidence) taken from the checkpoint's thresholds."""
+    choice_probs = result["choiceProbs"]
+    choice_idx = int(np.argmax(choice_probs))
+    score_probs = result["scoreProbs"]
+    score_idx = int(np.argmax(score_probs))
+
+    thresholds = bundle["config"].get("thresholds", {})
+    proceed_thr = float(thresholds.get("proceed", 0.8))
+    review_thr = float(thresholds.get("needsReview", 0.6))
+    confidence = max(choice_probs)
+    if confidence >= proceed_thr:
+        policy = JevPolicyDecision(
+            tier="proceed",
+            tierFa="ادامه",
+            descriptionFa="اطمینان مدل بالاست؛ تصمیم خودکار قابل‌اعتماد است.",
+        )
+    elif confidence >= review_thr:
+        policy = JevPolicyDecision(
+            tier="needs_review",
+            tierFa="نیازمند بازبینی انسانی",
+            descriptionFa="پاسخ مدل در ناحیه مرزی است؛ پیش از اقدام، بازبینی انسانی توصیه می‌شود.",
+        )
+    else:
+        policy = JevPolicyDecision(
+            tier="low_confidence",
+            tierFa="اطمینان پایین",
+            descriptionFa="اطمینان مدل کم است؛ تصمیم خودکار توصیه نمی‌شود.",
+        )
+
+    return JevTypedAnswers(
+        choice=JevChoiceAnswer(
+            question=JEV_QUESTIONS["choice"]["en"],
+            questionFa=JEV_QUESTIONS["choice"]["fa"],
+            candidates=JEV_CHOICE_CANDIDATES,
+            candidateLabelsFa=JEV_CHOICE_CANDIDATES_FA,
+            probabilities=[round(p, 4) for p in choice_probs],
+            answer=JEV_CHOICE_CANDIDATES[choice_idx],
+            answerFa=JEV_CHOICE_CANDIDATES_FA[choice_idx],
+        ),
+        score=JevScoreAnswer(
+            question=JEV_QUESTIONS["score"]["en"],
+            questionFa=JEV_QUESTIONS["score"]["fa"],
+            levels=JEV_SCORE_LEVELS,
+            levelLabelsFa=JEV_SCORE_LEVELS_FA,
+            probabilities=[round(p, 4) for p in score_probs],
+            value=round(result["scoreValue"], 3),
+            answer=JEV_SCORE_LEVELS[score_idx],
+            answerFa=JEV_SCORE_LEVELS_FA[score_idx],
+        ),
+        noul=JevNoulAnswer(
+            question=JEV_QUESTIONS["noul"]["en"],
+            questionFa=JEV_QUESTIONS["noul"]["fa"],
+            probability=round(result["noulProbability"], 4),
+            answer=result["noulProbability"] >= 0.5,
+            answerFa="بله" if result["noulProbability"] >= 0.5 else "خیر",
+        ),
+        policy=policy,
+    )
+
+
+def _ensemble_predict(
+    text: str, cleaned_text: str, style_features: dict
+) -> tuple[bool, float, list[EnsembleVote]]:
+    """Weighted-average vote across every loaded model. Each model's weight
+    comes from its "ensembleWeight" metadata field (models.json) -- the
+    fine-tuned GPT-2 model is weighted higher there since it consistently
+    outperforms the classical ML models on held-out text."""
+    votes: list[EnsembleVote] = []
+    weighted_sum = 0.0
+    weight_total = 0.0
+
+    for model_id, md in models_dict.items():
+        weight = float(md.get("ensembleWeight", 1.0))
+        if weight <= 0.0:
+            # Excluded from the vote (jev_system_one: its choice question
+            # overlaps the fine-tuned GPT-2 classifier and would double that
+            # backbone's latency for no extra diversity).
+            continue
+        ai_prob = _predict_single(model_id, text, cleaned_text, style_features)
+        weighted_sum += ai_prob * weight
+        weight_total += weight
+        votes.append(
+            EnsembleVote(
+                modelId=model_id,
+                label=md.get("name", model_id),
+                labelFa=md.get("nameFa", md.get("name", model_id)),
+                aiProbability=round(ai_prob, 4),
+                weight=weight,
+            )
+        )
+
+    ai_prob_avg = weighted_sum / weight_total if weight_total else 0.0
+    is_ai = ai_prob_avg >= 0.5
+    confidence = round(ai_prob_avg if is_ai else 1 - ai_prob_avg, 4)
+    return is_ai, confidence, votes
+
+
 def detection(text: str, model_id: str) -> DetectionResponse:
-    """Detect whether the given Persian text is AI-generated using the specified model."""
-    model = models_cache.get(model_id)
-    if model is None:
+    """Detect whether the given Persian text is AI-generated using the specified
+    model, or every model at once via the weighted ensemble (model_id == "ensemble")."""
+    is_ensemble = model_id == ENSEMBLE_ID
+    if not is_ensemble and (model_id not in models_cache or model_id not in models_dict):
         raise ValueError(f"Model ID '{model_id}' not found.")
 
     cleaned_text = preprocess_persian_text(text)
@@ -160,45 +768,59 @@ def detection(text: str, model_id: str) -> DetectionResponse:
             wordCount=len(text.split()),
         )
 
-    vect_text = vectorizer.transform([cleaned_text])
-    is_ai, confidence = predict_ai_probability(model, vect_text)
+    # Computed once and reused both as extra model input (sklearn-tfidf
+    # models) and for the human-readable detail breakdown below.
+    style_features = compute_style_features(text, cleaned_text)
+    entropy = shannon_entropy(text)  # raw bits, for the "raw" display field only
+
+    ensemble_votes = None
+    typed_answers = None
+    if is_ensemble:
+        is_ai, confidence, ensemble_votes = _ensemble_predict(
+            text, cleaned_text, style_features
+        )
+    else:
+        result = _predict_single(model_id, text, cleaned_text, style_features)
+        if isinstance(result, dict):
+            # pytorch-jev: one forward pass, three typed answers
+            typed_answers = _jev_typed_answers(models_cache[model_id], result)
+            ai_prob = result["aiProbability"]
+        else:
+            ai_prob = result
+        is_ai = ai_prob >= 0.5
+        confidence = round(ai_prob if is_ai else 1 - ai_prob, 4)
 
     word_count = len(text.split())
     char_count = len(text)
-    entropy = shannon_entropy(text)
-    variety = sentence_variety(text)
-    repetition = pattern_repetition(text, n=3)
-    coherence = text_coherence(text)
 
-    max_entropy = math.log2(max(len(set(cleaned_text.replace(" ", ""))), 2))
     details = [
         DetectionDetail(
             label="entropy",
             labelFa="آنتروپی",
-            value=round(min(entropy / max_entropy, 1.0), 4),
+            value=style_features["entropy"],
             raw=f"{entropy:.2f} bits",
             description=f"آنتروپی کاراکترها: {entropy:.2f} بیت (نرمال‌شده بر حسب تنوع کاراکتر)",
         ),
         DetectionDetail(
             label="sentence_variety",
             labelFa="تنوع جملات",
-            value=round(variety, 4),
-            raw=f"{variety:.2f}",
-            description=f"پراکندگی طول جمله‌ها (ضریب تغییرات): {variety:.2f}",
+            value=style_features["sentence_variety"],
+            raw=f"{style_features['sentence_variety']:.2f}",
+            description=f"پراکندگی طول جمله‌ها (ضریب تغییرات): {style_features['sentence_variety']:.2f}",
         ),
         DetectionDetail(
             label="repetition",
             labelFa="تکرار",
-            value=round(repetition, 4),
-            raw=f"{repetition * 100:.1f}%",
-            description=f"درصد تکرار سه‌گرام‌ها: {repetition * 100:.1f}%",
+            value=style_features["repetition"],
+            raw=f"{style_features['repetition'] * 100:.1f}%",
+            description=f"درصد تکرار سه‌گرام‌ها: {style_features['repetition'] * 100:.1f}%",
         ),
         DetectionDetail(
             label="coherence",
             labelFa="انسجام",
-            value=round(coherence, 4),
-            raw=f"{coherence:.2f}",
-            description=f"میانگین شباهت جمله‌های مجاور: {coherence:.2f}",
+            value=style_features["coherence"],
+            raw=f"{style_features['coherence']:.2f}",
+            description=f"میانگین شباهت جمله‌های مجاور: {style_features['coherence']:.2f}",
         ),
     ]
 
@@ -218,4 +840,6 @@ def detection(text: str, model_id: str) -> DetectionResponse:
         modelUsed=model_id,
         textLength=char_count,
         wordCount=word_count,
+        ensembleVotes=ensemble_votes,
+        typedAnswers=typed_answers,
     )

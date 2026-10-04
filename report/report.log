@@ -1,0 +1,1457 @@
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.9.7)  2 OCT 2026 20:02
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**report.tex
+(./report.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(/usr/share/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2025/01/22 v1.4n Standard LaTeX document class
+(/usr/share/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count271
+\c@chapter=\count272
+\c@section=\count273
+\c@subsection=\count274
+\c@subsubsection=\count275
+\c@paragraph=\count276
+\c@subparagraph=\count277
+\c@figure=\count278
+\c@table=\count279
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(/usr/share/texmf-dist/tex/latex/psnfss/mathptmx.sty
+Package: mathptmx 2020/03/25 PSNFSS-v9.3 Times w/ Math, improved (SPQR, WaS) 
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 28.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/ztmcm/m/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/ztmcm/m/n on input line 28.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 29.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/ztmcm/m/it on input line 29.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/ztmcm/m/it on input line 29.
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 30.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/ztmcm/m/n on input line 30.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/ztmcm/m/n on input line 30.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 31.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/ztmcm/m/n on input line 31.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/ztmcm/m/n on input line 31.
+\symbold=\mathgroup4
+\symitalic=\mathgroup5
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/ptm/bx/n on input line 34.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/ptm/m/it on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/ptm/m/it on input line 35.
+LaTeX Info: Redefining \hbar on input line 50.
+)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+
+(/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen149
+))
+(/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen150
+)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count280
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count281
+\leftroot@=\count282
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count283
+\DOTSCASE@=\count284
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box53
+\strutbox@=\box54
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen151
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count285
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count286
+\dotsspace@=\muskip17
+\c@parentequation=\count287
+\dspbrk@lvl=\count288
+\tag@help=\toks18
+\row@=\count289
+\column@=\count290
+\maxfields@=\count291
+\andhelp@=\toks19
+\eqnshift@=\dimen152
+\alignsep@=\dimen153
+\tagshift@=\dimen154
+\tagwidth@=\dimen155
+\totwidth@=\dimen156
+\lineht@=\dimen157
+\@envbody=\toks20
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+)
+(/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup6
+\symAMSb=\mathgroup7
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks22
+)
+(/usr/share/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+\Gm@cnth=\count292
+\Gm@cntv=\count293
+\c@Gm@tempcnt=\count294
+\Gm@bindingoffset=\dimen158
+\Gm@wd@mp=\dimen159
+\Gm@odd@mp=\dimen160
+\Gm@even@mp=\dimen161
+\Gm@layoutwidth=\dimen162
+\Gm@layoutheight=\dimen163
+\Gm@layouthoffset=\dimen164
+\Gm@layoutvoffset=\dimen165
+\Gm@dimlist=\toks23
+)
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 106.
+
+(/usr/share/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2025/11/01 v5.0p Graphics/color driver for xetex
+))
+\Gin@req@height=\dimen166
+\Gin@req@width=\dimen167
+)
+(/usr/share/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
+
+(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count295
+)
+\MT@toks=\toks24
+\MT@tempbox=\box55
+\MT@count=\count296
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1084.
+LaTeX Info: Redefining \leftprotrusion on input line 1085.
+\MT@prot@toks=\toks25
+LaTeX Info: Redefining \rightprotrusion on input line 1104.
+LaTeX Info: Redefining \textls on input line 1449.
+\MT@outer@kern=\dimen168
+LaTeX Info: Redefining \microtypecontext on input line 2053.
+LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
+\MT@listname@count=\count297
+
+(/usr/share/texmf-dist/tex/latex/microtype/microtype-xetex.def
+File: microtype-xetex.def 2026/03/01 v3.2d Definitions specific to xetex (RS)
+LaTeX Info: Redefining \lsstyle on input line 443.
+LaTeX Info: Redefining \lslig on input line 451.
+\MT@outer@space=\skip54
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(/usr/share/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2026/03/01 v3.2d microtype main configuration file (RS)
+)
+LaTeX Info: Redefining \microtypesetup on input line 3065.
+)
+(/usr/share/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texmf-dist/tex/latex/xurl/xurl.sty
+Package: xurl 2022/01/09 v 0.10 modify URL breaks
+)
+(/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen169
+\lightrulewidth=\dimen170
+\cmidrulewidth=\dimen171
+\belowrulesep=\dimen172
+\belowbottomsep=\dimen173
+\aboverulesep=\dimen174
+\abovetopsep=\dimen175
+\cmidrulesep=\dimen176
+\cmidrulekern=\dimen177
+\defaultaddspace=\dimen178
+\@cmidla=\count298
+\@cmidlb=\count299
+\@aboverulesep=\dimen179
+\@belowrulesep=\dimen180
+\@thisruleclass=\count300
+\@lastruleclass=\count301
+\@thisrulewidth=\dimen181
+)
+(/usr/share/texmf-dist/tex/latex/tools/array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen182
+\ar@mcellbox=\box56
+\extrarowheight=\dimen183
+\NC@list=\toks26
+\extratabsurround=\skip55
+\backup@length=\skip56
+\ar@cellbox=\box57
+)
+(/usr/share/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(/usr/share/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen184
+\captionmargin=\dimen185
+\caption@leftmargin=\dimen186
+\caption@rightmargin=\dimen187
+\caption@width=\dimen188
+\caption@indent=\dimen189
+\caption@parindent=\dimen190
+\caption@hangindent=\dimen191
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count302
+\c@continuedfloat=\count303
+)
+(/usr/share/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count304
+\float@exts=\toks27
+\float@box=\box58
+\@float@everytoks=\toks28
+\@floatcapt=\box59
+)
+(/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip57
+\enit@outerparindent=\dimen192
+\enit@toks=\toks29
+\enit@inbox=\box60
+\enit@count@id=\count305
+\enitdp@description=\count306
+)
+(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 274.
+
+(/usr/share/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+(/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
+
+(/usr/share/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/share/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+))
+(/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+
+(/usr/share/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count307
+)
+(/usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen193
+\Hy@linkcounter=\count308
+\Hy@pagecounter=\count309
+
+(/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count310
+
+(/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2026-01-29 v7.01p Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Hyper figures OFF on input line 4201.
+Package hyperref Info: Link nesting OFF on input line 4206.
+Package hyperref Info: Hyper index ON on input line 4209.
+Package hyperref Info: Plain pages OFF on input line 4216.
+Package hyperref Info: Backreferencing OFF on input line 4221.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4468.
+\c@Hy@tempcnt=\count311
+LaTeX Info: Redefining \url on input line 4807.
+\XeTeXLinkMargin=\dimen194
+
+(/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count312
+\Field@Width=\dimen195
+\Fld@charsize=\dimen196
+Package hyperref Info: Hyper figures OFF on input line 6084.
+Package hyperref Info: Link nesting OFF on input line 6089.
+Package hyperref Info: Hyper index ON on input line 6092.
+Package hyperref Info: backreferencing OFF on input line 6099.
+Package hyperref Info: Link coloring OFF on input line 6104.
+Package hyperref Info: Link coloring with OCG OFF on input line 6109.
+Package hyperref Info: PDF/A mode OFF on input line 6114.
+\Hy@abspage=\count313
+\c@Item=\count314
+\c@Hfootnote=\count315
+)
+Package hyperref Info: Driver (autodetected): hxetex.
+
+(/usr/share/texmf-dist/tex/latex/hyperref/hxetex.def
+File: hxetex.def 2026-01-29 v7.01p Hyperref driver for XeTeX
+\pdfm@box=\box61
+\c@Hy@AnnotLevel=\count316
+\HyField@AnnotCount=\count317
+\Fld@listcount=\count318
+\c@bookmark@seq@number=\count319
+
+(/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
+)
+\Hy@SectionHShift=\skip58
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 44.
+
+
+Package hyperref Warning: Option `hyperfootnotes' has already been used,
+(hyperref)                setting the option has no effect on input line 44.
+
+(/home/ehsan/texmf/tex/latex/xepersian.sty
+Package: xepersian 2025/02/02 v25.2.2 (Release Persian Gate) Persian typesettin
+g in XeLaTeX
+
+****************************************************
+* 
+* xepersian package (Persian for LaTeX, using XeTeX engine)
+* 
+* Description: The package supports Persian
+* typesetting, using fonts provided in the
+* distribution.
+* 
+* Copyright (c) 2008--2025 Vafa Khalighi
+* Copyright (c) 2018--2020 bidi-tex GitHub Organization
+* 
+* v25.2.2 (Release Persian Gate), 2025/02/02
+* 
+* License: LaTeX Project Public License, version
+* 1.3c or higher (your choice)
+* 
+* Location on CTAN: /macros/xetex/latex/xepersian
+* 
+* Issue tracker: https://github.com/xepersian/xepersian/issues
+* 
+* Discussions: https://github.com/xepersian/xepersian/discussions
+* 
+* Primary author of xepersian package: Vafa Khalighi.
+* 
+****************************************************
+(/usr/share/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/share/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/share/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2026-01-19 L3 programming layer (loader) 
+
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2025-10-09 L3 backend support: XeTeX
+\g__graphics_track_int=\count320
+\g__pdfannot_backend_int=\count321
+\g__pdfannot_backend_link_int=\count322
+))
+Package: xparse 2025-10-09 L3 Experimental document command parser
+)
+Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
+
+(/usr/share/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+Package: fontspec-xetex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTe
+X
+\l__fontspec_script_int=\count323
+\l__fontspec_language_int=\count324
+\l__fontspec_strnum_int=\count325
+\l__fontspec_tmp_int=\count326
+\l__fontspec_tmpa_int=\count327
+\l__fontspec_tmpb_int=\count328
+\l__fontspec_tmpc_int=\count329
+\l__fontspec_em_int=\count330
+\l__fontspec_emdef_int=\count331
+\l__fontspec_strong_int=\count332
+\l__fontspec_strongdef_int=\count333
+\l__fontspec_tmpa_dim=\dimen197
+\l__fontspec_tmpb_dim=\dimen198
+\l__fontspec_tmpc_dim=\dimen199
+
+(/usr/share/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+)
+(/usr/share/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/home/ehsan/texmf/tex/latex/xepersian-persiancal.sty
+Package: xepersian-persiancal 2025/01/01 v0.3 provides Persian calendar
+\XePersian@i=\count334
+\XePersian@y=\count335
+\XePersian@m=\count336
+\XePersian@d=\count337
+\XePersian@latini=\count338
+\XePersian@persiani=\count339
+\XePersian@latinii=\count340
+\XePersian@persianii=\count341
+\XePersian@latiniii=\count342
+\XePersian@persianiii=\count343
+\XePersian@latiniv=\count344
+\XePersian@persianiv=\count345
+\XePersian@latinv=\count346
+\XePersian@persianv=\count347
+\XePersian@latinvi=\count348
+\XePersian@persianvi=\count349
+\XePersian@latinvii=\count350
+\XePersian@persianvii=\count351
+\XePersian@latinviii=\count352
+\XePersian@persianviii=\count353
+\XePersian@latinix=\count354
+\XePersian@persianix=\count355
+\XePersian@latinx=\count356
+\XePersian@persianx=\count357
+\XePersian@latinxi=\count358
+\XePersian@persianxi=\count359
+\XePersian@latinxii=\count360
+\XePersian@persianxii=\count361
+\XePersian@persianxiii=\count362
+\XePersian@temp=\count363
+\XePersian@temptwo=\count364
+\XePersian@tempthree=\count365
+\XePersian@yModHundred=\count366
+\XePersian@thirtytwo=\count367
+\XePersian@dn=\count368
+\XePersian@sn=\count369
+\XePersian@mminusone=\count370
+)
+(/home/ehsan/texmf/tex/latex/unicode-persianmath.sty
+Package: unicode-persianmath 2025/02/02 v1.2.3 Unicode Persian math
+)
+(/usr/share/texmf-dist/tex/latex/bidi/bidi.sty
+Package: bidi 2026/01/08 v26.01.08 (Release Iran) Bidirectional typesetting in 
+plain TeX and LaTeX
+
+****************************************************
+* 
+* bidi package (Bidirectional typesetting with
+* plain TeX and LaTeX formats in XeTeX and LuaTeX engines)
+* 
+* Description: A convenient interface for
+* typesetting bidirectional texts in plain TeX
+* and LaTeX. The package includes adaptations
+* for use with many other commonly-used packages.
+* 
+* Copyright (c) 2007--2026 Vafa Khalighi
+* Copyright (c) 2018--2020 bidi-tex GitHub organization
+* 
+* v26.01.08 (Release Iran), 2026/01/08
+* 
+* License: LaTeX Project Public License, version
+* 1.3c or higher (your choice)
+* 
+* Location on CTAN: /macros/unicodetex/generic/bidi
+* 
+* Issue tracker: https://github.com/xepersian/bidi/issues
+* 
+* Primary author of bidi package: Vafa Khalighi.
+* 
+****************************************************
+(/usr/share/texmf-dist/tex/latex/bidi/biditools.sty
+Package: biditools 2025/12/19 v2.9 Programming tools for bidi package
+\@bidi@envbody=\toks30
+\@bidi@emptytoks=\toks31
+\bidi@poscount=\count371
+\bidi@tempcountb=\count372
+\bidi@temptoksa=\toks32
+\bidi@temptoksb=\toks33
+\bidi@dummies=\count373
+\bidi@are@these@correct=\toks34
+\bidi@toks@lista=\toks35
+\bidi@toks@listb=\toks36
+\bidi@stack@length=\count374
+\bidi@empty@stack=\toks37
+\bidi@looprepeat@depth=\count375
+)
+(/usr/share/texmf-dist/tex/latex/zref/zref-abspage.sty
+Package: zref-abspage 2025-06-08 v2.36 Module abspage for zref (HO)
+
+(/usr/share/texmf-dist/tex/latex/zref/zref-base.sty
+Package: zref-base 2025-06-08 v2.36 Module base for zref (HO)
+
+(/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+(/usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+Package zref Info: New property list: main on input line 767.
+Package zref Info: New property: default on input line 768.
+Package zref Info: New property: page on input line 769.
+)
+\c@abspage=\count376
+Package zref Info: New property: abspage on input line 67.
+)
+\@bidi@copyins@=\insert252
+\bidi@typesethour=\count377
+\bidi@typesetminute=\count378
+
+(/usr/share/texmf-dist/tex/latex/bidi/latex-xetex-bidi.def
+File: latex-xetex-bidi.def 2025/12/19 v1.5.6 bidi adaptations for `latex.ltx' f
+or XeTeX engine
+\bidi@n@everypar=\toks38
+LaTeX Info: Redefining \centerline on input line 317.
+LaTeX Info: Redefining \leftline on input line 326.
+LaTeX Info: Redefining \rightline on input line 327.
+LaTeX Info: Redefining \underline on input line 335.
+\bidi@column@check@number=\count379
+
+(/usr/share/texmf-dist/tex/latex/bidi/footnote-xetex-bidi.def
+File: footnote-xetex-bidi.def 2025/09/30 v1.6 bidi footnote macros for XeTeX en
+gine
+\c@footdir@label=\count380
+\footdir@toks=\toks39
+)
+(/usr/share/texmf-dist/tex/latex/bidi/report-xetex-bidi.def
+File: report-xetex-bidi.def 2025/12/19 v1.3 bidi adaptations for standard repor
+t class for XeTeX engine
+)
+(/usr/share/texmf-dist/tex/latex/bidi/amsmath-xetex-bidi.def
+File: amsmath-xetex-bidi.def 2020/05/16 v1.2 bidi adaptations for amsmath packa
+ge for XeTeX engine
+)
+(/usr/share/texmf-dist/tex/latex/bidi/amstext-xetex-bidi.def
+File: amstext-xetex-bidi.def 2016/09/12 v0.2 bidi adaptations for amstext packa
+ge for XeTeX engine
+)
+(/usr/share/texmf-dist/tex/latex/bidi/array-xetex-bidi.def
+File: array-xetex-bidi.def 2025/12/06 v0.8 bidi adaptations for array package f
+or XeTeX engine
+)
+(/usr/share/texmf-dist/tex/latex/bidi/caption-xetex-bidi.def
+File: caption-xetex-bidi.def 2010/07/25 v0.1 bidi adaptations for caption packa
+ge for XeTeX engine
+)
+(/usr/share/texmf-dist/tex/latex/bidi/caption3-xetex-bidi.def
+File: caption3-xetex-bidi.def 2013/04/01 v0.1 bidi adaptations for caption3 pac
+kage for XeTeX engine
+)
+(/usr/share/texmf-dist/tex/latex/bidi/color-xetex-bidi.def
+File: color-xetex-bidi.def 2013/04/08 v0.2 bidi adaptations for color package f
+or XeTeX engine
+LaTeX Info: Redefining \color on input line 50.
+)
+(/usr/share/texmf-dist/tex/latex/bidi/float-xetex-bidi.def
+File: float-xetex-bidi.def 2013/04/04 v0.2 bidi adaptations for float package f
+or XeTeX engine
+)
+(/usr/share/texmf-dist/tex/latex/bidi/geometry-xetex-bidi.def
+File: geometry-xetex-bidi.def 2017/01/14 v0.2 bidi adaptations for geometry pac
+kage for XeTeX engine
+)
+(/usr/share/texmf-dist/tex/latex/bidi/graphicx-xetex-bidi.def
+File: graphicx-xetex-bidi.def 2017/06/17 v0.5 bidi adaptations for graphicx pac
+kage for XeTeX engine
+)
+(/usr/share/texmf-dist/tex/latex/bidi/hyperref-xetex-bidi.def
+File: hyperref-xetex-bidi.def 2025/12/06 v1.5 bidi adaptations for hyperref pac
+kage for XeTeX engine
+)
+(/usr/share/texmf-dist/tex/latex/bidi/xcolor-xetex-bidi.def
+File: xcolor-xetex-bidi.def 2022/06/13 v0.3 bidi adaptations for xcolor package
+ for XeTeX engine
+LaTeX Info: Redefining \color on input line 49.
+LaTeX Info: Redefining \bidicolor on input line 92.
+))
+\bidi@digits=\count381
+\bidi@digits@charclass=\XeTeXcharclass1
+\bidi@sepmark@charclass=\XeTeXcharclass2
+)
+\xepersian@tcl=\count382
+\xepersian@ilg=\dimen256
+\xepersian@strutilg=\dimen257
+
+(/home/ehsan/texmf/tex/latex/footnote-xetex-bidi-xetex-xepersian.def
+File: footnote-xetex-bidi-xetex-xepersian.def 2017/08/09 v0.6 xepersian adaptat
+ions for footnotes for XeTeX engine
+)
+(/home/ehsan/texmf/tex/latex/report-xetex-xepersian.def
+File: report-xetex-xepersian.def 2010/07/25 v0.2 xepersian adaptations for repo
+rt class for XeTeX engine
+)
+(/home/ehsan/texmf/tex/latex/enumitem-xetex-xepersian.def
+File: enumitem-xetex-xepersian.def 2017/09/06 v0.1 xepersian adaptations for en
+umitem package for XeTeX engine
+)
+(/home/ehsan/texmf/tex/latex/hyperref-xetex-xepersian.def
+File: hyperref-xetex-xepersian.def 2022/10/30 v0.8 xepersian adaptations for hy
+perref package for XeTeX engine
+)
+(/home/ehsan/texmf/tex/latex/url-xetex-xepersian.def
+File: url-xetex-xepersian.def 2022/02/18 v0.1 xepersian adaptations for url pac
+kage for XeTeX engine
+)
+\xepersian@toks=\toks40
+)
+
+Package fontspec Info: 
+(fontspec)             Font family 'lmroman10-regular(0)' created for font
+(fontspec)             'lmroman10-regular' with options
+(fontspec)             [Ligatures=TeX,Path,BoldFont={lmroman10-bold},BoldItalic
+Font={lmroman10-bolditalic},ItalicFont={lmroman10-italic},SmallCapsFont={lmroma
+ncaps10-regular},SlantedFont={lmromanslant10-regular},BoldSlantedFont={lmromans
+lant10-bold}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[lmroman10-regular]/OT:script=latn;language=dflt;map
+ping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->"[lmromancaps10-regular]/OT:script=latn;language=dflt
+;mapping=tex-text;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[lmroman10-bold]/OT:script=latn;language=dflt;mappin
+g=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->"[lmromancaps10-regular]/OT:script=latn;language=dflt
+;mapping=tex-text;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"[lmroman10-italic]/OT:script=latn;language=dflt;mapp
+ing=tex-text;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->"[lmromancaps10-regular]/OT:script=latn;language=dflt
+;mapping=tex-text;"
+(fontspec)             - 'slanted' (m/sl) with NFSS spec.:
+(fontspec)             <->"[lmromanslant10-regular]/OT:script=latn;language=dfl
+t;mapping=tex-text;"
+(fontspec)             - 'slanted small caps'  (m/scsl) with NFSS spec.:
+(fontspec)             <->"[lmromancaps10-regular]/OT:script=latn;language=dflt
+;mapping=tex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"[lmroman10-bolditalic]/OT:script=latn;language=dflt;
+mapping=tex-text;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->"[lmromancaps10-regular]/OT:script=latn;language=dflt
+;mapping=tex-text;"
+(fontspec)             - 'bold slanted' (b/sl) with NFSS spec.:
+(fontspec)             <->"[lmromanslant10-bold]/OT:script=latn;language=dflt;m
+apping=tex-text;"
+(fontspec)             - 'bold slanted small caps'  (b/scsl) with NFSS spec.:
+(fontspec)             <->"[lmromancaps10-regular]/OT:script=latn;language=dflt
+;mapping=tex-text;"
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'XBZar(0)' created for font 'XB Zar' with
+(fontspec)             options
+(fontspec)             [RawFeature={script=arab},Ligatures=PersianTeX,Path =
+(fontspec)             /home/ehsan/.fonts/truetype/XBZar/Zar/,Extension =
+(fontspec)             .ttf,UprightFont = *,AutoFakeBold = 2.5].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[/home/ehsan/.fonts/truetype/XBZar/Zar/XB
+(fontspec)             Zar.ttf]/OT:script=latn;language=dflt;script=arab;mappin
+g=persian-tex-text;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[/home/ehsan/.fonts/truetype/XBZar/Zar/XB
+(fontspec)             Zar.ttf]/OT:script=latn;language=dflt;embolden=2.5;scrip
+t=arab;mapping=persian-tex-text;"
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'LiberationSerif(0)' created for font
+(fontspec)             'Liberation Serif' with options [Ligatures=TeX].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Liberation
+(fontspec)             Serif/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.: <->"Liberation
+(fontspec)             Serif/B/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.: <->"Liberation
+(fontspec)             Serif/I/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Liberation
+(fontspec)             Serif/BI/OT:script=latn;language=dflt;mapping=tex-text;"
+
+
+LaTeX Info: Redefining \latinfont on input line 102.
+
+Package fontspec Info: 
+(fontspec)             Font family 'XBZar(1)' created for font 'XB Zar' with
+(fontspec)             options [Ligatures=PersianTeX,Path =
+(fontspec)             /home/ehsan/.fonts/truetype/XBZar/Zar/,Extension =
+(fontspec)             .ttf,UprightFont = *,AutoFakeBold = 2.5].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[/home/ehsan/.fonts/truetype/XBZar/Zar/XB
+(fontspec)             Zar.ttf]/OT:script=latn;language=dflt;mapping=persian-te
+x-text;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[/home/ehsan/.fonts/truetype/XBZar/Zar/XB
+(fontspec)             Zar.ttf]/OT:script=latn;language=dflt;embolden=2.5;mappi
+ng=persian-tex-text;"
+
+
+Package fontspec Info: 
+(fontspec)             Font family 'XBZar(2)' created for font 'XB Zar' with
+(fontspec)             options [Path =
+(fontspec)             /home/ehsan/.fonts/truetype/XBZar/Zar/,Extension =
+(fontspec)             .ttf,UprightFont = *,AutoFakeBold = 2.5].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[/home/ehsan/.fonts/truetype/XBZar/Zar/XB
+(fontspec)             Zar.ttf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[/home/ehsan/.fonts/truetype/XBZar/Zar/XB
+(fontspec)             Zar.ttf]/OT:script=latn;language=dflt;embolden=2.5;"
+
+Package unicode-persianmath Info: DefiningthedefaultPersianmathdigitsfontas'XB 
+Zar' on input line 108.
+\sympersianoperators=\mathgroup8
+\sympersianoperatorsbf=\mathgroup9
+\sympersianoperatorsit=\mathgroup10
+
+(/usr/share/texmf-dist/tex/latex/bidi/float-xetex-bidi.def
+File: float-xetex-bidi.def 2013/04/04 v0.2 bidi adaptations for float package f
+or XeTeX engine
+) (./report.aux)
+\openout1 = `report.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 441.01773pt, 85.35826pt)
+* v-part:(T,H,B)=(85.35826pt, 688.5567pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=441.01773pt
+* \textheight=688.5567pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-23.91173pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=35.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Info: Redefining \microtypecontext on input line 125.
+Package microtype Info: Applying patch `item' on input line 125.
+Package microtype Info: Applying patch `toc' on input line 125.
+Package microtype Info: Applying patch `eqnum' on input line 125.
+
+Package microtype Warning: Unable to apply patch `footnote' on input line 125.
+
+Package microtype Info: Applying patch `verbatim' on input line 125.
+LaTeX Info: Redefining \microtypesetup on input line 125.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `XBZar' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\k A'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\u A'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\k a'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\u a'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\'C'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v C'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\'c'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v c'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v D'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v d'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+Package microtype Info: Character `\dj ' is missing
+(microtype)             in font `\TU/XBZar(0)/m/n/13'.
+(microtype)             Ignoring protrusion settings for this character.
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\k E'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v E'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\k e'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v e'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\'L'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v L'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\'l'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v l'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\'N'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v N'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\'n'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v n'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\H O'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\H o'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\'R'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v R'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\'r'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v r'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\'S'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\'s'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\c T'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v T'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\c t'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\v t'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\H U'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\r U'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\H u'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\r u'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\'Z'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\.Z'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\'z'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+
+Package microtype Warning: Unknown slot number of character
+(microtype)                `\.z'
+(microtype)                in font encoding `TU' in inheritance list
+(microtype)                `microtype.cfg/425(protrusion)'.
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Package hyperref Info: Link coloring ON on input line 125.
+(./report.out) (./report.out)
+\@outlinefile=\write3
+\openout3 = `report.out'.
+
+ [1
+
+] [2
+
+]
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 156.
+LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
+ 156.
+
+(/usr/share/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
+File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `ztmcm' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
+ 156.
+
+(/usr/share/texmf-dist/tex/latex/psnfss/omlztmcm.fd
+File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
+)
+LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
+ 156.
+
+(/usr/share/texmf-dist/tex/latex/psnfss/omsztmcm.fd
+File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
+)
+LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
+ 156.
+
+(/usr/share/texmf-dist/tex/latex/psnfss/omxztmcm.fd
+File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
+)
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
+56.
+
+(/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 156.
+
+(/usr/share/texmf-dist/tex/latex/microtype/mt-ptm.cfg
+File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9.62007> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 156.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.80008> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 156.
+
+(/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+(/usr/share/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <13> not available
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 15
+6.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <9.62007> not availab
+le
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 15
+6.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <7.80008> not availab
+le
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 15
+6.
+
+
+LaTeX Font Warning: Font shape `TU/XBZar(2)/m/it' undefined
+(Font)              using `TU/XBZar(2)/m/n' instead on input line 156.
+
+[3
+
+]
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `LiberationSerif' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [1
+
+
+] (./report.toc [2
+
+] [3])
+\tf@toc=\write4
+\openout4 = `report.toc'.
+
+ [4] [5
+
+]
+فصل 1.
+[1
+
+
+] [2]
+فصل 2.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmtt' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+Underfull \hbox (badness 2875) in paragraph at lines 279--284
+[]\TU/XBZar(0)/m/n/13 نمونه‌های کلاس هوش مصنوعی نمونه‌برداری تصادفی انجام شده ا
+ست. مجموعهٔ نهایی[]
+ []
+
+
+Underfull \hbox (badness 1616) in paragraph at lines 303--307
+[]\TU/XBZar(0)/m/n/13 بخش هوش‌مصنوعی مجموعه داده (\TU/lmtt/m/n/13 persian_ai_ge
+nerated_final.csv\TU/XBZar(0)/m/n/13 ) را خط‌لولهٔ[]
+ []
+
+[3
+
+]
+Underfull \hbox (badness 5726) in paragraph at lines 316--321
+[]\TU/XBZar(0)/m/n/13 ([]\TU/LiberationSerif(0)/m/n/13 conversational_blog[]\TU
+/XBZar(0)/m/n/13 )، پاسخ پرسش‌وپاسخی گام‌به‌گام ([]\TU/LiberationSerif(0)/m/n/1
+3 qa_explainer[]\TU/XBZar(0)/m/n/13 )، متن[]
+ []
+
+[4] [5]
+فصل 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 381--384
+[][]\TU/XBZar(0)/b/n/13 نرمال‌سازی ([]\TU/LiberationSerif(0)/b/n/13 Normalizer[
+]\TU/XBZar(0)/b/n/13 )\TU/XBZar(0)/m/n/13 : یکسان‌سازی حروف عربی/فارسی، نرمال‌س
+ازی[]
+ []
+
+
+Underfull \hbox (badness 3209) in paragraph at lines 381--384
+[]\TU/XBZar(0)/m/n/13 ارقام، نرمال‌سازی نشانه‌گذاری، حذف اعراب، نرمال‌سازی حروف
+ تکراری (مانند[]
+ []
+
+[6
+
+]
+Underfull \hbox (badness 3568) in paragraph at lines 425--436
+[][]\TU/XBZar(0)/b/n/13 جایگزینی با توکن‌ساز سریع\TU/XBZar(0)/m/n/13 : در خط‌لو
+لهٔ بازآموزش []\TU/LiberationSerif(0)/m/n/13 Colab[]\TU/XBZar(0)/m/n/13 ، توکن‌
+ساز از طریق[]
+ []
+
+[7] [8]
+فصل 4.
+[9
+
+] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 506--511
+[][]\TU/XBZar(0)/b/n/13 آنتروپی کاراکتری نرمال‌شده: \TU/XBZar(0)/m/n/13 آنتروپی
+ شانون توزیع کاراکترها، $\OML/ztmcm/m/it/13 H\OT1/ztmcm/m/n/13 (\OML/ztmcm/m/it
+/13 d\OT1/ztmcm/m/n/13 ) =$[]
+ []
+
+[11]
+فصل 5.
+[12
+
+] [13] [14]
+فصل 6.
+[15
+
+] [16] [17] [18]
+Underfull \hbox (badness 1527) in paragraph at lines 752--761
+[]\TU/XBZar(0)/m/n/13 معماری سرویس‌دهی موجود (بخش [][][][][][]\TU/XBZar(1)/m/n/
+13 ۹\TU/XBZar(0)/m/n/13 .‏\TU/XBZar(1)/m/n/13 ۱[][][][][][]\TU/XBZar(0)/m/n/13 
+)، که بر پایهٔ اعزام بر اساس فیلد \TU/lmtt/m/n/13 runtime \TU/XBZar(0)/m/n/13 د
+ر[]
+ []
+
+[19] [20]
+Underfull \hbox (badness 5578) in paragraph at lines 825--828
+[][]\TU/XBZar(0)/b/n/13 هدف انتخاب: \TU/XBZar(0)/m/n/13 ترکیب برچسب واقعی و احت
+مال معلم، $\OML/ztmcm/m/it/13 t[] \OT1/ztmcm/m/n/13 = []([][][] \OML/ztmcm/m/it
+/13 y \OT1/ztmcm/m/n/13 +$[]
+ []
+
+
+Underfull \hbox (badness 2181) in paragraph at lines 825--828
+[]$[][][] \OML/ztmcm/m/it/13 p[];  [][][][];  [][][][]\OT1/ztmcm/m/n/13 )$\TU/X
+BZar(0)/m/n/13 ؛ در نمونه‌های ناسازگار با معلم، هدف عمداً مرزی[]
+ []
+
+[21] [22]
+فصل 7.
+[23
+
+]
+فصل 8.
+[24
+
+]
+فصل 9.
+
+Overfull \hbox (29.37148pt too wide) in paragraph at lines 953--963
+ [][][][] 
+ []
+
+[25
+
+] [26]
+فصل 10.
+[27
+
+] [28] [29]
+فصل 11.
+[30
+
+]
+فصل 12.
+[31
+
+] [32]
+پیوست آ.
+[33
+
+]
+Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
+
+Overfull \hbox (27.63248pt too wide) in paragraph at lines 1190--1190
+[][]                     \TU/lmtt/m/n/13 "candidates": ["human_written", "ai_ge
+nerated"]},[] []
+ []
+
+
+Overfull \hbox (20.93747pt too wide) in paragraph at lines 1190--1190
+[][]                     \TU/lmtt/m/n/13 "levels": ["definitely_human", "probab
+ly_human",[] []
+ []
+
+Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
+Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
+
+Overfull \hbox (0.8394pt too wide) in paragraph at lines 1190--1190
+[][]    \TU/lmtt/m/n/13 "source":       {"human_written": 0.‏02, "ai_generated"
+: 0.‏98},[] []
+ []
+
+Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
+Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
+Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
+Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
+Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
+Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
+Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
+[34] [35]
+Underfull \hbox (badness 1881) in paragraph at lines 1244--1245
+[][][]\TU/LiberationSerif(0)/m/n/13 M. Farahani, M. Gharachorloo, M. Farahani, 
+M. Manthouri. \TU/LiberationSerif(0)/m/it/13 ParsBERT:[][]
+ []
+
+[36
+
+
+] [37] (./report.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ ***********
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: 34A3BD66499467B04C56E1604E55D6B8;10824.
+ ) 
+Here is how much of TeX's memory you used:
+ 19308 strings out of 470179
+ 393485 string characters out of 5479299
+ 864594 words of memory out of 5000000
+ 47565 multiletter control sequences out of 15000+600000
+ 637875 words of font info for 120 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 88i,14n,93p,1196b,550s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on report.pdf (45 pages).

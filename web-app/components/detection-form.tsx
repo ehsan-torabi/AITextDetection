@@ -8,9 +8,17 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { ModelSelector } from "@/components/model-selector";
 import { ModelStats } from "@/components/model-stats";
+import { ModelComparison } from "@/components/model-comparison";
 import { DetectionResult } from "@/components/detection-result";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import { Send, Loader2, AlertCircle, RotateCcw, FileText } from "lucide-react";
+import {
+  Send,
+  Loader2,
+  AlertCircle,
+  RotateCcw,
+  FileText,
+  ChevronDown,
+} from "lucide-react";
 
 const MIN_TEXT_LENGTH = 20;
 
@@ -20,6 +28,7 @@ export function DetectionForm() {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [result, setResult] = React.useState<DetectionResponse | null>(null);
+  const [showComparison, setShowComparison] = React.useState(false);
   const {
     models,
     loading: modelsLoading,
@@ -146,6 +155,30 @@ export function DetectionForm() {
               disabled={loading || modelsLoading}
             />
             {selectedModel && !loading && <ModelStats model={selectedModel} />}
+
+            {models.length > 1 && !loading && (
+              <div className="space-y-2">
+                <button
+                  type="button"
+                  onClick={() => setShowComparison((v) => !v)}
+                  className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <ChevronDown
+                    className={`size-3.5 transition-transform ${
+                      showComparison ? "rotate-180" : ""
+                    }`}
+                  />
+                  مقایسه همه مدل‌ها ({models.length})
+                </button>
+                {showComparison && (
+                  <ModelComparison
+                    models={models}
+                    selectedId={effectiveModelId}
+                    onSelect={setModelId}
+                  />
+                )}
+              </div>
+            )}
           </>
         )}
 

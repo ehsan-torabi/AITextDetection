@@ -1,4 +1,5 @@
 // app/page.tsx
+import Link from "next/link";
 import { DetectionForm } from "@/components/detection-form";
 
 export default function HomePage() {
@@ -20,8 +21,14 @@ export default function HomePage() {
         <DetectionForm />
 
         {/* Footer */}
-        <footer className="text-xs text-muted-foreground pt-4 border-t border-border">
+        <footer className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground pt-4 border-t border-border">
           <p>نتایج این ابزار تخمینی است و دقت قطعی ندارد.</p>
+          <Link
+            href="/about"
+            className="text-primary hover:underline underline-offset-4"
+          >
+            مدل‌ها چگونه آموزش دیده‌اند؟
+          </Link>
         </footer>
       </div>
     </main>

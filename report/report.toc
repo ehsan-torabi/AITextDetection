@@ -1,0 +1,55 @@
+\contentsline {chapter}{تشکر و قدردانی}{آ}{section*.1}%
+\contentsline {chapter}{چکیده}{د}{section*.4}%
+\contentsline {chapter}{\numberline {1}مقدمه}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}انگیزه و اهمیت مسئله}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}چالش‌های خاص زبان فارسی}{1}{section.1.2}%
+\contentsline {chapter}{\numberline {2}مجموعه داده}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}منابع داده}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}روش گردآوری بخش هوش‌مصنوعی داده}{4}{section.2.2}%
+\contentsline {section}{\numberline {2.3}تفکیک داده به آموزش، اعتبارسنجی و آزمون}{5}{section.2.3}%
+\contentsline {chapter}{\numberline {3}پیش‌پردازش متن}{6}{chapter.3}%
+\contentsline {section}{\numberline {3.1}پیش‌پردازش کامل (برای مدل‌های کلاسیک و \en {BiLSTM})}{6}{section.3.1}%
+\contentsline {section}{\numberline {3.2}پیش‌پردازش سبک (برای \en {GPT-2})}{7}{section.3.2}%
+\contentsline {section}{\numberline {3.3}رویکرد بهتر توکن‌سازی برای \en {GPT-2}}{7}{section.3.3}%
+\contentsline {chapter}{\numberline {4}استخراج ویژگی: \en {TF-IDF}}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}تعریف ریاضی}{9}{section.4.1}%
+\contentsline {section}{\numberline {4.2}مسئلهٔ فضای ویژگی نسخهٔ نخست}{9}{section.4.2}%
+\contentsline {section}{\numberline {4.3}راه‌حل اصلاح‌شده}{10}{section.4.3}%
+\contentsline {section}{\numberline {4.4}ویژگی‌های سبک‌شناسی متن (\en {stylometric features})}{10}{section.4.4}%
+\contentsline {chapter}{\numberline {5}مدل‌های یادگیری ماشین کلاسیک}{12}{chapter.5}%
+\contentsline {section}{\numberline {5.1}ماشین بردار پشتیبان خطی (\en {Linear SVM})}{12}{section.5.1}%
+\contentsline {section}{\numberline {5.2}رگرسیون لجستیک}{12}{section.5.2}%
+\contentsline {section}{\numberline {5.3}بیز ساده چندجمله‌ای}{13}{section.5.3}%
+\contentsline {section}{\numberline {5.4}جنگل تصادفی}{13}{section.5.4}%
+\contentsline {section}{\numberline {5.5}گرادیان بوستینگ}{14}{section.5.5}%
+\contentsline {chapter}{\numberline {6}مدل‌های یادگیری عمیق}{15}{chapter.6}%
+\contentsline {section}{\numberline {6.1}شبکهٔ حافظهٔ کوتاه‌مدت پایدار دوسویه (\en {BiLSTM})}{15}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}معماری}{15}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}بهبودهای نسخهٔ دوم}{16}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}ترنسفورمر \en {GPT-2} فاین‌تیون‌شده}{16}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}مبانی مکانیزم توجه}{16}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}از مدل زبانی تا طبقه‌بند}{16}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}راهبرد فاین‌تیون: کدام لایه‌ها آموزش ببینند؟}{17}{subsection.6.2.3}%
+\contentsline {section}{\numberline {6.3}مدل چهارم (در دست افزودن): \en {ParsBERT} فاین‌تیون‌شده}{18}{section.6.3}%
+\contentsline {section}{\numberline {6.4}لایهٔ تصمیم «سیستم-یک» به سبک \en {JEV}}{19}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}انگیزه: از تولید متن تا رابط تصمیم}{19}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}سه سؤال نوع‌بندی‌شدهٔ پروژه}{20}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}معماری}{20}{subsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.4.4}هدف‌های نرمِ تقطیرشده از معلم}{20}{subsection.6.4.4}%
+\contentsline {subsection}{\numberline {6.4.5}سیاست تصمیم و یکپارچه‌سازی در سرویس}{21}{subsection.6.4.5}%
+\contentsline {subsection}{\numberline {6.4.6}ارزیابی}{22}{subsection.6.4.6}%
+\contentsline {chapter}{\numberline {7}تنظیم هایپرپارامتر و اعتبارسنجی متقابل}{23}{chapter.7}%
+\contentsline {chapter}{\numberline {8}معیارهای ارزیابی}{24}{chapter.8}%
+\contentsline {chapter}{\numberline {9}زیرساخت پیاده‌سازی}{25}{chapter.9}%
+\contentsline {section}{\numberline {9.1}معماری سرویس}{25}{section.9.1}%
+\contentsline {section}{\numberline {9.2}محدودیت‌های سخت‌افزار محلی در برابر \en {Google Colab}}{25}{section.9.2}%
+\contentsline {chapter}{\numberline {10}نتایج و تحلیل خطا}{27}{chapter.10}%
+\contentsline {section}{\numberline {10.1}نتایج نسخهٔ نخست (محلی)}{27}{section.10.1}%
+\contentsline {section}{\numberline {10.2}چرا مدل‌ها روی متن واقعی اشتباه می‌کردند؟}{27}{section.10.2}%
+\contentsline {section}{\numberline {10.3}اصلاحات اعمال‌شده در نسخهٔ دوم}{28}{section.10.3}%
+\contentsline {section}{\numberline {10.4}نتایج نسخهٔ دوم (\en {Colab}, واقعی)}{28}{section.10.4}%
+\contentsline {section}{\numberline {10.5}تحلیل خطای هدفمند \en {BiLSTM}: چرا «دقیقاً معکوس» اشتباه می‌کند}{29}{section.10.5}%
+\contentsline {chapter}{\numberline {11}رابط کاربری وب}{30}{chapter.11}%
+\contentsline {chapter}{\numberline {12}نتیجه‌گیری و کارهای آینده}{31}{chapter.12}%
+\contentsline {chapter}{\numberline {آ}راهنمای اجرای خط‌لولهٔ داده و آموزش}{33}{appendix.Alph1}%
+\contentsline {chapter}{مراجع}{36}{section*.11}%

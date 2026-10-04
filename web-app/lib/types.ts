@@ -22,6 +22,8 @@ export interface ModelConfusionMatrix {
   truePositive: number;
 }
 
+export type ModelType = "ml" | "dl" | "ensemble";
+
 export interface Model {
   id: string;
   name: string;
@@ -29,10 +31,12 @@ export interface Model {
   description: string;
   descriptionFa?: string;
   algorithm: string;
+  type?: ModelType;
   version: string;
   metrics?: ModelMetrics;
   training?: ModelTraining;
   confusionMatrix?: ModelConfusionMatrix;
+  ensembleWeight?: number;
 }
 
 export interface ModelsResponse {
@@ -52,6 +56,56 @@ export interface DetectionDetail {
   description: string;
 }
 
+export interface EnsembleVote {
+  modelId: string;
+  label: string;
+  labelFa: string;
+  aiProbability: number;
+  weight: number;
+}
+
+export interface JevChoiceAnswer {
+  question: string;
+  questionFa: string;
+  candidates: string[];
+  candidateLabelsFa: string[];
+  probabilities: number[];
+  answer: string;
+  answerFa: string;
+}
+
+export interface JevScoreAnswer {
+  question: string;
+  questionFa: string;
+  levels: string[];
+  levelLabelsFa: string[];
+  probabilities: number[];
+  value: number;
+  answer: string;
+  answerFa: string;
+}
+
+export interface JevNoulAnswer {
+  question: string;
+  questionFa: string;
+  probability: number;
+  answer: boolean;
+  answerFa: string;
+}
+
+export interface JevPolicyDecision {
+  tier: string;
+  tierFa: string;
+  descriptionFa: string;
+}
+
+export interface JevTypedAnswers {
+  choice: JevChoiceAnswer;
+  score: JevScoreAnswer;
+  noul: JevNoulAnswer;
+  policy: JevPolicyDecision;
+}
+
 export interface DetectionResponse {
   isAI: boolean;
   confidence: number;
@@ -61,4 +115,6 @@ export interface DetectionResponse {
   modelUsed: string;
   textLength: number;
   wordCount: number;
+  ensembleVotes?: EnsembleVote[] | null;
+  typedAnswers?: JevTypedAnswers | null;
 }

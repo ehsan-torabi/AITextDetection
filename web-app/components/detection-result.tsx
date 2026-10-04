@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import type { DetectionResponse } from "@/lib/types";
+import type { DetectionResponse, JevTypedAnswers } from "@/lib/types";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -20,6 +20,9 @@ import {
   Sparkles,
   BarChart3,
   BrainCircuit,
+  Scale,
+  ListChecks,
+  Eye,
 } from "lucide-react";
 
 interface DetectionResultProps {
@@ -138,6 +141,14 @@ export function DetectionResult({ result }: DetectionResultProps) {
         </CardContent>
       </Card>
 
+      {/* JEV System-One typed answers */}
+      {result.typedAnswers && <JevAnswersPanel answers={result.typedAnswers} />}
+
+      {/* Ensemble Breakdown */}
+      {result.ensembleVotes && result.ensembleVotes.length > 0 && (
+        <EnsembleBreakdown votes={result.ensembleVotes} />
+      )}
+
       {/* Detail Metrics */}
       <div>
         <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
@@ -151,6 +162,238 @@ export function DetectionResult({ result }: DetectionResultProps) {
         </div>
       </div>
     </div>
+  );
+}
+
+function JevAnswersPanel({ answers }: { answers: JevTypedAnswers }) {
+  const policyVariant: "default" | "destructive" | "secondary" =
+    answers.policy.tier === "proceed"
+      ? "default"
+      : answers.policy.tier === "needs_review"
+        ? "destructive"
+        : "secondary";
+
+  return (
+    <Card>
+      <CardHeader className="pb-2">
+        <div className="flex items-center justify-between gap-2">
+          <CardTitle className="text-sm flex items-center gap-2">
+            <ListChecks className="size-4 text-muted-foreground" />
+            پاسخ‌های نوع‌بندی‌شده (سیستم-یک)
+          </CardTitle>
+          <Badge variant={policyVariant}>{answers.policy.tierFa}</Badge>
+        </div>
+        <CardDescription className="text-xs leading-relaxed">
+          مدل تصمیم سیستم-یک به جای تولید متن، سه سؤال نوع‌بندی‌شده را در یک
+          گذر رو به جلو پاسخ می‌دهد: انتخاب، امتیاز و بازبینی انسانی.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-5">
+        {/* Choice question: distribution over candidate answers */}
+        <section className="space-y-2">
+          <h4 className="text-xs font-semibold text-muted-foreground">
+            {answers.choice.questionFa}
+          </h4>
+          {answers.choice.candidates.map((candidate, i) => {
+            const percentage = Math.round(answers.choice.probabilities[i] * 100);
+            const isAi = candidate === "ai_generated";
+            const isAnswer = answers.choice.answer === candidate;
+            return (
+              <div
+                key={candidate}
+                className={`space-y-1.5 rounded-lg p-2 ${
+                  isAnswer ? "bg-primary/5 ring-1 ring-primary/20" : ""
+                }`}
+              >
+                <div className="flex items-center justify-between gap-2 text-xs">
+                  <span className="flex items-center gap-1.5 font-medium">
+                    {isAi ? (
+                      <Bot className="size-3.5 text-destructive" />
+                    ) : (
+                      <User className="size-3.5 text-primary" />
+                    )}
+                    {answers.choice.candidateLabelsFa[i]}
+                    {isAnswer && (
+                      <Badge
+                        variant="outline"
+                        className="h-4 px-1.5 text-[10px]"
+                      >
+                        پاسخ
+                      </Badge>
+                    )}
+                  </span>
+                  <span
+                    className={`font-bold tabular-nums ${
+                      isAi ? "text-destructive" : "text-primary"
+                    }`}
+                  >
+                    {percentage}٪
+                  </span>
+                </div>
+                <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+                  <div
+                    className={`h-full rounded-full transition-all duration-700 ease-out ${
+                      isAi ? "bg-destructive" : "bg-primary"
+                    }`}
+                    style={{ width: `${percentage}%` }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </section>
+
+        {/* Score question: probability-weighted value between levels */}
+        <section className="space-y-2">
+          <div className="flex items-center justify-between gap-2">
+            <h4 className="text-xs font-semibold text-muted-foreground">
+              {answers.score.questionFa}
+            </h4>
+            <span className="text-xs font-bold tabular-nums" dir="ltr">
+              {answers.score.value.toFixed(2)} / {answers.score.levels.length - 1}
+            </span>
+          </div>
+          <div className="flex gap-1.5">
+            {answers.score.probabilities.map((prob, i) => (
+              <div key={answers.score.levels[i]} className="flex-1 space-y-1">
+                <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
+                  <div
+                    className="h-full rounded-full bg-chart-3 transition-all duration-700 ease-out"
+                    style={{ width: `${Math.round(prob * 100)}%` }}
+                  />
+                </div>
+                <p
+                  className={`text-[10px] leading-tight text-center ${
+                    answers.score.answer === answers.score.levels[i]
+                      ? "font-bold text-foreground"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {answers.score.levelLabelsFa[i]}
+                </p>
+              </div>
+            ))}
+          </div>
+          <p className="text-[11px] text-muted-foreground">
+            نزدیک‌ترین سطح:{" "}
+            <span className="font-medium text-foreground">
+              {answers.score.answerFa}
+            </span>
+          </p>
+        </section>
+
+        {/* Noul question: yes/no review probability */}
+        <section className="space-y-2">
+          <div className="flex items-center justify-between gap-2">
+            <h4 className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
+              <Eye className="size-3.5" />
+              {answers.noul.questionFa}
+            </h4>
+            <Badge variant={answers.noul.answer ? "destructive" : "outline"}>
+              {answers.noul.answerFa}
+            </Badge>
+          </div>
+          <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+            <div
+              className={`h-full rounded-full transition-all duration-700 ease-out ${
+                answers.noul.answer ? "bg-destructive" : "bg-primary"
+              }`}
+              style={{ width: `${Math.round(answers.noul.probability * 100)}%` }}
+            />
+          </div>
+          <p className="text-[11px] tabular-nums text-muted-foreground">
+            احتمال: {Math.round(answers.noul.probability * 100)}٪
+          </p>
+        </section>
+
+        {/* Decision policy */}
+        <p className="flex items-start gap-1.5 text-[11px] leading-relaxed text-muted-foreground border-t border-border pt-3">
+          <ShieldCheck className="size-3 mt-0.5 flex-shrink-0" />
+          <span>
+            <span className="font-medium text-foreground">
+              {answers.policy.tierFa}:
+            </span>{" "}
+            {answers.policy.descriptionFa}
+          </span>
+        </p>
+      </CardContent>
+    </Card>
+  );
+}
+
+function EnsembleBreakdown({
+  votes,
+}: {
+  votes: NonNullable<DetectionResponse["ensembleVotes"]>;
+}) {
+  const maxWeight = Math.max(...votes.map((v) => v.weight));
+  const ranked = [...votes].sort((a, b) => b.weight - a.weight);
+
+  return (
+    <Card>
+      <CardHeader className="pb-2">
+        <CardTitle className="text-sm flex items-center gap-2">
+          <Scale className="size-4 text-muted-foreground" />
+          سهم هر مدل در تصمیم ترکیبی
+        </CardTitle>
+        <CardDescription className="text-xs leading-relaxed">
+          احتمال هوش‌مصنوعی‌بودن به تشخیص هر مدل، به همراه وزن آن در میانگین
+          وزن‌دار نهایی (مدل GPT-2 وزن بیشتری دارد چون معمولاً دقیق‌ترین است).
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-2.5">
+        {ranked.map((vote) => {
+          const percentage = Math.round(vote.aiProbability * 100);
+          const weightPct = (vote.weight / maxWeight) * 100;
+          const isTopWeight = vote.weight === maxWeight;
+
+          return (
+            <div
+              key={vote.modelId}
+              className={`space-y-1.5 rounded-lg p-2 ${
+                isTopWeight ? "bg-primary/5 ring-1 ring-primary/20" : ""
+              }`}
+            >
+              <div className="flex items-center justify-between gap-2 text-xs">
+                <span className="flex items-center gap-1.5 font-medium">
+                  {vote.labelFa}
+                  <Badge
+                    variant={isTopWeight ? "default" : "outline"}
+                    className="h-4 px-1.5 text-[10px] tabular-nums"
+                  >
+                    وزن ×{vote.weight}
+                  </Badge>
+                </span>
+                <span
+                  className={`font-bold tabular-nums ${
+                    vote.aiProbability >= 0.5
+                      ? "text-destructive"
+                      : "text-primary"
+                  }`}
+                >
+                  {percentage}٪ AI
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="h-1.5 flex-1 rounded-full bg-muted overflow-hidden">
+                  <div
+                    className={`h-full rounded-full transition-all duration-700 ease-out ${
+                      vote.aiProbability >= 0.5 ? "bg-destructive" : "bg-primary"
+                    }`}
+                    style={{ width: `${percentage}%` }}
+                  />
+                </div>
+                <div
+                  className="h-1.5 rounded-full bg-chart-3/60"
+                  style={{ width: `${Math.max(weightPct * 0.25, 6)}px` }}
+                  title={`وزن: ${vote.weight}`}
+                />
+              </div>
+            </div>
+          );
+        })}
+      </CardContent>
+    </Card>
   );
 }
 
