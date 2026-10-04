@@ -353,6 +353,72 @@ def _load_jev_model(md: dict):
     return {"model": model, "config": config, "tokenizer": tokenizer}
 
 
+_gpt2_lm = None  # private copy of the raw pretrained LM for the perplexity signal
+
+
+def _get_perplexity_lm():
+    """The raw pretrained Persian GPT-2 (LM head included), loaded once.
+
+    Deliberately a private copy loaded straight from the pickle, not one of
+    the fine-tuned classifiers' backbones: load_state_dict overwrote their
+    last blocks, so they no longer model "generic Persian" -- the perplexity
+    signal must measure predictability under the untouched pretrained LM.
+    Same self-contained-copy tradeoff as _load_jev_model (~500 MB extra RAM).
+    """
+    global _gpt2_lm
+    if _gpt2_lm is None:
+        with open("gpt2-fa.mdl", "rb") as f:
+            _gpt2_lm = pickle.load(f)
+        _gpt2_lm.eval()
+    return _gpt2_lm
+
+
+# Context window for the perplexity signal. The raw LM has no trained seq_len
+# of its own; 64 tokens (with the usual char-budget guard) bounds the
+# per-request forward cost and matches the local serving path.
+PERPLEXITY_SEQ_LEN = 64
+PERPLEXITY_BATCH_SIZE = 32
+
+
+def gpt2_perplexity_batch(texts: list[str]) -> np.ndarray:
+    """Perplexity of each text under the raw pretrained GPT-2-fa: exp of the
+    mean next-token negative log-likelihood over real (non-pad) tokens.
+    Same serving normalization and char-budget guard as _predict_gpt2, so
+    the signal sees exactly what the deployed GPT-2 runtime sees."""
+    lm = _get_perplexity_lm()
+    tokenizer = _get_gpt2_tokenizer()
+    char_budget = PERPLEXITY_SEQ_LEN * 8
+    results: list[float] = []
+    with torch.no_grad():
+        for start in range(0, len(texts), PERPLEXITY_BATCH_SIZE):
+            enc = tokenizer(
+                [
+                    _normalize_for_gpt2(str(t))[:char_budget]
+                    for t in texts[start : start + PERPLEXITY_BATCH_SIZE]
+                ],
+                return_tensors="pt",
+                truncation=True,
+                max_length=PERPLEXITY_SEQ_LEN,
+                padding="max_length",
+            )
+            logits = lm(input_ids=enc["input_ids"], attention_mask=enc["attention_mask"]).logits
+            log_probs = torch.log_softmax(logits, dim=-1)
+            # Logits at position j predict token j+1; score only real targets.
+            target_ids = enc["input_ids"][:, 1:]
+            target_mask = enc["attention_mask"][:, 1:].bool()
+            token_nll = -log_probs[:, :-1].gather(-1, target_ids.unsqueeze(-1)).squeeze(-1)
+            for i in range(token_nll.size(0)):
+                nll = token_nll[i][target_mask[i]]
+                # Texts too short for even one prediction stay NaN.
+                results.append(float(nll.mean().exp()) if nll.numel() else float("nan"))
+    return np.array(results)
+
+
+def gpt2_perplexity(text: str) -> float:
+    """Single-text convenience wrapper around gpt2_perplexity_batch."""
+    return float(gpt2_perplexity_batch([text])[0])
+
+
 _parsbert_tokenizer = None
 
 
@@ -407,6 +473,10 @@ def init() -> None:
         runtime = md.get("runtime", "sklearn-tfidf")
         loader = _LOADERS.get(runtime, _load_sklearn_model)
         models_cache[model_id] = loader(md)
+
+    # The perplexity signal runs on every detection request; warm it up here
+    # so the first request doesn't pay the pickle load.
+    _get_perplexity_lm()
 
 
 def get_model_metadata(model_id: str) -> dict:
@@ -855,6 +925,24 @@ def detection(text: str, model_id: str) -> DetectionResponse:
             description=f"میانگین شباهت جمله‌های مجاور: {style_features['coherence']:.2f}",
         ),
     ]
+
+    # Raw-LM perplexity: a training-free view of the text (how "surprised" the
+    # untouched pretrained GPT-2 is), independent of every fine-tuned vote.
+    ppl = gpt2_perplexity(text)
+    if not math.isnan(ppl):
+        details.append(
+            DetectionDetail(
+                label="perplexity",
+                labelFa="سرگشتگی",
+                value=round(ppl, 2),
+                raw=f"{ppl:.2f}",
+                description=(
+                    "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): "
+                    "متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از "
+                    "مدل‌های آموزش‌دیده."
+                ),
+            )
+        )
 
     if is_ai:
         verdict = "This text appears to be AI-generated."
