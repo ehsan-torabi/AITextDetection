@@ -30,12 +30,12 @@
 \contentsline {subsection}{\numberline {6.2.1}مبانی مکانیزم توجه}{16}{subsection.6.2.1}%
 \contentsline {subsection}{\numberline {6.2.2}از مدل زبانی تا طبقه‌بند}{16}{subsection.6.2.2}%
 \contentsline {subsection}{\numberline {6.2.3}راهبرد فاین‌تیون: کدام لایه‌ها آموزش ببینند؟}{17}{subsection.6.2.3}%
-\contentsline {section}{\numberline {6.3}مدل چهارم (در دست افزودن): \en {ParsBERT} فاین‌تیون‌شده}{18}{section.6.3}%
+\contentsline {section}{\numberline {6.3}مدل چهارم: \en {ParsBERT} فاین‌تیون‌شده}{18}{section.6.3}%
 \contentsline {section}{\numberline {6.4}لایهٔ تصمیم «سیستم-یک» به سبک \en {JEV}}{19}{section.6.4}%
 \contentsline {subsection}{\numberline {6.4.1}انگیزه: از تولید متن تا رابط تصمیم}{19}{subsection.6.4.1}%
 \contentsline {subsection}{\numberline {6.4.2}سه سؤال نوع‌بندی‌شدهٔ پروژه}{20}{subsection.6.4.2}%
 \contentsline {subsection}{\numberline {6.4.3}معماری}{20}{subsection.6.4.3}%
-\contentsline {subsection}{\numberline {6.4.4}هدف‌های نرمِ تقطیرشده از معلم}{20}{subsection.6.4.4}%
+\contentsline {subsection}{\numberline {6.4.4}هدف‌های نرمِ تقطیرشده از معلم}{21}{subsection.6.4.4}%
 \contentsline {subsection}{\numberline {6.4.5}سیاست تصمیم و یکپارچه‌سازی در سرویس}{21}{subsection.6.4.5}%
 \contentsline {subsection}{\numberline {6.4.6}ارزیابی}{22}{subsection.6.4.6}%
 \contentsline {chapter}{\numberline {7}تنظیم هایپرپارامتر و اعتبارسنجی متقابل}{23}{chapter.7}%

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.9.7)  2 OCT 2026 20:02
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.9.7)  4 OCT 2026 17:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1266,7 +1266,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 
  [4] [5
 
-]
+] [6]
 فصل 1.
 [1
 
@@ -1278,13 +1278,13 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 2875) in paragraph at lines 279--284
+Underfull \hbox (badness 2875) in paragraph at lines 282--287
 []\TU/XBZar(0)/m/n/13 نمونه‌های کلاس هوش مصنوعی نمونه‌برداری تصادفی انجام شده ا
 ست. مجموعهٔ نهایی[]
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 303--307
+Underfull \hbox (badness 1616) in paragraph at lines 306--310
 []\TU/XBZar(0)/m/n/13 بخش هوش‌مصنوعی مجموعه داده (\TU/lmtt/m/n/13 persian_ai_ge
 nerated_final.csv\TU/XBZar(0)/m/n/13 ) را خط‌لولهٔ[]
  []
@@ -1292,7 +1292,7 @@ nerated_final.csv\TU/XBZar(0)/m/n/13 ) را خط‌لولهٔ[]
 [3
 
 ]
-Underfull \hbox (badness 5726) in paragraph at lines 316--321
+Underfull \hbox (badness 5726) in paragraph at lines 319--324
 []\TU/XBZar(0)/m/n/13 ([]\TU/LiberationSerif(0)/m/n/13 conversational_blog[]\TU
 /XBZar(0)/m/n/13 )، پاسخ پرسش‌وپاسخی گام‌به‌گام ([]\TU/LiberationSerif(0)/m/n/1
 3 qa_explainer[]\TU/XBZar(0)/m/n/13 )، متن[]
@@ -1301,14 +1301,14 @@ Underfull \hbox (badness 5726) in paragraph at lines 316--321
 [4] [5]
 فصل 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 381--384
+Underfull \hbox (badness 10000) in paragraph at lines 384--387
 [][]\TU/XBZar(0)/b/n/13 نرمال‌سازی ([]\TU/LiberationSerif(0)/b/n/13 Normalizer[
 ]\TU/XBZar(0)/b/n/13 )\TU/XBZar(0)/m/n/13 : یکسان‌سازی حروف عربی/فارسی، نرمال‌س
 ازی[]
  []
 
 
-Underfull \hbox (badness 3209) in paragraph at lines 381--384
+Underfull \hbox (badness 3209) in paragraph at lines 384--387
 []\TU/XBZar(0)/m/n/13 ارقام، نرمال‌سازی نشانه‌گذاری، حذف اعراب، نرمال‌سازی حروف
  تکراری (مانند[]
  []
@@ -1316,7 +1316,7 @@ Underfull \hbox (badness 3209) in paragraph at lines 381--384
 [6
 
 ]
-Underfull \hbox (badness 3568) in paragraph at lines 425--436
+Underfull \hbox (badness 3568) in paragraph at lines 428--439
 [][]\TU/XBZar(0)/b/n/13 جایگزینی با توکن‌ساز سریع\TU/XBZar(0)/m/n/13 : در خط‌لو
 لهٔ بازآموزش []\TU/LiberationSerif(0)/m/n/13 Colab[]\TU/XBZar(0)/m/n/13 ، توکن‌
 ساز از طریق[]
@@ -1327,7 +1327,7 @@ Underfull \hbox (badness 3568) in paragraph at lines 425--436
 [9
 
 ] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 506--511
+Underfull \hbox (badness 10000) in paragraph at lines 509--514
 [][]\TU/XBZar(0)/b/n/13 آنتروپی کاراکتری نرمال‌شده: \TU/XBZar(0)/m/n/13 آنتروپی
  شانون توزیع کاراکترها، $\OML/ztmcm/m/it/13 H\OT1/ztmcm/m/n/13 (\OML/ztmcm/m/it
 /13 d\OT1/ztmcm/m/n/13 ) =$[]
@@ -1342,7 +1342,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 506--511
 [15
 
 ] [16] [17] [18]
-Underfull \hbox (badness 1527) in paragraph at lines 752--761
+Underfull \hbox (badness 1527) in paragraph at lines 755--765
 []\TU/XBZar(0)/m/n/13 معماری سرویس‌دهی موجود (بخش [][][][][][]\TU/XBZar(1)/m/n/
 13 ۹\TU/XBZar(0)/m/n/13 .‏\TU/XBZar(1)/m/n/13 ۱[][][][][][]\TU/XBZar(0)/m/n/13 
 )، که بر پایهٔ اعزام بر اساس فیلد \TU/lmtt/m/n/13 runtime \TU/XBZar(0)/m/n/13 د
@@ -1350,14 +1350,14 @@ Underfull \hbox (badness 1527) in paragraph at lines 752--761
  []
 
 [19] [20]
-Underfull \hbox (badness 5578) in paragraph at lines 825--828
+Underfull \hbox (badness 5578) in paragraph at lines 833--836
 [][]\TU/XBZar(0)/b/n/13 هدف انتخاب: \TU/XBZar(0)/m/n/13 ترکیب برچسب واقعی و احت
 مال معلم، $\OML/ztmcm/m/it/13 t[] \OT1/ztmcm/m/n/13 = []([][][] \OML/ztmcm/m/it
 /13 y \OT1/ztmcm/m/n/13 +$[]
  []
 
 
-Underfull \hbox (badness 2181) in paragraph at lines 825--828
+Underfull \hbox (badness 2181) in paragraph at lines 833--836
 []$[][][] \OML/ztmcm/m/it/13 p[];  [][][][];  [][][][]\OT1/ztmcm/m/n/13 )$\TU/X
 BZar(0)/m/n/13 ؛ در نمونه‌های ناسازگار با معلم، هدف عمداً مرزی[]
  []
@@ -1373,7 +1373,7 @@ BZar(0)/m/n/13 ؛ در نمونه‌های ناسازگار با معلم، هد
 ]
 فصل 9.
 
-Overfull \hbox (29.37148pt too wide) in paragraph at lines 953--963
+Overfull \hbox (29.37148pt too wide) in paragraph at lines 960--970
  [][][][] 
  []
 
@@ -1398,13 +1398,13 @@ Overfull \hbox (29.37148pt too wide) in paragraph at lines 953--963
 ]
 Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
 
-Overfull \hbox (27.63248pt too wide) in paragraph at lines 1190--1190
+Overfull \hbox (27.63248pt too wide) in paragraph at lines 1200--1200
 [][]                     \TU/lmtt/m/n/13 "candidates": ["human_written", "ai_ge
 nerated"]},[] []
  []
 
 
-Overfull \hbox (20.93747pt too wide) in paragraph at lines 1190--1190
+Overfull \hbox (20.93747pt too wide) in paragraph at lines 1200--1200
 [][]                     \TU/lmtt/m/n/13 "levels": ["definitely_human", "probab
 ly_human",[] []
  []
@@ -1412,7 +1412,7 @@ ly_human",[] []
 Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
 Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
 
-Overfull \hbox (0.8394pt too wide) in paragraph at lines 1190--1190
+Overfull \hbox (0.8394pt too wide) in paragraph at lines 1200--1200
 [][]    \TU/lmtt/m/n/13 "source":       {"human_written": 0.‏02, "ai_generated"
 : 0.‏98},[] []
  []
@@ -1425,7 +1425,7 @@ Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
 Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
 Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
 [34] [35]
-Underfull \hbox (badness 1881) in paragraph at lines 1244--1245
+Underfull \hbox (badness 1881) in paragraph at lines 1254--1255
 [][][]\TU/LiberationSerif(0)/m/n/13 M. Farahani, M. Gharachorloo, M. Farahani, 
 M. Manthouri. \TU/LiberationSerif(0)/m/it/13 ParsBERT:[][]
  []
@@ -1443,7 +1443,7 @@ L3 programming layer <2026-01-19>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 34A3BD66499467B04C56E1604E55D6B8;10824.
+(rerunfilecheck)             Checksum: EDB60DF399539588B59E02A65397D153;10696.
  ) 
 Here is how much of TeX's memory you used:
  19308 strings out of 470179
@@ -1454,4 +1454,4 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  88i,14n,93p,1196b,550s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.pdf (45 pages).
+Output written on report.pdf (46 pages).
