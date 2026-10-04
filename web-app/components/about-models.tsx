@@ -24,9 +24,8 @@ export function AboutModels() {
   if (error || realModels.length === 0) {
     return (
       <p className="text-sm text-muted-foreground py-6">
-        اطلاعات زنده مدل‌ها اکنون در دسترس نیست؛ برای مشاهدهٔ معیارها، سرور
-        بک‌اند (<code className="text-xs">server.py</code>) باید در حال اجرا
-        باشد.
+        اطلاعات زنده مدل‌ها اکنون در دسترس نیست؛ برای مشاهدهٔ معیارها، سرور بک‌اند (
+        <code className="text-xs">server.py</code>) باید در حال اجرا باشد.
       </p>
     );
   }

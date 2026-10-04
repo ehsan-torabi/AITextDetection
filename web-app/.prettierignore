@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+build
+coverage
+.agents
+pnpm-lock.yaml
+skills-lock.json
+public
+tsconfig.tsbuildinfo
+next-env.d.ts

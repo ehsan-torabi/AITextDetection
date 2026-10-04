@@ -8,12 +8,10 @@ export default function HomePage() {
       <div className="flex-1 w-full max-w-2xl mx-auto px-4 py-12 sm:py-16 space-y-10">
         {/* Header */}
         <header className="space-y-3">
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
-            تشخیص متن هوش مصنوعی
-          </h1>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">تشخیص متن هوش مصنوعی</h1>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
-            متن خود را وارد کنید تا با استفاده از مدل‌های یادگیری ماشین بررسی
-            کنیم آیا توسط هوش مصنوعی نوشته شده یا انسان.
+            متن خود را وارد کنید تا با استفاده از مدل‌های یادگیری ماشین بررسی کنیم آیا توسط هوش
+            مصنوعی نوشته شده یا انسان.
           </p>
         </header>
 
@@ -23,10 +21,7 @@ export default function HomePage() {
         {/* Footer */}
         <footer className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground pt-4 border-t border-border">
           <p>نتایج این ابزار تخمینی است و دقت قطعی ندارد.</p>
-          <Link
-            href="/about"
-            className="text-primary hover:underline underline-offset-4"
-          >
+          <Link href="/about" className="text-primary hover:underline underline-offset-4">
             مدل‌ها چگونه آموزش دیده‌اند؟
           </Link>
         </footer>

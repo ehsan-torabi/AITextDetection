@@ -18,8 +18,7 @@ export function useModels() {
         const data: ModelsResponse = await res.json();
         if (active) setModels(data.models ?? []);
       } catch {
-        if (active)
-          setError("خطا در دریافت لیست مدل‌ها. لطفاً دوباره تلاش کنید.");
+        if (active) setError("خطا در دریافت لیست مدل‌ها. لطفاً دوباره تلاش کنید.");
       } finally {
         if (active) setLoading(false);
       }

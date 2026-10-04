@@ -11,14 +11,7 @@ import { ModelStats } from "@/components/model-stats";
 import { ModelComparison } from "@/components/model-comparison";
 import { DetectionResult } from "@/components/detection-result";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import {
-  Send,
-  Loader2,
-  AlertCircle,
-  RotateCcw,
-  FileText,
-  ChevronDown,
-} from "lucide-react";
+import { Send, Loader2, AlertCircle, RotateCcw, FileText, ChevronDown } from "lucide-react";
 
 const MIN_TEXT_LENGTH = 20;
 
@@ -29,12 +22,7 @@ export function DetectionForm() {
   const [error, setError] = React.useState<string | null>(null);
   const [result, setResult] = React.useState<DetectionResponse | null>(null);
   const [showComparison, setShowComparison] = React.useState(false);
-  const {
-    models,
-    loading: modelsLoading,
-    error: modelsError,
-    refetch,
-  } = useModels();
+  const { models, loading: modelsLoading, error: modelsError, refetch } = useModels();
 
   const effectiveModelId = modelId || models[0]?.id || "";
   const selectedModel = models.find((m) => m.id === effectiveModelId);
@@ -71,11 +59,7 @@ export function DetectionForm() {
 
       setResult(data);
     } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : "خطایی رخ داد. لطفاً دوباره تلاش کنید."
-      );
+      setError(err instanceof Error ? err.message : "خطایی رخ داد. لطفاً دوباره تلاش کنید.");
     } finally {
       setLoading(false);
     }
@@ -93,10 +77,7 @@ export function DetectionForm() {
         {/* Textarea */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <Label
-              htmlFor="detection-textarea"
-              className="flex items-center gap-2"
-            >
+            <Label htmlFor="detection-textarea" className="flex items-center gap-2">
               <FileText className="size-4 text-muted-foreground" />
               متن مورد بررسی
             </Label>
@@ -104,11 +85,7 @@ export function DetectionForm() {
               <span>{wordCount} کلمه</span>
               <span className="text-border">|</span>
               <span
-                className={
-                  charCount > 0 && charCount < MIN_TEXT_LENGTH
-                    ? "text-destructive"
-                    : ""
-                }
+                className={charCount > 0 && charCount < MIN_TEXT_LENGTH ? "text-destructive" : ""}
               >
                 {charCount} کاراکتر
               </span>
@@ -125,8 +102,7 @@ export function DetectionForm() {
           />
           {charCount > 0 && charCount < MIN_TEXT_LENGTH && (
             <p className="text-xs text-destructive">
-              حداقل {MIN_TEXT_LENGTH} کاراکتر وارد کنید (
-              {MIN_TEXT_LENGTH - charCount} کاراکتر دیگر)
+              حداقل {MIN_TEXT_LENGTH} کاراکتر وارد کنید ({MIN_TEXT_LENGTH - charCount} کاراکتر دیگر)
             </p>
           )}
         </div>
@@ -241,10 +217,7 @@ export function DetectionForm() {
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {Array.from({ length: 4 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="h-20 rounded-xl bg-muted animate-pulse"
-                />
+                <div key={i} className="h-20 rounded-xl bg-muted animate-pulse" />
               ))}
             </div>
           </div>

@@ -2,13 +2,7 @@
 
 import * as React from "react";
 import type { Model } from "@/lib/types";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpDown, LineChart } from "lucide-react";
 
@@ -27,11 +21,7 @@ const sortOptions: { key: SortKey; label: string }[] = [
   { key: "recall", label: "بازیابی" },
 ];
 
-export function ModelComparison({
-  models,
-  selectedId,
-  onSelect,
-}: ModelComparisonProps) {
+export function ModelComparison({ models, selectedId, onSelect }: ModelComparisonProps) {
   const [sortKey, setSortKey] = React.useState<SortKey>("accuracy");
 
   const ranked = React.useMemo(() => {
@@ -92,9 +82,7 @@ export function ModelComparison({
             >
               <div className="flex items-center justify-between gap-2 text-xs">
                 <span className="flex items-center gap-1.5 font-medium">
-                  <span className="text-muted-foreground tabular-nums">
-                    {i + 1}.
-                  </span>
+                  <span className="text-muted-foreground tabular-nums">{i + 1}.</span>
                   {model.nameFa ?? model.name}
                   {model.type && (
                     <Badge

@@ -3,13 +3,7 @@
 import * as React from "react";
 import type { DetectionResponse, JevTypedAnswers } from "@/lib/types";
 import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import {
   ShieldCheck,
   ShieldAlert,
@@ -42,18 +36,10 @@ export function DetectionResult({ result }: DetectionResultProps) {
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
   const confidenceLevel =
-    result.confidence > 0.8
-      ? "بالا"
-      : result.confidence > 0.5
-        ? "متوسط"
-        : "پایین";
+    result.confidence > 0.8 ? "بالا" : result.confidence > 0.5 ? "متوسط" : "پایین";
 
   const confidenceVariant: "default" | "secondary" | "destructive" =
-    result.confidence > 0.8
-      ? "destructive"
-      : result.confidence > 0.5
-        ? "default"
-        : "secondary";
+    result.confidence > 0.8 ? "destructive" : result.confidence > 0.5 ? "default" : "secondary";
 
   return (
     <div className="space-y-6">
@@ -62,9 +48,7 @@ export function DetectionResult({ result }: DetectionResultProps) {
         <CardHeader className="pb-0">
           <div className="flex items-center justify-between">
             <CardTitle className="text-base">نتیجه تحلیل</CardTitle>
-            <Badge variant={confidenceVariant}>
-              اطمینان: {confidenceLevel}
-            </Badge>
+            <Badge variant={confidenceVariant}>اطمینان: {confidenceLevel}</Badge>
           </div>
         </CardHeader>
         <CardContent>
@@ -83,22 +67,14 @@ export function DetectionResult({ result }: DetectionResultProps) {
                   cy="70"
                   r="58"
                   className="transition-[stroke-dashoffset] duration-1000 ease-out"
-                  stroke={
-                    result.isAI
-                      ? "oklch(0.65 0.2 18)"
-                      : "oklch(0.696 0.17 162)"
-                  }
+                  stroke={result.isAI ? "oklch(0.65 0.2 18)" : "oklch(0.696 0.17 162)"}
                   strokeDasharray={circumference}
                   strokeDashoffset={strokeDashoffset}
                 />
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-3xl font-bold tabular-nums">
-                  {percentage}%
-                </span>
-                <span className="text-xs text-muted-foreground mt-0.5">
-                  احتمال
-                </span>
+                <span className="text-3xl font-bold tabular-nums">{percentage}%</span>
+                <span className="text-xs text-muted-foreground mt-0.5">احتمال</span>
               </div>
             </div>
 
@@ -116,9 +92,7 @@ export function DetectionResult({ result }: DetectionResultProps) {
                 )}
                 <div>
                   <h3 className="text-lg font-bold">{result.verdictFa}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    {result.verdict}
-                  </p>
+                  <p className="text-sm text-muted-foreground">{result.verdict}</p>
                 </div>
               </div>
 
@@ -184,8 +158,8 @@ function JevAnswersPanel({ answers }: { answers: JevTypedAnswers }) {
           <Badge variant={policyVariant}>{answers.policy.tierFa}</Badge>
         </div>
         <CardDescription className="text-xs leading-relaxed">
-          مدل تصمیم سیستم-یک به جای تولید متن، سه سؤال نوع‌بندی‌شده را در یک
-          گذر رو به جلو پاسخ می‌دهد: انتخاب، امتیاز و بازبینی انسانی.
+          مدل تصمیم سیستم-یک به جای تولید متن، سه سؤال نوع‌بندی‌شده را در یک گذر رو به جلو پاسخ
+          می‌دهد: انتخاب، امتیاز و بازبینی انسانی.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-5">
@@ -214,10 +188,7 @@ function JevAnswersPanel({ answers }: { answers: JevTypedAnswers }) {
                     )}
                     {answers.choice.candidateLabelsFa[i]}
                     {isAnswer && (
-                      <Badge
-                        variant="outline"
-                        className="h-4 px-1.5 text-[10px]"
-                      >
+                      <Badge variant="outline" className="h-4 px-1.5 text-[10px]">
                         پاسخ
                       </Badge>
                     )}
@@ -276,9 +247,7 @@ function JevAnswersPanel({ answers }: { answers: JevTypedAnswers }) {
           </div>
           <p className="text-[11px] text-muted-foreground">
             نزدیک‌ترین سطح:{" "}
-            <span className="font-medium text-foreground">
-              {answers.score.answerFa}
-            </span>
+            <span className="font-medium text-foreground">{answers.score.answerFa}</span>
           </p>
         </section>
 
@@ -310,9 +279,7 @@ function JevAnswersPanel({ answers }: { answers: JevTypedAnswers }) {
         <p className="flex items-start gap-1.5 text-[11px] leading-relaxed text-muted-foreground border-t border-border pt-3">
           <ShieldCheck className="size-3 mt-0.5 flex-shrink-0" />
           <span>
-            <span className="font-medium text-foreground">
-              {answers.policy.tierFa}:
-            </span>{" "}
+            <span className="font-medium text-foreground">{answers.policy.tierFa}:</span>{" "}
             {answers.policy.descriptionFa}
           </span>
         </p>
@@ -321,11 +288,7 @@ function JevAnswersPanel({ answers }: { answers: JevTypedAnswers }) {
   );
 }
 
-function EnsembleBreakdown({
-  votes,
-}: {
-  votes: NonNullable<DetectionResponse["ensembleVotes"]>;
-}) {
+function EnsembleBreakdown({ votes }: { votes: NonNullable<DetectionResponse["ensembleVotes"]> }) {
   const maxWeight = Math.max(...votes.map((v) => v.weight));
   const ranked = [...votes].sort((a, b) => b.weight - a.weight);
 
@@ -337,8 +300,8 @@ function EnsembleBreakdown({
           سهم هر مدل در تصمیم ترکیبی
         </CardTitle>
         <CardDescription className="text-xs leading-relaxed">
-          احتمال هوش‌مصنوعی‌بودن به تشخیص هر مدل، به همراه وزن آن در میانگین
-          وزن‌دار نهایی (مدل GPT-2 وزن بیشتری دارد چون معمولاً دقیق‌ترین است).
+          احتمال هوش‌مصنوعی‌بودن به تشخیص هر مدل، به همراه وزن آن در میانگین وزن‌دار نهایی (مدل
+          GPT-2 وزن بیشتری دارد چون معمولاً دقیق‌ترین است).
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-2.5">
@@ -366,9 +329,7 @@ function EnsembleBreakdown({
                 </span>
                 <span
                   className={`font-bold tabular-nums ${
-                    vote.aiProbability >= 0.5
-                      ? "text-destructive"
-                      : "text-primary"
+                    vote.aiProbability >= 0.5 ? "text-destructive" : "text-primary"
                   }`}
                 >
                   {percentage}٪ AI
@@ -397,19 +358,11 @@ function EnsembleBreakdown({
   );
 }
 
-function MetricCard({
-  detail,
-}: {
-  detail: DetectionResponse["details"][number];
-}) {
+function MetricCard({ detail }: { detail: DetectionResponse["details"][number] }) {
   const percentage = Math.round(detail.value * 100);
 
   const barColor =
-    detail.value > 0.7
-      ? "bg-destructive"
-      : detail.value > 0.4
-        ? "bg-chart-3"
-        : "bg-primary";
+    detail.value > 0.7 ? "bg-destructive" : detail.value > 0.4 ? "bg-chart-3" : "bg-primary";
 
   return (
     <Card size="sm">

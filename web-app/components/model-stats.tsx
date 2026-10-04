@@ -2,22 +2,9 @@
 
 import * as React from "react";
 import type { Model, ModelMetrics } from "@/lib/types";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  BrainCircuit,
-  Database,
-  Gauge,
-  Grid3x3,
-  Info,
-  Target,
-} from "lucide-react";
+import { BrainCircuit, Database, Gauge, Grid3x3, Info, Target } from "lucide-react";
 
 function formatNumber(n: number): string {
   return new Intl.NumberFormat("fa-IR").format(n);
@@ -87,24 +74,11 @@ export function ModelStats({ model }: { model: Model | undefined }) {
                 label="الگوریتم"
                 value={model.algorithm}
               />
+              <InfoItem label="کل نمونه‌ها" value={formatNumber(model.training.totalSamples)} />
+              <InfoItem label="نمونه‌های آموزش" value={formatNumber(model.training.trainSamples)} />
+              <InfoItem label="نمونه‌های آزمون" value={formatNumber(model.training.testSamples)} />
               <InfoItem
-                label="کل نمونه‌ها"
-                value={formatNumber(model.training.totalSamples)}
-              />
-              <InfoItem
-                label="نمونه‌های آموزش"
-                value={formatNumber(model.training.trainSamples)}
-              />
-              <InfoItem
-                label="نمونه‌های آزمون"
-                value={formatNumber(model.training.testSamples)}
-              />
-              <InfoItem
-                label={
-                  model.type === "dl"
-                    ? "ابعاد بردار ویژگی"
-                    : "ویژگی‌های TF-IDF"
-                }
+                label={model.type === "dl" ? "ابعاد بردار ویژگی" : "ویژگی‌های TF-IDF"}
                 value={formatNumber(model.training.featureCount)}
               />
               <InfoItem
@@ -128,10 +102,9 @@ export function ModelStats({ model }: { model: Model | undefined }) {
 
         <p className="flex items-start gap-1.5 text-[11px] leading-relaxed text-muted-foreground border-t border-border pt-2">
           <Info className="size-3 mt-0.5 flex-shrink-0" />
-          معیارها از ارزیابی مدل روی {model.training
-            ? formatNumber(model.training.testSamples)
-            : ""}{" "}
-          نمونه دیده‌نشده محاسبه شده‌اند.
+          معیارها از ارزیابی مدل روی{" "}
+          {model.training ? formatNumber(model.training.testSamples) : ""} نمونه دیده‌نشده محاسبه
+          شده‌اند.
         </p>
       </CardContent>
     </Card>
@@ -176,13 +149,8 @@ function InfoItem({
   );
 }
 
-function ConfusionMatrixTable({
-  cm,
-}: {
-  cm: NonNullable<Model["confusionMatrix"]>;
-}) {
-  const total =
-    cm.trueNegative + cm.falsePositive + cm.falseNegative + cm.truePositive;
+function ConfusionMatrixTable({ cm }: { cm: NonNullable<Model["confusionMatrix"]> }) {
+  const total = cm.trueNegative + cm.falsePositive + cm.falseNegative + cm.truePositive;
 
   const cells = [
     { label: "تشخیص صحیح انسان (TN)", value: cm.trueNegative, good: true },
@@ -197,9 +165,7 @@ function ConfusionMatrixTable({
         <div
           key={cell.label}
           className={`rounded-lg px-2.5 py-1.5 ring-1 ${
-            cell.good
-              ? "bg-primary/5 ring-primary/20"
-              : "bg-destructive/5 ring-destructive/20"
+            cell.good ? "bg-primary/5 ring-primary/20" : "bg-destructive/5 ring-destructive/20"
           }`}
         >
           <div
@@ -211,9 +177,7 @@ function ConfusionMatrixTable({
           </div>
           <div className="text-[11px] leading-tight text-muted-foreground">
             {cell.label}{" "}
-            <span className="opacity-60">
-              ({Math.round((cell.value / total) * 100)}٪)
-            </span>
+            <span className="opacity-60">({Math.round((cell.value / total) * 100)}٪)</span>
           </div>
         </div>
       ))}

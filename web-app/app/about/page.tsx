@@ -35,9 +35,9 @@ export default function AboutPage() {
             روش‌شناسی: مدل‌ها چگونه آموزش دیده‌اند؟
           </h1>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-xl">
-            این صفحه توضیح می‌دهد داده‌های آموزشی از کجا آمده‌اند، متن فارسی
-            چگونه پیش‌پردازش می‌شود، هر مدل با چه روشی آموزش دیده، و — به‌طور
-            صریح — مدل‌ها هنوز کجا اشتباه می‌کنند. جزئیات ریاضی و کامل‌تر در{" "}
+            این صفحه توضیح می‌دهد داده‌های آموزشی از کجا آمده‌اند، متن فارسی چگونه پیش‌پردازش
+            می‌شود، هر مدل با چه روشی آموزش دیده، و — به‌طور صریح — مدل‌ها هنوز کجا اشتباه می‌کنند.
+            جزئیات ریاضی و کامل‌تر در{" "}
             <a
               href="/report.pdf"
               target="_blank"
@@ -57,55 +57,46 @@ export default function AboutPage() {
             داده‌های آموزشی از کجا آمده‌اند؟
           </h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            مجموعهٔ داده از ترکیب متن‌های وبلاگی انسانی و متن‌های تولیدشده
-            توسط هوش مصنوعی ساخته شده است. بخش هوش‌مصنوعی داده با یک خط‌لولهٔ
-            گردآوری اختصاصی تولید شده که عمداً بر{" "}
-            <strong className="text-foreground">تنوع</strong> تأکید دارد، نه
-            فقط حجم:
+            مجموعهٔ داده از ترکیب متن‌های وبلاگی انسانی و متن‌های تولیدشده توسط هوش مصنوعی ساخته شده
+            است. بخش هوش‌مصنوعی داده با یک خط‌لولهٔ گردآوری اختصاصی تولید شده که عمداً بر{" "}
+            <strong className="text-foreground">تنوع</strong> تأکید دارد، نه فقط حجم:
           </p>
           <ul className="grid gap-2 sm:grid-cols-2 text-xs">
             <li className="rounded-lg bg-muted/50 px-3 py-2">
               <span className="font-semibold text-foreground">۷۰ مدل زبانی</span>
               <span className="block text-muted-foreground mt-0.5">
-                از ۹ ارائه‌دهندهٔ API مختلف (OpenRouter، NVIDIA و دیگران)،
-                خانواده‌های GPT، Claude، Gemini/Gemma، DeepSeek، Llama، Qwen و
-                Nemotron
+                از ۹ ارائه‌دهندهٔ API مختلف (OpenRouter، NVIDIA و دیگران)، خانواده‌های GPT، Claude،
+                Gemini/Gemma، DeepSeek، Llama، Qwen و Nemotron
               </span>
             </li>
             <li className="rounded-lg bg-muted/50 px-3 py-2">
               <span className="font-semibold text-foreground">۵ سبک نوشتاری</span>
               <span className="block text-muted-foreground mt-0.5">
-                مقالهٔ رسمی، پست وبلاگی محاوره‌ای، پرسش‌وپاسخ گام‌به‌گام، متن
-                انتقادی، خلاصهٔ ساختاریافته
+                مقالهٔ رسمی، پست وبلاگی محاوره‌ای، پرسش‌وپاسخ گام‌به‌گام، متن انتقادی، خلاصهٔ
+                ساختاریافته
               </span>
             </li>
             <li className="rounded-lg bg-muted/50 px-3 py-2">
-              <span className="font-semibold text-foreground">
-                ۱٬۴۲۸ موضوع یکتا
-              </span>
+              <span className="font-semibold text-foreground">۱٬۴۲۸ موضوع یکتا</span>
               <span className="block text-muted-foreground mt-0.5">
                 از علم و فناوری تا اقتصاد، سلامت، فلسفه و هنر
               </span>
             </li>
             <li className="rounded-lg bg-muted/50 px-3 py-2">
-              <span className="font-semibold text-foreground">
-                دما و top-p تصادفی
-              </span>
+              <span className="font-semibold text-foreground">دما و top-p تصادفی</span>
               <span className="block text-muted-foreground mt-0.5">
-                برای هر نمونه، دما از [۰.۳۰, ۰.۹۵] و top-p از [۰.۸۰, ۱.۰۰]
-                به‌طور تصادفی انتخاب می‌شود
+                برای هر نمونه، دما از [۰.۳۰, ۰.۹۵] و top-p از [۰.۸۰, ۱.۰۰] به‌طور تصادفی انتخاب
+                می‌شود
               </span>
             </li>
           </ul>
           <Card size="sm" className="bg-primary/5 ring-primary/20">
             <CardContent className="flex flex-wrap items-center justify-between gap-3">
               <div className="text-xs leading-relaxed">
-                <p className="font-medium text-foreground">
-                  Persian AI-Generated Text Dataset
-                </p>
+                <p className="font-medium text-foreground">Persian AI-Generated Text Dataset</p>
                 <p className="text-muted-foreground">
-                  ۱۰٬۵۴۶ نمونه، با فراداده کامل (مدل، ارائه‌دهنده، سبک، دما،
-                  top-p) — به‌صورت عمومی روی Hugging Face منتشر شده است.
+                  ۱۰٬۵۴۶ نمونه، با فراداده کامل (مدل، ارائه‌دهنده، سبک، دما، top-p) — به‌صورت عمومی
+                  روی Hugging Face منتشر شده است.
                 </p>
               </div>
               <a
@@ -130,17 +121,15 @@ export default function AboutPage() {
             پیش‌پردازش و استخراج ویژگی
           </h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            دو خط‌لولهٔ پیش‌پردازش <em>متفاوت</em> به‌کار می‌رود: برای
-            مدل‌های کلاسیک و BiLSTM، متن نرمال‌سازی، ریشه‌یابی و توکن‌سازی
-            کامل می‌شود (مناسب برای فضای کیسه‌واژه). برای GPT-2 و ParsBERT،
-            تنها نرمال‌سازی سطح کاراکتر انجام می‌شود—بدون ریشه‌یابی—چون این
-            مدل‌ها روی متن طبیعی فارسی پیش‌آموزش دیده‌اند و ریشه‌یابی، ورودی
-            را از توزیع پیش‌آموزش آن‌ها دور می‌کند.
+            دو خط‌لولهٔ پیش‌پردازش <em>متفاوت</em> به‌کار می‌رود: برای مدل‌های کلاسیک و BiLSTM، متن
+            نرمال‌سازی، ریشه‌یابی و توکن‌سازی کامل می‌شود (مناسب برای فضای کیسه‌واژه). برای GPT-2 و
+            ParsBERT، تنها نرمال‌سازی سطح کاراکتر انجام می‌شود—بدون ریشه‌یابی—چون این مدل‌ها روی متن
+            طبیعی فارسی پیش‌آموزش دیده‌اند و ریشه‌یابی، ورودی را از توزیع پیش‌آموزش آن‌ها دور
+            می‌کند.
           </p>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            برای مدل‌های کلاسیک، علاوه بر بردار TF-IDF (یک‌گرم تا سه‌گرم، سقف
-            ۱۵۰٬۰۰۰ ویژگی)، چهار ویژگی سبک‌شناسی دست‌ساز نیز محاسبه و به بردار
-            ورودی الحاق می‌شود:
+            برای مدل‌های کلاسیک، علاوه بر بردار TF-IDF (یک‌گرم تا سه‌گرم، سقف ۱۵۰٬۰۰۰ ویژگی)، چهار
+            ویژگی سبک‌شناسی دست‌ساز نیز محاسبه و به بردار ورودی الحاق می‌شود:
           </p>
           <ul className="grid gap-2 sm:grid-cols-2 text-xs">
             <li className="rounded-lg bg-muted/50 px-3 py-2">
@@ -162,9 +151,7 @@ export default function AboutPage() {
               </span>
             </li>
             <li className="rounded-lg bg-muted/50 px-3 py-2">
-              <span className="font-semibold text-foreground">
-                انسجام میان‌جمله‌ای
-              </span>
+              <span className="font-semibold text-foreground">انسجام میان‌جمله‌ای</span>
               <span className="block text-muted-foreground mt-0.5">
                 شباهت کسینوسی TF-IDF میان جمله‌های متوالی
               </span>
@@ -179,14 +166,19 @@ export default function AboutPage() {
             روش‌شناسی آموزش
           </h2>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            هر مدل کلاسیک (SVM، رگرسیون لجستیک، بیز ساده، جنگل تصادفی، گرادیان
-            بوستینگ) با جست‌وجوی هایپرپارامتر واقعی (اعتبارسنجی متقابل
-            k-تاخورده) تنظیم می‌شود. داده به سه بخش آموزش/اعتبارسنجی/آزمون
-            تفکیک می‌شود—با نسبت طبقه‌بندی‌شدهٔ ثابت—و مجموعهٔ آزمون تنها
-            یک‌بار، در پایان، برای هر مدل لمس می‌شود. مدل‌های یادگیری عمیق
-            (BiLSTM، GPT-2، و ParsBERT) بهترین نقطهٔ توقف خود را بر پایهٔ
-            امتیاز F1 روی مجموعهٔ اعتبارسنجی—نه آزمون—با توقف زودهنگام تعیین
-            می‌کنند.
+            هر مدل کلاسیک (SVM، رگرسیون لجستیک، بیز ساده، جنگل تصادفی، گرادیان بوستینگ) با جست‌وجوی
+            هایپرپارامتر واقعی (اعتبارسنجی متقاطع k-تاخورده) تنظیم می‌شود. داده به سه بخش
+            آموزش/اعتبارسنجی/آزمون تفکیک می‌شود—با نسبت طبقه‌بندی‌شدهٔ ثابت—و مجموعهٔ آزمون تنها
+            یک‌بار، در پایان، برای هر مدل لمس می‌شود. مدل‌های یادگیری عمیق (BiLSTM، GPT-2، و
+            ParsBERT) بهترین نقطهٔ توقف خود را بر پایهٔ امتیاز F1 روی مجموعهٔ اعتبارسنجی—نه آزمون—با
+            توقف زودهنگام تعیین می‌کنند.
+          </p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            در کنار این مدل‌ها، یک لایهٔ تصمیم «سیستم-یک» نیز سرو می‌شود: به‌جای یک عدد، سه پاسخ
+            نوع‌بندی‌شده—انتخاب منبع، امتیاز ماشین‌مانندبودن روی طیف پنج‌سطحی و احتمال نیاز به
+            بازبینی انسانی—در یک گذر رو به جلو برمی‌گرداند. بدنهٔ آن همان رمزگذار ParsBERT
+            فاین‌تیون‌شده است و چون مجموعه داده فقط برچسب دودویی دارد، هدف‌های نرم آموزشش از
+            دسته‌بند GPT-2 فاین‌تیون‌شده—مدلی با بیشترین وزن در رأی‌گیری ترکیبی—تقطیر شده است.
           </p>
         </section>
 
@@ -199,24 +191,22 @@ export default function AboutPage() {
           <Card size="sm" className="bg-amber-500/5 ring-amber-500/20">
             <CardContent className="space-y-2 text-xs leading-relaxed text-muted-foreground">
               <p>
-                بررسی هدفمند نشان داد <strong className="text-foreground">BiLSTM</strong>{" "}
-                — که embedding خود را از ابتدا روی تنها ~۱۷٬۰۰۰ سند می‌آموزد،
-                بدون هیچ دانش زبانی پیشین — در برابر سبک‌های نوشتاری خارج از
-                توزیع آموزشی (مثلاً متن هوش‌مصنوعی با لحن محاوره‌ای) آسیب‌پذیر
-                است. در یک آزمون، یک متن محاوره‌ای که واقعاً توسط هوش مصنوعی
+                بررسی هدفمند نشان داد <strong className="text-foreground">BiLSTM</strong> — که
+                embedding خود را از ابتدا روی تنها ~۱۷٬۰۰۰ سند می‌آموزد، بدون هیچ دانش زبانی پیشین —
+                در برابر سبک‌های نوشتاری خارج از توزیع آموزشی (مثلاً متن هوش‌مصنوعی با لحن
+                محاوره‌ای) آسیب‌پذیر است. در یک آزمون، یک متن محاوره‌ای که واقعاً توسط هوش مصنوعی
                 نوشته شده بود، با اطمینان ۹۹.۹٪ «انسانی» طبقه‌بندی شد.
               </p>
               <p>
-                نکتهٔ مهم: حتی <strong className="text-foreground">GPT-2</strong>{" "}
-                (با وجود دانش زبانی پیش‌آموزش‌دیده) روی همان نمونه اشتباه کرد.
-                این نشان می‌دهد مشکل صرفاً یک اشکال در معماری BiLSTM نیست، بلکه
-                محدودیت تنوع سبکی دادهٔ آموزشی است.
+                نکتهٔ مهم: حتی <strong className="text-foreground">GPT-2</strong> (با وجود دانش
+                زبانی پیش‌آموزش‌دیده) روی همان نمونه اشتباه کرد. این نشان می‌دهد مشکل صرفاً یک اشکال
+                در معماری BiLSTM نیست، بلکه محدودیت تنوع سبکی دادهٔ آموزشی است.
               </p>
               <p>
-                به همین دلیل، <strong className="text-foreground">ParsBERT</strong>{" "}
-                — یک رمزگذار دوسویهٔ فارسی از پیش‌آموزش‌دیده، مشابه در روح به
-                GPT-2 اما با معماری مناسب‌تر برای طبقه‌بندی — به‌عنوان مدل
-                یادگیری عمیق چهارم در دست افزودن است. جزئیات کامل این تحلیل در
+                به همین دلیل، <strong className="text-foreground">ParsBERT</strong> — یک رمزگذار
+                دوسویهٔ فارسی از پیش‌آموزش‌دیده، مشابه در روح به GPT-2 اما با معماری مناسب‌تر برای
+                طبقه‌بندی — به‌عنوان مدل یادگیری عمیق چهارم آموزش دیده و به سرویس افزوده شده است.
+                همین رمزگذار ستون فقرات لایهٔ تصمیم «سیستم-یک» نیز هست. جزئیات کامل این تحلیل در
                 گزارش PDF آمده است.
               </p>
             </CardContent>

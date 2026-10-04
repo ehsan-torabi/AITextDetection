@@ -39,12 +39,7 @@ function TypeBadge({ type }: { type?: Model["type"] }) {
   );
 }
 
-export function ModelSelector({
-  models,
-  value,
-  onValueChange,
-  disabled,
-}: ModelSelectorProps) {
+export function ModelSelector({ models, value, onValueChange, disabled }: ModelSelectorProps) {
   const ensembleModel = models.find((m) => m.type === "ensemble");
   const mlModels = models.filter((m) => m.type !== "dl" && m.type !== "ensemble");
   const dlModels = models.filter((m) => m.type === "dl");
@@ -52,11 +47,7 @@ export function ModelSelector({
   return (
     <div className="space-y-2">
       <Label htmlFor="model-selector">مدل تشخیص</Label>
-      <Select
-        value={value}
-        onValueChange={(v) => onValueChange(v ?? "")}
-        disabled={disabled}
-      >
+      <Select value={value} onValueChange={(v) => onValueChange(v ?? "")} disabled={disabled}>
         <SelectTrigger className="w-full" id="model-selector">
           <SelectValue placeholder="انتخاب مدل..." />
         </SelectTrigger>
