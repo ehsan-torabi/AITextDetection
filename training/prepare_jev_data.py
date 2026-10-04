@@ -14,8 +14,10 @@ a JSONL record with three typed questions about the text:
 - ``needs_review``  (noul)   -> 0..1 probability that a human must review
 
 The dataset only carries a binary label, so soft targets are distilled from
-the already-trained TF-IDF + Logistic Regression serving pipeline (the exact
-preprocessing/style-feature code in utils.py):
+the deployed fine-tuned GPT-2 classifier (gpt2ClassifierModel.pt on the
+gpt2-fa.mdl backbone) -- the teacher the ensemble already weights highest.
+It is run through the exact serving path in utils.py: same normalization
+(_normalize_for_gpt2), tokenizer, char-budget guard and seq_len.
 
 - choice target: ground-truth one-hot blended with the teacher probability
 - score target:  discretized Gaussian over the 5 levels centered at
@@ -24,33 +26,35 @@ preprocessing/style-feature code in utils.py):
                  NOUL_BAND) -- the only rows where a human reviewer genuinely
                  adds information
 
+Records store the raw text in ``state.text``; training/train_jev.py applies
+the same normalization to it that both the teacher and the serving path use.
+
 Run from the project root: python training/prepare_jev_data.py
 Outputs: training/jev_data/jev_train.jsonl and jev_test.jsonl
 """
 
 import json
 import sys
+import time
 from pathlib import Path
 
-import joblib
 import numpy as np
-from joblib import Parallel, delayed
-from scipy.sparse import hstack
+import torch
 from sklearn.model_selection import train_test_split
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-import utils  # noqa: E402  (serving pipeline: exact same preprocessing + style features)
+import utils  # noqa: E402  (serving pipeline: teacher runs the exact serving path)
 from split import RANDOM_SEED, load_split  # noqa: E402
 
-TOKENIZED_CACHE_PATH = PROJECT_ROOT / "training" / "tokenized_texts.joblib"
-TEACHER_PATH = PROJECT_ROOT / "logregModel.joblib"
-VECTORIZER_PATH = PROJECT_ROOT / "tfidf_vectorizer.joblib"
+TEACHER_CHECKPOINT_PATH = PROJECT_ROOT / "gpt2ClassifierModel.pt"
 OUT_DIR = PROJECT_ROOT / "training" / "jev_data"
 
 TRAIN_SUBSET = 6000  # CPU budget: mirrors training/train_gpt2_classifier.py
 TEST_SUBSET = 1500
+TEACHER_BATCH_SIZE = 32
+torch.set_num_threads(12)
 
 # JEV typed-question schema. Keep in sync with training/train_jev.py and the
 # answer rendering in utils.py.
@@ -95,43 +99,60 @@ NOUL_BAND = (0.15, 0.85)  # teacher uncertainty band -> needs human review
 def subsample(indices, labels, n, seed):
     if n >= len(indices):
         return indices
-    sub, _ = train_test_split(
-        indices, train_size=n, random_state=seed, stratify=labels[indices]
-    )
+    sub, _ = train_test_split(indices, train_size=n, random_state=seed, stratify=labels[indices])
     return sub
 
 
-def cleaned_texts(texts, indices):
-    """Serving-pipeline-preprocessed text for the given rows.
-
-    The per-row token cache (training/preprocess_cache.py) holds exactly the
-    output of the same shekar pipeline, cache[i] <-> df row i, so prefer it;
-    fall back to running the pipeline when the cache is missing or stale."""
-    try:
-        cache = joblib.load(TOKENIZED_CACHE_PATH)
-        if len(cache) == len(texts):
-            return [" ".join(cache[i]) for i in indices]
-        print(
-            f"token cache length {len(cache)} != dataset length {len(texts)}; "
-            "falling back to the shekar pipeline"
-        )
-    except FileNotFoundError:
-        print("token cache not found; running the shekar pipeline (slow)")
-    return Parallel(n_jobs=-1)(
-        delayed(utils.preprocess_persian_text)(str(texts[i])) for i in indices
-    )
+def batches(items, batch_size):
+    for i in range(0, len(items), batch_size):
+        yield items[i : i + batch_size]
 
 
-# joblib/loky re-imports this module in each worker, so per-process globals
-# start empty and the vectorizer is loaded lazily on the first document.
-_WORKER_STATE = {}
+def build_teacher():
+    """The deployed fine-tuned GPT-2 classifier, rebuilt exactly as
+    utils._load_gpt2_model does: base backbone from the local pickle, then the
+    fine-tuned weights on top from the serving checkpoint."""
+    backbone = utils._load_gpt2_backbone()
+    checkpoint = torch.load(TEACHER_CHECKPOINT_PATH, map_location="cpu", weights_only=False)
+    config = checkpoint["config"]
+    model = utils.GPT2Classifier(backbone, hidden_size=config["hidden_size"])
+    model.load_state_dict(checkpoint["state_dict"])
+    model.eval()
+    return model, config
 
 
-def _style_worker(raw_text, cleaned_text):
-    if "vectorizer" not in _WORKER_STATE:
-        _WORKER_STATE["vectorizer"] = joblib.load(VECTORIZER_PATH)
-        utils.vectorizer = _WORKER_STATE["vectorizer"]
-    return utils.compute_style_features(raw_text, cleaned_text)
+def teacher_probabilities(model, config, raw_texts):
+    """P(AI) from the deployed GPT-2 classifier for each raw text, via the
+    exact serving path of utils._predict_gpt2: same normalization, tokenizer,
+    char-budget guard and seq_len, so the distilled targets match what the
+    teacher actually outputs in production."""
+    tokenizer = utils._get_gpt2_tokenizer()
+    seq_len = config["seq_len"]
+    char_budget = seq_len * 8  # same slow-tokenizer guard as the serving path
+
+    n_batches = (len(raw_texts) + TEACHER_BATCH_SIZE - 1) // TEACHER_BATCH_SIZE
+    probs = []
+    start = time.time()
+    with torch.no_grad():
+        for step, batch in enumerate(batches(raw_texts, TEACHER_BATCH_SIZE), start=1):
+            enc = tokenizer(
+                [utils._normalize_for_gpt2(str(t))[:char_budget] for t in batch],
+                return_tensors="pt",
+                truncation=True,
+                max_length=seq_len,
+                padding="max_length",
+            )
+            logits = model(enc["input_ids"], enc["attention_mask"])
+            probs.append(torch.sigmoid(logits).numpy())
+            if step % 20 == 0 or step == n_batches:
+                elapsed = time.time() - start
+                rate = elapsed / step
+                remaining = rate * (n_batches - step)
+                print(
+                    f"teacher batch {step}/{n_batches} elapsed={elapsed:.0f}s eta={remaining:.0f}s",
+                    flush=True,
+                )
+    return np.concatenate(probs)
 
 
 def choice_target(label, teacher_prob):
@@ -154,23 +175,11 @@ def noul_target(teacher_prob):
     return 1.0 if NOUL_BAND[0] <= teacher_prob <= NOUL_BAND[1] else 0.0
 
 
-def build_records(df, indices, split_name):
+def build_records(df, indices, split_name, teacher, teacher_config):
     texts = df["text"].to_numpy()
     y = df["aiGenerated"].to_numpy()
 
-    cleaned = cleaned_texts(texts, indices)
-    style_rows = Parallel(n_jobs=-1)(
-        delayed(_style_worker)(str(texts[i]), cleaned[k])
-        for k, i in enumerate(indices)
-    )
-    style_matrix = np.vstack(
-        [[row[name] for name in utils.STYLE_FEATURE_NAMES] for row in style_rows]
-    )
-
-    vectorizer = joblib.load(VECTORIZER_PATH)
-    teacher = joblib.load(TEACHER_PATH)
-    features = hstack([vectorizer.transform(cleaned), style_matrix]).tocsr()
-    p_teacher = teacher.predict_proba(features)[:, 1]
+    p_teacher = teacher_probabilities(teacher, teacher_config, texts[indices])
 
     records = []
     for k, i in enumerate(indices):
@@ -182,6 +191,7 @@ def build_records(df, indices, split_name):
                 "label": int(y[i]),
                 "state": {"text": str(texts[i])},
                 "questions": QUESTIONS,
+                "teacher": "gpt2_transformer",
                 "targets": {
                     "source": source_t,
                     "ai_level": score_target(t_ai),
@@ -202,12 +212,8 @@ def write_jsonl(path, records):
 def summarize(name, records):
     labels = [r["label"] for r in records]
     noul_pos = sum(r["targets"]["needs_review"] for r in records)
-    ai_target = [
-        r["targets"]["source"]["ai_generated"] for r in records if r["label"] == 1
-    ]
-    human_target = [
-        r["targets"]["source"]["ai_generated"] for r in records if r["label"] == 0
-    ]
+    ai_target = [r["targets"]["source"]["ai_generated"] for r in records if r["label"] == 1]
+    human_target = [r["targets"]["source"]["ai_generated"] for r in records if r["label"] == 0]
     print(
         f"{name}: {len(records)} records | ai={sum(labels)} human={len(labels) - sum(labels)} "
         f"| needs_review targets={int(noul_pos)} | mean ai-target ai/human: "
@@ -222,8 +228,11 @@ def main():
     test_idx = subsample(test_idx, y, TEST_SUBSET, RANDOM_SEED)
     print(f"Building JEV records for {len(train_idx)} train / {len(test_idx)} test rows")
 
-    train_records = build_records(df, train_idx, "train")
-    test_records = build_records(df, test_idx, "test")
+    print("Loading the fine-tuned GPT-2 teacher (gpt2-fa.mdl + gpt2ClassifierModel.pt)...")
+    teacher, teacher_config = build_teacher()
+
+    train_records = build_records(df, train_idx, "train", teacher, teacher_config)
+    test_records = build_records(df, test_idx, "test", teacher, teacher_config)
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     write_jsonl(OUT_DIR / "jev_train.jsonl", train_records)

@@ -1,9 +1,10 @@
 """Train the JEV-style "System One" decision model on the Persian dataset.
 
-Architecture (following JEV / the open-source Valen implementation): a GPT-2
-backbone whose pooled representation feeds three small *decision heads*, one
-per typed question, all scored in a single forward pass instead of
-autoregressive answer generation:
+Architecture: the fine-tuned ParsBERT encoder (parsbertClassifierModel.pt --
+the deployed bidirectional classifier trained by training/train_parsbert.py)
+is reused as the JEV backbone, its [CLS] representation feeding three small
+*decision heads*, one per typed question, all scored in a single forward pass
+instead of autoregressive answer generation:
 
 - choice head -> probability distribution over ["human_written", "ai_generated"]
 - score head  -> distribution over 5 ordinal machine-likeness levels; the
@@ -11,21 +12,30 @@ autoregressive answer generation:
 - noul head   -> probability for the yes/no "needs human review" proposition
 
 Training data comes from training/jev_data/jev_{train,test}.jsonl (built by
-training/prepare_jev_data.py) with soft targets distilled from the TF-IDF +
-Logistic Regression serving pipeline. Loss = weighted sum of soft
-cross-entropy on the two distributions + binary cross-entropy on the noul head.
+training/prepare_jev_data.py) with soft targets distilled from the deployed
+fine-tuned GPT-2 classifier (gpt2ClassifierModel.pt) -- the teacher the
+ensemble already weights highest. Loss = weighted sum of soft cross-entropy
+on the two distributions + binary cross-entropy on the noul head.
 
-Same CPU budget as training/train_gpt2_classifier.py: only the last 4 of 12
-transformer blocks + the final LayerNorm are unfrozen, SEQ_LEN=64, one epoch
-over a 6000-sample stratified subsample.
+Same CPU budget as training/train_parsbert.py: only the last 4 of 12 encoder
+layers are unfrozen (the pooler stays frozen -- [CLS] is pooled directly, so
+the pooler is never called), SEQ_LEN=64, 3 epochs over the same 6000/1500
+stratified subsample. Texts get the same light normalization the serving path
+applies (utils._normalize_for_gpt2), once at load time.
+
+The saved checkpoint is self-contained: it stores the backbone config, so the
+server rebuilds the encoder offline and no pretrained files are needed at
+serving time (the BERT branch of utils._load_jev_model).
 
 Run from the project root: python training/train_jev.py
 """
 
 import json
 import os
-import pickle
+import sys
 import time
+from itertools import pairwise
+from pathlib import Path
 
 import numpy as np
 import torch
@@ -40,15 +50,18 @@ from sklearn.metrics import (
     recall_score,
     roc_auc_score,
 )
-from transformers import AutoTokenizer
+from transformers import AutoModel, AutoTokenizer, BertConfig
 
-from split import RANDOM_SEED
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
+
+import utils  # noqa: E402  (serving pipeline: shared to guarantee train/serve parity)
+from split import RANDOM_SEED  # noqa: E402
 
 MODELS_JSON_PATH = "models.json"
 MODEL_PATH = "jevModel.pt"
-LM_PATH = "gpt2-fa.mdl"
-TOKENIZER_DIR = "gpt2_tokenizer"
-TOKENIZER_PICKLE = "gpt2-fa-tokenizer.mdl"
+BASE_CHECKPOINT_PATH = "parsbertClassifierModel.pt"
+BASE_BACKBONE_NAME = "HooshvareLab/bert-fa-base-uncased"  # tokenizer fallback
 DATA_DIR = "training/jev_data"
 
 SEQ_LEN = 64
@@ -56,7 +69,8 @@ BATCH_SIZE = 16
 EPOCHS = 3
 LR_HEAD = 1e-3
 LR_BACKBONE = 2e-5
-UNFROZEN_BLOCKS = 4  # fine-tune only the last N of 12 transformer blocks
+WEIGHT_DECAY = 0.01
+UNFROZEN_LAYERS = 4  # fine-tune only the last N of 12 encoder layers
 DROPOUT = 0.1
 
 CHOICE_WEIGHT = 1.0
@@ -83,24 +97,32 @@ torch.manual_seed(RANDOM_SEED)
 
 
 class JevDecisionModel(nn.Module):
-    """GPT2 backbone (causal, pooled on the last real token) + typed decision
-    heads. Must match the copy in utils.py exactly so the saved state_dict
-    loads at serving time."""
+    """ParsBERT backbone (bidirectional, so pooled on [CLS]) + typed decision
+    heads. pool_on_cls is a flag rather than an assumption so the serving copy
+    in utils.py can also load the legacy GPT-2-backed checkpoint (pooled on the
+    last real token); this trainer always sets it True. Must match the copy in
+    utils.py exactly so the saved state_dict loads at serving time."""
 
-    def __init__(self, backbone, hidden_size, n_choice, n_score_levels):
+    def __init__(self, backbone, hidden_size, n_choice, n_score_levels, pool_on_cls):
         super().__init__()
         self.backbone = backbone
+        self.pool_on_cls = pool_on_cls
         self.dropout = nn.Dropout(DROPOUT)
         self.choice_head = nn.Linear(hidden_size, n_choice)
         self.score_head = nn.Linear(hidden_size, n_score_levels)
         self.noul_head = nn.Linear(hidden_size, 1)
 
     def forward(self, input_ids, attention_mask):
-        hidden = self.backbone(
-            input_ids=input_ids, attention_mask=attention_mask
-        ).last_hidden_state
-        last_idx = attention_mask.sum(dim=1) - 1
-        pooled = hidden[torch.arange(hidden.size(0)), last_idx]
+        hidden = self.backbone(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
+        if self.pool_on_cls:
+            # [CLS] is always token position 0 for a BERT-style encoder: every
+            # position already attends to the whole sequence, so unlike the
+            # causal GPT-2 there is no attention-mask index arithmetic needed
+            # to find "the token that saw everything".
+            pooled = hidden[:, 0]
+        else:
+            last_idx = attention_mask.sum(dim=1) - 1
+            pooled = hidden[torch.arange(hidden.size(0)), last_idx]
         pooled = self.dropout(pooled)
         return (
             self.choice_head(pooled),
@@ -110,16 +132,23 @@ class JevDecisionModel(nn.Module):
 
 
 def load_tokenizer():
-    """Prefer the offline fast (Rust-backed) tokenizer export; same fallback
-    order as utils._load_gpt2_backbone."""
-    if os.path.isdir(TOKENIZER_DIR):
-        tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_DIR)
-    else:
-        with open(TOKENIZER_PICKLE, "rb") as f:
-            tokenizer = pickle.load(f)
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = "<pad>"
-    return tokenizer
+    """Same offline-first fallback order as utils._load_parsbert_tokenizer."""
+    if os.path.isdir("parsbert_tokenizer"):
+        return AutoTokenizer.from_pretrained("parsbert_tokenizer")
+    return AutoTokenizer.from_pretrained(BASE_BACKBONE_NAME)
+
+
+def load_parsbert_backbone():
+    """Rebuild the fine-tuned ParsBERT encoder exactly the way the server does
+    (utils._load_parsbert_model): architecture from the checkpoint's stored
+    backbone config, weights from the state_dict -- then hand the backbone to
+    JEV with its fine-tuned classification knowledge intact."""
+    checkpoint = torch.load(BASE_CHECKPOINT_PATH, map_location="cpu", weights_only=False)
+    base_config = checkpoint["config"]
+    backbone = AutoModel.from_config(BertConfig.from_dict(base_config["backbone_config"]))
+    classifier = utils.ParsBERTClassifier(backbone, base_config["hidden_size"])
+    classifier.load_state_dict(checkpoint["state_dict"])
+    return classifier.backbone
 
 
 def load_jsonl(path):
@@ -137,12 +166,8 @@ def target_arrays(records):
         [[r["targets"]["source"][c] for c in CHOICE_CANDIDATES] for r in records],
         dtype=np.float32,
     )
-    score = np.array(
-        [r["targets"]["ai_level"] for r in records], dtype=np.float32
-    )
-    noul = np.array(
-        [r["targets"]["needs_review"] for r in records], dtype=np.float32
-    )
+    score = np.array([r["targets"]["ai_level"] for r in records], dtype=np.float32)
+    noul = np.array([r["targets"]["needs_review"] for r in records], dtype=np.float32)
     labels = np.array([r["label"] for r in records])
     return choice, score, noul, labels
 
@@ -162,11 +187,29 @@ def expected_calibration_error(probs, labels, n_bins=15):
     correct = (probs.argmax(axis=1) == labels).astype(float)
     bins = np.linspace(0.0, 1.0, n_bins + 1)
     ece = 0.0
-    for lo, hi in zip(bins[:-1], bins[1:]):
+    for lo, hi in pairwise(bins):
         mask = (confidence > lo) & (confidence <= hi)
         if mask.any():
             ece += mask.mean() * abs(correct[mask].mean() - confidence[mask].mean())
     return float(ece)
+
+
+def assert_serving_contract(model, backbone_config, hidden_size):
+    """Rebuild the checkpoint the way the BERT branch of utils._load_jev_model
+    does (BertConfig.from_dict -> AutoModel.from_config, i.e. with no
+    pretrained weights) and check the state_dict keys line up. A silent
+    key/shape mismatch here would only surface as a load error on the first
+    request against the live server."""
+    rebuilt_backbone = AutoModel.from_config(BertConfig.from_dict(backbone_config))
+    rebuilt = JevDecisionModel(
+        rebuilt_backbone,
+        hidden_size,
+        n_choice=len(CHOICE_CANDIDATES),
+        n_score_levels=len(SCORE_LEVELS),
+        pool_on_cls=True,
+    )
+    drift = set(model.state_dict()) ^ set(rebuilt.state_dict())
+    assert not drift, f"state_dict does not match the serving class: {drift}"
 
 
 def main():
@@ -174,37 +217,42 @@ def main():
     train_records = load_jsonl(f"{DATA_DIR}/jev_train.jsonl")
     test_records = load_jsonl(f"{DATA_DIR}/jev_test.jsonl")
     if not train_records or not test_records:
-        raise SystemExit(
-            "No JEV records found -- run training/prepare_jev_data.py first."
-        )
+        raise SystemExit("No JEV records found -- run training/prepare_jev_data.py first.")
     print(f"{len(train_records)} train / {len(test_records)} test records")
 
-    choice_t, score_t, noul_t, y_train = target_arrays(train_records)
-    choice_t_test, score_t_test, noul_t_test, y_test = target_arrays(test_records)
-    texts = [r["state"]["text"] for r in train_records]
-    texts_test = [r["state"]["text"] for r in test_records]
+    choice_t, score_t, noul_t, _ = target_arrays(train_records)
+    _, score_t_test, noul_t_test, y_test = target_arrays(test_records)
+    # Same light normalization the serving path applies for this runtime
+    # (utils._predict_jev), applied once instead of per epoch.
+    normalize_start = time.time()
+    texts = [utils._normalize_for_gpt2(r["state"]["text"]) for r in train_records]
+    texts_test = [utils._normalize_for_gpt2(r["state"]["text"]) for r in test_records]
+    print(
+        f"Normalized {len(texts) + len(texts_test)} texts in {time.time() - normalize_start:.0f}s"
+    )
 
-    print("Loading local Persian GPT-2 checkpoint...")
-    with open(LM_PATH, "rb") as f:
-        lm = pickle.load(f)
+    print("Loading the fine-tuned ParsBERT backbone (parsbertClassifierModel.pt)...")
+    backbone = load_parsbert_backbone()
     tokenizer = load_tokenizer()
-
-    backbone = lm.transformer
-    hidden_size = backbone.config.n_embd
-    n_layer = backbone.config.n_layer
+    hidden_size = backbone.config.hidden_size
+    n_layers = backbone.config.num_hidden_layers
 
     for p in backbone.parameters():
         p.requires_grad = False
-    for block in backbone.h[n_layer - UNFROZEN_BLOCKS :]:
-        for p in block.parameters():
+    for layer in backbone.encoder.layer[n_layers - UNFROZEN_LAYERS :]:
+        for p in layer.parameters():
             p.requires_grad = True
-    for p in backbone.ln_f.parameters():
-        p.requires_grad = True
+    # The pooler stays frozen: JEV pools the raw [CLS] hidden state, so the
+    # pooler is never called (same as the ParsBERT classifier's own forward).
 
     device = torch.device("cpu")
     torch.set_num_threads(12)
     model = JevDecisionModel(
-        backbone, hidden_size, n_choice=len(CHOICE_CANDIDATES), n_score_levels=len(SCORE_LEVELS)
+        backbone,
+        hidden_size,
+        n_choice=len(CHOICE_CANDIDATES),
+        n_score_levels=len(SCORE_LEVELS),
+        pool_on_cls=True,
     ).to(device)
 
     trainable_backbone = [p for p in backbone.parameters() if p.requires_grad]
@@ -214,18 +262,16 @@ def main():
             {"params": model.choice_head.parameters(), "lr": LR_HEAD},
             {"params": model.score_head.parameters(), "lr": LR_HEAD},
             {"params": model.noul_head.parameters(), "lr": LR_HEAD},
-        ]
+        ],
+        weight_decay=WEIGHT_DECAY,
     )
 
-    # The slow pure-Python tokenizer BPE-encodes the whole string before
-    # truncation, so pre-truncate at the character level (generous upper bound
-    # for SEQ_LEN tokens in Persian) -- same trick as train_gpt2_classifier.py.
-    CHAR_BUDGET = SEQ_LEN * 8
-
     def encode_batch(batch_texts):
-        batch = [str(t)[:CHAR_BUDGET] for t in batch_texts]
+        # The WordPiece tokenizer is fast (Rust-backed) and truncates before
+        # its full encode, so no character-level pre-truncation is needed --
+        # same encode path as training/train_parsbert.py.
         return tokenizer(
-            batch,
+            batch_texts,
             return_tensors="pt",
             truncation=True,
             max_length=SEQ_LEN,
@@ -233,23 +279,13 @@ def main():
         )
 
     def loss_from_batch(enc, idx_batch):
-        choice_logits, score_logits, noul_logit = model(
-            enc["input_ids"], enc["attention_mask"]
-        )
-        choice_loss = soft_cross_entropy(
-            choice_logits, torch.from_numpy(choice_t[idx_batch])
-        )
-        score_loss = soft_cross_entropy(
-            score_logits, torch.from_numpy(score_t[idx_batch])
-        )
+        choice_logits, score_logits, noul_logit = model(enc["input_ids"], enc["attention_mask"])
+        choice_loss = soft_cross_entropy(choice_logits, torch.from_numpy(choice_t[idx_batch]))
+        score_loss = soft_cross_entropy(score_logits, torch.from_numpy(score_t[idx_batch]))
         noul_loss = nn.functional.binary_cross_entropy_with_logits(
             noul_logit, torch.from_numpy(noul_t[idx_batch])
         )
-        return (
-            CHOICE_WEIGHT * choice_loss
-            + SCORE_WEIGHT * score_loss
-            + NOUL_WEIGHT * noul_loss
-        )
+        return CHOICE_WEIGHT * choice_loss + SCORE_WEIGHT * score_loss + NOUL_WEIGHT * noul_loss
 
     n_batches = (len(train_records) + BATCH_SIZE - 1) // BATCH_SIZE
     for epoch in range(1, EPOCHS + 1):
@@ -288,9 +324,7 @@ def main():
     with torch.no_grad():
         for idx_batch in batches(np.arange(len(test_records)), 32):
             enc = encode_batch([texts_test[i] for i in idx_batch])
-            choice_logits, score_logits, noul_logit = model(
-                enc["input_ids"], enc["attention_mask"]
-            )
+            choice_logits, score_logits, noul_logit = model(enc["input_ids"], enc["attention_mask"])
             choice_probs_all.append(torch.softmax(choice_logits, dim=-1).numpy())
             score_probs_all.append(torch.softmax(score_logits, dim=-1).numpy())
             noul_probs_all.append(torch.sigmoid(noul_logit).numpy())
@@ -332,6 +366,8 @@ def main():
         )
     print("Final metrics:", metrics)
 
+    backbone_config = backbone.config.to_dict()
+    assert_serving_contract(model, backbone_config, hidden_size)
     torch.save(
         {
             "state_dict": model.state_dict(),
@@ -346,6 +382,12 @@ def main():
                     "proceed": PROCEED_THRESHOLD,
                     "needsReview": NEEDS_REVIEW_THRESHOLD,
                 },
+                # The server rebuilds the BERT encoder from this alone (no
+                # pretrained download needed), then overwrites it with
+                # state_dict. Its presence also tells utils._load_jev_model
+                # this is a [CLS]-pooled BERT checkpoint, not the legacy
+                # GPT-2-backed format.
+                "backbone_config": backbone_config,
             },
             "metrics": {k: v for k, v in metrics.items() if v is not None},
         },
@@ -354,39 +396,46 @@ def main():
     print(f"Saved model to {MODEL_PATH}")
 
     metrics_for_json = {k: v for k, v in metrics.items() if v is not None}
+    with open(MODELS_JSON_PATH, encoding="utf-8") as f:
+        existing = json.load(f)
+    # Carry over ensembleWeight from the current entry so a re-run can't
+    # silently change every ensemble prediction (same convention as the Colab
+    # notebook, which documents why: _ensemble_predict skips weights <= 0 and
+    # rescales the rest).
+    previous = next((m for m in existing if m["id"] == "jev_system_one"), {})
     entry = {
         "id": "jev_system_one",
         "name": "JEV System One (Decision Head)",
         "nameFa": "مدل تصمیم سیستم-یک (JEV)",
         "description": (
-            "JEV-style 'System One' decision model: the Persian GPT-2 backbone "
-            "(HooshvareLab/gpt2-fa, last 4 blocks fine-tuned) pooled into three "
-            "typed decision heads answered in a single forward pass -- a choice "
+            "JEV-style 'System One' decision model: the fine-tuned ParsBERT "
+            "encoder (the deployed bidirectional classifier, with its last 4 "
+            "layers adapted further here) pooled on [CLS] into three typed "
+            "decision heads answered in a single forward pass -- a choice "
             "question (human vs AI, as a probability distribution), a score "
             "question (machine-likeness on a 5-level scale, answered as a "
             "probability-weighted value between levels) and a noul question "
-            "(probability that human review is needed). Trained on a stratified "
-            "subsample with soft targets distilled from the TF-IDF + Logistic "
-            "Regression pipeline; excluded from the ensemble because its choice "
-            "head overlaps the GPT-2 classifier."
+            "(probability that human review is needed). Trained on a "
+            "stratified subsample with soft targets distilled from the "
+            "deployed fine-tuned GPT-2 classifier."
         ),
         "descriptionFa": (
-            "مدل تصمیم «سیستم-یک» به سبک JEV: بک‌بون GPT-2 فارسی "
-            "(HooshvareLab/gpt2-fa با فاین‌تیون ۴ بلوک آخر) که بازنمایی تجمیع‌شده "
-            "آن به سه سر تصمیم نوع‌بندی‌شده می‌رود و همه در یک گذر رو به جلو "
-            "پاسخ داده می‌شوند -- سؤال انتخاب (انسان در برابر هوش مصنوعی به شکل "
-            "توزیع احتمال)، سؤال امتیاز (ماشین‌مانندبودن روی طیف ۵ سطحی با مقدار "
-            "وزن‌دار احتمالاتی که می‌تواند بین سطوح بیفتد) و سؤانول (احتمال نیاز "
-            "به بازبینی انسانی). آموزش روی نمونه طبقه‌بندی‌شده‌ای از داده با "
-            "هدف‌های نرم تقطیرشده از خط لوله TF-IDF + رگرسیون لجستیک؛ به دلیل "
-            "هم‌پوشانی سر انتخاب با دسته‌بند GPT-2، از ترکیب مدل‌ها حذف شده است."
+            "مدل تصمیم «سیستم-یک» به سبک JEV: رمزگذار دوسویه ParsBERT "
+            "فاین‌تیون‌شده (همان دسته‌بند دوسویهٔ مستقر که ۴ لایه پایانی آن "
+            "اینجا نیز تطبیق داده شده است) که بازنمایی توکن [CLS] آن به سه سر "
+            "تصمیم نوع‌بندی‌شده می‌رود و همه در یک گذر رو به جلو پاسخ داده "
+            "می‌شوند — سؤال انتخاب (انسان در برابر هوش مصنوعی به شکل توزیع "
+            "احتمال)، سؤال امتیاز (ماشین‌مانندبودن روی طیف ۵ سطحی با مقدار "
+            "وزن‌دار احتمالاتی که می‌تواند بین سطوح بیفتد) و سؤانول (احتمال "
+            "نیاز به بازبینی انسانی). آموزش روی نمونهٔ طبقه‌بندی‌شده‌ای از داده "
+            "با هدف‌های نرم تقطیرشده از دسته‌بند GPT-2 فاین‌تیون‌شدهٔ مستقر."
         ),
-        "algorithm": "GPT2 + typed decision heads (choice/score/noul)",
+        "algorithm": "ParsBERT (fine-tuned encoder) + typed decision heads (choice/score/noul)",
         "type": "dl",
-        "version": "1.0",
+        "version": "2.0",
         "filename": MODEL_PATH,
         "runtime": "pytorch-jev",
-        "ensembleWeight": 0.0,
+        "ensembleWeight": float(previous.get("ensembleWeight", 1.0)),
         "metrics": metrics_for_json,
         "confusionMatrix": {
             "trueNegative": int(tn),
@@ -399,15 +448,15 @@ def main():
             "trainSamples": len(train_records),
             "testSamples": len(test_records),
             "featureCount": hidden_size,
-            "testSplitRatio": len(test_records)
-            / (len(train_records) + len(test_records)),
+            "testSplitRatio": len(test_records) / (len(train_records) + len(test_records)),
             "randomSeed": RANDOM_SEED,
-            "dataset": "processedDataset.csv (JEV JSONL, teacher-distilled soft targets)",
+            "dataset": (
+                "processedDataset.csv (JEV JSONL, soft targets distilled from "
+                "the fine-tuned GPT-2 classifier)"
+            ),
         },
     }
 
-    with open(MODELS_JSON_PATH, encoding="utf-8") as f:
-        existing = json.load(f)
     existing = [m for m in existing if m["id"] != entry["id"]]
     existing.append(entry)
     with open(MODELS_JSON_PATH, "w", encoding="utf-8") as f:

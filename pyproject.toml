@@ -1,0 +1,29 @@
+# Unified code style for all Python code in this repo (server, utils, training).
+# Enforce with:  uvx ruff format .  &&  uvx ruff check --fix .
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+# Python only: ruff's default include also picks up Markdown (e.g. vendored
+# docs under web-app/.agents), which must not be rewritten by the formatter.
+include = ["*.py", "*.pyi"]
+extend-exclude = ["*.ipynb"]
+
+[tool.ruff.lint]
+select = [
+    "E4",  # pycodestyle errors
+    "E7",  # pycodestyle (comparison/statements)
+    "E9",  # runtime errors (syntax, undefined names)
+    "F",   # pyflakes
+    "I",   # import sorting
+    "W",   # whitespace
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+    "RUF", # ruff-specific rules
+]
+ignore = [
+    # Persian text is legitimate here, not a confusable-unicode typo.
+    "RUF001", "RUF002", "RUF003",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["utils", "split", "preprocess_cache"]

@@ -243,41 +243,75 @@
     }
   },
   {
-    "id": "jev_system_one",
-    "name": "JEV System One (Decision Head)",
-    "nameFa": "مدل تصمیم سیستم-یک (JEV)",
-    "description": "JEV-style 'System One' decision model: the Persian GPT-2 backbone (HooshvareLab/gpt2-fa, last 4 blocks fine-tuned) pooled into three typed decision heads answered in a single forward pass -- a choice question (human vs AI, as a probability distribution), a score question (machine-likeness on a 5-level scale, answered as a probability-weighted value between levels) and a noul question (probability that human review is needed). Trained on a stratified subsample with soft targets distilled from the TF-IDF + Logistic Regression pipeline; excluded from the ensemble because its choice head overlaps the GPT-2 classifier.",
-    "descriptionFa": "مدل تصمیم «سیستم-یک» به سبک JEV: بک‌بون GPT-2 فارسی (HooshvareLab/gpt2-fa با فاین‌تیون ۴ بلوک آخر) که بازنمایی تجمیع‌شده آن به سه سر تصمیم نوع‌بندی‌شده می‌رود و همه در یک گذر رو به جلو پاسخ داده می‌شوند -- سؤال انتخاب (انسان در برابر هوش مصنوعی به شکل توزیع احتمال)، سؤال امتیاز (ماشین‌مانندبودن روی طیف ۵ سطحی با مقدار وزن‌دار احتمالاتی که می‌تواند بین سطوح بیفتد) و سؤانول (احتمال نیاز به بازبینی انسانی). آموزش روی نمونه طبقه‌بندی‌شده‌ای از داده با هدف‌های نرم تقطیرشده از خط لوله TF-IDF + رگرسیون لجستیک؛ به دلیل هم‌پوشانی سر انتخاب با دسته‌بند GPT-2، از ترکیب مدل‌ها حذف شده است.",
-    "algorithm": "GPT2 + typed decision heads (choice/score/noul)",
+    "id": "parsbert",
+    "name": "ParsBERT (Bidirectional Encoder)",
+    "nameFa": "پارس‌برت (رمزگذار دوسویه)",
+    "description": "ParsBERT (HooshvareLab/bert-fa-base-uncased) fine-tuned end to end as a bidirectional sequence classifier with [CLS] pooling, on a Colab GPU over the full dataset with mixed precision and validation-based early stopping. Unlike the causal GPT-2 classifier, every token attends to the whole sequence and a dedicated [CLS] position summarizes it.",
+    "descriptionFa": "پارس‌برت (HooshvareLab/bert-fa-base-uncased) که به‌طور کامل روی کل مجموعه داده و با استفاده از GPU، دقت مختلط و توقف زودهنگام مبتنی بر اعتبارسنجی، به‌عنوان یک دسته‌بند دوسویه فاین‌تیون شده است. برخلاف دسته‌بند علّی GPT-2، در اینجا هر توکن به کل توالی توجه می‌کند و توکن اختصاصی [CLS] خلاصهٔ توالی را نمایندگی می‌کند.",
+    "algorithm": "BertModel + linear head on [CLS]",
     "type": "dl",
-    "version": "1.0",
-    "filename": "jevModel.pt",
-    "runtime": "pytorch-jev",
+    "version": "2.0",
+    "filename": "parsbertClassifierModel.pt",
+    "runtime": "pytorch-parsbert",
     "ensembleWeight": 1.0,
     "metrics": {
-      "accuracy": 0.984,
-      "precision": 0.9853,
-      "recall": 0.9827,
-      "f1Score": 0.984,
-      "scoreMae": 0.1212,
-      "noulAuc": 0.6079,
-      "choiceEce": 0.0182,
-      "noulAveragePrecision": 0.0246
+      "accuracy": 0.9983,
+      "precision": 0.9981,
+      "recall": 0.9986,
+      "f1Score": 0.9983
     },
     "confusionMatrix": {
-      "trueNegative": 739,
-      "falsePositive": 11,
-      "falseNegative": 13,
-      "truePositive": 737
+      "trueNegative": 2106,
+      "falsePositive": 4,
+      "falseNegative": 3,
+      "truePositive": 2106
     },
     "training": {
-      "totalSamples": 7500,
-      "trainSamples": 6000,
-      "testSamples": 1500,
+      "totalSamples": 21092,
+      "trainSamples": 15185,
+      "testSamples": 4219,
       "featureCount": 768,
       "testSplitRatio": 0.2,
       "randomSeed": 42,
-      "dataset": "processedDataset.csv (JEV JSONL, teacher-distilled soft targets)"
+      "dataset": "processedDataset.csv"
+    }
+  },
+  {
+    "id": "jev_system_one",
+    "name": "JEV System One (Decision Head)",
+    "nameFa": "مدل تصمیم سیستم-یک (JEV)",
+    "description": "JEV-style 'System One' decision model: the Persian GPT-2 backbone (HooshvareLab/gpt2-fa, last 4 blocks fine-tuned) pooled into three typed decision heads answered in a single forward pass -- a choice question (human vs AI, as a probability distribution), a score question (machine-likeness on a 5-level scale, answered as a probability-weighted value between levels) and a noul question (probability that human review is needed). Trained on soft targets distilled from the deployed TF-IDF + Logistic Regression pipeline.",
+    "descriptionFa": "مدل تصمیم «سیستم-یک» به سبک JEV: بک‌بون GPT-2 فارسی (HooshvareLab/gpt2-fa با فاین‌تیون ۴ بلوک آخر) که بازنمایی تجمیع‌شده آن به سه سر تصمیم نوع‌بندی‌شده می‌رود و همه در یک گذر رو به جلو پاسخ داده می‌شوند — سؤال انتخاب (انسان در برابر هوش مصنوعی به شکل توزیع احتمال)، سؤال امتیاز (ماشین‌ماندبودن روی طیف ۵ سطحی با مقدار وزن‌دار احتمالاتی که می‌تواند بین سطوح بیفتد) و سؤانول (احتمال نیاز به بازبینی انسانی). آموزش با هدف‌های نرم تقطیرشده از خط لولهٔ TF-IDF + رگرسیون لجستیکِ مستقر.",
+    "algorithm": "GPT2 + typed decision heads (choice/score/noul)",
+    "type": "dl",
+    "version": "2.0",
+    "filename": "jevModel.pt",
+    "runtime": "pytorch-jev",
+    "ensembleWeight": 0.6,
+    "metrics": {
+      "accuracy": 0.9964,
+      "precision": 0.9986,
+      "recall": 0.9943,
+      "f1Score": 0.9964,
+      "scoreMae": 0.1,
+      "choiceEce": 0.0665,
+      "noulAuc": 0.8754,
+      "noulAveragePrecision": 0.5497
+    },
+    "confusionMatrix": {
+      "trueNegative": 2107,
+      "falsePositive": 3,
+      "falseNegative": 12,
+      "truePositive": 2097
+    },
+    "training": {
+      "totalSamples": 19404,
+      "trainSamples": 13666,
+      "testSamples": 4219,
+      "featureCount": 768,
+      "testSplitRatio": 0.21742939600082456,
+      "randomSeed": 42,
+      "dataset": "processedDataset.csv (JEV records, teacher-distilled soft targets)"
     }
   }
 ]

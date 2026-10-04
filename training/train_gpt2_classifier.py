@@ -60,9 +60,7 @@ class GPT2Classifier(nn.Module):
         self.head = nn.Linear(hidden_size, 1)
 
     def forward(self, input_ids, attention_mask):
-        hidden = self.backbone(
-            input_ids=input_ids, attention_mask=attention_mask
-        ).last_hidden_state
+        hidden = self.backbone(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
         last_idx = attention_mask.sum(dim=1) - 1
         pooled = hidden[torch.arange(hidden.size(0)), last_idx]
         return self.head(pooled).squeeze(-1)
@@ -71,9 +69,7 @@ class GPT2Classifier(nn.Module):
 def subsample(indices, labels, n, seed):
     if n >= len(indices):
         return indices
-    sub, _ = train_test_split(
-        indices, train_size=n, random_state=seed, stratify=labels[indices]
-    )
+    sub, _ = train_test_split(indices, train_size=n, random_state=seed, stratify=labels[indices])
     return sub
 
 

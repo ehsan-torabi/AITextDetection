@@ -49,9 +49,7 @@ def build_or_load_cache():
     df = pd.read_csv(DATASET_PATH)
     num_cores = multiprocessing.cpu_count()
     print(f"Tokenizing {len(df)} documents on {num_cores} cores...")
-    tokenized = Parallel(n_jobs=num_cores)(
-        delayed(tokenize)(text) for text in tqdm(df["text"])
-    )
+    tokenized = Parallel(n_jobs=num_cores)(delayed(tokenize)(text) for text in tqdm(df["text"]))
     joblib.dump(tokenized, CACHE_PATH)
     return tokenized
 

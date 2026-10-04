@@ -33,7 +33,7 @@ async def detect(request: DetectionRequest):
     try:
         return utils.detection(request.text, request.modelId)
     except ValueError as exc:
-        raise HTTPException(status_code=400, detail=str(exc))
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
 _INTERNAL_FIELDS = {"filename", "runtime", "vectorizer"}

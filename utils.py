@@ -11,8 +11,8 @@ import torch
 import torch.nn as nn
 from pydantic import BaseModel
 from scipy.sparse import hstack
-from shekar import Normalizer, WordTokenizer, Lemmatizer, SentenceTokenizer
-from shekar.preprocessing import EmojiRemover, PunctuationRemover, NonPersianRemover
+from shekar import Lemmatizer, Normalizer, SentenceTokenizer, WordTokenizer
+from shekar.preprocessing import EmojiRemover, NonPersianRemover, PunctuationRemover
 from sklearn.metrics.pairwise import cosine_similarity
 from transformers import AutoModel, AutoTokenizer, BertConfig
 
@@ -143,9 +143,7 @@ class BiLSTMClassifier(nn.Module):
     def __init__(self, vocab_size, embed_dim, hidden_dim, pad_idx=0):
         super().__init__()
         self.embedding = nn.Embedding(vocab_size, embed_dim, padding_idx=pad_idx)
-        self.lstm = nn.LSTM(
-            embed_dim, hidden_dim, batch_first=True, bidirectional=True
-        )
+        self.lstm = nn.LSTM(embed_dim, hidden_dim, batch_first=True, bidirectional=True)
         self.dropout = nn.Dropout(0.3)
         self.fc = nn.Linear(hidden_dim * 2, 1)
 
@@ -166,9 +164,7 @@ class GPT2Classifier(nn.Module):
         self.head = nn.Linear(hidden_size, 1)
 
     def forward(self, input_ids, attention_mask):
-        hidden = self.backbone(
-            input_ids=input_ids, attention_mask=attention_mask
-        ).last_hidden_state
+        hidden = self.backbone(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
         last_idx = attention_mask.sum(dim=1) - 1
         pooled = hidden[torch.arange(hidden.size(0)), last_idx]
         return self.head(pooled).squeeze(-1)
@@ -183,35 +179,42 @@ class ParsBERTClassifier(nn.Module):
         self.head = nn.Linear(hidden_size, 1)
 
     def forward(self, input_ids, attention_mask):
-        hidden = self.backbone(
-            input_ids=input_ids, attention_mask=attention_mask
-        ).last_hidden_state
+        hidden = self.backbone(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
         cls_repr = hidden[:, 0]
         return self.head(cls_repr).squeeze(-1)
 
 
 class JevDecisionModel(nn.Module):
-    """JEV-style 'System One' decision model: GPT2 backbone (causal, pooled on
-    the last real token) whose pooled representation feeds three typed decision
-    heads -- choice (distribution over candidate answers), score (distribution
-    over an ordinal scale, answered as a probability-weighted value) and noul
-    (yes/no probability). All heads are scored in one forward pass. Must match
+    """JEV-style 'System One' decision model: a pretrained-transformer backbone
+    whose pooled representation feeds three typed decision heads -- choice
+    (distribution over candidate answers), score (distribution over an ordinal
+    scale, answered as a probability-weighted value) and noul (yes/no
+    probability). All heads are scored in one forward pass. Current checkpoints
+    pool the bidirectional ParsBERT backbone on [CLS]; legacy checkpoints pooled
+    a causal GPT-2 backbone on the last real token, so pooling is selected by
+    the pool_on_cls flag the loader sets from the checkpoint format. Must match
     training/train_jev.py exactly so the saved state_dict loads correctly."""
 
-    def __init__(self, backbone, hidden_size, n_choice, n_score_levels):
+    def __init__(self, backbone, hidden_size, n_choice, n_score_levels, pool_on_cls):
         super().__init__()
         self.backbone = backbone
+        self.pool_on_cls = pool_on_cls
         self.dropout = nn.Dropout(0.1)
         self.choice_head = nn.Linear(hidden_size, n_choice)
         self.score_head = nn.Linear(hidden_size, n_score_levels)
         self.noul_head = nn.Linear(hidden_size, 1)
 
     def forward(self, input_ids, attention_mask):
-        hidden = self.backbone(
-            input_ids=input_ids, attention_mask=attention_mask
-        ).last_hidden_state
-        last_idx = attention_mask.sum(dim=1) - 1
-        pooled = hidden[torch.arange(hidden.size(0)), last_idx]
+        hidden = self.backbone(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
+        if self.pool_on_cls:
+            # [CLS] is always token position 0 for a BERT-style encoder: every
+            # position already attends to the whole sequence, so unlike the
+            # causal GPT-2 branch below there is no attention-mask index
+            # arithmetic needed to find "the token that saw everything".
+            pooled = hidden[:, 0]
+        else:
+            last_idx = attention_mask.sum(dim=1) - 1
+            pooled = hidden[torch.arange(hidden.size(0)), last_idx]
         pooled = self.dropout(pooled)
         return (
             self.choice_head(pooled),
@@ -308,25 +311,46 @@ def _load_gpt2_model(md: dict):
 
 
 def _load_jev_model(md: dict):
-    # Deliberately NOT using _load_gpt2_backbone(): that helper hands every
-    # pytorch-gpt2 model the SAME backbone object, and load_state_dict copies
-    # weights into it in place -- a second checkpoint would silently overwrite
-    # the first model's fine-tuned blocks. JEV therefore loads its own private
-    # backbone copy from the pickle (~500 MB extra RAM).
-    with open("gpt2-fa.mdl", "rb") as f:
-        lm = pickle.load(f)
     checkpoint = torch.load(md["filename"], map_location="cpu", weights_only=False)
     config = checkpoint["config"]
-    model = JevDecisionModel(
-        lm.transformer,
-        hidden_size=config["hidden_size"],
-        n_choice=config.get("n_choice", 2),
-        n_score_levels=config.get("n_score_levels", 5),
-    )
-    model.load_state_dict(checkpoint["state_dict"])
-    model.eval()
-    _get_gpt2_tokenizer()
-    return {"model": model, "config": config}
+    if "backbone_config" in config:
+        # ParsBERT-backed checkpoint (training/train_jev.py): self-contained --
+        # the encoder is rebuilt from the stored config (no pretrained
+        # download, same recipe as _load_parsbert_model) and the fine-tuned
+        # weights (backbone + heads) come from the state_dict. Pooled on [CLS].
+        backbone = AutoModel.from_config(BertConfig.from_dict(config["backbone_config"]))
+        model = JevDecisionModel(
+            backbone,
+            hidden_size=config["hidden_size"],
+            n_choice=config.get("n_choice", 2),
+            n_score_levels=config.get("n_score_levels", 5),
+            pool_on_cls=True,
+        )
+        model.load_state_dict(checkpoint["state_dict"])
+        model.eval()
+        tokenizer = _load_parsbert_tokenizer()
+    else:
+        # Legacy GPT-2-backed checkpoint (pre-ParsBERT-base JEV), pooled on the
+        # last real token. Removable once a retrained checkpoint replaces
+        # jevModel.pt. Deliberately NOT using _load_gpt2_backbone(): that
+        # helper hands every pytorch-gpt2 model the SAME backbone object, and
+        # load_state_dict copies weights into it in place -- a second
+        # checkpoint would silently overwrite the first model's fine-tuned
+        # blocks. JEV therefore loads its own private backbone copy from the
+        # pickle (~500 MB extra RAM).
+        with open("gpt2-fa.mdl", "rb") as f:
+            lm = pickle.load(f)
+        model = JevDecisionModel(
+            lm.transformer,
+            hidden_size=config["hidden_size"],
+            n_choice=config.get("n_choice", 2),
+            n_score_levels=config.get("n_score_levels", 5),
+            pool_on_cls=False,
+        )
+        model.load_state_dict(checkpoint["state_dict"])
+        model.eval()
+        tokenizer = _get_gpt2_tokenizer()
+    return {"model": model, "config": config, "tokenizer": tokenizer}
 
 
 _parsbert_tokenizer = None
@@ -341,9 +365,7 @@ def _load_parsbert_tokenizer():
         if os.path.isdir("parsbert_tokenizer"):
             _parsbert_tokenizer = AutoTokenizer.from_pretrained("parsbert_tokenizer")
         else:
-            _parsbert_tokenizer = AutoTokenizer.from_pretrained(
-                "HooshvareLab/bert-fa-base-uncased"
-            )
+            _parsbert_tokenizer = AutoTokenizer.from_pretrained("HooshvareLab/bert-fa-base-uncased")
     return _parsbert_tokenizer
 
 
@@ -374,7 +396,7 @@ _LOADERS = {
 
 def init() -> None:
     """Load the vectorizer and all models once at startup."""
-    global vectorizer, models_cache, models_dict
+    global vectorizer, models_dict
 
     vectorizer = joblib.load("tfidf_vectorizer.joblib")
     with open("models.json", encoding="utf-8") as f:
@@ -452,7 +474,9 @@ def pattern_repetition(text: str, n: int = 3) -> float:
     tokens = list(WordTokenizer().tokenize(text))
     if len(tokens) < n:
         return 0.0
-    ngrams = zip(*[tokens[i:] for i in range(n)])
+    # The shifted slices intentionally have different lengths (n-gram windows);
+    # strict=False is required, strict=True would raise.
+    ngrams = zip(*[tokens[i:] for i in range(n)], strict=False)
     ngram_counts = Counter(" ".join(ngram) for ngram in ngrams)
     if not ngram_counts:
         return 0.0
@@ -467,8 +491,7 @@ def text_coherence(text: str) -> float:
         return 1.0
     matrix = vectorizer.transform(sentences)
     similarities = [
-        float(cosine_similarity(matrix[i], matrix[i + 1])[0][0])
-        for i in range(matrix.shape[0] - 1)
+        float(cosine_similarity(matrix[i], matrix[i + 1])[0][0]) for i in range(matrix.shape[0] - 1)
     ]
     return min(max(float(np.mean(similarities)), 0.0), 1.0)
 
@@ -594,27 +617,36 @@ def _predict_jev(bundle, text: str, cleaned_text: str, style_features: dict) -> 
     turns it into the typed-answer block of the response."""
     model = bundle["model"]
     config = bundle["config"]
+    tokenizer = bundle["tokenizer"]
     normalized = _normalize_for_gpt2(text)
-    # Same slow-tokenizer guard as _predict_gpt2: pre-truncate at the
-    # character level (generous bound for seq_len tokens in Persian).
-    char_budget = config["seq_len"] * 8
-    enc = _get_gpt2_tokenizer()(
-        normalized[:char_budget],
-        return_tensors="pt",
-        truncation=True,
-        max_length=config["seq_len"],
-        padding="max_length",
-    )
-    with torch.no_grad():
-        choice_logits, score_logits, noul_logit = model(
-            enc["input_ids"], enc["attention_mask"]
+    if "backbone_config" in config:
+        # BERT-backed checkpoint: fast WordPiece tokenizer, same encode path
+        # as _predict_parsbert (no character pre-truncation needed).
+        enc = tokenizer(
+            normalized,
+            return_tensors="pt",
+            truncation=True,
+            max_length=config["seq_len"],
+            padding="max_length",
         )
+    else:
+        # Legacy GPT-2-backed checkpoint: same slow-tokenizer guard as
+        # _predict_gpt2 -- pre-truncate at the character level (generous
+        # bound for seq_len tokens in Persian).
+        char_budget = config["seq_len"] * 8
+        enc = tokenizer(
+            normalized[:char_budget],
+            return_tensors="pt",
+            truncation=True,
+            max_length=config["seq_len"],
+            padding="max_length",
+        )
+    with torch.no_grad():
+        choice_logits, score_logits, noul_logit = model(enc["input_ids"], enc["attention_mask"])
         choice_probs = torch.softmax(choice_logits, dim=-1)[0]
         score_probs = torch.softmax(score_logits, dim=-1)[0]
         noul_prob = torch.sigmoid(noul_logit)[0]
-    score_value = float(
-        (score_probs * torch.arange(len(score_probs), dtype=torch.float32)).sum()
-    )
+    score_value = float((score_probs * torch.arange(len(score_probs), dtype=torch.float32)).sum())
     return {
         # choice probabilities follow JEV_CHOICE_CANDIDATES order
         # (index 1 == "ai_generated")
@@ -635,9 +667,7 @@ _PREDICTORS = {
 }
 
 
-def _predict_single(
-    model_id: str, text: str, cleaned_text: str, style_features: dict
-):
+def _predict_single(model_id: str, text: str, cleaned_text: str, style_features: dict):
     """Run one model: returns its AI probability as a float, except the JEV
     decision model which returns the full typed-answers dict."""
     bundle = models_cache[model_id]
@@ -724,11 +754,15 @@ def _ensemble_predict(
     for model_id, md in models_dict.items():
         weight = float(md.get("ensembleWeight", 1.0))
         if weight <= 0.0:
-            # Excluded from the vote (jev_system_one: its choice question
-            # overlaps the fine-tuned GPT-2 classifier and would double that
-            # backbone's latency for no extra diversity).
+            # Models can opt out of the vote via "ensembleWeight": 0.
             continue
-        ai_prob = _predict_single(model_id, text, cleaned_text, style_features)
+        result = _predict_single(model_id, text, cleaned_text, style_features)
+        if isinstance(result, dict):
+            # pytorch-jev returns the full typed-answers dict; vote with its
+            # choice-question probability, same as detection() does.
+            ai_prob = result["aiProbability"]
+        else:
+            ai_prob = result
         weighted_sum += ai_prob * weight
         weight_total += weight
         votes.append(
@@ -776,9 +810,7 @@ def detection(text: str, model_id: str) -> DetectionResponse:
     ensemble_votes = None
     typed_answers = None
     if is_ensemble:
-        is_ai, confidence, ensemble_votes = _ensemble_predict(
-            text, cleaned_text, style_features
-        )
+        is_ai, confidence, ensemble_votes = _ensemble_predict(text, cleaned_text, style_features)
     else:
         result = _predict_single(model_id, text, cleaned_text, style_features)
         if isinstance(result, dict):

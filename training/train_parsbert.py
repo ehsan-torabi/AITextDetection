@@ -75,9 +75,7 @@ class ParsBertClassifier(nn.Module):
         self.head = nn.Linear(hidden_size, 1)
 
     def forward(self, input_ids, attention_mask):
-        hidden = self.backbone(
-            input_ids=input_ids, attention_mask=attention_mask
-        ).last_hidden_state
+        hidden = self.backbone(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
         cls_repr = hidden[:, 0]
         return self.head(cls_repr).squeeze(-1)
 
@@ -85,9 +83,7 @@ class ParsBertClassifier(nn.Module):
 def subsample(indices, labels, n, seed):
     if n >= len(indices):
         return indices
-    sub, _ = train_test_split(
-        indices, train_size=n, random_state=seed, stratify=labels[indices]
-    )
+    sub, _ = train_test_split(indices, train_size=n, random_state=seed, stratify=labels[indices])
     return sub
 
 
@@ -134,7 +130,7 @@ def main():
     normalize_start = time.time()
     needed = np.concatenate([train_idx, test_idx])
     raw = df["text"].to_numpy()[needed]
-    texts = {int(i): utils._normalize_for_gpt2(str(t)) for i, t in zip(needed, raw)}
+    texts = {int(i): utils._normalize_for_gpt2(str(t)) for i, t in zip(needed, raw, strict=True)}
     print(f"Normalized {len(texts)} texts in {time.time() - normalize_start:.0f}s")
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

@@ -56,9 +56,7 @@ class BiLSTMClassifier(nn.Module):
     def __init__(self, vocab_size, embed_dim, hidden_dim):
         super().__init__()
         self.embedding = nn.Embedding(vocab_size, embed_dim, padding_idx=PAD_IDX)
-        self.lstm = nn.LSTM(
-            embed_dim, hidden_dim, batch_first=True, bidirectional=True
-        )
+        self.lstm = nn.LSTM(embed_dim, hidden_dim, batch_first=True, bidirectional=True)
         self.dropout = nn.Dropout(0.3)
         self.fc = nn.Linear(hidden_dim * 2, 1)
 
@@ -105,19 +103,13 @@ def main():
     vocab = build_vocab(train_tokens)
     print(f"Vocab size: {len(vocab)}")
 
-    X_train = torch.tensor(
-        [encode(t, vocab) for t in train_tokens], dtype=torch.long
-    )
+    X_train = torch.tensor([encode(t, vocab) for t in train_tokens], dtype=torch.long)
     X_test = torch.tensor([encode(t, vocab) for t in test_tokens], dtype=torch.long)
     y_train_t = torch.tensor(y_train, dtype=torch.float32)
     y_test_t = torch.tensor(y_test, dtype=torch.float32)
 
-    train_loader = DataLoader(
-        TextDataset(X_train, y_train_t), batch_size=BATCH_SIZE, shuffle=True
-    )
-    test_loader = DataLoader(
-        TextDataset(X_test, y_test_t), batch_size=256, shuffle=False
-    )
+    train_loader = DataLoader(TextDataset(X_train, y_train_t), batch_size=BATCH_SIZE, shuffle=True)
+    test_loader = DataLoader(TextDataset(X_test, y_test_t), batch_size=256, shuffle=False)
 
     device = torch.device("cpu")
     torch.set_num_threads(6)  # leave headroom for the concurrent GPT-2 job

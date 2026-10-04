@@ -63,7 +63,7 @@ def training_info(feature_count, train_idx, test_idx):
 
 
 def main():
-    X_train, X_test, y_train, y_test, df, train_idx, test_idx = load_tfidf_split()
+    X_train, X_test, y_train, y_test, _, train_idx, test_idx = load_tfidf_split()
     full_feature_count = X_train.shape[1]
 
     new_entries = []
