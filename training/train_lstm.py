@@ -5,8 +5,14 @@ Run from the project root: python training/train_lstm.py
 """
 
 import json
+import sys
 import time
 from collections import Counter
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 import numpy as np
 import torch
@@ -20,11 +26,14 @@ from sklearn.metrics import (
 )
 from torch.utils.data import DataLoader, Dataset
 
+from aitextd import paths
+from aitextd.architectures import BiLSTMClassifier
 from preprocess_cache import build_or_load_cache
 from split import RANDOM_SEED, TEST_SIZE, load_split
 
-MODELS_JSON_PATH = "models.json"
-MODEL_PATH = "lstmModel.pt"
+MODELS_JSON_PATH = paths.MODELS_JSON
+MODEL_FILENAME = "lstmModel.pt"
+MODEL_PATH = paths.model_path(MODEL_FILENAME)
 
 MAX_VOCAB_SIZE = 30_000
 MIN_FREQ = 2
@@ -50,23 +59,6 @@ class TextDataset(Dataset):
 
     def __getitem__(self, idx):
         return self.sequences[idx], self.labels[idx]
-
-
-class BiLSTMClassifier(nn.Module):
-    def __init__(self, vocab_size, embed_dim, hidden_dim):
-        super().__init__()
-        self.embedding = nn.Embedding(vocab_size, embed_dim, padding_idx=PAD_IDX)
-        self.lstm = nn.LSTM(embed_dim, hidden_dim, batch_first=True, bidirectional=True)
-        self.dropout = nn.Dropout(0.3)
-        self.fc = nn.Linear(hidden_dim * 2, 1)
-
-    def forward(self, x):
-        emb = self.embedding(x)
-        _, (h_n, _) = self.lstm(emb)
-        # h_n: (num_directions, batch, hidden_dim) -> concat last layer's fwd/bwd
-        h = torch.cat([h_n[-2], h_n[-1]], dim=1)
-        h = self.dropout(h)
-        return self.fc(h).squeeze(-1)
 
 
 def build_vocab(train_tokens):
@@ -211,7 +203,7 @@ def main():
         "algorithm": "BiLSTM",
         "type": "dl",
         "version": "1.0",
-        "filename": MODEL_PATH,
+        "filename": MODEL_FILENAME,
         "runtime": "pytorch-lstm",
         "metrics": metrics,
         "confusionMatrix": confusion,

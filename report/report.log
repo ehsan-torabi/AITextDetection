@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.10.5)  5 OCT 2026 02:39
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.10.5)  6 OCT 2026 00:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -692,11 +692,11 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip58
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 68.
+Package hyperref Info: Option `colorlinks' set `true' on input line 70.
 
 
 Package hyperref Warning: Option `hyperfootnotes' has already been used,
-(hyperref)                setting the option has no effect on input line 68.
+(hyperref)                setting the option has no effect on input line 70.
 
 (/home/ehsan/texmf/tex/latex/xepersian.sty
 Package: xepersian 2025/02/02 v25.2.2 (Release Persian Gate) Persian typesettin
@@ -1067,7 +1067,7 @@ Package fontspec Info:
 (fontspec)             Serif/BI/OT:script=latn;language=dflt;mapping=tex-text;"
 
 
-LaTeX Info: Redefining \latinfont on input line 126.
+LaTeX Info: Redefining \latinfont on input line 128.
 
 Package fontspec Info: 
 (fontspec)             Font family 'XBZar(1)' created for font 'XB Zar' with
@@ -1105,7 +1105,7 @@ Package fontspec Info:
 (fontspec)             Zar.ttf]/OT:script=latn;language=dflt;embolden=2.5;"
 
 Package unicode-persianmath Info: DefiningthedefaultPersianmathdigitsfontas'XB 
-Zar' on input line 132.
+Zar' on input line 134.
 \sympersianoperators=\mathgroup8
 \sympersianoperatorsbf=\mathgroup9
 \sympersianoperatorsit=\mathgroup10
@@ -1116,26 +1116,26 @@ or XeTeX engine
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 156.
-LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 158.
+LaTeX Font Info:    ... okay on input line 158.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 158.
+LaTeX Font Info:    ... okay on input line 158.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 158.
+LaTeX Font Info:    ... okay on input line 158.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 158.
+LaTeX Font Info:    ... okay on input line 158.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 158.
+LaTeX Font Info:    ... okay on input line 158.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 158.
+LaTeX Font Info:    ... okay on input line 158.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 158.
+LaTeX Font Info:    ... okay on input line 158.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 158.
+LaTeX Font Info:    ... okay on input line 158.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 158.
+LaTeX Font Info:    ... okay on input line 158.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 158.
+LaTeX Font Info:    ... okay on input line 158.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1171,15 +1171,15 @@ LaTeX Font Info:    ... okay on input line 156.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 156.
-Package microtype Info: Applying patch `item' on input line 156.
-Package microtype Info: Applying patch `toc' on input line 156.
-Package microtype Info: Applying patch `eqnum' on input line 156.
+LaTeX Info: Redefining \microtypecontext on input line 158.
+Package microtype Info: Applying patch `item' on input line 158.
+Package microtype Info: Applying patch `toc' on input line 158.
+Package microtype Info: Applying patch `eqnum' on input line 158.
 
-Package microtype Warning: Unable to apply patch `footnote' on input line 156.
+Package microtype Warning: Unable to apply patch `footnote' on input line 158.
 
-Package microtype Info: Applying patch `verbatim' on input line 156.
-LaTeX Info: Redefining \microtypesetup on input line 156.
+Package microtype Info: Applying patch `verbatim' on input line 158.
+LaTeX Info: Redefining \microtypesetup on input line 158.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
@@ -1448,7 +1448,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 156.
+Package hyperref Info: Link coloring ON on input line 158.
 (./report.out) (./report.out)
 \@outlinefile=\write4
 \openout4 = `report.out'.
@@ -1458,75 +1458,9 @@ Package hyperref Info: Link coloring ON on input line 156.
 ] [2
 
 ]
-LaTeX Font Info:    Calculating math sizes for size <13> on input line 187.
-LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 187.
-
-(/usr/share/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
-File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `ztmcm' (encoding: OT1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
-LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 187.
-
-(/usr/share/texmf-dist/tex/latex/psnfss/omlztmcm.fd
-File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
-)
-LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 187.
-
-(/usr/share/texmf-dist/tex/latex/psnfss/omsztmcm.fd
-File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
-)
-LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 187.
-
-(/usr/share/texmf-dist/tex/latex/psnfss/omxztmcm.fd
-File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
-)
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
-87.
-
-(/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
-File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-)
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 187.
-
-(/usr/share/texmf-dist/tex/latex/microtype/mt-ptm.cfg
-File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
-)
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9.62007> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 187.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.80008> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 187.
-
-(/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
-File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
-)
-(/usr/share/texmf-dist/tex/latex/microtype/mt-msb.cfg
-File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-)
-LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <13> not available
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 18
-7.
-LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <9.62007> not availab
-le
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 18
-7.
-LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <7.80008> not availab
-le
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 18
-7.
-
-
-LaTeX Font Warning: Font shape `TU/XBZar(2)/m/it' undefined
-(Font)              using `TU/XBZar(2)/m/n' instead on input line 187.
-
-[3
+File: logo.png Graphic file (type bmp)
+<logo.png>
+ [3
 
 ]
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1536,7 +1470,76 @@ Package microtype Info: Loading generic protrusion settings for font family
  [1
 
 
-] (./report.toc [2
+] (./report.toc
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 4.
+LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
+ 4.
+
+(/usr/share/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
+File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `ztmcm' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
+ 4.
+
+(/usr/share/texmf-dist/tex/latex/psnfss/omlztmcm.fd
+File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
+)
+LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
+ 4.
+
+(/usr/share/texmf-dist/tex/latex/psnfss/omsztmcm.fd
+File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
+)
+LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
+ 4.
+
+(/usr/share/texmf-dist/tex/latex/psnfss/omxztmcm.fd
+File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
+)
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 4
+.
+
+(/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
+
+(/usr/share/texmf-dist/tex/latex/microtype/mt-ptm.cfg
+File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9.62007> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.80008> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
+
+(/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+(/usr/share/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <13> not available
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 4.
+
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <9.62007> not availab
+le
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 4.
+
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <7.80008> not availab
+le
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 4.
+
+
+
+LaTeX Font Warning: Font shape `TU/XBZar(2)/m/it' undefined
+(Font)              using `TU/XBZar(2)/m/n' instead on input line 4.
+
+[2
 
 ] [3])
 \tf@toc=\write5
@@ -1555,30 +1558,30 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 372.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 376.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 372.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 376.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 372.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 376.
 LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <8> not available
 (Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 37
-2.
+6.
 LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <6> not available
 (Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 37
-2.
+6.
 LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <5> not available
 (Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 37
-2.
+6.
  [2] [3]
 فصل 2.
 
-Underfull \hbox (badness 2875) in paragraph at lines 391--396
+Underfull \hbox (badness 2875) in paragraph at lines 395--400
 []\TU/XBZar(0)/m/n/13 نمونه‌های کلاس هوش مصنوعی نمونه‌برداری تصادفی انجام شده ا
 ست. مجموعهٔ نهایی[]
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 415--419
+Underfull \hbox (badness 1616) in paragraph at lines 419--423
 []\TU/XBZar(0)/m/n/13 بخش هوش‌مصنوعی مجموعه داده (\TU/lmtt/m/n/13 persian_ai_ge
 nerated_final.csv\TU/XBZar(0)/m/n/13 ) را خط‌لولهٔ[]
  []
@@ -1586,7 +1589,7 @@ nerated_final.csv\TU/XBZar(0)/m/n/13 ) را خط‌لولهٔ[]
 [4
 
 ]
-Underfull \hbox (badness 5726) in paragraph at lines 428--433
+Underfull \hbox (badness 5726) in paragraph at lines 432--437
 []\TU/XBZar(0)/m/n/13 ([]\TU/LiberationSerif(0)/m/n/13 conversational_blog[]\TU
 /XBZar(0)/m/n/13 )، پاسخ پرسش‌وپاسخی گام‌به‌گام ([]\TU/LiberationSerif(0)/m/n/1
 3 qa_explainer[]\TU/XBZar(0)/m/n/13 )، متن[]
@@ -1595,14 +1598,14 @@ Underfull \hbox (badness 5726) in paragraph at lines 428--433
 [5] [6]
 فصل 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 493--496
+Underfull \hbox (badness 10000) in paragraph at lines 496--499
 [][]\TU/XBZar(0)/b/n/13 نرمال‌سازی ([]\TU/LiberationSerif(0)/b/n/13 Normalizer[
 ]\TU/XBZar(0)/b/n/13 )\TU/XBZar(0)/m/n/13 : یکسان‌سازی حروف عربی/فارسی، نرمال‌س
 ازی[]
  []
 
 
-Underfull \hbox (badness 3209) in paragraph at lines 493--496
+Underfull \hbox (badness 3209) in paragraph at lines 496--499
 []\TU/XBZar(0)/m/n/13 ارقام، نرمال‌سازی نشانه‌گذاری، حذف اعراب، نرمال‌سازی حروف
  تکراری (مانند[]
  []
@@ -1610,7 +1613,7 @@ Underfull \hbox (badness 3209) in paragraph at lines 493--496
 [7
 
 ]
-Underfull \hbox (badness 3568) in paragraph at lines 537--548
+Underfull \hbox (badness 3568) in paragraph at lines 540--551
 [][]\TU/XBZar(0)/b/n/13 جایگزینی با توکن‌ساز سریع\TU/XBZar(0)/m/n/13 : در خط‌لو
 لهٔ بازآموزش []\TU/LiberationSerif(0)/m/n/13 Colab[]\TU/XBZar(0)/m/n/13 ، توکن‌
 ساز از طریق[]
@@ -1621,271 +1624,362 @@ Underfull \hbox (badness 3568) in paragraph at lines 537--548
 [10
 
 ] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 618--623
+Underfull \hbox (badness 10000) in paragraph at lines 629--635
 [][]\TU/XBZar(0)/b/n/13 آنتروپی کاراکتری نرمال‌شده: \TU/XBZar(0)/m/n/13 آنتروپی
  شانون توزیع کاراکترها، $\OML/ztmcm/m/it/13 H\OT1/ztmcm/m/n/13 (\OML/ztmcm/m/it
 /13 d\OT1/ztmcm/m/n/13 ) =$[]
  []
 
 
-Underfull \hbox (badness 1314) in paragraph at lines 636--644
-[]\TU/XBZar(0)/b/n/13 نکتهٔ حیاتی برای صحت استنتاج: \TU/XBZar(0)/m/n/13 فرمول ا
-ین چهار ویژگی تنها یک‌بار، در ماژول مشترک[]
+Underfull \hbox (badness 1264) in paragraph at lines 629--635
+[]$\OMS/ztmcm/m/n/13 ^^@ [][] \OML/ztmcm/m/it/13 p\OT1/ztmcm/m/n/13 (\OML/ztmcm
+/m/it/13 c\OT1/ztmcm/m/n/13 ) [][] \OML/ztmcm/m/it/13 p\OT1/ztmcm/m/n/13 (\OML/
+ztmcm/m/it/13 c\OT1/ztmcm/m/n/13 )$\TU/XBZar(0)/m/n/13 ، نرمال‌شده بر $[][] \OM
+L/ztmcm/m/it/13 u$ \TU/XBZar(0)/m/n/13 که در آن $\OML/ztmcm/m/it/13 u$ \TU/XBZa
+r(0)/m/n/13 شمار کاراکترهای یکتای[]
  []
 
 [12]
+Underfull \hbox (badness 3364) in paragraph at lines 678--693
+[]\TU/XBZar(0)/b/n/13 نکتهٔ حیاتی برای صحت استنتاج: \TU/XBZar(0)/m/n/13 فرمول ا
+ین ویژگی‌ها تنها یک‌بار، در ماژول مشترک[]
+ []
+
+
+Underfull \hbox (badness 2221) in paragraph at lines 678--693
+[][]\TU/LiberationSerif(0)/m/n/13 aitextd/features.py[] \TU/XBZar(0)/m/n/13 پیا
+ده‌سازی شده است؛ هم اسکریپت‌های آموزش و هم سرور استنتاج[]
+ []
+
+[13] [14]
 فصل 5.
-[13
+[15
 
-] [14] [15]
+] [16] [17]
 فصل 6.
-[16
+[18
 
-] [17] [18] [19]
-Underfull \hbox (badness 1527) in paragraph at lines 864--874
+] [19] [20] [21]
+Underfull \hbox (badness 1527) in paragraph at lines 912--928
 []\TU/XBZar(0)/m/n/13 معماری سرویس‌دهی موجود (بخش [][][][][][]\TU/XBZar(1)/m/n/
 13 ۹\TU/XBZar(0)/m/n/13 .‏\TU/XBZar(1)/m/n/13 ۱[][][][][][]\TU/XBZar(0)/m/n/13 
 )، که بر پایهٔ اعزام بر اساس فیلد \TU/lmtt/m/n/13 runtime \TU/XBZar(0)/m/n/13 د
 ر[]
  []
 
-[20] [21]
-Underfull \hbox (badness 5578) in paragraph at lines 995--998
+LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 962.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 962.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.77005> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 962.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6.30006> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 962.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <10.5> not available
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 96
+2.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <7.77005> not availab
+le
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 96
+2.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <6.30006> not availab
+le
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 96
+2.
+[22] [23] [24]
+Underfull \hbox (badness 7814) in paragraph at lines 1132--1132
+[][]\TU/XBZar(0)/m/n/13 شکل \TU/XBZar(1)/m/n/13 ۶\TU/XBZar(0)/m/n/13 .‏\TU/XBZa
+r(1)/m/n/13 ۳\TU/XBZar(0)/m/n/13 : |درون‌مایهٔ مدل تصمیم []\TU/LiberationSerif(
+0)/m/n/13 System One[] \TU/XBZar(0)/m/n/13 مستقر (آموزش محلی []\TU/LiberationSe
+rif(0)/m/n/13 CPU[] \TU/XBZar(0)/m/n/13 در[]
+ []
+
+[25]
+Underfull \hbox (badness 5578) in paragraph at lines 1145--1148
 [][]\TU/XBZar(0)/b/n/13 هدف انتخاب: \TU/XBZar(0)/m/n/13 ترکیب برچسب واقعی و احت
 مال معلم، $\OML/ztmcm/m/it/13 t[] \OT1/ztmcm/m/n/13 = []([][][] \OML/ztmcm/m/it
 /13 y \OT1/ztmcm/m/n/13 +$[]
  []
 
 
-Underfull \hbox (badness 2181) in paragraph at lines 995--998
+Underfull \hbox (badness 2181) in paragraph at lines 1145--1148
 []$[][][] \OML/ztmcm/m/it/13 p[];  [][][][];  [][][][]\OT1/ztmcm/m/n/13 )$\TU/X
 BZar(0)/m/n/13 ؛ در نمونه‌های ناسازگار با معلم، هدف عمداً مرزی[]
  []
 
-[22] [23] [24]
+[26] [27] [28] [29]
 فصل 7.
-[25
+
+Overfull \hbox (22.42316pt too wide) in paragraph at lines 1247--1258
+ [][][][] 
+ []
+
+[30
 
 ]
 فصل 8.
-[26
+[31
 
 ]
 فصل 9.
-[27
+
+Underfull \hbox (badness 2269) in paragraph at lines 1288--1299
+[]\TU/XBZar(0)/m/n/13 دارد (\TU/lmtt/m/n/13 sklearn-tfidf\TU/XBZar(0)/m/n/13 ، 
+\TU/lmtt/m/n/13 pytorch-lstm\TU/XBZar(0)/m/n/13 ، \TU/lmtt/m/n/13 pytorch-gpt2\
+TU/XBZar(0)/m/n/13 ، \TU/lmtt/m/n/13 pytorch-parsbert \TU/XBZar(0)/m/n/13 یا[]
+ []
+
+[32
 
 ]
-Underfull \hbox (badness 1910) in paragraph at lines 1183--1191
+Underfull \hbox (badness 1910) in paragraph at lines 1338--1346
 []\TU/XBZar(0)/m/n/13 به یک جفت تابع بارگذار/پیش‌بین در بستهٔ \TU/lmtt/m/n/13 a
 itextd \TU/XBZar(0)/m/n/13 نگاشت می‌شود (\TU/lmtt/m/n/13 loaders.py \TU/XBZar(0
 )/m/n/13 و[]
  []
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <13> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1198.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1353.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1200--1200
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1355
 [][]|\TU/XBZar(1)/m/n/13 ۵ \TU/XBZar(0)/m/n/13 مدل[]
  []
 
 
-Underfull \hbox (badness 2237) in paragraph at lines 1201--1201
+Underfull \hbox (badness 2237) in paragraph at lines 1356--1356
 [][]|\TU/XBZar(0)/m/n/13 چک‌پوینت []\TU/LiberationSerif(0)/m/n/13 joblib[] \TU/
 XBZar(0)/m/n/13 هر مدل[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1201--1201
+Underfull \hbox (badness 10000) in paragraph at lines 1356--1356
 []\TU/XBZar(0)/m/n/13 به‌همراه بردارساز مشترک[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1202--1203
+Underfull \hbox (badness 10000) in paragraph at lines 1357--1358
 [][]|\TU/XBZar(0)/m/n/13 خط‌لولهٔ کامل[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1204--1204
+Underfull \hbox (badness 10000) in paragraph at lines 1359--1359
 [][]|\TU/XBZar(0)/m/n/13 چک‌پوینت شامل وزن‌ها،[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1205--1206
+Underfull \hbox (badness 10000) in paragraph at lines 1360--1361
 [][]|\TU/XBZar(0)/m/n/13 خط‌لولهٔ کامل[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1207--1207
+Underfull \hbox (badness 10000) in paragraph at lines 1362--1362
 [][]|\TU/XBZar(0)/m/n/13 سر طبقه‌بندی + بدنهٔ[]
  []
 
 
-Underfull \hbox (badness 4699) in paragraph at lines 1207--1207
+Underfull \hbox (badness 4699) in paragraph at lines 1362--1362
 []\TU/XBZar(0)/m/n/13 پیش‌آموزش‌دیده + توکن‌ساز[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1208--1209
+Underfull \hbox (badness 10000) in paragraph at lines 1363--1364
 [][]|\TU/XBZar(0)/m/n/13 فقط نرمال‌سازی[]
  []
 
 
-Overfull \hbox (1.84491pt too wide) in paragraph at lines 1209--1209
+Overfull \hbox (1.84491pt too wide) in paragraph at lines 1364--1364
 [][]|\TU/lmtt/m/n/13 pytorch-parsbert| []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1210--1210
+Underfull \hbox (badness 10000) in paragraph at lines 1365--1365
 [][]|\TU/XBZar(0)/m/n/13 چک‌پوینت خودکفا[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1210--1210
+Underfull \hbox (badness 10000) in paragraph at lines 1365--1365
 []\TU/XBZar(0)/m/n/13 (پیکربندی بدنه درون[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1212
+Underfull \hbox (badness 10000) in paragraph at lines 1366--1367
 [][]|\TU/XBZar(0)/m/n/13 فقط نرمال‌سازی[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1212--1212
+Overfull \hbox (15.23491pt too wide) in paragraph at lines 1367--1367
+[][]|\TU/lmtt/m/n/13 pytorch-system-one| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1367--1367
 [][]|\TU/XBZar(0)/m/n/13 لایهٔ تصمیم[]
  []
 
 
-Underfull \hbox (badness 3568) in paragraph at lines 1213--1213
+Underfull \hbox (badness 3568) in paragraph at lines 1368--1368
 [][]|\TU/XBZar(0)/m/n/13 چک‌پوینت بدنه + سه سر[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1214--1215
+Underfull \hbox (badness 10000) in paragraph at lines 1369--1370
 [][]|\TU/XBZar(0)/m/n/13 فقط نرمال‌سازی[]
  []
 
 
-Overfull \hbox (5.32083pt too wide) in paragraph at lines 1196--1217
+Underfull \hbox (badness 10000) in paragraph at lines 1370--1370
+[][]|[]\TU/LiberationSerif(0)/m/n/13 Laya[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1371--1371
+[][]|\TU/XBZar(0)/m/n/13 چک‌پوینت استاندارد[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1371--1371
+[][]\TU/LiberationSerif(0)/m/n/13 Laya[]\TU/XBZar(0)/m/n/13 : وزن‌ها،[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1371--1371
+[][]\TU/LiberationSerif(0)/m/n/13 rl_agent_config.json[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1372--1373
+[][]|\TU/XBZar(0)/m/n/13 بدون پیش‌پردازش؛[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1372--1373
+[]\TU/XBZar(0)/m/n/13 متن خام به‌عنوان[]
+ []
+
+
+Overfull \hbox (5.32083pt too wide) in paragraph at lines 1351--1375
  [][][][] 
  []
 
-[28] [29]
-Overfull \hbox (20.92444pt too wide) in paragraph at lines 1294--1294
+[33] [34]
+Overfull \hbox (20.92444pt too wide) in paragraph at lines 1457--1457
 [][]\TU/lmtt/m/n/13 |-- models.json           registry of the 9 models (runtime
 , weights)[] []
  []
 
-[30] [31]
-Underfull \hbox (badness 1117) in paragraph at lines 1377--1377
+
+Overfull \hbox (0.85242pt too wide) in paragraph at lines 1457--1457
+[][]\TU/lmtt/m/n/13 |   |-- constants.py      System One questions, levels, can
+didates[] []
+ []
+
+
+Overfull \hbox (0.8524pt too wide) in paragraph at lines 1457--1457
+[][]\TU/lmtt/m/n/13 |   |-- perplexity.py     raw-LM perplexity detail (trainin
+g-free)[] []
+ []
+
+[35] [36] [37]
+Underfull \hbox (badness 1117) in paragraph at lines 1538--1538
 [][]\TU/XBZar(0)/m/n/13 شکل \TU/XBZar(1)/m/n/13 ۹\TU/XBZar(0)/m/n/13 .‏\TU/XBZa
 r(1)/m/n/13 ۳\TU/XBZar(0)/m/n/13 : |حالت مقایسهٔ آنلاین/محلی. دو درخواست مستقل 
 و موازی ارسال می‌شوند و[]
  []
 
-[32]
-Overfull \hbox (29.37148pt too wide) in paragraph at lines 1396--1406
+[38]
+Underfull \hbox (badness 1552) in paragraph at lines 1593--1593
+[][]\TU/XBZar(0)/m/n/13 جدول \TU/XBZar(1)/m/n/13 ۹\TU/XBZar(0)/m/n/13 .‏\TU/XBZ
+ar(1)/m/n/13 ۲\TU/XBZar(0)/m/n/13 : |معیارهای []\TU/LiberationSerif(0)/m/n/13 L
+aya[] \TU/XBZar(0)/m/n/13 فاین‌تیون‌شده روی تقسیم آزمون نگه‌داشته‌شده (کلاس مثب
+ت:[]
+ []
+
+
+Overfull \hbox (66.15714pt too wide) in paragraph at lines 1595--1604
  [][][][] 
  []
 
-[33] [34]
-فصل 10.
-[35
-
-] [36] [37]
-فصل 11.
-[38
-
-] [39]
-فصل 12.
-
-Overfull \hbox (1.54092pt too wide) in paragraph at lines 1559--1581
-[]\TU/XBZar(0)/m/n/13 بهره‌گیری از منابع محاسباتی []\TU/LiberationSerif(0)/m/n/
-13 Google Colab[] \TU/XBZar(0)/m/n/13 برای فاین‌تیون کامل []\TU/LiberationSerif
-(0)/m/n/13 GPT-2[]\TU/XBZar(0)/m/n/13 —نسخهٔ دوم (جدول [][][][][][]\TU/XBZar(1)
-/m/n/13 ۱۰\TU/XBZar(0)/m/n/13 .‏\TU/XBZar(1)/m/n/13 ۲[][][][][][]\TU/XBZar(0)/m
-/n/13 )[]
+[39] [40] [41] [42]
+Overfull \hbox (29.37148pt too wide) in paragraph at lines 1794--1804
+ [][][][] 
  []
 
-[40
+[43] [44]
+فصل 10.
+[45
 
-] [41]
+] [46] [47] [48] [49]
+فصل 11.
+[50
+
+] [51]
+فصل 12.
+[52
+
+] [53]
 پیوست آ.
-[42
+[54
 
 ]
-Overfull \hbox (20.9374pt too wide) in paragraph at lines 1652--1652
-[][]\TU/lmtt/m/n/13 #   2) train the typed decision-head model (writes models/j
-evModel.pt[] []
+Overfull \hbox (61.10738pt too wide) in paragraph at lines 2092--2092
+[][]\TU/lmtt/m/n/13 #   2) train the typed decision-head model (writes models/s
+ystemOneModel.pt[] []
  []
 
 
-Overfull \hbox (6.83507pt too wide) in paragraph at lines 1705--1705
+Overfull \hbox (6.83507pt too wide) in paragraph at lines 2145--2145
  [][][]\TU/lmtt/m/n/10.5 train_gpt2_classifier.py[] 
  []
 
 
-Overfull \hbox (6.0394pt too wide) in paragraph at lines 1705--1705
+Overfull \hbox (6.0394pt too wide) in paragraph at lines 2145--2145
  [][][]\TU/lmtt/m/n/10.5 notebooks/colab_training.ipynb[] 
  []
 
-LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 1705.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1705.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.77005> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1705.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6.30006> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1705.
-LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <10.5> not available
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 17
-05.
-LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <7.77005> not availab
-le
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 17
-05.
-LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <6.30006> not availab
-le
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 17
-05.
-[43] [44]
-Overfull \hbox (27.63248pt too wide) in paragraph at lines 1746--1746
+
+Overfull \hbox (17.86006pt too wide) in paragraph at lines 2145--2145
+ [][][]\TU/lmtt/m/n/10.5 prepare_system_one_data.py[] 
+ []
+
+[55] [56]
+Overfull \hbox (27.63248pt too wide) in paragraph at lines 2186--2186
 [][]                     \TU/lmtt/m/n/13 "candidates": ["human_written", "ai_ge
 nerated"]},[] []
  []
 
 
-Overfull \hbox (20.93747pt too wide) in paragraph at lines 1746--1746
+Overfull \hbox (20.93747pt too wide) in paragraph at lines 2186--2186
 [][]                     \TU/lmtt/m/n/13 "levels": ["definitely_human", "probab
 ly_human",[] []
  []
 
 
-Overfull \hbox (0.8394pt too wide) in paragraph at lines 1746--1746
+Overfull \hbox (0.8394pt too wide) in paragraph at lines 2186--2186
 [][]    \TU/lmtt/m/n/13 "source":       {"human_written": 0.02, "ai_generated":
  0.98},[] []
  []
 
-[45] [46]
-Overfull \hbox (34.32738pt too wide) in paragraph at lines 1807--1807
+[57] [58]
+Overfull \hbox (34.32738pt too wide) in paragraph at lines 2247--2247
 [][]\TU/lmtt/m/n/13 .venv/bin/python -m pytest tests/ -m "not slow"   # fast be
 havior tests[] []
  []
 
 
-Overfull \hbox (34.32742pt too wide) in paragraph at lines 1807--1807
+Overfull \hbox (34.32742pt too wide) in paragraph at lines 2247--2247
 [][]\TU/lmtt/m/n/13 .venv/bin/python -m pytest tests/ -m slow         # full st
 ack + golden[] []
  []
 
-[47]
-Underfull \hbox (badness 1881) in paragraph at lines 1881--1882
+[59]
+Underfull \hbox (badness 1881) in paragraph at lines 2323--2324
 [][][]\TU/LiberationSerif(0)/m/n/13 M. Farahani, M. Gharachorloo, M. Farahani, 
 M. Manthouri. \TU/LiberationSerif(0)/m/it/13 ParsBERT:[][]
  []
 
-[48
+[60
 
 
-] [49] (./report.aux)
+] [61] (./report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1895,15 +1989,15 @@ L3 programming layer <2026-01-19>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 7CC57BA71995204B6A9B0846EA4D2A08;13341.
+(rerunfilecheck)             Checksum: 9A20F13DBBDC339CE2622FC3AFEB3581;14057.
  ) 
 Here is how much of TeX's memory you used:
- 30559 strings out of 470177
- 640434 string characters out of 5479161
- 1073782 words of memory out of 5000000
- 58561 multiletter control sequences out of 15000+600000
- 656775 words of font info for 192 fonts, out of 8000000 for 9000
+ 30814 strings out of 470177
+ 644654 string characters out of 5479161
+ 1093585 words of memory out of 5000000
+ 58810 multiletter control sequences out of 15000+600000
+ 656807 words of font info for 196 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  88i,14n,94p,1196b,904s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.xdv (58 pages, 813636 bytes).
+Output written on report.pdf (70 pages).

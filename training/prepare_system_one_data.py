@@ -1,8 +1,9 @@
-"""Build the JEV-style ("System One") training data for the decision-head model.
+"""Build the training data for the System One decision model.
 
-JEV models don't generate answers; they answer *typed questions* about a
-state in a single forward pass. Following the JEV question types (and the
-open-source Valen implementation of the same idea), each dataset row becomes
+A System One model doesn't generate answers; it answers *typed questions*
+about a state in a single forward pass, returning typed answers and
+calibrated probabilities instead of generated text. Following the three
+System One question types -- choice, score, noul -- each dataset row becomes
 a JSONL record with three typed questions about the text:
 
 - ``source``        (choice) -> probability distribution over candidates
@@ -16,8 +17,8 @@ a JSONL record with three typed questions about the text:
 The dataset only carries a binary label, so soft targets are distilled from
 the deployed fine-tuned GPT-2 classifier (gpt2ClassifierModel.pt on the
 gpt2-fa.mdl backbone) -- the teacher the ensemble already weights highest.
-It is run through the exact serving path in utils.py: same normalization
-(_normalize_for_gpt2), tokenizer, char-budget guard and seq_len.
+It is run through the exact serving path: same normalization
+(aitextd.text.normalize_for_pretrained), tokenizer, char-budget guard and seq_len.
 
 - choice target: ground-truth one-hot blended with the teacher probability
 - score target:  discretized Gaussian over the 5 levels centered at
@@ -26,11 +27,11 @@ It is run through the exact serving path in utils.py: same normalization
                  NOUL_BAND) -- the only rows where a human reviewer genuinely
                  adds information
 
-Records store the raw text in ``state.text``; training/train_jev.py applies
+Records store the raw text in ``state.text``; training/train_system_one.py applies
 the same normalization to it that both the teacher and the serving path use.
 
-Run from the project root: python training/prepare_jev_data.py
-Outputs: training/jev_data/jev_train.jsonl and jev_test.jsonl
+Run from the project root: python training/prepare_system_one_data.py
+Outputs: training/system_one_data/system_one_train.jsonl and system_one_test.jsonl
 """
 
 import json
@@ -45,36 +46,34 @@ from sklearn.model_selection import train_test_split
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-import utils  # noqa: E402  (serving pipeline: teacher runs the exact serving path)
-from split import RANDOM_SEED, load_split  # noqa: E402
+from aitextd import paths
+from aitextd.architectures import GPT2Classifier
+from aitextd.constants import (
+    SYSTEM_ONE_CHOICE_CANDIDATES as CHOICE_CANDIDATES,
+)
+from aitextd.constants import (
+    SYSTEM_ONE_CHOICE_CANDIDATES_FA as CHOICE_CANDIDATES_FA,
+)
+from aitextd.constants import (
+    SYSTEM_ONE_SCORE_LEVELS as SCORE_LEVELS,
+)
+from aitextd.constants import (
+    SYSTEM_ONE_SCORE_LEVELS_FA as SCORE_LEVELS_FA,
+)
+from aitextd.loaders import get_gpt2_tokenizer, load_gpt2_backbone
+from aitextd.text import normalize_for_pretrained
+from split import RANDOM_SEED, load_split
 
-TEACHER_CHECKPOINT_PATH = PROJECT_ROOT / "gpt2ClassifierModel.pt"
-OUT_DIR = PROJECT_ROOT / "training" / "jev_data"
+TEACHER_CHECKPOINT_PATH = paths.model_path("gpt2ClassifierModel.pt")
+OUT_DIR = paths.SYSTEM_ONE_DATA_DIR
 
 TRAIN_SUBSET = 6000  # CPU budget: mirrors training/train_gpt2_classifier.py
 TEST_SUBSET = 1500
 TEACHER_BATCH_SIZE = 32
 torch.set_num_threads(12)
 
-# JEV typed-question schema. Keep in sync with training/train_jev.py and the
-# answer rendering in utils.py.
-CHOICE_CANDIDATES = ["human_written", "ai_generated"]
-CHOICE_CANDIDATES_FA = ["نوشته انسان", "تولیدشده توسط هوش مصنوعی"]
-SCORE_LEVELS = [
-    "definitely_human",
-    "probably_human",
-    "mixed_signals",
-    "probably_ai",
-    "definitely_ai",
-]
-SCORE_LEVELS_FA = [
-    "قطعاً انسان",
-    "احتمالاً انسان",
-    "سیگنال‌های ترکیبی",
-    "احتمالاً هوش مصنوعی",
-    "قطعاً هوش مصنوعی",
-]
-
+# System One typed-question schema, imported from aitextd.constants so the
+# JSONL targets can never drift from the answer rendering in aitextd.system_one.
 QUESTIONS = {
     "source": {
         "type": "choice",
@@ -110,12 +109,12 @@ def batches(items, batch_size):
 
 def build_teacher():
     """The deployed fine-tuned GPT-2 classifier, rebuilt exactly as
-    utils._load_gpt2_model does: base backbone from the local pickle, then the
-    fine-tuned weights on top from the serving checkpoint."""
-    backbone = utils._load_gpt2_backbone()
+    aitextd.loaders.load_gpt2_model does: base backbone from the local pickle,
+    then the fine-tuned weights on top from the serving checkpoint."""
+    backbone = load_gpt2_backbone()
     checkpoint = torch.load(TEACHER_CHECKPOINT_PATH, map_location="cpu", weights_only=False)
     config = checkpoint["config"]
-    model = utils.GPT2Classifier(backbone, hidden_size=config["hidden_size"])
+    model = GPT2Classifier(backbone, hidden_size=config["hidden_size"])
     model.load_state_dict(checkpoint["state_dict"])
     model.eval()
     return model, config
@@ -123,10 +122,10 @@ def build_teacher():
 
 def teacher_probabilities(model, config, raw_texts):
     """P(AI) from the deployed GPT-2 classifier for each raw text, via the
-    exact serving path of utils._predict_gpt2: same normalization, tokenizer,
-    char-budget guard and seq_len, so the distilled targets match what the
-    teacher actually outputs in production."""
-    tokenizer = utils._get_gpt2_tokenizer()
+    exact serving path of aitextd.predictors.predict_gpt2: same normalization,
+    tokenizer, char-budget guard and seq_len, so the distilled targets match
+    what the teacher actually outputs in production."""
+    tokenizer = get_gpt2_tokenizer()
     seq_len = config["seq_len"]
     char_budget = seq_len * 8  # same slow-tokenizer guard as the serving path
 
@@ -136,7 +135,7 @@ def teacher_probabilities(model, config, raw_texts):
     with torch.no_grad():
         for step, batch in enumerate(batches(raw_texts, TEACHER_BATCH_SIZE), start=1):
             enc = tokenizer(
-                [utils._normalize_for_gpt2(str(t))[:char_budget] for t in batch],
+                [normalize_for_pretrained(str(t))[:char_budget] for t in batch],
                 return_tensors="pt",
                 truncation=True,
                 max_length=seq_len,
@@ -226,7 +225,7 @@ def main():
     y = df["aiGenerated"].to_numpy()
     train_idx = subsample(train_idx, y, TRAIN_SUBSET, RANDOM_SEED)
     test_idx = subsample(test_idx, y, TEST_SUBSET, RANDOM_SEED)
-    print(f"Building JEV records for {len(train_idx)} train / {len(test_idx)} test rows")
+    print(f"Building System One records for {len(train_idx)} train / {len(test_idx)} test rows")
 
     print("Loading the fine-tuned GPT-2 teacher (gpt2-fa.mdl + gpt2ClassifierModel.pt)...")
     teacher, teacher_config = build_teacher()
@@ -235,12 +234,12 @@ def main():
     test_records = build_records(df, test_idx, "test", teacher, teacher_config)
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    write_jsonl(OUT_DIR / "jev_train.jsonl", train_records)
-    write_jsonl(OUT_DIR / "jev_test.jsonl", test_records)
+    write_jsonl(OUT_DIR / "system_one_train.jsonl", train_records)
+    write_jsonl(OUT_DIR / "system_one_test.jsonl", test_records)
 
     summarize("train", train_records)
     summarize("test", test_records)
-    print(f"Wrote {OUT_DIR / 'jev_train.jsonl'} and {OUT_DIR / 'jev_test.jsonl'}")
+    print(f"Wrote {OUT_DIR / 'system_one_train.jsonl'} and {OUT_DIR / 'system_one_test.jsonl'}")
     print("Example record (text truncated):")
     example = dict(train_records[0])
     example["state"] = {"text": str(example["state"]["text"])[:120] + "..."}

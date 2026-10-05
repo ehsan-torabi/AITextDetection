@@ -6,38 +6,23 @@ Run from the project root: python training/preprocess_cache.py
 """
 
 import multiprocessing
-import re
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 import joblib
 import pandas as pd
 from joblib import Parallel, delayed
-from shekar import Lemmatizer, Normalizer, WordTokenizer
-from shekar.preprocessing import EmojiRemover, NonPersianRemover, PunctuationRemover
 from tqdm import tqdm
 
-DATASET_PATH = "processedDataset.csv"
-CACHE_PATH = "training/tokenized_texts.joblib"
+from aitextd import paths
+from aitextd.text import tokenize_persian_text
 
-_pipeline = None
-
-
-def _get_pipeline():
-    global _pipeline
-    if _pipeline is None:
-        _pipeline = (
-            EmojiRemover()
-            | PunctuationRemover()
-            | NonPersianRemover()
-            | Normalizer()
-            | Lemmatizer()
-            | WordTokenizer()
-        )
-    return _pipeline
-
-
-def tokenize(text: str) -> list[str]:
-    text = re.sub(r"\n", " ", str(text))
-    return list(_get_pipeline()(text))
+DATASET_PATH = paths.PROCESSED_CSV
+CACHE_PATH = paths.TOKENIZED_TEXTS_JOBLIB
 
 
 def build_or_load_cache():
@@ -49,7 +34,9 @@ def build_or_load_cache():
     df = pd.read_csv(DATASET_PATH)
     num_cores = multiprocessing.cpu_count()
     print(f"Tokenizing {len(df)} documents on {num_cores} cores...")
-    tokenized = Parallel(n_jobs=num_cores)(delayed(tokenize)(text) for text in tqdm(df["text"]))
+    tokenized = Parallel(n_jobs=num_cores)(
+        delayed(tokenize_persian_text)(text) for text in tqdm(df["text"])
+    )
     joblib.dump(tokenized, CACHE_PATH)
     return tokenized
 

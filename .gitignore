@@ -20,6 +20,20 @@ edt_params.txt
 backups/
 
 # Temporary online-eval config (holds API keys) and its response cache
-training/eval_online_providers.json
+training/config.json
 training/.online_eval_cache.jsonl
 training/online_eval_results.json
+
+# Laya fine-tuning: base checkpoint (~650MB), fine-tuned output, cached items
+models/laya_multilingual/
+models/laya_persian/
+training/laya_data/
+# Disposable Drive-upload bundle for the Colab fine-tune notebook
+colab_laya_files.zip
+
+# XeLaTeX build residue (report.pdf and its .aux/.log/.out/.toc are tracked)
+report/report.xdv
+report/texput.log
+report/texsys.aux
+report/xelatex.fmt
+report/xelatex.log

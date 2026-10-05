@@ -4,16 +4,25 @@ Keeping one canonical split lets all newly trained models (classic ML and
 deep learning alike) be compared on the exact same held-out test set.
 """
 
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 import joblib
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+from aitextd import paths
+
 RANDOM_SEED = 42
 TEST_SIZE = 0.2
 
-DATASET_PATH = "processedDataset.csv"
-X_FEATURES_PATH = "tfidf_vectorizer_X.joblib"
-SPLIT_PATH = "training/split_indices.joblib"
+DATASET_PATH = paths.PROCESSED_CSV
+X_FEATURES_PATH = paths.TFIDF_X_JOBLIB
+SPLIT_PATH = paths.SPLIT_INDICES_JOBLIB
 
 
 def build_or_load_split():

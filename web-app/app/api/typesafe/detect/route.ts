@@ -16,6 +16,26 @@ import { DEFAULT_PROVIDER_SETTINGS, normalizeBaseUrl } from "@/lib/provider-sett
 
 const PROVIDER_TIMEOUT_MS = 45_000;
 
+// The analysis rows (style features + raw-LM perplexity) are model-independent
+// and computed by the local backend, same as for local detections. ponytail:
+// best-effort fetch — when the backend is down the online result carries no
+// rows; lift into a pure-JS fallback if backend-free online mode ever matters.
+async function fetchLocalDetails(text: string): Promise<TypeSafeDetectionResponse["details"]> {
+  try {
+    const res = await fetch("http://0.0.0.0:8000/details", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text }),
+      signal: AbortSignal.timeout(20_000),
+    });
+    if (!res.ok) return [];
+    const data = (await res.json()) as { details?: TypeSafeDetectionResponse["details"] };
+    return data.details ?? [];
+  } catch {
+    return [];
+  }
+}
+
 // Questions mirror the local System One pipeline (aitextd SYSTEM_ONE_*
 // constants) so the
 // online and local typed answers are directly comparable.
@@ -233,6 +253,7 @@ export async function POST(request: Request) {
   const endpoint = baseUrl.endsWith("/v1/systemone") ? baseUrl : `${baseUrl}/v1/systemone`;
   const model = body.provider?.model?.trim() || DEFAULT_PROVIDER_SETTINGS.model;
 
+  const detailsPromise = fetchLocalDetails(text);
   const startedAt = Date.now();
   let res: Response;
   try {
@@ -281,7 +302,7 @@ export async function POST(request: Request) {
     verdictFa: isAI
       ? "این متن به نظر تولید شده توسط هوش مصنوعی است."
       : "این متن به نظر توسط انسان نوشته شده است.",
-    details: [],
+    details: await detailsPromise,
     modelUsed: model,
     textLength: text.length,
     wordCount: text.split(/\s+/).filter(Boolean).length,

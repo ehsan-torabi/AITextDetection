@@ -129,8 +129,10 @@ export default function AboutPage() {
             می‌کند.
           </p>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            برای مدل‌های کلاسیک، علاوه بر بردار TF-IDF (یک‌گرم تا سه‌گرم، سقف ۱۵۰٬۰۰۰ ویژگی)، چهار
-            ویژگی سبک‌شناسی دست‌ساز نیز محاسبه و به بردار ورودی الحاق می‌شود:
+            برای مدل‌های کلاسیک، علاوه بر بردار TF-IDF (یک‌گرم تا سه‌گرم، سقف ۱۵۰٬۰۰۰ ویژگی)، ده
+            ویژگی سبک‌شناسی دست‌ساز نیز محاسبه می‌شود. این ویژگی‌ها به بردار مدل‌های درختی و بیز
+            ساده الحاق می‌شوند؛ SVM و رگرسیون لجستیک تنها با TF-IDF آموزش می‌بینند چون بردار مشترک
+            برای این مدل‌های خطی نتیجهٔ بدتری دارد:
           </p>
           <ul className="grid gap-2 sm:grid-cols-2 text-xs">
             <li className="rounded-lg bg-muted/50 px-3 py-2">
@@ -155,6 +157,40 @@ export default function AboutPage() {
               <span className="font-semibold text-foreground">انسجام میان‌جمله‌ای</span>
               <span className="block text-muted-foreground mt-0.5">
                 شباهت کسینوسی TF-IDF میان جمله‌های متوالی
+              </span>
+            </li>
+            <li className="rounded-lg bg-muted/50 px-3 py-2">
+              <span className="font-semibold text-foreground">تنوع واژگانی</span>
+              <span className="block text-muted-foreground mt-0.5">
+                نسبت واژه‌های یکتای متن به کل واژه‌ها
+              </span>
+            </li>
+            <li className="rounded-lg bg-muted/50 px-3 py-2">
+              <span className="font-semibold text-foreground">میانگین طول جمله</span>
+              <span className="block text-muted-foreground mt-0.5">
+                میانگین طول جمله‌ها، نرمال‌شده (۵۰ واژه = ۱)
+              </span>
+            </li>
+            <li className="rounded-lg bg-muted/50 px-3 py-2">
+              <span className="font-semibold text-foreground">واژه‌های کارکردی</span>
+              <span className="block text-muted-foreground mt-0.5">
+                سهم واژه‌های بستهٔ دستوری از کل واژه‌ها
+              </span>
+            </li>
+            <li className="rounded-lg bg-muted/50 px-3 py-2">
+              <span className="font-semibold text-foreground">علائم نگارشی</span>
+              <span className="block text-muted-foreground mt-0.5">چگالی علائم نگارشی در متن</span>
+            </li>
+            <li className="rounded-lg bg-muted/50 px-3 py-2">
+              <span className="font-semibold text-foreground">انفجار واژگانی</span>
+              <span className="block text-muted-foreground mt-0.5">
+                ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده
+              </span>
+            </li>
+            <li className="rounded-lg bg-muted/50 px-3 py-2">
+              <span className="font-semibold text-foreground">تنوع جمله‌واره‌ها</span>
+              <span className="block text-muted-foreground mt-0.5">
+                ضریب تغییرات طول جمله‌واره‌ها (تفکیک با وقفه‌های نگارشی)
               </span>
             </li>
           </ul>

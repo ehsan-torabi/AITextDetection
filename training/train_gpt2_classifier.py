@@ -17,7 +17,13 @@ Run from the project root: python training/train_gpt2_classifier.py
 
 import json
 import pickle
+import sys
 import time
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 import numpy as np
 import torch
@@ -31,12 +37,15 @@ from sklearn.metrics import (
 )
 from sklearn.model_selection import train_test_split
 
+from aitextd import paths
+from aitextd.architectures import GPT2Classifier
 from split import RANDOM_SEED, load_split
 
-MODELS_JSON_PATH = "models.json"
-MODEL_PATH = "gpt2ClassifierModel.pt"
-LM_PATH = "gpt2-fa.mdl"
-TOKENIZER_PATH = "gpt2-fa-tokenizer.mdl"
+MODELS_JSON_PATH = paths.MODELS_JSON
+MODEL_FILENAME = "gpt2ClassifierModel.pt"
+MODEL_PATH = paths.model_path(MODEL_FILENAME)
+LM_PATH = paths.GPT2_LM_MDL
+TOKENIZER_PATH = paths.GPT2_TOKENIZER_MDL
 
 SEQ_LEN = 64
 BATCH_SIZE = 16
@@ -49,21 +58,6 @@ TRAIN_SUBSET = 6000
 TEST_SUBSET = 1500
 
 torch.manual_seed(RANDOM_SEED)
-
-
-class GPT2Classifier(nn.Module):
-    """GPT2 backbone (causal, so pooled on the last real token) + linear head."""
-
-    def __init__(self, backbone, hidden_size):
-        super().__init__()
-        self.backbone = backbone
-        self.head = nn.Linear(hidden_size, 1)
-
-    def forward(self, input_ids, attention_mask):
-        hidden = self.backbone(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
-        last_idx = attention_mask.sum(dim=1) - 1
-        pooled = hidden[torch.arange(hidden.size(0)), last_idx]
-        return self.head(pooled).squeeze(-1)
 
 
 def subsample(indices, labels, n, seed):
@@ -235,7 +229,7 @@ def main():
         "algorithm": "GPT2ForSequenceClassification (partial fine-tune)",
         "type": "dl",
         "version": "1.0",
-        "filename": MODEL_PATH,
+        "filename": MODEL_FILENAME,
         "runtime": "pytorch-gpt2",
         "metrics": metrics,
         "confusionMatrix": confusion,

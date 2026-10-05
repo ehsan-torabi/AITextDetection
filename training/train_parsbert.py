@@ -8,11 +8,11 @@ SEQ_LEN=64, one epoch over the same stratified 6000/1500 subsample, so its test
 metrics are directly comparable to the GPT-2 row of the results table.
 
 Unlike GPT-2 this backbone is rebuilt at serving time from the config stored in
-the checkpoint (utils._load_parsbert_model), so no pretrained-weight pickle is
+the checkpoint (aitextd.loaders.load_parsbert_model), so no pretrained-weight pickle is
 needed for the server to start offline -- but the tokenizer is exported to
 parsbert_tokenizer/ for exactly that reason.
 
-Preprocessing calls utils._normalize_for_gpt2 rather than reimplementing it:
+Preprocessing calls aitextd.text.normalize_for_pretrained rather than reimplementing it:
 the light (non-lemmatized) normalization must be byte-for-byte identical at
 train and serve time or the predictions go silently wrong.
 
@@ -41,13 +41,16 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "training"))
 
-import utils  # noqa: E402  (serving pipeline: shared to guarantee train/serve parity)
-from split import RANDOM_SEED, load_split  # noqa: E402
+from aitextd import paths
+from aitextd.architectures import ParsBERTClassifier
+from aitextd.text import normalize_for_pretrained
+from split import RANDOM_SEED, load_split
 
-MODELS_JSON_PATH = "models.json"
-MODEL_PATH = "parsbertModel.pt"
+MODELS_JSON_PATH = paths.MODELS_JSON
+MODEL_FILENAME = "parsbertClassifierModel.pt"
+MODEL_PATH = paths.model_path(MODEL_FILENAME)
 BACKBONE_NAME = "HooshvareLab/bert-fa-base-uncased"
-TOKENIZER_DIR = "parsbert_tokenizer"
+TOKENIZER_DIR = paths.PARSBERT_TOKENIZER_DIR
 
 SEQ_LEN = 64
 BATCH_SIZE = 16
@@ -65,21 +68,6 @@ TEST_SUBSET = 1500
 torch.manual_seed(RANDOM_SEED)
 
 
-class ParsBertClassifier(nn.Module):
-    """ParsBERT backbone (bidirectional, so pooled on [CLS]) + linear head.
-    Must match the copy in utils.py exactly so the saved state_dict loads."""
-
-    def __init__(self, backbone, hidden_size):
-        super().__init__()
-        self.backbone = backbone
-        self.head = nn.Linear(hidden_size, 1)
-
-    def forward(self, input_ids, attention_mask):
-        hidden = self.backbone(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
-        cls_repr = hidden[:, 0]
-        return self.head(cls_repr).squeeze(-1)
-
-
 def subsample(indices, labels, n, seed):
     if n >= len(indices):
         return indices
@@ -93,10 +81,10 @@ def batches(items, batch_size):
 
 
 def assert_serving_contract(model, backbone_config, hidden_size):
-    """Rebuild the checkpoint the way utils._load_parsbert_model does and check
+    """Rebuild the checkpoint the way aitextd.loaders.load_parsbert_model does and check
     the state_dict keys line up. A silent key/shape mismatch here would only
     surface as a load error on the first request against the live server."""
-    rebuilt = ParsBertClassifier(
+    rebuilt = ParsBERTClassifier(
         AutoModel.from_config(BertConfig.from_dict(backbone_config)), hidden_size
     )
     drift = set(model.state_dict()) ^ set(rebuilt.state_dict())
@@ -130,12 +118,12 @@ def main():
     normalize_start = time.time()
     needed = np.concatenate([train_idx, test_idx])
     raw = df["text"].to_numpy()[needed]
-    texts = {int(i): utils._normalize_for_gpt2(str(t)) for i, t in zip(needed, raw, strict=True)}
+    texts = {int(i): normalize_for_pretrained(str(t)) for i, t in zip(needed, raw, strict=True)}
     print(f"Normalized {len(texts)} texts in {time.time() - normalize_start:.0f}s")
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     torch.set_num_threads(12)
-    model = ParsBertClassifier(backbone, hidden_size).to(device)
+    model = ParsBERTClassifier(backbone, hidden_size).to(device)
 
     trainable_backbone = [p for p in backbone.parameters() if p.requires_grad]
     optimizer = torch.optim.AdamW(
@@ -260,7 +248,7 @@ def main():
         "algorithm": "ParsBERT (BERT encoder, partial fine-tune)",
         "type": "dl",
         "version": "1.0",
-        "filename": MODEL_PATH,
+        "filename": MODEL_FILENAME,
         "runtime": "pytorch-parsbert",
         # Untuned default: raise it once real held-out numbers exist.
         "ensembleWeight": 1.0,

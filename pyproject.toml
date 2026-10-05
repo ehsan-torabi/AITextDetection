@@ -1,4 +1,28 @@
-# Unified code style for all Python code in this repo (server, utils, training).
+[project]
+name = "aitextd"
+version = "2.0.0"
+description = "Persian AI-generated text detection: FastAPI serving stack, training pipeline, and shared aitextd package."
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.142",
+    "uvicorn>=0.54",
+    "pydantic>=2.13",
+    "numpy>=2.4",
+    "scipy>=1.17",
+    "pandas>=3.0",
+    "scikit-learn>=1.9",
+    "joblib>=1.6",
+    "torch>=2.14",
+    "transformers>=5.18",
+    "shekar>=1.7",
+    "tqdm>=4.70",
+    "laya>=0.3.27",
+]
+
+[dependency-groups]
+dev = ["pytest>=9.1"]
+
+# Unified code style for all Python code in this repo (server, aitextd, training).
 # Enforce with:  uvx ruff format .  &&  uvx ruff check --fix .
 [tool.ruff]
 line-length = 100
@@ -25,5 +49,13 @@ ignore = [
     "RUF001", "RUF002", "RUF003",
 ]
 
+[tool.ruff.lint.per-file-ignores]
+# Training scripts bootstrap sys.path (repo root) before their imports so they
+# can run as `python training/train_*.py` from the project root.
+"training/*.py" = ["E402"]
+
 [tool.ruff.lint.isort]
-known-first-party = ["utils", "split", "preprocess_cache"]
+known-first-party = ["aitextd", "split", "preprocess_cache", "eval_online_systemone"]
+
+[tool.pytest.ini_options]
+markers = ["slow: loads the full model registry (needs local artifacts)"]

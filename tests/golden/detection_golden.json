@@ -1,0 +1,2368 @@
+{
+  "svm": {
+    "human": {
+      "isAI": false,
+      "confidence": 0.6828,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8955,
+          "raw": "4.11 bits",
+          "description": "آنتروپی کاراکترها: 4.11 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0046,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9,
+          "raw": "0.90",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.90"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.18,
+          "raw": "0.18",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.18"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2,
+          "raw": "20.0%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 20.0%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0217,
+          "raw": "2.2%",
+          "description": "چگالی علائم نگارشی در متن: 2.2%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.1813,
+          "raw": "0.18",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.18"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 47.28,
+          "raw": "47.28",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "svm",
+      "textLength": 138,
+      "wordCount": 27,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    },
+    "ai": {
+      "isAI": true,
+      "confidence": 0.5352,
+      "verdict": "This text appears to be AI-generated.",
+      "verdictFa": "این متن به نظر تولید شده توسط هوش مصنوعی است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8948,
+          "raw": "4.25 bits",
+          "description": "آنتروپی کاراکترها: 4.25 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.1485,
+          "raw": "0.15",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.15"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0044,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9189,
+          "raw": "0.92",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.92"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.22,
+          "raw": "0.22",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.22"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2162,
+          "raw": "21.6%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 21.6%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0199,
+          "raw": "2.0%",
+          "description": "چگالی علائم نگارشی در متن: 2.0%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.0354,
+          "raw": "0.04",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.04"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.3773,
+          "raw": "0.38",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.38"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 7.18,
+          "raw": "7.18",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "svm",
+      "textLength": 201,
+      "wordCount": 33,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    }
+  },
+  "logreg": {
+    "human": {
+      "isAI": false,
+      "confidence": 0.9712,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8955,
+          "raw": "4.11 bits",
+          "description": "آنتروپی کاراکترها: 4.11 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0046,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9,
+          "raw": "0.90",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.90"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.18,
+          "raw": "0.18",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.18"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2,
+          "raw": "20.0%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 20.0%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0217,
+          "raw": "2.2%",
+          "description": "چگالی علائم نگارشی در متن: 2.2%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.1813,
+          "raw": "0.18",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.18"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 47.28,
+          "raw": "47.28",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "logreg",
+      "textLength": 138,
+      "wordCount": 27,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    },
+    "ai": {
+      "isAI": true,
+      "confidence": 0.7667,
+      "verdict": "This text appears to be AI-generated.",
+      "verdictFa": "این متن به نظر تولید شده توسط هوش مصنوعی است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8948,
+          "raw": "4.25 bits",
+          "description": "آنتروپی کاراکترها: 4.25 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.1485,
+          "raw": "0.15",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.15"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0044,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9189,
+          "raw": "0.92",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.92"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.22,
+          "raw": "0.22",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.22"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2162,
+          "raw": "21.6%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 21.6%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0199,
+          "raw": "2.0%",
+          "description": "چگالی علائم نگارشی در متن: 2.0%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.0354,
+          "raw": "0.04",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.04"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.3773,
+          "raw": "0.38",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.38"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 7.18,
+          "raw": "7.18",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "logreg",
+      "textLength": 201,
+      "wordCount": 33,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    }
+  },
+  "naive_bayes": {
+    "human": {
+      "isAI": false,
+      "confidence": 0.9994,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8955,
+          "raw": "4.11 bits",
+          "description": "آنتروپی کاراکترها: 4.11 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0046,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9,
+          "raw": "0.90",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.90"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.18,
+          "raw": "0.18",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.18"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2,
+          "raw": "20.0%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 20.0%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0217,
+          "raw": "2.2%",
+          "description": "چگالی علائم نگارشی در متن: 2.2%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.1813,
+          "raw": "0.18",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.18"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 47.28,
+          "raw": "47.28",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "naive_bayes",
+      "textLength": 138,
+      "wordCount": 27,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    },
+    "ai": {
+      "isAI": true,
+      "confidence": 0.9999,
+      "verdict": "This text appears to be AI-generated.",
+      "verdictFa": "این متن به نظر تولید شده توسط هوش مصنوعی است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8948,
+          "raw": "4.25 bits",
+          "description": "آنتروپی کاراکترها: 4.25 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.1485,
+          "raw": "0.15",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.15"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0044,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9189,
+          "raw": "0.92",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.92"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.22,
+          "raw": "0.22",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.22"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2162,
+          "raw": "21.6%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 21.6%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0199,
+          "raw": "2.0%",
+          "description": "چگالی علائم نگارشی در متن: 2.0%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.0354,
+          "raw": "0.04",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.04"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.3773,
+          "raw": "0.38",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.38"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 7.18,
+          "raw": "7.18",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "naive_bayes",
+      "textLength": 201,
+      "wordCount": 33,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    }
+  },
+  "random_forest": {
+    "human": {
+      "isAI": false,
+      "confidence": 0.84,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8955,
+          "raw": "4.11 bits",
+          "description": "آنتروپی کاراکترها: 4.11 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0046,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9,
+          "raw": "0.90",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.90"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.18,
+          "raw": "0.18",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.18"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2,
+          "raw": "20.0%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 20.0%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0217,
+          "raw": "2.2%",
+          "description": "چگالی علائم نگارشی در متن: 2.2%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.1813,
+          "raw": "0.18",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.18"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 47.28,
+          "raw": "47.28",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "random_forest",
+      "textLength": 138,
+      "wordCount": 27,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    },
+    "ai": {
+      "isAI": false,
+      "confidence": 0.68,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8948,
+          "raw": "4.25 bits",
+          "description": "آنتروپی کاراکترها: 4.25 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.1485,
+          "raw": "0.15",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.15"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0044,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9189,
+          "raw": "0.92",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.92"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.22,
+          "raw": "0.22",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.22"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2162,
+          "raw": "21.6%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 21.6%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0199,
+          "raw": "2.0%",
+          "description": "چگالی علائم نگارشی در متن: 2.0%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.0354,
+          "raw": "0.04",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.04"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.3773,
+          "raw": "0.38",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.38"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 7.18,
+          "raw": "7.18",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "random_forest",
+      "textLength": 201,
+      "wordCount": 33,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    }
+  },
+  "gradient_boosting": {
+    "human": {
+      "isAI": false,
+      "confidence": 0.9132,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8955,
+          "raw": "4.11 bits",
+          "description": "آنتروپی کاراکترها: 4.11 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0046,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9,
+          "raw": "0.90",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.90"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.18,
+          "raw": "0.18",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.18"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2,
+          "raw": "20.0%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 20.0%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0217,
+          "raw": "2.2%",
+          "description": "چگالی علائم نگارشی در متن: 2.2%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.1813,
+          "raw": "0.18",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.18"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 47.28,
+          "raw": "47.28",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "gradient_boosting",
+      "textLength": 138,
+      "wordCount": 27,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    },
+    "ai": {
+      "isAI": false,
+      "confidence": 0.7873,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8948,
+          "raw": "4.25 bits",
+          "description": "آنتروپی کاراکترها: 4.25 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.1485,
+          "raw": "0.15",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.15"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0044,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9189,
+          "raw": "0.92",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.92"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.22,
+          "raw": "0.22",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.22"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2162,
+          "raw": "21.6%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 21.6%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0199,
+          "raw": "2.0%",
+          "description": "چگالی علائم نگارشی در متن: 2.0%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.0354,
+          "raw": "0.04",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.04"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.3773,
+          "raw": "0.38",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.38"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 7.18,
+          "raw": "7.18",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "gradient_boosting",
+      "textLength": 201,
+      "wordCount": 33,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    }
+  },
+  "bilstm": {
+    "human": {
+      "isAI": false,
+      "confidence": 0.8982,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8955,
+          "raw": "4.11 bits",
+          "description": "آنتروپی کاراکترها: 4.11 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0046,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9,
+          "raw": "0.90",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.90"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.18,
+          "raw": "0.18",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.18"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2,
+          "raw": "20.0%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 20.0%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0217,
+          "raw": "2.2%",
+          "description": "چگالی علائم نگارشی در متن: 2.2%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.1813,
+          "raw": "0.18",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.18"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 47.28,
+          "raw": "47.28",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "bilstm",
+      "textLength": 138,
+      "wordCount": 27,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    },
+    "ai": {
+      "isAI": true,
+      "confidence": 0.9993,
+      "verdict": "This text appears to be AI-generated.",
+      "verdictFa": "این متن به نظر تولید شده توسط هوش مصنوعی است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8948,
+          "raw": "4.25 bits",
+          "description": "آنتروپی کاراکترها: 4.25 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.1485,
+          "raw": "0.15",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.15"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0044,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9189,
+          "raw": "0.92",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.92"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.22,
+          "raw": "0.22",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.22"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2162,
+          "raw": "21.6%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 21.6%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0199,
+          "raw": "2.0%",
+          "description": "چگالی علائم نگارشی در متن: 2.0%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.0354,
+          "raw": "0.04",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.04"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.3773,
+          "raw": "0.38",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.38"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 7.18,
+          "raw": "7.18",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "bilstm",
+      "textLength": 201,
+      "wordCount": 33,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    }
+  },
+  "gpt2_transformer": {
+    "human": {
+      "isAI": false,
+      "confidence": 1.0,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8955,
+          "raw": "4.11 bits",
+          "description": "آنتروپی کاراکترها: 4.11 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0046,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9,
+          "raw": "0.90",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.90"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.18,
+          "raw": "0.18",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.18"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2,
+          "raw": "20.0%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 20.0%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0217,
+          "raw": "2.2%",
+          "description": "چگالی علائم نگارشی در متن: 2.2%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.1813,
+          "raw": "0.18",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.18"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 47.28,
+          "raw": "47.28",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "gpt2_transformer",
+      "textLength": 138,
+      "wordCount": 27,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    },
+    "ai": {
+      "isAI": true,
+      "confidence": 1.0,
+      "verdict": "This text appears to be AI-generated.",
+      "verdictFa": "این متن به نظر تولید شده توسط هوش مصنوعی است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8948,
+          "raw": "4.25 bits",
+          "description": "آنتروپی کاراکترها: 4.25 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.1485,
+          "raw": "0.15",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.15"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0044,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9189,
+          "raw": "0.92",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.92"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.22,
+          "raw": "0.22",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.22"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2162,
+          "raw": "21.6%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 21.6%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0199,
+          "raw": "2.0%",
+          "description": "چگالی علائم نگارشی در متن: 2.0%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.0354,
+          "raw": "0.04",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.04"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.3773,
+          "raw": "0.38",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.38"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 7.18,
+          "raw": "7.18",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "gpt2_transformer",
+      "textLength": 201,
+      "wordCount": 33,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    }
+  },
+  "parsbert": {
+    "human": {
+      "isAI": false,
+      "confidence": 0.9999,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8955,
+          "raw": "4.11 bits",
+          "description": "آنتروپی کاراکترها: 4.11 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0046,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9,
+          "raw": "0.90",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.90"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.18,
+          "raw": "0.18",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.18"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2,
+          "raw": "20.0%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 20.0%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0217,
+          "raw": "2.2%",
+          "description": "چگالی علائم نگارشی در متن: 2.2%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.1813,
+          "raw": "0.18",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.18"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 47.28,
+          "raw": "47.28",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "parsbert",
+      "textLength": 138,
+      "wordCount": 27,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    },
+    "ai": {
+      "isAI": true,
+      "confidence": 0.993,
+      "verdict": "This text appears to be AI-generated.",
+      "verdictFa": "این متن به نظر تولید شده توسط هوش مصنوعی است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8948,
+          "raw": "4.25 bits",
+          "description": "آنتروپی کاراکترها: 4.25 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.1485,
+          "raw": "0.15",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.15"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0044,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9189,
+          "raw": "0.92",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.92"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.22,
+          "raw": "0.22",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.22"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2162,
+          "raw": "21.6%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 21.6%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0199,
+          "raw": "2.0%",
+          "description": "چگالی علائم نگارشی در متن: 2.0%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.0354,
+          "raw": "0.04",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.04"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.3773,
+          "raw": "0.38",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.38"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 7.18,
+          "raw": "7.18",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "parsbert",
+      "textLength": 201,
+      "wordCount": 33,
+      "ensembleVotes": null,
+      "typedAnswers": null
+    }
+  },
+  "system_one": {
+    "human": {
+      "isAI": false,
+      "confidence": 0.9833,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8955,
+          "raw": "4.11 bits",
+          "description": "آنتروپی کاراکترها: 4.11 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0046,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9,
+          "raw": "0.90",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.90"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.18,
+          "raw": "0.18",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.18"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2,
+          "raw": "20.0%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 20.0%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0217,
+          "raw": "2.2%",
+          "description": "چگالی علائم نگارشی در متن: 2.2%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.1813,
+          "raw": "0.18",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.18"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 47.28,
+          "raw": "47.28",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "system_one",
+      "textLength": 138,
+      "wordCount": 27,
+      "ensembleVotes": null,
+      "typedAnswers": {
+        "choice": {
+          "question": "Where does this text come from?",
+          "questionFa": "این متن از کجا آمده است؟",
+          "candidates": [
+            "human_written",
+            "ai_generated"
+          ],
+          "candidateLabelsFa": [
+            "نوشته انسان",
+            "تولیدشده توسط هوش مصنوعی"
+          ],
+          "probabilities": [
+            0.9833,
+            0.0167
+          ],
+          "answer": "human_written",
+          "answerFa": "نوشته انسان"
+        },
+        "score": {
+          "question": "How machine-like is the writing style?",
+          "questionFa": "سبک نوشتار چقدر ماشین‌مانند است؟",
+          "levels": [
+            "definitely_human",
+            "probably_human",
+            "mixed_signals",
+            "probably_ai",
+            "definitely_ai"
+          ],
+          "levelLabelsFa": [
+            "قطعاً انسان",
+            "احتمالاً انسان",
+            "سیگنال‌های ترکیبی",
+            "احتمالاً هوش مصنوعی",
+            "قطعاً هوش مصنوعی"
+          ],
+          "probabilities": [
+            0.6186,
+            0.3149,
+            0.0611,
+            0.005,
+            0.0004
+          ],
+          "value": 0.454,
+          "answer": "definitely_human",
+          "answerFa": "قطعاً انسان"
+        },
+        "noul": {
+          "question": "Does this text need human review?",
+          "questionFa": "آیا این متن نیاز به بازبینی انسانی دارد؟",
+          "probability": 0.0001,
+          "answer": false,
+          "answerFa": "خیر"
+        },
+        "policy": {
+          "tier": "proceed",
+          "tierFa": "ادامه",
+          "descriptionFa": "اطمینان مدل بالاست؛ تصمیم خودکار قابل‌اعتماد است."
+        }
+      }
+    },
+    "ai": {
+      "isAI": true,
+      "confidence": 0.9902,
+      "verdict": "This text appears to be AI-generated.",
+      "verdictFa": "این متن به نظر تولید شده توسط هوش مصنوعی است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8948,
+          "raw": "4.25 bits",
+          "description": "آنتروپی کاراکترها: 4.25 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.1485,
+          "raw": "0.15",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.15"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0044,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9189,
+          "raw": "0.92",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.92"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.22,
+          "raw": "0.22",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.22"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2162,
+          "raw": "21.6%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 21.6%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0199,
+          "raw": "2.0%",
+          "description": "چگالی علائم نگارشی در متن: 2.0%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.0354,
+          "raw": "0.04",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.04"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.3773,
+          "raw": "0.38",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.38"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 7.18,
+          "raw": "7.18",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "system_one",
+      "textLength": 201,
+      "wordCount": 33,
+      "ensembleVotes": null,
+      "typedAnswers": {
+        "choice": {
+          "question": "Where does this text come from?",
+          "questionFa": "این متن از کجا آمده است؟",
+          "candidates": [
+            "human_written",
+            "ai_generated"
+          ],
+          "candidateLabelsFa": [
+            "نوشته انسان",
+            "تولیدشده توسط هوش مصنوعی"
+          ],
+          "probabilities": [
+            0.0098,
+            0.9902
+          ],
+          "answer": "ai_generated",
+          "answerFa": "تولیدشده توسط هوش مصنوعی"
+        },
+        "score": {
+          "question": "How machine-like is the writing style?",
+          "questionFa": "سبک نوشتار چقدر ماشین‌مانند است؟",
+          "levels": [
+            "definitely_human",
+            "probably_human",
+            "mixed_signals",
+            "probably_ai",
+            "definitely_ai"
+          ],
+          "levelLabelsFa": [
+            "قطعاً انسان",
+            "احتمالاً انسان",
+            "سیگنال‌های ترکیبی",
+            "احتمالاً هوش مصنوعی",
+            "قطعاً هوش مصنوعی"
+          ],
+          "probabilities": [
+            0.0004,
+            0.0028,
+            0.0422,
+            0.3383,
+            0.6163
+          ],
+          "value": 3.567,
+          "answer": "definitely_ai",
+          "answerFa": "قطعاً هوش مصنوعی"
+        },
+        "noul": {
+          "question": "Does this text need human review?",
+          "questionFa": "آیا این متن نیاز به بازبینی انسانی دارد؟",
+          "probability": 0.0,
+          "answer": false,
+          "answerFa": "خیر"
+        },
+        "policy": {
+          "tier": "proceed",
+          "tierFa": "ادامه",
+          "descriptionFa": "اطمینان مدل بالاست؛ تصمیم خودکار قابل‌اعتماد است."
+        }
+      }
+    }
+  },
+  "laya": {
+    "human": {
+      "isAI": false,
+      "confidence": 0.9817,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8955,
+          "raw": "4.11 bits",
+          "description": "آنتروپی کاراکترها: 4.11 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0046,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9,
+          "raw": "0.90",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.90"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.18,
+          "raw": "0.18",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.18"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2,
+          "raw": "20.0%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 20.0%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0217,
+          "raw": "2.2%",
+          "description": "چگالی علائم نگارشی در متن: 2.2%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.1813,
+          "raw": "0.18",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.18"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 47.28,
+          "raw": "47.28",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "laya",
+      "textLength": 138,
+      "wordCount": 27,
+      "ensembleVotes": null,
+      "typedAnswers": {
+        "choice": {
+          "question": "Where does this text come from?",
+          "questionFa": "این متن از کجا آمده است؟",
+          "candidates": [
+            "human_written",
+            "ai_generated"
+          ],
+          "candidateLabelsFa": [
+            "نوشته انسان",
+            "تولیدشده توسط هوش مصنوعی"
+          ],
+          "probabilities": [
+            0.9817,
+            0.0183
+          ],
+          "answer": "human_written",
+          "answerFa": "نوشته انسان"
+        },
+        "score": {
+          "question": "How machine-like is the writing style?",
+          "questionFa": "سبک نوشتار چقدر ماشین‌مانند است؟",
+          "levels": [
+            "definitely_human",
+            "probably_human",
+            "mixed_signals",
+            "probably_ai",
+            "definitely_ai"
+          ],
+          "levelLabelsFa": [
+            "قطعاً انسان",
+            "احتمالاً انسان",
+            "سیگنال‌های ترکیبی",
+            "احتمالاً هوش مصنوعی",
+            "قطعاً هوش مصنوعی"
+          ],
+          "probabilities": [
+            0.6015,
+            0.3341,
+            0.0616,
+            0.0015,
+            0.0013
+          ],
+          "value": 0.467,
+          "answer": "definitely_human",
+          "answerFa": "قطعاً انسان"
+        },
+        "noul": {
+          "question": "Does this text need human review?",
+          "questionFa": "آیا این متن نیاز به بازبینی انسانی دارد؟",
+          "probability": 0.0,
+          "answer": false,
+          "answerFa": "خیر"
+        },
+        "policy": {
+          "tier": "proceed",
+          "tierFa": "ادامه",
+          "descriptionFa": "اطمینان مدل بالاست؛ تصمیم خودکار قابل‌اعتماد است."
+        }
+      }
+    },
+    "ai": {
+      "isAI": false,
+      "confidence": 0.9785,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8948,
+          "raw": "4.25 bits",
+          "description": "آنتروپی کاراکترها: 4.25 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.1485,
+          "raw": "0.15",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.15"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0044,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9189,
+          "raw": "0.92",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.92"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.22,
+          "raw": "0.22",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.22"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2162,
+          "raw": "21.6%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 21.6%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0199,
+          "raw": "2.0%",
+          "description": "چگالی علائم نگارشی در متن: 2.0%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.0354,
+          "raw": "0.04",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.04"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.3773,
+          "raw": "0.38",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.38"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 7.18,
+          "raw": "7.18",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "laya",
+      "textLength": 201,
+      "wordCount": 33,
+      "ensembleVotes": null,
+      "typedAnswers": {
+        "choice": {
+          "question": "Where does this text come from?",
+          "questionFa": "این متن از کجا آمده است؟",
+          "candidates": [
+            "human_written",
+            "ai_generated"
+          ],
+          "candidateLabelsFa": [
+            "نوشته انسان",
+            "تولیدشده توسط هوش مصنوعی"
+          ],
+          "probabilities": [
+            0.9785,
+            0.0215
+          ],
+          "answer": "human_written",
+          "answerFa": "نوشته انسان"
+        },
+        "score": {
+          "question": "How machine-like is the writing style?",
+          "questionFa": "سبک نوشتار چقدر ماشین‌مانند است؟",
+          "levels": [
+            "definitely_human",
+            "probably_human",
+            "mixed_signals",
+            "probably_ai",
+            "definitely_ai"
+          ],
+          "levelLabelsFa": [
+            "قطعاً انسان",
+            "احتمالاً انسان",
+            "سیگنال‌های ترکیبی",
+            "احتمالاً هوش مصنوعی",
+            "قطعاً هوش مصنوعی"
+          ],
+          "probabilities": [
+            0.5711,
+            0.361,
+            0.0603,
+            0.0058,
+            0.0019
+          ],
+          "value": 0.506,
+          "answer": "definitely_human",
+          "answerFa": "قطعاً انسان"
+        },
+        "noul": {
+          "question": "Does this text need human review?",
+          "questionFa": "آیا این متن نیاز به بازبینی انسانی دارد؟",
+          "probability": 0.0,
+          "answer": false,
+          "answerFa": "خیر"
+        },
+        "policy": {
+          "tier": "proceed",
+          "tierFa": "ادامه",
+          "descriptionFa": "اطمینان مدل بالاست؛ تصمیم خودکار قابل‌اعتماد است."
+        }
+      }
+    }
+  },
+  "ensemble": {
+    "human": {
+      "isAI": false,
+      "confidence": 0.9451,
+      "verdict": "This text appears to be human-written.",
+      "verdictFa": "این متن به نظر توسط انسان نوشته شده است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8955,
+          "raw": "4.11 bits",
+          "description": "آنتروپی کاراکترها: 4.11 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0046,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9,
+          "raw": "0.90",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.90"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.18,
+          "raw": "0.18",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.18"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2,
+          "raw": "20.0%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 20.0%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0217,
+          "raw": "2.2%",
+          "description": "چگالی علائم نگارشی در متن: 2.2%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.1813,
+          "raw": "0.18",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.18"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.0907,
+          "raw": "0.09",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.09"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 47.28,
+          "raw": "47.28",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "ensemble",
+      "textLength": 138,
+      "wordCount": 27,
+      "ensembleVotes": [
+        {
+          "modelId": "bilstm",
+          "label": "BiLSTM",
+          "labelFa": "شبکه دوسویه LSTM",
+          "aiProbability": 0.1018,
+          "weight": 0.7
+        },
+        {
+          "modelId": "gpt2_transformer",
+          "label": "GPT-2 Transformer (fine-tuned)",
+          "labelFa": "ترنسفورمر GPT-2 (فاین‌تیون‌شده)",
+          "aiProbability": 0.0,
+          "weight": 3.0
+        },
+        {
+          "modelId": "parsbert",
+          "label": "ParsBERT (Bidirectional Encoder)",
+          "labelFa": "پارس‌برت (رمزگذار دوسویه)",
+          "aiProbability": 0.0001,
+          "weight": 3.0
+        },
+        {
+          "modelId": "system_one",
+          "label": "System One (Decision Head)",
+          "labelFa": "مدل تصمیم سیستم-یک",
+          "aiProbability": 0.0167,
+          "weight": 0.6
+        },
+        {
+          "modelId": "svm",
+          "label": "SVM",
+          "labelFa": "ماشین بردار پشتیبان",
+          "aiProbability": 0.3172,
+          "weight": 1.0
+        },
+        {
+          "modelId": "logreg",
+          "label": "Logistic Regression",
+          "labelFa": "رگرسیون لجستیک",
+          "aiProbability": 0.0288,
+          "weight": 1.0
+        },
+        {
+          "modelId": "naive_bayes",
+          "label": "Naive Bayes",
+          "labelFa": "بیز ساده",
+          "aiProbability": 0.0006,
+          "weight": 1.0
+        },
+        {
+          "modelId": "random_forest",
+          "label": "Random Forest",
+          "labelFa": "جنگل تصادفی",
+          "aiProbability": 0.16,
+          "weight": 1.0
+        },
+        {
+          "modelId": "gradient_boosting",
+          "label": "Gradient Boosting",
+          "labelFa": "گرادیان بوستینگ",
+          "aiProbability": 0.0868,
+          "weight": 1.0
+        }
+      ],
+      "typedAnswers": null
+    },
+    "ai": {
+      "isAI": true,
+      "confidence": 0.8217,
+      "verdict": "This text appears to be AI-generated.",
+      "verdictFa": "این متن به نظر تولید شده توسط هوش مصنوعی است.",
+      "details": [
+        {
+          "label": "entropy",
+          "labelFa": "آنتروپی",
+          "value": 0.8948,
+          "raw": "4.25 bits",
+          "description": "آنتروپی کاراکترها: 4.25 بیت (نرمال‌شده بر حسب تنوع کاراکتر)"
+        },
+        {
+          "label": "sentence_variety",
+          "labelFa": "تنوع جملات",
+          "value": 0.1485,
+          "raw": "0.15",
+          "description": "پراکندگی طول جمله‌ها (ضریب تغییرات): 0.15"
+        },
+        {
+          "label": "repetition",
+          "labelFa": "تکرار",
+          "value": 0.0,
+          "raw": "0.0%",
+          "description": "درصد تکرار سه‌گرام‌ها: 0.0%"
+        },
+        {
+          "label": "coherence",
+          "labelFa": "انسجام",
+          "value": 0.0044,
+          "raw": "0.00",
+          "description": "میانگین شباهت جمله‌های مجاور: 0.00"
+        },
+        {
+          "label": "lexical_diversity",
+          "labelFa": "تنوع واژگانی",
+          "value": 0.9189,
+          "raw": "0.92",
+          "description": "نسبت واژه‌های یکتای متن به کل واژه‌ها: 0.92"
+        },
+        {
+          "label": "sentence_length",
+          "labelFa": "میانگین طول جمله",
+          "value": 0.22,
+          "raw": "0.22",
+          "description": "میانگین طول جمله‌ها (نرمال‌شده، ۵۰ واژه = ۱): 0.22"
+        },
+        {
+          "label": "function_word_ratio",
+          "labelFa": "واژه‌های کارکردی",
+          "value": 0.2162,
+          "raw": "21.6%",
+          "description": "سهم واژه‌های کارکردی از کل واژه‌ها: 21.6%"
+        },
+        {
+          "label": "punctuation_rate",
+          "labelFa": "علائم نگارشی",
+          "value": 0.0199,
+          "raw": "2.0%",
+          "description": "چگالی علائم نگارشی در متن: 2.0%"
+        },
+        {
+          "label": "lexical_burstiness",
+          "labelFa": "انفجار واژگانی",
+          "value": 0.0354,
+          "raw": "0.04",
+          "description": "ضریب تغییرات فاصلهٔ وقوع واژه‌های تکرارشونده (انفجار واژگانی): 0.04"
+        },
+        {
+          "label": "clause_variety",
+          "labelFa": "تنوع جمله‌واره‌ها",
+          "value": 0.3773,
+          "raw": "0.38",
+          "description": "پراکندگی طول جمله‌واره‌ها (ضریب تغییرات): 0.38"
+        },
+        {
+          "label": "perplexity",
+          "labelFa": "سرگشتگی",
+          "value": 7.18,
+          "raw": "7.18",
+          "description": "سرگشتگی متن تحت مدل زبانی خام GPT-2 فارسی (بدون آموزش): متنِ قابل‌پیش‌بینی‌تر امتیاز کمتری می‌گیرد؛ سیگنالی مستقل از مدل‌های آموزش‌دیده."
+        }
+      ],
+      "modelUsed": "ensemble",
+      "textLength": 201,
+      "wordCount": 33,
+      "ensembleVotes": [
+        {
+          "modelId": "bilstm",
+          "label": "BiLSTM",
+          "labelFa": "شبکه دوسویه LSTM",
+          "aiProbability": 0.9993,
+          "weight": 0.7
+        },
+        {
+          "modelId": "gpt2_transformer",
+          "label": "GPT-2 Transformer (fine-tuned)",
+          "labelFa": "ترنسفورمر GPT-2 (فاین‌تیون‌شده)",
+          "aiProbability": 1.0,
+          "weight": 3.0
+        },
+        {
+          "modelId": "parsbert",
+          "label": "ParsBERT (Bidirectional Encoder)",
+          "labelFa": "پارس‌برت (رمزگذار دوسویه)",
+          "aiProbability": 0.993,
+          "weight": 3.0
+        },
+        {
+          "modelId": "system_one",
+          "label": "System One (Decision Head)",
+          "labelFa": "مدل تصمیم سیستم-یک",
+          "aiProbability": 0.9902,
+          "weight": 0.6
+        },
+        {
+          "modelId": "svm",
+          "label": "SVM",
+          "labelFa": "ماشین بردار پشتیبان",
+          "aiProbability": 0.5352,
+          "weight": 1.0
+        },
+        {
+          "modelId": "logreg",
+          "label": "Logistic Regression",
+          "labelFa": "رگرسیون لجستیک",
+          "aiProbability": 0.7667,
+          "weight": 1.0
+        },
+        {
+          "modelId": "naive_bayes",
+          "label": "Naive Bayes",
+          "labelFa": "بیز ساده",
+          "aiProbability": 0.9999,
+          "weight": 1.0
+        },
+        {
+          "modelId": "random_forest",
+          "label": "Random Forest",
+          "labelFa": "جنگل تصادفی",
+          "aiProbability": 0.32,
+          "weight": 1.0
+        },
+        {
+          "modelId": "gradient_boosting",
+          "label": "Gradient Boosting",
+          "labelFa": "گرادیان بوستینگ",
+          "aiProbability": 0.2127,
+          "weight": 1.0
+        }
+      ],
+      "typedAnswers": null
+    }
+  }
+}

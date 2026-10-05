@@ -1,8 +1,8 @@
-"""Train the JEV-style "System One" decision model on the Persian dataset.
+"""Train the System One decision model on the Persian dataset.
 
 Architecture: the fine-tuned ParsBERT encoder (parsbertClassifierModel.pt --
 the deployed bidirectional classifier trained by training/train_parsbert.py)
-is reused as the JEV backbone, its [CLS] representation feeding three small
+is reused as the System One backbone, its [CLS] representation feeding three small
 *decision heads*, one per typed question, all scored in a single forward pass
 instead of autoregressive answer generation:
 
@@ -11,8 +11,8 @@ instead of autoregressive answer generation:
                  answer is the probability-weighted value (can fall between levels)
 - noul head   -> probability for the yes/no "needs human review" proposition
 
-Training data comes from training/jev_data/jev_{train,test}.jsonl (built by
-training/prepare_jev_data.py) with soft targets distilled from the deployed
+Training data comes from training/system_one_data/system_one_{train,test}.jsonl (built by
+training/prepare_system_one_data.py) with soft targets distilled from the deployed
 fine-tuned GPT-2 classifier (gpt2ClassifierModel.pt) -- the teacher the
 ensemble already weights highest. Loss = weighted sum of soft cross-entropy
 on the two distributions + binary cross-entropy on the noul head.
@@ -21,17 +21,16 @@ Same CPU budget as training/train_parsbert.py: only the last 4 of 12 encoder
 layers are unfrozen (the pooler stays frozen -- [CLS] is pooled directly, so
 the pooler is never called), SEQ_LEN=64, 3 epochs over the same 6000/1500
 stratified subsample. Texts get the same light normalization the serving path
-applies (utils._normalize_for_gpt2), once at load time.
+applies (aitextd.text.normalize_for_pretrained), once at load time.
 
 The saved checkpoint is self-contained: it stores the backbone config, so the
 server rebuilds the encoder offline and no pretrained files are needed at
-serving time (the BERT branch of utils._load_jev_model).
+serving time (the BERT branch of aitextd.loaders.load_system_one_model).
 
-Run from the project root: python training/train_jev.py
+Run from the project root: python training/train_system_one.py
 """
 
 import json
-import os
 import sys
 import time
 from itertools import pairwise
@@ -50,19 +49,29 @@ from sklearn.metrics import (
     recall_score,
     roc_auc_score,
 )
-from transformers import AutoModel, AutoTokenizer, BertConfig
+from transformers import AutoModel, BertConfig
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-import utils  # noqa: E402  (serving pipeline: shared to guarantee train/serve parity)
-from split import RANDOM_SEED  # noqa: E402
+from aitextd import paths
+from aitextd.architectures import ParsBERTClassifier, SystemOneDecisionModel
+from aitextd.constants import (
+    SYSTEM_ONE_CHOICE_CANDIDATES as CHOICE_CANDIDATES,
+)
+from aitextd.constants import (
+    SYSTEM_ONE_SCORE_LEVELS as SCORE_LEVELS,
+)
+from aitextd.loaders import get_parsbert_tokenizer
+from aitextd.text import normalize_for_pretrained
+from split import RANDOM_SEED
 
-MODELS_JSON_PATH = "models.json"
-MODEL_PATH = "jevModel.pt"
-BASE_CHECKPOINT_PATH = "parsbertClassifierModel.pt"
+MODELS_JSON_PATH = paths.MODELS_JSON
+MODEL_FILENAME = "systemOneModel.pt"
+MODEL_PATH = paths.model_path(MODEL_FILENAME)
+BASE_CHECKPOINT_PATH = paths.model_path("parsbertClassifierModel.pt")
 BASE_BACKBONE_NAME = "HooshvareLab/bert-fa-base-uncased"  # tokenizer fallback
-DATA_DIR = "training/jev_data"
+DATA_DIR = paths.SYSTEM_ONE_DATA_DIR
 
 SEQ_LEN = 64
 BATCH_SIZE = 16
@@ -77,76 +86,28 @@ CHOICE_WEIGHT = 1.0
 SCORE_WEIGHT = 0.5
 NOUL_WEIGHT = 0.5
 
-# Keep in sync with training/prepare_jev_data.py (which writes these into the
-# JSONL schema) and with the Persian labels in utils.py.
-CHOICE_CANDIDATES = ["human_written", "ai_generated"]
-SCORE_LEVELS = [
-    "definitely_human",
-    "probably_human",
-    "mixed_signals",
-    "probably_ai",
-    "definitely_ai",
-]
-
 # Decision policy thresholds served with the checkpoint (three tiers, as in
-# the JEV guide: proceed / gather more info / reject).
+# the System One guide: proceed / gather more info / reject).
 PROCEED_THRESHOLD = 0.8
 NEEDS_REVIEW_THRESHOLD = 0.6
 
 torch.manual_seed(RANDOM_SEED)
 
 
-class JevDecisionModel(nn.Module):
-    """ParsBERT backbone (bidirectional, so pooled on [CLS]) + typed decision
-    heads. pool_on_cls is a flag rather than an assumption so the serving copy
-    in utils.py can also load the legacy GPT-2-backed checkpoint (pooled on the
-    last real token); this trainer always sets it True. Must match the copy in
-    utils.py exactly so the saved state_dict loads at serving time."""
-
-    def __init__(self, backbone, hidden_size, n_choice, n_score_levels, pool_on_cls):
-        super().__init__()
-        self.backbone = backbone
-        self.pool_on_cls = pool_on_cls
-        self.dropout = nn.Dropout(DROPOUT)
-        self.choice_head = nn.Linear(hidden_size, n_choice)
-        self.score_head = nn.Linear(hidden_size, n_score_levels)
-        self.noul_head = nn.Linear(hidden_size, 1)
-
-    def forward(self, input_ids, attention_mask):
-        hidden = self.backbone(input_ids=input_ids, attention_mask=attention_mask).last_hidden_state
-        if self.pool_on_cls:
-            # [CLS] is always token position 0 for a BERT-style encoder: every
-            # position already attends to the whole sequence, so unlike the
-            # causal GPT-2 there is no attention-mask index arithmetic needed
-            # to find "the token that saw everything".
-            pooled = hidden[:, 0]
-        else:
-            last_idx = attention_mask.sum(dim=1) - 1
-            pooled = hidden[torch.arange(hidden.size(0)), last_idx]
-        pooled = self.dropout(pooled)
-        return (
-            self.choice_head(pooled),
-            self.score_head(pooled),
-            self.noul_head(pooled).squeeze(-1),
-        )
-
-
 def load_tokenizer():
-    """Same offline-first fallback order as utils._load_parsbert_tokenizer."""
-    if os.path.isdir("parsbert_tokenizer"):
-        return AutoTokenizer.from_pretrained("parsbert_tokenizer")
-    return AutoTokenizer.from_pretrained(BASE_BACKBONE_NAME)
+    """Same offline-first fallback order as the serving loader."""
+    return get_parsbert_tokenizer()
 
 
 def load_parsbert_backbone():
     """Rebuild the fine-tuned ParsBERT encoder exactly the way the server does
-    (utils._load_parsbert_model): architecture from the checkpoint's stored
+    (aitextd.loaders.load_parsbert_model): architecture from the checkpoint's stored
     backbone config, weights from the state_dict -- then hand the backbone to
-    JEV with its fine-tuned classification knowledge intact."""
+    the System One model with its fine-tuned classification knowledge intact."""
     checkpoint = torch.load(BASE_CHECKPOINT_PATH, map_location="cpu", weights_only=False)
     base_config = checkpoint["config"]
     backbone = AutoModel.from_config(BertConfig.from_dict(base_config["backbone_config"]))
-    classifier = utils.ParsBERTClassifier(backbone, base_config["hidden_size"])
+    classifier = ParsBERTClassifier(backbone, base_config["hidden_size"])
     classifier.load_state_dict(checkpoint["state_dict"])
     return classifier.backbone
 
@@ -195,13 +156,13 @@ def expected_calibration_error(probs, labels, n_bins=15):
 
 
 def assert_serving_contract(model, backbone_config, hidden_size):
-    """Rebuild the checkpoint the way the BERT branch of utils._load_jev_model
+    """Rebuild the checkpoint the way the BERT branch of load_system_one_model
     does (BertConfig.from_dict -> AutoModel.from_config, i.e. with no
     pretrained weights) and check the state_dict keys line up. A silent
     key/shape mismatch here would only surface as a load error on the first
     request against the live server."""
     rebuilt_backbone = AutoModel.from_config(BertConfig.from_dict(backbone_config))
-    rebuilt = JevDecisionModel(
+    rebuilt = SystemOneDecisionModel(
         rebuilt_backbone,
         hidden_size,
         n_choice=len(CHOICE_CANDIDATES),
@@ -213,20 +174,22 @@ def assert_serving_contract(model, backbone_config, hidden_size):
 
 
 def main():
-    print("Loading JEV training data...")
-    train_records = load_jsonl(f"{DATA_DIR}/jev_train.jsonl")
-    test_records = load_jsonl(f"{DATA_DIR}/jev_test.jsonl")
+    print("Loading System One training data...")
+    train_records = load_jsonl(f"{DATA_DIR}/system_one_train.jsonl")
+    test_records = load_jsonl(f"{DATA_DIR}/system_one_test.jsonl")
     if not train_records or not test_records:
-        raise SystemExit("No JEV records found -- run training/prepare_jev_data.py first.")
+        raise SystemExit(
+            "No System One records found -- run training/prepare_system_one_data.py first."
+        )
     print(f"{len(train_records)} train / {len(test_records)} test records")
 
     choice_t, score_t, noul_t, _ = target_arrays(train_records)
     _, score_t_test, noul_t_test, y_test = target_arrays(test_records)
     # Same light normalization the serving path applies for this runtime
-    # (utils._predict_jev), applied once instead of per epoch.
+    # (aitextd.predictors.predict_system_one), applied once instead of per epoch.
     normalize_start = time.time()
-    texts = [utils._normalize_for_gpt2(r["state"]["text"]) for r in train_records]
-    texts_test = [utils._normalize_for_gpt2(r["state"]["text"]) for r in test_records]
+    texts = [normalize_for_pretrained(r["state"]["text"]) for r in train_records]
+    texts_test = [normalize_for_pretrained(r["state"]["text"]) for r in test_records]
     print(
         f"Normalized {len(texts) + len(texts_test)} texts in {time.time() - normalize_start:.0f}s"
     )
@@ -242,12 +205,12 @@ def main():
     for layer in backbone.encoder.layer[n_layers - UNFROZEN_LAYERS :]:
         for p in layer.parameters():
             p.requires_grad = True
-    # The pooler stays frozen: JEV pools the raw [CLS] hidden state, so the
+    # The pooler stays frozen: the model pools the raw [CLS] hidden state, so the
     # pooler is never called (same as the ParsBERT classifier's own forward).
 
     device = torch.device("cpu")
     torch.set_num_threads(12)
-    model = JevDecisionModel(
+    model = SystemOneDecisionModel(
         backbone,
         hidden_size,
         n_choice=len(CHOICE_CANDIDATES),
@@ -342,7 +305,7 @@ def main():
         "precision": round(float(precision_score(y_test, preds, zero_division=0)), 4),
         "recall": round(float(recall_score(y_test, preds, zero_division=0)), 4),
         "f1Score": round(float(f1_score(y_test, preds, zero_division=0)), 4),
-        # JEV per-type metrics: score answer error (probability-weighted value
+        # Per-type metrics: score answer error (probability-weighted value
         # vs target value on the 0..4 scale), noul ranking quality, and
         # calibration of the choice distribution.
         "scoreMae": round(
@@ -384,7 +347,7 @@ def main():
                 },
                 # The server rebuilds the BERT encoder from this alone (no
                 # pretrained download needed), then overwrites it with
-                # state_dict. Its presence also tells utils._load_jev_model
+                # state_dict. Its presence also tells the serving loader
                 # this is a [CLS]-pooled BERT checkpoint, not the legacy
                 # GPT-2-backed format.
                 "backbone_config": backbone_config,
@@ -402,13 +365,13 @@ def main():
     # silently change every ensemble prediction (same convention as the Colab
     # notebook, which documents why: _ensemble_predict skips weights <= 0 and
     # rescales the rest).
-    previous = next((m for m in existing if m["id"] == "jev_system_one"), {})
+    previous = next((m for m in existing if m["id"] == "system_one"), {})
     entry = {
-        "id": "jev_system_one",
-        "name": "JEV System One (Decision Head)",
-        "nameFa": "مدل تصمیم سیستم-یک (JEV)",
+        "id": "system_one",
+        "name": "System One (Decision Head)",
+        "nameFa": "مدل تصمیم سیستم-یک",
         "description": (
-            "JEV-style 'System One' decision model: the fine-tuned ParsBERT "
+            "System One decision model: the fine-tuned ParsBERT "
             "encoder (the deployed bidirectional classifier, with its last 4 "
             "layers adapted further here) pooled on [CLS] into three typed "
             "decision heads answered in a single forward pass -- a choice "
@@ -420,7 +383,7 @@ def main():
             "deployed fine-tuned GPT-2 classifier."
         ),
         "descriptionFa": (
-            "مدل تصمیم «سیستم-یک» به سبک JEV: رمزگذار دوسویه ParsBERT "
+            "مدل تصمیم «سیستم-یک»: رمزگذار دوسویه ParsBERT "
             "فاین‌تیون‌شده (همان دسته‌بند دوسویهٔ مستقر که ۴ لایه پایانی آن "
             "اینجا نیز تطبیق داده شده است) که بازنمایی توکن [CLS] آن به سه سر "
             "تصمیم نوع‌بندی‌شده می‌رود و همه در یک گذر رو به جلو پاسخ داده "
@@ -433,8 +396,8 @@ def main():
         "algorithm": "ParsBERT (fine-tuned encoder) + typed decision heads (choice/score/noul)",
         "type": "dl",
         "version": "2.0",
-        "filename": MODEL_PATH,
-        "runtime": "pytorch-jev",
+        "filename": MODEL_FILENAME,
+        "runtime": "pytorch-system-one",
         "ensembleWeight": float(previous.get("ensembleWeight", 1.0)),
         "metrics": metrics_for_json,
         "confusionMatrix": {
@@ -451,7 +414,7 @@ def main():
             "testSplitRatio": len(test_records) / (len(train_records) + len(test_records)),
             "randomSeed": RANDOM_SEED,
             "dataset": (
-                "processedDataset.csv (JEV JSONL, soft targets distilled from "
+                "processedDataset.csv (System One JSONL, soft targets distilled from "
                 "the fine-tuned GPT-2 classifier)"
             ),
         },

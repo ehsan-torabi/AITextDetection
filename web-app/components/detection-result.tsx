@@ -21,6 +21,8 @@ import {
   Scale,
   ListChecks,
   Eye,
+  Waves,
+  Split,
 } from "lucide-react";
 
 interface DetectionResultProps {
@@ -35,6 +37,12 @@ const metricIcons: Record<string, React.ReactNode> = {
   sentence_variety: <Activity className="size-4" />,
   repetition: <Sparkles className="size-4" />,
   coherence: <TrendingUp className="size-4" />,
+  lexical_diversity: <Scale className="size-4" />,
+  sentence_length: <ListChecks className="size-4" />,
+  function_word_ratio: <User className="size-4" />,
+  punctuation_rate: <Eye className="size-4" />,
+  lexical_burstiness: <Waves className="size-4" />,
+  clause_variety: <Split className="size-4" />,
 };
 
 export function DetectionResult({ result, sourceLabel }: DetectionResultProps) {
@@ -150,17 +158,19 @@ export function DetectionResult({ result, sourceLabel }: DetectionResultProps) {
       )}
 
       {/* Detail Metrics */}
-      <div>
-        <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
-          <BarChart3 className="size-4 text-muted-foreground" />
-          جزئیات تحلیل
-        </h3>
-        <div className="grid gap-3 sm:grid-cols-2">
-          {result.details.map((detail) => (
-            <MetricCard key={detail.label} detail={detail} />
-          ))}
+      {result.details.length > 0 && (
+        <div>
+          <h3 className="text-sm font-semibold mb-3 flex items-center gap-2">
+            <BarChart3 className="size-4 text-muted-foreground" />
+            جزئیات تحلیل
+          </h3>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {result.details.map((detail) => (
+              <MetricCard key={detail.label} detail={detail} />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -385,7 +395,10 @@ function EnsembleBreakdown({ votes }: { votes: NonNullable<DetectionResponse["en
 }
 
 function MetricCard({ detail }: { detail: DetectionResponse["details"][number] }) {
-  const percentage = Math.round(detail.value * 100);
+  // ponytail: label check while perplexity is the only unbounded metric; move
+  // to a unit field on DetectionDetail when a second one appears.
+  const isRatio = detail.label !== "perplexity";
+  const percentage = isRatio ? Math.round(detail.value * 100) : null;
 
   const barColor =
     detail.value > 0.7 ? "bg-destructive" : detail.value > 0.4 ? "bg-chart-3" : "bg-primary";
@@ -400,25 +413,29 @@ function MetricCard({ detail }: { detail: DetectionResponse["details"][number] }
             </span>
             {detail.labelFa}
           </CardTitle>
-          <span className="text-base font-bold tabular-nums">{percentage}%</span>
+          <span className="text-base font-bold tabular-nums">
+            {isRatio ? `${percentage}٪` : detail.raw}
+          </span>
         </div>
         <CardDescription className="text-xs leading-relaxed">
           {detail.description}
-          {detail.raw && (
+          {isRatio && detail.raw && (
             <span className="block mt-1 font-medium text-foreground/70" dir="ltr">
               {detail.raw}
             </span>
           )}
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
-          <div
-            className={`h-full rounded-full transition-all duration-700 ease-out ${barColor}`}
-            style={{ width: `${percentage}%` }}
-          />
-        </div>
-      </CardContent>
+      {isRatio && (
+        <CardContent>
+          <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+            <div
+              className={`h-full rounded-full transition-all duration-700 ease-out ${barColor}`}
+              style={{ width: `${percentage}%` }}
+            />
+          </div>
+        </CardContent>
+      )}
     </Card>
   );
 }

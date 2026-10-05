@@ -17,50 +17,55 @@
 \contentsline {section}{\numberline {4.2}مسئلهٔ فضای ویژگی نسخهٔ نخست}{10}{section.4.2}%
 \contentsline {section}{\numberline {4.3}راه‌حل اصلاح‌شده}{11}{section.4.3}%
 \contentsline {section}{\numberline {4.4}ویژگی‌های سبک‌شناسی متن (\en {stylometric features})}{11}{section.4.4}%
-\contentsline {chapter}{\numberline {5}مدل‌های یادگیری ماشین کلاسیک}{13}{chapter.5}%
-\contentsline {section}{\numberline {5.1}ماشین بردار پشتیبان خطی (\en {Linear SVM})}{13}{section.5.1}%
-\contentsline {section}{\numberline {5.2}رگرسیون لجستیک}{13}{section.5.2}%
-\contentsline {section}{\numberline {5.3}بیز ساده چندجمله‌ای}{14}{section.5.3}%
-\contentsline {section}{\numberline {5.4}جنگل تصادفی}{14}{section.5.4}%
-\contentsline {section}{\numberline {5.5}گرادیان بوستینگ}{15}{section.5.5}%
-\contentsline {chapter}{\numberline {6}مدل‌های یادگیری عمیق}{16}{chapter.6}%
-\contentsline {section}{\numberline {6.1}شبکهٔ حافظهٔ کوتاه‌مدت پایدار دوسویه (\en {BiLSTM})}{16}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}معماری}{16}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}بهبودهای نسخهٔ دوم}{17}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}ترنسفورمر \en {GPT-2} فاین‌تیون‌شده}{17}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}مبانی مکانیزم توجه}{17}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}از مدل زبانی تا طبقه‌بند}{17}{subsection.6.2.2}%
-\contentsline {subsection}{\numberline {6.2.3}راهبرد فاین‌تیون: کدام لایه‌ها آموزش ببینند؟}{18}{subsection.6.2.3}%
-\contentsline {section}{\numberline {6.3}مدل چهارم: \en {ParsBERT} فاین‌تیون‌شده}{19}{section.6.3}%
-\contentsline {section}{\numberline {6.4}لایهٔ تصمیم «سیستم-یک» به سبک \en {JEV}}{20}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}انگیزه: از تولید متن تا رابط تصمیم}{20}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}سه سؤال نوع‌بندی‌شدهٔ پروژه}{21}{subsection.6.4.2}%
-\contentsline {subsection}{\numberline {6.4.3}معماری}{21}{subsection.6.4.3}%
-\contentsline {subsection}{\numberline {6.4.4}هدف‌های نرمِ تقطیرشده از معلم}{22}{subsection.6.4.4}%
-\contentsline {subsection}{\numberline {6.4.5}سیاست تصمیم و یکپارچه‌سازی در سرویس}{23}{subsection.6.4.5}%
-\contentsline {subsection}{\numberline {6.4.6}ارزیابی}{23}{subsection.6.4.6}%
-\contentsline {section}{\numberline {6.5}سیگنال سرگشتگی مدل زبانی خام: یک بررسی تجربی}{24}{section.6.5}%
-\contentsline {chapter}{\numberline {7}تنظیم هایپرپارامتر و اعتبارسنجی متقابل}{25}{chapter.7}%
-\contentsline {chapter}{\numberline {8}معیارهای ارزیابی}{26}{chapter.8}%
-\contentsline {chapter}{\numberline {9}زیرساخت پیاده‌سازی}{27}{chapter.9}%
-\contentsline {section}{\numberline {9.1}معماری سرویس}{27}{section.9.1}%
-\contentsline {section}{\numberline {9.2}جریان پردازش یک درخواست تشخیص}{29}{section.9.2}%
-\contentsline {section}{\numberline {9.3}ساختار پروژه}{30}{section.9.3}%
-\contentsline {section}{\numberline {9.4}تحلیل آنلاین با مدل \en {System One} سرویس \en {TypeSafe}}{31}{section.9.4}%
-\contentsline {section}{\numberline {9.5}محدودیت‌های سخت‌افزار محلی در برابر \en {Google Colab}}{33}{section.9.5}%
-\contentsline {chapter}{\numberline {10}نتایج و تحلیل خطا}{35}{chapter.10}%
-\contentsline {section}{\numberline {10.1}نتایج نسخهٔ نخست (محلی)}{35}{section.10.1}%
-\contentsline {section}{\numberline {10.2}چرا مدل‌ها روی متن واقعی اشتباه می‌کردند؟}{35}{section.10.2}%
-\contentsline {section}{\numberline {10.3}اصلاحات اعمال‌شده در نسخهٔ دوم}{36}{section.10.3}%
-\contentsline {section}{\numberline {10.4}نتایج نسخهٔ دوم (\en {Colab}, واقعی)}{36}{section.10.4}%
-\contentsline {section}{\numberline {10.5}تحلیل خطای هدفمند \en {BiLSTM}: چرا «دقیقاً معکوس» اشتباه می‌کند}{37}{section.10.5}%
-\contentsline {chapter}{\numberline {11}رابط کاربری وب}{38}{chapter.11}%
-\contentsline {chapter}{\numberline {12}نتیجه‌گیری و کارهای آینده}{40}{chapter.12}%
-\contentsline {chapter}{\numberline {آ}راهنمای اجرا، استفاده و بازتولید}{42}{appendix.Alph1}%
-\contentsline {section}{\numberline {آ.1}پیش‌نیازها}{42}{section.Alph1.1}%
-\contentsline {section}{\numberline {آ.2}بازتولید مدل‌ها از صفر}{42}{section.Alph1.2}%
-\contentsline {section}{\numberline {آ.3}اجرای سرویس بک‌اند}{45}{section.Alph1.3}%
-\contentsline {section}{\numberline {آ.4}اجرای رابط کاربری وب}{46}{section.Alph1.4}%
-\contentsline {section}{\numberline {آ.5}آزمون‌های خودکار}{47}{section.Alph1.5}%
-\contentsline {section}{\numberline {آ.6}افزودن یک مدل تازه به سرویس}{47}{section.Alph1.6}%
-\contentsline {chapter}{مراجع}{48}{section*.18}%
+\contentsline {chapter}{\numberline {5}مدل‌های یادگیری ماشین کلاسیک}{15}{chapter.5}%
+\contentsline {section}{\numberline {5.1}ماشین بردار پشتیبان خطی (\en {Linear SVM})}{15}{section.5.1}%
+\contentsline {section}{\numberline {5.2}رگرسیون لجستیک}{15}{section.5.2}%
+\contentsline {section}{\numberline {5.3}بیز ساده چندجمله‌ای}{16}{section.5.3}%
+\contentsline {section}{\numberline {5.4}جنگل تصادفی}{16}{section.5.4}%
+\contentsline {section}{\numberline {5.5}گرادیان بوستینگ}{17}{section.5.5}%
+\contentsline {chapter}{\numberline {6}مدل‌های یادگیری عمیق}{18}{chapter.6}%
+\contentsline {section}{\numberline {6.1}شبکهٔ حافظهٔ کوتاه‌مدت پایدار دوسویه (\en {BiLSTM})}{18}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}معماری}{18}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}بهبودهای نسخهٔ دوم}{19}{subsection.6.1.2}%
+\contentsline {section}{\numberline {6.2}ترنسفورمر \en {GPT-2} فاین‌تیون‌شده}{19}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}مبانی مکانیزم توجه}{19}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}از مدل زبانی تا طبقه‌بند}{19}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}راهبرد فاین‌تیون: کدام لایه‌ها آموزش ببینند؟}{20}{subsection.6.2.3}%
+\contentsline {section}{\numberline {6.3}مدل چهارم: \en {ParsBERT} فاین‌تیون‌شده}{21}{section.6.3}%
+\contentsline {section}{\numberline {6.4}لایهٔ تصمیم «سیستم-یک» به سبک \en {JEV}}{23}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}انگیزه: از تولید متن تا رابط تصمیم}{23}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}سه سؤال نوع‌بندی‌شدهٔ پروژه}{24}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}معماری}{24}{subsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.4.4}هدف‌های نرمِ تقطیرشده از معلم}{26}{subsection.6.4.4}%
+\contentsline {subsection}{\numberline {6.4.5}سیاست تصمیم و یکپارچه‌سازی در سرویس}{27}{subsection.6.4.5}%
+\contentsline {subsection}{\numberline {6.4.6}ارزیابی}{27}{subsection.6.4.6}%
+\contentsline {section}{\numberline {6.5}سیگنال سرگشتگی مدل زبانی خام: یک بررسی تجربی}{28}{section.6.5}%
+\contentsline {chapter}{\numberline {7}تنظیم هایپرپارامتر و اعتبارسنجی متقابل}{30}{chapter.7}%
+\contentsline {chapter}{\numberline {8}معیارهای ارزیابی}{31}{chapter.8}%
+\contentsline {chapter}{\numberline {9}زیرساخت پیاده‌سازی}{32}{chapter.9}%
+\contentsline {section}{\numberline {9.1}معماری سرویس}{32}{section.9.1}%
+\contentsline {section}{\numberline {9.2}جریان پردازش یک درخواست تشخیص}{34}{section.9.2}%
+\contentsline {section}{\numberline {9.3}ساختار پروژه}{35}{section.9.3}%
+\contentsline {section}{\numberline {9.4}تحلیل آنلاین با مدل \en {System One} سرویس \en {TypeSafe}}{37}{section.9.4}%
+\contentsline {section}{\numberline {9.5}فاین‌تیون مدل متن‌باز \en {Laya} روی دادهٔ فارسی}{38}{section.9.5}%
+\contentsline {subsection}{\numberline {9.5.1}معماری لایا}{40}{subsection.9.5.1}%
+\contentsline {subsection}{\numberline {9.5.2}در فاین‌تیون چه چیزی آموزش دید؟}{41}{subsection.9.5.2}%
+\contentsline {subsection}{\numberline {9.5.3}لایا در رأی ترکیبی}{42}{subsection.9.5.3}%
+\contentsline {section}{\numberline {9.6}محدودیت‌های سخت‌افزار محلی در برابر \en {Google Colab}}{43}{section.9.6}%
+\contentsline {chapter}{\numberline {10}نتایج و تحلیل خطا}{45}{chapter.10}%
+\contentsline {section}{\numberline {10.1}نتایج نسخهٔ نخست (محلی)}{45}{section.10.1}%
+\contentsline {section}{\numberline {10.2}چرا مدل‌ها روی متن واقعی اشتباه می‌کردند؟}{45}{section.10.2}%
+\contentsline {section}{\numberline {10.3}اصلاحات اعمال‌شده در نسخهٔ دوم}{46}{section.10.3}%
+\contentsline {section}{\numberline {10.4}نتایج نسخهٔ دوم (\en {Colab}, واقعی)}{46}{section.10.4}%
+\contentsline {section}{\numberline {10.5}بازآموزی با ویژگی‌های ده‌گانهٔ سبکی}{47}{section.10.5}%
+\contentsline {section}{\numberline {10.6}تحلیل خطای هدفمند \en {BiLSTM}: چرا «دقیقاً معکوس» اشتباه می‌کند}{48}{section.10.6}%
+\contentsline {chapter}{\numberline {11}رابط کاربری وب}{50}{chapter.11}%
+\contentsline {chapter}{\numberline {12}نتیجه‌گیری و کارهای آینده}{52}{chapter.12}%
+\contentsline {chapter}{\numberline {آ}راهنمای اجرا، استفاده و بازتولید}{54}{appendix.Alph1}%
+\contentsline {section}{\numberline {آ.1}پیش‌نیازها}{54}{section.Alph1.1}%
+\contentsline {section}{\numberline {آ.2}بازتولید مدل‌ها از صفر}{54}{section.Alph1.2}%
+\contentsline {section}{\numberline {آ.3}اجرای سرویس بک‌اند}{57}{section.Alph1.3}%
+\contentsline {section}{\numberline {آ.4}اجرای رابط کاربری وب}{58}{section.Alph1.4}%
+\contentsline {section}{\numberline {آ.5}آزمون‌های خودکار}{59}{section.Alph1.5}%
+\contentsline {section}{\numberline {آ.6}افزودن یک مدل تازه به سرویس}{59}{section.Alph1.6}%
+\contentsline {chapter}{مراجع}{60}{section*.25}%

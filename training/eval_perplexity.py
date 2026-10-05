@@ -1,6 +1,6 @@
 """Measure how well raw-LM perplexity separates human from AI-generated text.
 
-The perplexity signal (utils.gpt2_perplexity_batch) is training-free and
+The perplexity signal (aitextd.perplexity.gpt2_perplexity_batch) is training-free and
 independent of every fine-tuned classifier -- exactly the kind of diverse
 vote the weighted ensemble wants. Before giving it any weight, this script
 answers the empirical question on the held-out test slice:
@@ -34,8 +34,8 @@ from sklearn.metrics import roc_auc_score, roc_curve
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-import utils  # noqa: E402  (serving pipeline: perplexity via the exact serving path)
-from split import RANDOM_SEED, load_split  # noqa: E402
+from aitextd.perplexity import gpt2_perplexity_batch
+from split import RANDOM_SEED, load_split
 
 TEST_SUBSET = 1500  # same held-out slice convention as the other trainers
 
@@ -54,7 +54,7 @@ def main():
     print(f"Scoring {len(texts)} held-out texts with raw GPT-2-fa perplexity...")
 
     start = time.time()
-    ppl = utils.gpt2_perplexity_batch(texts)
+    ppl = gpt2_perplexity_batch(texts)
     print(f"Done in {time.time() - start:.0f}s")
 
     valid = ~np.isnan(ppl)
