@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import {
   ArrowRight,
+  Cloud,
   Database,
   FileText,
   FlaskConical,
@@ -179,6 +180,36 @@ export default function AboutPage() {
             بازبینی انسانی—در یک گذر رو به جلو برمی‌گرداند. بدنهٔ آن همان رمزگذار ParsBERT
             فاین‌تیون‌شده است و چون مجموعه داده فقط برچسب دودویی دارد، هدف‌های نرم آموزشش از
             دسته‌بند GPT-2 فاین‌تیون‌شده—مدلی با بیشترین وزن در رأی‌گیری ترکیبی—تقطیر شده است.
+          </p>
+        </section>
+
+        {/* Online System One mode */}
+        <section className="space-y-3">
+          <h2 className="flex items-center gap-2 text-lg font-bold">
+            <Cloud className="size-4.5 text-primary" />
+            حالت آنلاین System One
+          </h2>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            علاوه بر مدل‌های محلی، می‌توانید همان متن را با مدل Jev سرویس{" "}
+            <a
+              href="https://docs.typesafe.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline underline-offset-4"
+            >
+              TypeSafe
+            </a>{" "}
+            — نخستین مدل «سیستم-یک» تجاری — تحلیل کنید. این مدل به‌جای تولید متن، همان سه پاسخ
+            نوع‌بندی‌شدهٔ محلی (انتخاب منبع، امتیاز ماشین‌مانندبودن و احتمال نیاز به بازبینی) را
+            برمی‌گرداند؛ به همین دلیل خروجی هر دو در حالت «مقایسه هر دو» کنار هم و سؤال‌به‌سؤال قابل
+            سنجش است.
+          </p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            تنظیمات اتصال (کلید API، آدرس سرویس و نام مدل) در مرورگر خودتان — در{" "}
+            <code className="mx-1 text-xs">localStorage</code> — ذخیره می‌شود و تنها هنگام تحلیل به
+            سرویس منتقل می‌گردد. یک نکتهٔ صادقانه: زبان اصلی آموزش Jev انگلیسی است و دقت آن روی متن
+            فارسی — مانند مدل‌های محلی — محدودیت دارد؛ مقایسهٔ دو رویکرد را به‌عنوان سیگنال ببینید،
+            نه حکم نهایی.
           </p>
         </section>
 

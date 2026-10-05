@@ -32,6 +32,30 @@
 \usepackage{enumitem}
 \usepackage{xcolor}
 
+% نمودارهای معماری: همهٔ شکل‌ها به‌صورت متن (TikZ) نگهداری می‌شوند تا مانند
+% کد، نسخه‌پذیری، diff و بازبینی داشته باشند؛ نه تصویر خروجی ابزار بیرونی.
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc,backgrounds}
+\tikzset{
+  box/.style={draw=black!60, rounded corners=1.5pt, align=center, inner sep=3pt,
+              minimum height=8mm, fill=blue!8, font=\footnotesize},
+  data/.style={draw=black!60, rounded corners=1.5pt, align=center, inner sep=3pt,
+               minimum height=8mm, fill=orange!18, font=\footnotesize},
+  ext/.style={draw=black!60, dashed, rounded corners=1.5pt, align=center, inner sep=3pt,
+              minimum height=8mm, fill=gray!10, font=\footnotesize},
+  usr/.style={draw=black!60, rounded corners=1.5pt, align=center, inner sep=3pt,
+              minimum height=8mm, fill=yellow!25, font=\footnotesize},
+  proc/.style={draw=black!60, rounded corners=1.5pt, align=center, inner sep=3pt,
+               minimum height=8mm, fill=green!14, font=\footnotesize},
+  art/.style={draw=black!60, rounded corners=1.5pt, align=center, inner sep=3pt,
+              minimum height=8mm, fill=violet!14, font=\footnotesize},
+  lane/.style={font=\small\bfseries, align=center},
+  w/.style={text width=#1},
+  arr/.style={-{Stealth[length=2.4mm]}, line width=0.7pt, draw=black!70},
+  arrd/.style={arr, dashed},
+  lbl/.style={font=\scriptsize, align=center, fill=white, inner sep=1.2pt},
+}
+
 \usepackage{hyperref}
 \hypersetup{
   colorlinks=true,
@@ -110,6 +134,13 @@
 \renewcommand{\appendixname}{پیوست}
 \renewcommand{\contentsname}{فهرست}
 \renewcommand{\bibname}{مراجع}
+
+% بلوک‌های verbatim چپ‌به‌راست: علاوه بر تغییر جهت پاراگراف، سازوکار
+% درون‌کاری نویسه‌های xepersian نیز خاموش می‌شود تا دنباله‌هایی مانند
+% 0.02 یا 0.0.0.0:8000 در چیدمان دوجهته جابه‌جا نشوند.
+\newenvironment{LTRverb}
+  {\begin{LTR}\XeTeXinterchartokenstate=0}
+  {\end{LTR}}
 
 % آرم دانشگاه: در صورت قرارگرفتن logo.png یا logo.jpg در پوشهٔ report،
 % به‌طور خودکار استفاده می‌شود؛ در غیر این صورت کادر جای‌نگه‌دار نمایش
@@ -193,8 +224,8 @@
 \addcontentsline{toc}{chapter}{چکیده}
 \chapter*{چکیده}
 این گزارش سامانه‌ای را شرح می‌دهد که تشخیص می‌دهد یک متن فارسی را انسان
-نوشته است یا یک مدل زبانی. روی یک مجموعه‌دادهٔ متوازن، هفت مدل طبقه‌بندی
-دودویی آموزش دیده‌اند: پنج مدل یادگیری ماشین کلاسیک روی ویژگی‌های
+نوشته است یا یک مدل زبانی. روی یک مجموعه‌دادهٔ متوازن، هفت مدل پایهٔ
+طبقه‌بندی دودویی آموزش دیده‌اند: پنج مدل یادگیری ماشین کلاسیک روی ویژگی‌های
 \en{TF-IDF} به‌همراه چهار ویژگی سبک‌شناسی دست‌ساز (آنتروپی، تنوع طول جمله،
 تکرار سه‌گرم و انسجام میان‌جمله‌ای)، یک \en{BiLSTM} با \en{embedding}
 آموخته‌شده از ابتدا، و \en{GPT-2} فارسی فاین‌تیون‌شده. متن‌های کلاس هوش
@@ -217,9 +248,12 @@
 که به‌جای یک احتمال، سه پاسخ نوع‌بندی‌شده (انتخاب، امتیاز، نیاز به بازبینی)
 برمی‌گرداند. \en{ParsBERT} روی \en{Google Colab} بازآموزی، در سرور مستقر و
 ارقامش به جدول~\ref{tab:results-v2} افزوده شده است؛ لایهٔ تصمیم سیستم-یک بر
-همین رمزگذار فاین‌تیون‌شده استوار است و هدف‌های نرم آن از دسته‌بند
-\en{GPT-2} فاین‌تیون‌شده تقطیر می‌شود، هرچند آموزش نهایی آن هنوز اجرا نشده
-و ارقام کمّی‌اش پس از اجرا به گزارش افزوده خواهد شد.
+همین رمزگذار فاین‌تیون‌شده استوار است، هدف‌های نرم آن از دسته‌بند
+\en{GPT-2} فاین‌تیون‌شده تقطیر می‌شود و ارقام آموزشش در
+بخش~\ref{sec:jev} آمده است. در کنار این دو، یک شاخص سرگشتگی بدون‌آموزش
+از مدل زبانی خام به سرویس افزوده شده است؛ بررسی تجربی آن
+(بخش~\ref{sec:perplexity-signal}) جهت سیگنال را روی این مجموعه وارونه
+نشان می‌دهد و به همین دلیل تنها به‌عنوان شاخص نمایشی مانده است.
 
 \vspace{4mm}
 \noindent\textbf{کلیدواژه‌ها:} تشخیص متن ماشینی، پردازش زبان طبیعی فارسی،
@@ -266,6 +300,81 @@
     \en{HooshvareLab/gpt2-fa} — یک \en{GPT-2} با ۱۲۴ میلیون پارامتر که روی
     پیکرهٔ فارسی آموزش دیده — و از \en{ParsBERT} استفاده می‌کند.
 \end{itemize}
+
+\section{نمای کلی سامانه}
+\label{sec:overview}
+شکل~\ref{fig:overview} سه لایهٔ اصلی سامانه را در یک نما نشان می‌دهد؛ جهت
+جریان از راست به چپ و مطابق جهت خواندن است. لایهٔ نخست، داده را می‌سازد
+(بخش‌های~\ref{sec:data-collection} و~\ref{sec:split}): متن هوش‌مصنوعی با
+تنوع عمدی چهارگانه (ارائه‌دهنده و مدل، سبک، موضوع، پارامتر نمونه‌برداری)
+گردآوری و با متن انسانی وبلاگ‌ها توازن داده می‌شود؛ سپس تفکیک سه‌گانهٔ
+آموزش/اعتبارسنجی/آزمون با بذر ثابت ساخته می‌شود. لایهٔ دوم، نُه مدل را در
+چهار خانوادهٔ الگوریتمی آموزش می‌دهد: پنج مدل کلاسیک روی فضای
+\en{TF-IDF} و ویژگی‌های سبک‌شناسی، \en{BiLSTM}، \en{GPT-2} فاین‌تیون‌شده
+(که نقش معلم تقطیر را نیز برای لایهٔ تصمیم \en{JEV} بر عهده دارد)،
+\en{ParsBERT} فاین‌تیون‌شده و سرهای تصمیم \en{JEV}. خروجی این لایه
+چک‌پوینت‌های خودکفا به‌همراه پروندهٔ \texttt{models.json} است. لایهٔ سوم
+آن چیزی است که کاربر می‌بیند: سرویس \en{FastAPI} که بارگذاری و استنتاج را
+بر اساس فیلد \texttt{runtime} اعزام می‌کند (بخش~\ref{sec:service-arch}) و
+رابط وب \en{Next.js} که در سه حالت محلی، آنلاین و مقایسه کار می‌کند
+(بخش~\ref{sec:online-systemone}).
+
+\begin{figure}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}
+  % ---------- Layer 1: data ----------
+  \node[lane] at (-2.5,1.7) {\en{1) Data collection \& preparation}};
+  \node[data, w=4.6cm] (collect) at (0,0)
+      {\en{70} LLMs via \en{9} API providers\\[1pt]
+       \scriptsize \en{5} styles $\times$ \en{1,428} topics $\times$ random temp./top-p};
+  \node[data, w=3.2cm] (blogs) at (-5.1,-0.35)
+      {\texttt{blogs.csv}\\human-written};
+  \node[data, w=4.6cm] (dataset) at (-2.55,-2.1)
+      {balanced dataset\\\en{21,092} samples (\en{10,546} + \en{10,546})};
+  \node[data, w=4.6cm] (split) at (-2.55,-3.8)
+      {stratified split, seed \en{42}\\train / validation / test};
+  \draw[arr] (collect) -- (dataset);
+  \draw[arr] (blogs) -- (dataset);
+  \draw[arr] (dataset) -- (split);
+  % ---------- Layer 2: training ----------
+  \node[lane] at (-0.2,-4.8) {\en{2) Model training}};
+  \node[proc, w=3.6cm] (m1) at (-0.2,-6.5)
+      {\en{5} classical ML models\\[1pt]\scriptsize \en{TF-IDF} + $\chi^2$ + stylometric};
+  \node[proc, w=2.6cm] (m2) at (-3.7,-6.5) {\en{BiLSTM}};
+  \node[proc, w=3.4cm] (m3) at (-6.7,-6.5)
+      {\en{fine-tuned GPT-2}\\[1pt]\scriptsize (distillation teacher)};
+  \node[proc, w=3.4cm] (m4) at (-10.0,-6.5) {fine-tuned \en{ParsBERT}};
+  \node[proc, w=3.4cm] (m5) at (-13.3,-6.5)
+      {\en{JEV} decision heads\\[1pt]\scriptsize choice / score / noul};
+  \draw[arrd] (m3.north) .. controls (-6.7,-5.1) and (-13.3,-5.1) ..
+      node[lbl] {teacher soft targets (training only)} (m5.north);
+  \node[art, w=7.0cm] (art1) at (-6.7,-8.7)
+      {self-contained checkpoints\\+ \texttt{models.json}};
+  \draw[arr] (m2.south) -- (m2.south |- art1.north);
+  \draw[arr] (m3.south) -- (m3.south |- art1.north);
+  \draw[arr] (m4.south) -- (m4.south |- art1.north);
+  \draw[arr] (m1.south) |- (art1.east);
+  \draw[arr] (m5.south) |- (art1.west);
+  % ---------- Layer 3: serving ----------
+  \node[lane] at (0.7,-10.2) {\en{3) Serving \& consumption}};
+  \node[box, w=4.8cm] (s1) at (-1.0,-11.6)
+      {\en{FastAPI} on port \en{8000}\\[1pt]\scriptsize dispatch by the \texttt{runtime} field};
+  \node[box, w=4.4cm] (s2) at (-7.9,-11.6)
+      {\en{Next.js} — web UI + proxies\\[1pt]\scriptsize local / online / compare modes};
+  \node[usr, w=3.0cm] (s3) at (-12.4,-11.6) {user browser};
+  \node[ext, w=4.2cm] (s4) at (-7.9,-13.9)
+      {\en{TypeSafe System One} (external online service)};
+  \draw[arr] (art1.south) to[out=-90,in=90] (s1.north);
+  \draw[arr] (s2.east) -- node[lbl] {\texttt{/api/detect}} (s1.west);
+  \draw[arr] (s3) -- (s2);
+  \draw[arrd] (s2.south) -- (s4.north);
+\end{tikzpicture}}%
+\caption{نمای کلی سه‌لایهٔ سامانه: گردآوری داده، آموزش و سرویس‌دهی. جریان از
+راست به چپ خوانده می‌شود؛ پیکان نقطه‌چین میان \en{GPT-2} و \en{JEV} تنها در
+زمان آموزش (تقطیر) فعال است و سرویس بیرونی \en{TypeSafe} اختیاری است.}
+\label{fig:overview}
+\end{figure}
 
 % -----------------------------------------------------------------------------
 \chapter{مجموعه داده}
@@ -524,14 +633,14 @@ $\chi^2$ (آزمون آماری کای-دو برای سنجش وابستگی ه�
     \cos(\vec{v}_i,\vec{v}_{i+1})$، با استفاده از همان بردارساز \en{TF-IDF}
     آموزش‌دیده روی کل پیکره برای بردارسازی هر جمله.
 \end{itemize}
-\textbf{نکتهٔ حیاتی برای صحت استنتاج:} فرمول این چهار ویژگی باید دقیقاً
-(\en{byte-for-byte}) میان نوت‌بوک آموزش (\texttt{\lr{compute\_style\_features}}
-در \texttt{training/colab\_retrain.ipynb}) و سرور استنتاج
-(تابع هم‌نام در \texttt{utils.py}) یکسان بماند؛ هرگونه ناهم‌خوانی—even در
-گِرد کردن اعداد—باعث می‌شود مدل، بردار ورودی متفاوتی از آنچه رویش آموزش
-دیده دریافت کند و پیش‌بینی‌ها به‌شکلی خاموش (بدون خطای اجرایی) نادرست
-شوند؛ این کلاس اشکال با آزمون سرتاسری (\en{end-to-end}) پس از هر بازآموزش
-شناسایی و پیشگیری می‌شود.
+\textbf{نکتهٔ حیاتی برای صحت استنتاج:} فرمول این چهار ویژگی تنها یک‌بار، در
+ماژول مشترک \texttt{\lr{aitextd/features.py}} پیاده‌سازی شده است؛ هم
+اسکریپت‌های آموزش و هم سرور استنتاج همین ماژول را وارد می‌کنند، بنابراین
+ناهم‌خوانی آموزش/سرویس — که در نسخهٔ نخست حتی با اختلاف در گِرد کردن اعداد
+رخ می‌داد — از نظر ساختاری ناممکن شده است. برای اطمینان مضاعف، آزمون طلایی
+مجموعهٔ آزمون‌ها خروجی دقیق \texttt{\lr{detection()}} را با مقادیر
+ثبت‌شده مقایسه می‌کند و هر تغییری که پیش‌بینی سرویس‌شده را عوض کند، اجرای
+آزمون را شکست می‌دهد (پیوست~\ref{app:runbook}).
 
 % -----------------------------------------------------------------------------
 \chapter{مدل‌های یادگیری ماشین کلاسیک}
@@ -821,6 +930,59 @@ $21{,}092$ نمونه) آموزش دید. در محیط \en{Colab} با پردا
 یادگیری بزرگ‌تر ($1\times10^{-3}$)، لایه‌های بازِ بدنه با نرخ کوچک‌تر
 ($2\times10^{-5}$) و افت وزن $0.01$ بهینه می‌شوند.
 
+شکل~\ref{fig:jev-arch} این معماری را نشان می‌دهد: سه سر در یک گذر رو به جلو
+و به‌موازات هم محاسبه می‌شوند، سیاست تصمیم در لایهٔ برنامه و با آستانه‌های
+خوانده‌شده از چک‌پوینت اعمال می‌شود و پیکان نقطه‌چین معلم، تنها در زمان
+آموزش معنا دارد.
+
+\begin{figure}[H]
+\centering
+\resizebox{0.98\textwidth}{!}{%
+\begin{tikzpicture}
+  \node[data, w=2.8cm] (j1) at (0,0) {input text};
+  \node[box, w=4.2cm] (j2) at (-3.9,0)
+      {normalization + \en{WordPiece}\\[1pt]\scriptsize sequence length \en{64}};
+  \node[proc, w=4.4cm] (j3) at (-9.2,0)
+      {fine-tuned \en{ParsBERT}\\[1pt]\scriptsize shared bidirectional encoder};
+  \node[box, w=3.6cm] (j4) at (-14.0,0)
+      {\en{[CLS]} representation\\+ \en{dropout}};
+  % three decision heads
+  \node[proc, w=3.4cm] (h1) at (-7.6,-2.6)
+      {choice head\\[1pt]\scriptsize \en{softmax} over \en{2} options};
+  \node[proc, w=3.4cm] (h2) at (-11.4,-2.6)
+      {score head\\[1pt]\scriptsize \en{softmax} over \en{5} levels};
+  \node[proc, w=3.0cm] (h3) at (-14.6,-2.6)
+      {noul head\\[1pt]\scriptsize $\sigma$ (review probability)};
+  \draw[arr] (j4.south) to[out=-90,in=90] (h3.north);
+  \draw[arr] (j4.south) to[out=-90,in=90] (h2.north);
+  \draw[arr] (j4.south) to[out=-90,in=90] (h1.north);
+  % distillation teacher
+  \node[ext, w=4.4cm] (tch) at (0,-2.6)
+      {\en{teacher: fine-tuned GPT-2}\\[1pt]\scriptsize classifier};
+  \draw[arrd] (tch.west) -- node[lbl] {soft targets} (h1.east);
+  % decision policy
+  \node[box, w=7.6cm] (pol) at (-11.1,-5.0)
+      {\en{3}-tier decision policy in the app layer\\[1pt]
+       \scriptsize \en{0.8}/\en{0.6} thresholds from the checkpoint:\\
+       \scriptsize proceed / needs human review / low confidence};
+  \draw[arr] (h1.south) to[out=-90,in=20] (pol.north east);
+  \draw[arrd] (h2.south) to[out=-90,in=90] (pol.north);
+  \draw[arrd] (h3.south) to[out=-90,in=160] (pol.north west);
+  \node[data, w=4.2cm] (out) at (-4.2,-5.0)
+      {three typed answers\\[1pt]\scriptsize \texttt{typedAnswers} in the \en{API} response};
+  \draw[arr] (pol.east) -- (out.west);
+  % main flow
+  \draw[arr] (j1) -- (j2);
+  \draw[arr] (j2) -- (j3);
+  \draw[arr] (j3) -- (j4);
+\end{tikzpicture}}%
+\caption{معماری لایهٔ تصمیم سیستم-یک (\en{JEV}): بدنهٔ مشترک \en{ParsBERT} و
+سه سر تصمیم موازی. پیکان نقطه‌چین از معلم \en{GPT-2} فقط در زمان آموزش
+(ساخت هدف‌های نرم) برقرار است؛ در زمان سرویس، سه سر خروجی خود را به سیاست
+سه‌سطحی در لایهٔ برنامه می‌دهند.}
+\label{fig:jev-arch}
+\end{figure}
+
 \subsection{هدف‌های نرمِ تقطیرشده از معلم}
 چالش اصلی آموزش آن است که مجموعه داده فقط برچسب دودویی دارد، در حالی که
 سه سر مدل به هدف‌های احتمالاتی نیاز دارند. راه‌حل، تقطیر دانش از
@@ -870,14 +1032,45 @@ $\max(p^{\text{choice}}) \ge 0.6$ به معنای «نیازمند بازبین�
 \subsection{ارزیابی}
 معیارهای این مدل به تفکیک نوع سؤال گزارش می‌شوند: دقت/$F_1$ برای پاسخ
 انتخاب، خطای مطلق میانگینِ مقدار وزن‌دار برای پاسخ امتیاز، \en{AUC} برای
-رتبه‌بندی نیاز به بازبینی، و خطای کالیبراسیون (\en{ECE}) توزیع انتخاب. در
-زمان نگارش این نسخه از گزارش، اسکریپت‌های آماده‌سازی داده
-(\texttt{\lr{training/prepare\_jev\_data.py}}) و آموزش
-(\texttt{\lr{training/train\_jev.py}}) برای معماری تازه بازنویسی شده و
-دادهٔ آموزش با معلم تازه بازسازی شده است؛ اجرای آموزش هنوز باقی است و
-ارقام کمّی، مشابه رویهٔ بخش~\ref{sec:results-v1-vs-v2}، پس از
-اجرا به این گزارش افزوده خواهد شد.
+رتبه‌بندی نیاز به بازبینی، و خطای کالیبراسیون (\en{ECE}) توزیع انتخاب.
+آموزش با هدف‌های نرم معلم روی زیرنمونهٔ $6{,}000/1{,}500$ اجرا شده و روی
+بخش آزمون به دقت/$F_1$ برابر $0.9893$ رسیده است (ماتریس درهم‌ریختگی
+$742/8/8/742$ از $1{,}500$ نمونه)؛ پاسخ امتیاز با خطای مطلق میانگین
+$0.0493$ روی طیف $0$ تا $4$ تقریباً بی‌خطاست، توزیع انتخاب با \en{ECE}
+برابر $0.0156$ خوب‌کالیبره است و سر نول به \en{AUC} برابر $0.7199$
+می‌رسد. چک‌پوینت حاصل—همراه پیکربندی کامل بدنه—جایگزین نسخهٔ پیشین در
+سرویس شده است.
 
+\section{سیگنال سرگشتگی مدل زبانی خام: یک بررسی تجربی}
+\label{sec:perplexity-signal}
+تمام مدل‌های تا اینجا برای تفکیک دو کلاس \textbf{آموزش دیده‌اند}؛ سؤال
+مکمل آن است که یک شاخص بدون‌آموزش و مستقل از برچسب‌ها چقدر اطلاعات
+دارد. ساده‌ترین چنین شاخصی، سرگشتگی (\en{perplexity}) متن تحت همان مدل
+زبانی پیش‌آموزش‌دیدهٔ \en{GPT-2-fa} است: نماییِ میانگین منفی لگاریتم
+احتمال توکن‌های متن، یعنی «میزان تعجب» مدل از متن. انتظار متداول آن
+است که متن تولیدشده توسط هوش مصنوعی — که خود خروجی یک مدل زبانی است —
+تحت یک مدل مرجع قابل‌پیش‌بینی‌تر (سرگشتگی کمتر) از متن انسان باشد.
+
+در سرویس این شاخص کم‌هزینه است: مدل از پیش بار شده و محاسبه تنها یک
+گذر رو به جلو با همان مسیر سرویس (نرمال‌سازی، توکن‌ساز و برش کاراکتری
+مشترک) و پنجرهٔ $64$ توکن است. سرگشتگی به‌عنوان جزئیات تحلیلی تازه—در
+کنار آنتروپی، تنوع جمله، تکرار و انسجام—در پاسخ \en{API} و رابط وب
+نمایش داده می‌شود و عمداً هیچ وزنی در ترکیب وزن‌دار ندارد.
+
+ارزیابی روی $1{,}500$ متن بخش آزمون، انتظار متداول را رد می‌کند:
+\en{AUC} سرگشتگی به‌عنوان نمرهٔ تشخیص فقط $0.3387$ است، یعنی جهت
+سیگنال \textbf{وارونه} است (با برگرداندن جهت: $0.6613$). توزیع دو
+کلاس به‌شدت هم‌پوشان است—میانهٔ سرگشتگی متن‌های هوش‌مصنوعی $50.6$ در
+برابر $30.7$ برای متن‌های انسانی—و بهترین آستانهٔ \en{Youden} تنها به
+دقت $0.526$ می‌رسد. تفسیر محتمل، همان ناهم‌خوانی مدل مرجع است: متن‌های
+تولیدی $70$ مدل بسیار قوی‌تر از \en{GPT-2} با $124$ میلیون پارامتر، از
+زاویهٔ این مدل کوچک «غافلگیرکننده‌تر» از وبلاگ‌های انسانی‌اند. نتیجهٔ
+عملی: سرگشتگی مدل مرجع کوچک در این مجموعه هم به‌تنهایی تشخیص‌دهندهٔ
+ضعیفی است و هم جهتی برخلاف شهود دارد؛ پس صرفاً به‌عنوان شاخص نمایشی
+نگه داشته شده و ورودش به ترکیب، منوط به بررسی با مدل مرجع قوی‌تر یا
+رویکردهای اغتشاش‌محور است.
+
+% -----------------------------------------------------------------------------
 % -----------------------------------------------------------------------------
 \chapter{تنظیم هایپرپارامتر و اعتبارسنجی متقابل}
 \label{sec:hpo}
@@ -949,6 +1142,249 @@ $\max(p^{\text{choice}}) \ge 0.6$ به معنای «نیازمند بازبین�
 می‌شود؛ مدل‌ها بر اساس نوع (یادگیری ماشین کلاسیک در برابر یادگیری عمیق)
 دسته‌بندی و یک نمودار مقایسهٔ تعاملی میان تمام مدل‌ها نمایش داده می‌شود.
 
+شکل~\ref{fig:deployment} نمای استقرار اجزا و مسیرهای ارتباطی را نشان می‌دهد.
+دو نکتهٔ طراحی در این نما دیده می‌شود: نخست، کلید \en{API} سرویس آنلاین
+هرگز در سرور ذخیره نمی‌شود و فقط همراه همان درخواست از پروکسی \en{Next.js}
+عبور می‌کند؛ دوم، سرور پایتون همهٔ آرتیفکت‌ها را یک‌بار در زمان راه‌اندازی
+(\texttt{init()}) بار می‌کند تا هیچ درخواستی هزینهٔ بارگذاری سرد
+(\en{cold load}) نپردازد. نقطهٔ پایانی \en{GET /models} نیز فیلدهای
+پیاده‌سازی (\texttt{runtime}، \texttt{filename}، \texttt{vectorizer}) را
+پیش از ارسال حذف می‌کند و «مدل ترکیبی» را — که مدلی مستقل نیست و در هر
+درخواست همهٔ مدل‌ها را اجرا می‌کند — به‌عنوان مدخل نخست و انتخاب پیش‌فرض
+برمی‌گرداند.
+
+\begin{figure}[H]
+\centering
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}
+  \node[usr, w=3.6cm] (br) at (0,0)
+      {user browser\\[1pt]\scriptsize online settings in \texttt{localStorage}};
+  \node[box, w=5.8cm] (nx) at (-5.9,0)
+      {\en{Next.js} — RTL web UI\\[1pt]\scriptsize
+       \texttt{/api/models} , \texttt{/api/detect} , \texttt{/api/typesafe/detect}};
+  \node[box, w=5.4cm] (api) at (-5.9,-3.0)
+      {\en{FastAPI} on port \en{8000}\\[1pt]\scriptsize \texttt{POST /detect} , \texttt{GET /models}};
+  \node[art, w=4.8cm] (art) at (0.6,-3.0)
+      {\texttt{models.json} + checkpoints\\[1pt]\scriptsize vectorizer + exported offline tokenizers};
+  \node[ext, w=5.0cm] (ts) at (-12.5,-3.0)
+      {\en{TypeSafe} service\\(external)\\[1pt]\scriptsize \texttt{\{baseUrl\}/v1/systemone}};
+  \draw[arr] (br) -- node[lbl] {\en{HTTP}} (nx);
+  \draw[arr] (nx.south) -- node[lbl] {server-side \texttt{fetch}} (api.north);
+  \draw[arr] (api.east) -- node[lbl] {\texttt{init()}} (art.west);
+  \draw[arrd] (nx.west) -| node[lbl, pos=0.7] {\en{API} key pass-through only\\never stored on the server} (ts.north);
+\end{tikzpicture}}%
+\caption{نمای استقرار سامانه. مرورگر فقط با رابط وب \en{Next.js} حرف می‌زند؛
+درخواست‌های محلی از پروکسی سمت سرور به \en{FastAPI} و درخواست آنلاین به
+سرویس بیرونی \en{TypeSafe} می‌رود. پیکان‌ها جهت فراخوانی را نشان می‌دهند و
+پاسخ در همان مسیر برمی‌گردد.}
+\label{fig:deployment}
+\end{figure}
+
+جدول~\ref{tab:runtimes} قرارداد اعزام زمان اجرا را خلاصه می‌کند: هر مقدار
+\texttt{runtime} در \texttt{models.json} به یک جفت تابع بارگذار/پیش‌بین در
+بستهٔ \texttt{aitextd} نگاشت می‌شود (\texttt{loaders.py} و
+\texttt{predictors.py}) و مسیر پیش‌پردازش متناسب با آن خانواده را تعیین
+می‌کند. ناهم‌خوانی آموزش/سرویس (بخش‌های~\ref{sec:tokenizer-improvement}
+و~\ref{sec:style-features}) دقیقاً در همین قرارداد کنترل می‌شود: همان
+توکن‌ساز صادرشدهٔ آفلاین، همان نرمال‌سازی و همان فرمول ویژگی‌های سبکی که در
+آموزش به‌کار رفته، در سرویس هم به‌کار می‌رود.
+
+\begin{table}[H]
+\centering
+\caption{رجیستری زمان اجرا: نگاشت فیلد \texttt{runtime} به بارگذار، آرتیفکت و مسیر پیش‌پردازش}
+\label{tab:runtimes}
+\begin{tabular}{p{3.7cm}p{2.3cm}p{4.7cm}p{3.3cm}}
+\toprule
+\textbf{\texttt{runtime}} & \textbf{مدل‌ها} & \textbf{آرتیفکت بارگذاری‌شده} & \textbf{مسیر پیش‌پردازش} \\
+\midrule
+\texttt{sklearn-tfidf} & ۵ مدل کلاسیک &
+چک‌پوینت \en{joblib} هر مدل به‌همراه بردارساز مشترک \mbox{\en{TF-IDF}} &
+خط‌لولهٔ کامل \en{shekar} (ریشه‌یابی + توکن‌سازی) \\
+\texttt{pytorch-lstm} & \en{BiLSTM} &
+چک‌پوینت شامل وزن‌ها، واژگان و پیکربندی &
+خط‌لولهٔ کامل \en{shekar} \\
+\texttt{pytorch-gpt2} & \en{GPT-2} &
+سر طبقه‌بندی + بدنهٔ پیش‌آموزش‌دیده + توکن‌ساز صادرشدهٔ آفلاین &
+فقط نرمال‌سازی سطح کاراکتر \\
+\texttt{pytorch-parsbert} & \en{ParsBERT} &
+چک‌پوینت خودکفا (پیکربندی بدنه درون چک‌پوینت) + توکن‌ساز &
+فقط نرمال‌سازی سطح کاراکتر \\
+\texttt{pytorch-jev} & لایهٔ تصمیم \en{JEV} &
+چک‌پوینت بدنه + سه سر تصمیم + آستانه‌های سیاست &
+فقط نرمال‌سازی سطح کاراکتر \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{جریان پردازش یک درخواست تشخیص}
+\label{sec:inference-flow}
+شکل~\ref{fig:inference-flow} مسیر یک درخواست از لحظهٔ ورود تا ساخت پاسخ را
+نشان می‌دهد. نکتهٔ کلیدی طراحی، واحد بودن مسیر آماده‌سازی برای همهٔ
+مدل‌هاست: پیش‌پردازش متناسب با مدل انتخابی انجام می‌شود، اما چهار ویژگی
+سبک‌شناسی بخش~\ref{sec:style-features} و سرگشتگی بخش~\ref{sec:perplexity-signal}
+یک‌بار و مستقل از مدل محاسبه می‌شوند و هم به‌عنوان ورودی/جزئیات تحلیلی و هم
+برای نمایش در پاسخ به‌کار می‌روند. در حالت ترکیبی، هر مدل با وزن
+\texttt{ensembleWeight} خود در رأی‌گیری شرکت می‌کند — در پیکربندی کنونی
+\en{GPT-2} وزن $3$، لایهٔ \en{JEV} وزن $0.6$ و بقیه وزن $1$ دارند؛ وزن صفر
+به معنای خروج اختیاری از رأی است — و پاسخ نهایی، میانگین وزن‌دار احتمال
+هوش‌مصنوعی‌بودن همهٔ مدل‌هاست.
+
+\begin{figure}[H]
+\centering
+\resizebox{0.98\textwidth}{!}{%
+\begin{tikzpicture}
+  \node[box, w=3.4cm] (req) at (0,0)
+      {\texttt{POST /detect}\\[1pt]\scriptsize \texttt{\{text, modelId\}}};
+  \node[box, w=3.4cm] (val) at (-3.9,0)
+      {input validation\\[1pt]\scriptsize \en{HTTP} \en{400} on empty text};
+  \node[box, w=4.6cm] (prep) at (-9.2,0)
+      {model-appropriate preprocessing\\[1pt]\scriptsize full \en{shekar} or normalization only};
+  \node[box, w=5.2cm] (style) at (-14.6,0)
+      {\en{4} stylometric features\\+ perplexity\\[1pt]\scriptsize model-independent};
+  \node[box, w=5.4cm] (disp) at (-14.7,-2.9)
+      {runtime dispatch\\(Table~\ref{tab:runtimes})\\[1pt]\scriptsize
+       \texttt{sklearn-tfidf} / \texttt{pytorch-lstm} / \texttt{pytorch-gpt2}\\
+       \texttt{pytorch-parsbert} / \texttt{pytorch-jev}};
+  \node[box, w=4.6cm] (pred) at (-9.2,-2.9)
+      {single prediction or weighted vote\\[1pt]\scriptsize weights from \texttt{ensembleWeight}};
+  \node[data, w=5.0cm] (resp) at (-3.9,-2.9)
+      {structured response\\[1pt]\scriptsize \texttt{isAI} , \texttt{confidence} , details,\\
+       \texttt{ensembleVotes} , \texttt{typedAnswers}};
+  \draw[arr] (req) -- (val);
+  \draw[arr] (val) -- (prep);
+  \draw[arr] (prep) -- (style);
+  \draw[arr] (style.south) -- (disp.north);
+  \draw[arr] (disp.east) -- (pred.west);
+  \draw[arr] (pred.east) -- (resp.west);
+  \draw[arrd] (req.south) to[out=-90,in=90] node[lbl, pos=0.3] {later requests hit warm nodes} (resp.north);
+\end{tikzpicture}}%
+\caption{جریان پردازش یک درخواست تشخیص در بک‌اند. تمام مدل‌ها و توکن‌سازها
+در زمان راه‌اندازی سرور بار و گرم می‌شوند؛ درخواست هر کاربر صرفاً یک گذر
+استنتاج است.}
+\label{fig:inference-flow}
+\end{figure}
+
+\section{ساختار پروژه}
+\label{sec:repo-layout}
+ساختار پوشه‌های مخزن، نقشهٔ کلی همهٔ فصل‌های این گزارش است:
+\begin{LTRverb}
+\begin{verbatim}
+AITextDetection/
+|-- server.py             thin launcher: python server.py
+|-- models.json           registry of the 9 models (runtime, weights)
+|-- pyproject.toml        deps + tooling (uv, ruff, pytest)
+|-- aitextd/              shared package: serving + training
+|   |-- paths.py          all filesystem paths (data/, models/)
+|   |-- text.py           Persian preprocessing
+|   |-- features.py       stylometric features
+|   |-- architectures.py  torch model architectures
+|   |-- loaders.py        per-runtime model loading
+|   |-- predictors.py     per-runtime prediction
+|   |-- jev.py            JEV typed answers + policy
+|   |-- store.py          registry + detection orchestration
+|   `-- api.py            FastAPI application
+|-- data/                 datasets (raw CSVs + processed)
+|-- models/               artifacts + exported tokenizers
+|-- training/             local training scripts (root)
+|-- notebooks/
+|   `-- colab_training.ipynb   unified GPU retraining
+|-- tests/                pytest: -m not-slow / -m slow golden
+|-- web-app/              Next.js front end (RTL, Persian)
+`-- report/               this report (XeLaTeX source)
+\end{verbatim}
+\end{LTRverb}
+پنج نکته در این چیدمان عمدی است: (۱) همهٔ مسیرهای فایل‌سیستم در یک نقطه
+متمرکز شده‌اند (\texttt{\lr{aitextd/paths.py}})؛ مجموعه‌داده‌ها در
+\texttt{\lr{data/}} و آرتیفکت‌های آموزش‌دیده در \texttt{\lr{models/}}
+نگهداری می‌شوند و ریشهٔ پروژه با متغیر محیطی
+\texttt{\lr{AITEXTD\_ROOT}} نیز قابل جابه‌جایی است؛ (۲) توکن‌سازها به‌صورت
+پوشه‌های صادرشده کنار چک‌پوینت‌ها در \texttt{\lr{models/}} نگهداری می‌شوند
+تا سرویس هیچ وابستگی شبکه‌ای به \en{Hugging Face Hub} نداشته باشد
+(بخش~\ref{sec:tokenizer-improvement})؛ (۳) خط‌لولهٔ بازتولید محلی در پوشهٔ
+\texttt{\lr{training/}} و نوت‌بوک یکپارچهٔ \en{GPU} در
+\texttt{\lr{notebooks/colab\_training.ipynb}} است (پیوست~\ref{app:runbook})؛
+(۴) منطق مشترک آموزش/سرویس — پیش‌پردازش، ویژگی‌ها، معماری‌ها و شمای
+\en{JEV} — فقط یک‌بار در بستهٔ \texttt{\lr{aitextd/}} پیاده‌سازی شده و هم
+سرور و هم همهٔ مسیرهای آموزش همان کد را وارد می‌کنند؛ در نتیجه ناهم‌خوانی
+آموزش/سرویس از نظر ساختاری ناممکن است؛ و (۵) رابط وب از بک‌اند جداست و
+فقط از طریق پروکسی‌های سمت سرور با آن حرف می‌زند
+(شکل~\ref{fig:deployment}).
+
+\section{تحلیل آنلاین با مدل \en{System One} سرویس \en{TypeSafe}}
+\label{sec:online-systemone}
+علاوه بر مدل‌های محلی، رابط وب حالتی را افزوده است که همان متن را به مدل
+\en{System One} سرویس \en{TypeSafe}—مدل تجاری تصمیم سریع که لایهٔ محلی
+\en{JEV} به سبک آن ساخته شده بود—می‌سپارد. برای آنکه مقایسه معنادار بماند،
+سه سؤال نوع‌بندی‌شدهٔ ارسالی عیناً قرینهٔ سؤالات محلی است: سؤال انتخاب با دو
+گزینهٔ \texttt{\lr{human\_written}}/\texttt{\lr{ai\_generated}}، سؤال امتیاز
+پنج‌سطحی «ماشین‌مانندبودن سبک نوشتار» با توصیف‌های مستقل و موقعیت‌مند برای هر
+سطح، و سؤال نولِ نیاز به بازبینی انسانی. سیاست سه‌سطحی تصمیم نیز همان
+آستانه‌های چک‌پوینت محلی ($0.8$/$0.6$) را روی $\max(p^{\text{choice}})$ اعمال
+می‌کند؛ «اطمینان انتخاب» خود مدل—تمرکز توزیع احتمال، نه اندازهٔ آن—جداگانه در
+پاسخ \en{API} برگردانده و در رابط نمایش داده می‌شود.
+
+از آنجا که مرورگر نمی‌تواند سرویس خارجی را مستقیم فراخوانی کند (محدودیت
+\en{CORS})، درخواست از مسیری سمت سرور در \en{Next.js}
+(\texttt{\lr{/api/typesafe/detect}}) عبور می‌کند: این مسیر بدنه را به
+\texttt{\lr{\{baseUrl\}/v1/systemone}} با سرآیند
+\texttt{\lr{Authorization: Bearer}} ارسال می‌کند، خطاهای شناخته‌شدهٔ سرویس
+($401/422/429/529$) و زمان انتظار را به پیام‌های فارسی نگاشت می‌کند و پاسخ را
+به همان ساختار نتایج تشخیص محلی برمی‌گرداند تا اجزای نمایش بازبه‌کار شوند.
+تنظیمات اتصال (کلید \en{API}، آدرس پایه و نام مدل) توسط کاربر در پنلی در
+صفحهٔ اصلی وارد و صرفاً در \texttt{\lr{localStorage}} مرورگر ذخیره می‌شود؛
+سرور هیچ‌گاه کلید را ذخیره نمی‌کند و تنها همراه همان درخواست به مقصد ارسال
+می‌گردد. آدرس پایه هم به شکل مبدأ خام پذیرفته می‌شود و هم آدرس کامل نقطهٔ
+پایان (حاوی پسوند \texttt{\lr{/v1/systemone}})؛ نام مدل نیز دلخواه است
+(\texttt{\lr{jev-latest}} پیش‌فرض). برای هم‌گام‌ماندن تنظیمات میان زبانه‌ها،
+خواندن و نوشتن تنظیمات از طریق \texttt{\lr{useSyncExternalStore}} انجام
+می‌شود.
+
+سه حالت تحلیل در رابط وب ارائه شده است: «محلی»، «آنلاین» و «مقایسه هر دو».
+در حالت سوم هر دو موتور به‌طور موازی روی همان متن اجرا می‌شوند
+(\texttt{\lr{Promise.allSettled}}) تا خطای یک سمت، نتیجهٔ سمت دیگر را پنهان
+نکند. کارت مقایسه، دو موتور را به‌صورت ستون‌های کنار هم ردیف می‌کند—نتیجه،
+احتمال هوش‌مصنوعی‌بودن، اطمینان، مقدار امتیاز ماشین‌مانندبودن و احتمال نیاز
+به بازبینی—و نشانِ «نتیجه یکسان» یا «مغایرت در نتیجه» نمایش می‌دهد. برای
+هم‌ترازی پاسخ‌های نوع‌بندی‌شده، سمت محلی در این حالت به‌طور پیش‌فرض روی مدل
+\texttt{\lr{jev\_system\_one}} قرار می‌گیرد، نه رأی ترکیبی؛ چون میانگین وزن‌دار
+پاسخ نوع‌بندی‌شده ندارد و ستون‌های آن در ماتریس مقایسه خالی می‌ماند.
+شکل~\ref{fig:online-flow} این دو مسیر موازی را نشان می‌دهد: هر دو موتور
+هم‌زمان و مستقل اجرا می‌شوند و شکست یکی، دیگری را از کار نمی‌اندازد.
+
+\begin{figure}[H]
+\centering
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}
+  \node[usr, w=4.4cm] (br) at (-6.0,0)
+      {browser — compare mode\\[1pt]\scriptsize one text, two engines};
+  \node[box, w=5.0cm] (loc) at (-10.6,-2.8)
+      {local path\\[1pt]\scriptsize \texttt{/api/detect} $\to$ \en{FastAPI}\\
+       \scriptsize default model: \texttt{jev\_system\_one}};
+  \node[ext, w=5.2cm] (onl) at (-1.4,-2.8)
+      {online path\\[1pt]\scriptsize \texttt{/api/typesafe/detect} $\to$ \texttt{\{baseUrl\}/v1/systemone}\\
+       \scriptsize \en{API} key from \texttt{localStorage}, pass-through};
+  \node[data, w=6.2cm] (cmp) at (-6.0,-5.6)
+      {comparison card — \texttt{Promise.allSettled}\\[1pt]\scriptsize
+       verdict, probability, confidence, machine-likeness score, review need,\\
+       \scriptsize agreement / mismatch badge};
+  \draw[arr] (br.south) to[out=-90,in=90] node[lbl, pos=0.4] {parallel} (loc.north);
+  \draw[arr] (br.south) to[out=-90,in=90] node[lbl, pos=0.4] {parallel} (onl.north);
+  \draw[arr] (loc.south) to[out=-90,in=180] (cmp.west);
+  \draw[arr] (onl.south) to[out=-90,in=0] (cmp.east);
+\end{tikzpicture}}%
+\caption{حالت مقایسهٔ آنلاین/محلی. دو درخواست مستقل و موازی ارسال می‌شوند و
+\texttt{\lr{Promise.allSettled}} تضمین می‌کند خطای یک مسیر، نتیجهٔ مسیر دیگر
+را پنهان نکند.}
+\label{fig:online-flow}
+\end{figure}
+
+در اجرای واقعی با یک نقطهٔ پایان سازگار با \en{TypeSafe}، هر دو موتور روی یک
+متن آزمایشیِ تولیدشده توسط هوش مصنوعی هم‌نظر بودند (هر دو $99\%$) و امتیاز
+ماشین‌مانندبودن آنلاین ($3.75$ از $4$) به مقدار محلی ($3.54$) نزدیک بود؛
+تنها تفاوت محسوس، احتمال نیاز به بازبینی بود ($70\%$ در برابر $0\%$). این
+حالت مکمل مدل‌های محلی است نه جایگزین آن‌ها: زبان اصلی آموزش \en{Jev}
+انگلیسی است و مانند مدل‌های محلی، دقت آن روی متن فارسی محدودیت دارد.
+
 \section{محدودیت‌های سخت‌افزار محلی در برابر \en{Google Colab}}
 جدول~\ref{tab:infra} تفاوت محیط آموزش نسخهٔ نخست (محلی) و نسخهٔ دوم
 (\en{Colab}) را خلاصه می‌کند.
@@ -969,8 +1405,8 @@ $\max(p^{\text{choice}}) \ge 0.6$ به معنای «نیازمند بازبین�
 \end{tabular}
 \end{table}
 
-این محدودیت‌های سخت‌افزاری علت اصلی طراحی خط‌لولهٔ دوم به‌عنوان یک نوت‌بوک
-جداگانهٔ \en{Colab} (\texttt{training/colab\_retrain.ipynb}) به‌جای اجرای
+این محدودیت‌های سخت‌افزاری علت اصلی طراحی خط‌لولهٔ دوم به‌عنوان نوت‌بوک
+یکپارچهٔ \en{Colab} (\texttt{notebooks/colab\_training.ipynb}) به‌جای اجرای
 مستقیم روی سرور محلی است.
 
 % -----------------------------------------------------------------------------
@@ -1089,22 +1525,40 @@ $(1,3)$-گرمی با سقف و انتخاب $\chi^2$، تفکیک سه‌گان
     دقت مثبت، بازیابی یا $F_1$ رتبه‌بندی می‌کند و امکان انتخاب مستقیم مدل
     از طریق کلیک روی ردیف مربوطه را می‌دهد؛
   \item نمایش جزئیات تحلیلی تکمیلی (آنتروپی شانون، تنوع طول جملات، درصد
-    تکرار سه‌گرم، و انسجام میان‌جمله‌ای بر پایهٔ شباهت کسینوسی \en{TF-IDF})
+    تکرار سه‌گرم، انسجام میان‌جمله‌ای بر پایهٔ شباهت کسینوسی \en{TF-IDF}، و
+    سرگشتگی متن تحت مدل زبانی خام؛ بخش~\ref{sec:perplexity-signal})
     که مستقل از مدل انتخاب‌شده، بینشی تفسیرپذیر دربارهٔ متن ورودی ارائه
     می‌دهند؛
   \item پنل «پاسخ‌های نوع‌بندی‌شده» برای لایهٔ تصمیم سیستم-یک
     (بخش~\ref{sec:jev}) که سه پاسخ هم‌زمان — توزیع احتمال سؤال انتخاب،
     متر طیف پنج‌سطحی سؤال امتیاز به‌همراه مقدار وزن‌دار، و احتمال نیاز به
     بازبینی انسانی — را در کنار سطح سیاست تصمیم («ادامه»، «نیازمند
-    بازبینی انسانی»، «اطمینان پایین») نمایش می‌دهد.
+    بازبینی انسانی»، «اطمینان پایین») نمایش می‌دهد؛
+  \item انتخاب «روش تحلیل» در سه حالت: مدل‌های محلی، مدل آنلاین
+    «سیستم-یک» (سرویس میزبانی‌شدهٔ \en{TypeSafe}) و مقایسهٔ هر دو. تنظیمات
+    اتصال به سرویس آنلاین (نشانی پایه، نام مدل و کلید \en{API}) در
+    \en{localStorage} مرورگر کاربر نگهداری می‌شود؛ درخواست آنلاین از طریق
+    یک مسیر میانی سمت سرور \en{Next.js} بازارسال می‌شود تا محدودیت
+    \en{CORS} مرورگر برداشته شود و کلید فقط همراه همان درخواست به سرویس
+    می‌رسد و هیچ‌گاه در سرور ذخیره نمی‌شود؛
+  \item پنل مقایسهٔ آنلاین/محلی که همان متن را هم‌زمان به سرویس آنلاین و
+    مدل محلی انتخابی می‌دهد و هم‌سویی یا مغایرت حکم دو موتور، پاسخ‌های
+    نوع‌بندی‌شدهٔ هرکدام و خطای احتمالی هر سمت را کنار هم نمایش می‌دهد.
 \end{itemize}
+
+پاسخ سرویس آنلاین به همان شکل پاسخ‌های نوع‌بندی‌شدهٔ خط لولهٔ محلی
+(بخش~\ref{sec:jev}) نگاشت می‌شود—سه سؤال انتخاب، امتیاز و نول با
+معیارهای هم‌راستا—تا مؤلفه‌های نمایش برای هر دو موتور مشترک بماند؛
+فرادادهٔ ویژهٔ حالت آنلاین (مدل نهایی سرویس، مصرف توکن و تأخیر پاسخ)
+نیز در کنار همین ساختار برگردانده می‌شود.
 
 % -----------------------------------------------------------------------------
 \chapter{نتیجه‌گیری و کارهای آینده}
 % -----------------------------------------------------------------------------
 
 این گزارش یک سامانهٔ تشخیص متن تولیدشده توسط هوش مصنوعی برای زبان فارسی را
-با هفت مدل از سه خانوادهٔ الگوریتمی متفاوت شرح داد و نشان داد که ارقام
+با نُه مدل مستقر—پنج مدل کلاسیک، \en{BiLSTM}، \en{GPT-2}، \en{ParsBERT} و
+لایهٔ تصمیم سیستم-یک—از چهار خانوادهٔ الگوریتمی شرح داد و نشان داد که ارقام
 عملکرد بالا روی یک مجموعهٔ آزمون ثابت، به‌تنهایی تضمینی برای تعمیم‌پذیری
 روی دادهٔ واقعی نیست؛ عواملی مانند نبود تنظیم هایپرپارامتر، فضای ویژگی
 نامناسب، و نشت ظریف داده در انتخاب مدل می‌توانند شکاف قابل‌توجهی میان
@@ -1128,28 +1582,50 @@ $(1,3)$-گرمی با سقف و انتخاب $\chi^2$، تفکیک سه‌گان
 کارهای آینده می‌توانند شامل موارد زیر باشند: (۱) گسترش خط‌لولهٔ گردآوری
 داده (بخش~\ref{sec:data-collection}) با نمونه‌های
 بیشتر از سبک \texttt{conversational\_blog} و ثبت‌های محاوره‌ای مشابه برای
-پوشش بهتر متن واقعی کاربران، (۲) بررسی رویکردهای مبتنی بر سرگشتگی
-(\en{perplexity}) با استفاده از همان مدل زبانی \en{GPT-2-fa} به‌عنوان یک
-سیگنال تکمیلی مستقل از طبقه‌بند فاین‌تیون‌شده، (۳) توسعهٔ یک مجموعهٔ
+پوشش بهتر متن واقعی کاربران، (۲) توسعهٔ یک مجموعهٔ
 ارزیابی چالشی متشکل از متن‌های تولیدشده توسط چند مدل زبانی مختلف و چند
 سبک نوشتاری واقعی (نه فقط منبع دادهٔ آموزشی فعلی) برای سنجش مستمر استحکام
-سامانه در برابر تولیدکننده‌ها و ثبت‌های ناآشنا، و (۴) اجرای آموزش لایهٔ
-تصمیم سیستم-یک (بخش~\ref{sec:jev}) و افزودن ارقام کمّی پاسخ‌های
-نوع‌بندی‌شدهٔ آن به این گزارش.
+سامانه در برابر تولیدکننده‌ها و ثبت‌های ناآشنا، و (۳) بازنگری در سیگنال
+سرگشتگی با یک مدل مرجع قوی‌تر یا رویکردهای اغتشاش‌محور، با توجه به
+وارونگی جهتی که بررسی بخش~\ref{sec:perplexity-signal} نشان داد.
 
 % =============================================================================
 % ۷) پیوست‌ها
 % =============================================================================
 \appendix
 
-\chapter{راهنمای اجرای خط‌لولهٔ داده و آموزش}
+\chapter{راهنمای اجرا، استفاده و بازتولید}
 \label{app:runbook}
 
+این پیوست راهنمای عملیاتی اجرای سامانه است: پیش‌نیازها، بازتولید مدل‌ها از
+صفر، اجرای سرویس و رابط وب، آزمون‌های خودکار و افزودن مدل تازه. مطابق
+بخش~\ref{sec:repo-layout}، همهٔ فرمان‌ها از ریشهٔ پروژه اجرا می‌شوند.
+
+\section{پیش‌نیازها}
+\begin{itemize}[rightmargin=1em]
+  \item پایتون ۳٫۱۱ به بالا و مدیر بستهٔ \en{uv}؛ همهٔ وابستگی‌های پایتون
+    (\en{PyTorch}، \en{transformers}، \en{scikit-learn}، \en{FastAPI} و
+    \en{uvicorn}، \en{shekar}، \en{joblib} و \en{pandas}) در
+    \texttt{\lr{pyproject.toml}} اعلام شده و با \texttt{\lr{uv sync}} در
+    محیط \texttt{\lr{.venv}} نصب می‌شوند؛
+  \item برای رابط وب: \en{Node.js} و مدیر بستهٔ \en{pnpm}؛
+  \item برای اجرای سرویس، آرتیفکت‌های آموزش‌دیده در \texttt{\lr{models/}} و
+    \texttt{\lr{models.json}} باید از قبل موجود باشند؛ برای ساختن آن‌ها از
+    صفر، بخش بعد کل مسیر را نشان می‌دهد.
+\end{itemize}
+
+\section{بازتولید مدل‌ها از صفر}
+\label{app:retrain}
 تمام اسکریپت‌های آموزش از ریشهٔ پروژه اجرا می‌شوند و یک تفکیک ثابت
 آموزش/آزمون (بخش~\ref{sec:split}) را با بذر تصادفی مشترک به‌کار می‌برند.
-ترتیب اجرا برای بازتولید مدل‌ها به شرح زیر است:
+شکل~\ref{fig:training-flow} زنجیرهٔ اسکریپت‌ها و آرتیفکت‌های خروجی هر مرحله
+را نشان می‌دهد و ترتیب اجرا به شرح زیر است:
 
+\begin{LTRverb}
 \begin{verbatim}
+# rebuild the balanced dataset from the raw sources (data/)
+python training/build_dataset.py
+
 # cache the shared shekar preprocessing pipeline (one-time)
 python training/preprocess_cache.py
 
@@ -1159,21 +1635,91 @@ python training/train_ml_models.py
 # BiLSTM
 python training/train_lstm.py
 
+# GPT-2 / ParsBERT fine-tunes (local CPU budget;
+# prefer notebooks/colab_training.ipynb on GPU)
+python training/train_gpt2_classifier.py
+python training/train_parsbert.py
+
 # JEV "System One" decision model
 #   1) build JSONL records with teacher-distilled soft targets
 python training/prepare_jev_data.py
-#   2) train the typed decision-head model (writes jevModel.pt
+#   2) train the typed decision-head model (writes models/jevModel.pt
 #      and the models.json entry)
 python training/train_jev.py
 
 # serve (FastAPI on port 8000)
 python server.py
 \end{verbatim}
+\end{LTRverb}
+
+\begin{figure}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}
+  % dataset build chain
+  \node[data, w=4.0cm] (raw) at (0,0)
+      {raw CSVs in \texttt{data/}\\[1pt]\scriptsize AI-generated + human blogs};
+  \node[box, w=4.2cm] (bld) at (-4.9,0)
+      {\texttt{build\_dataset.py}\\[1pt]\scriptsize balanced \texttt{processedDataset.csv}};
+  \node[box, w=4.2cm] (sp) at (-9.8,0)
+      {\texttt{split.py}\\[1pt]\scriptsize shared split, seed \en{42}};
+  \node[box, w=4.4cm] (pc) at (-4.9,-2.2)
+      {\texttt{preprocess\_cache.py}\\[1pt]\scriptsize \en{shekar} pipeline cache};
+  % local CPU trainings
+  \node[proc, w=4.2cm] (t1) at (-2.3,-4.5)
+      {\texttt{train\_ml\_models.py}\\[1pt]\scriptsize 5 classical models + HPO};
+  \node[proc, w=3.6cm] (t2) at (-7.0,-4.5)
+      {\texttt{train\_lstm.py}\\[1pt]\scriptsize \en{BiLSTM}};
+  \node[proc, w=4.4cm] (t3) at (-11.8,-4.5)
+      {\texttt{train\_gpt2\_classifier.py}\\[1pt]\scriptsize \en{GPT-2} fine-tune (CPU)};
+  \node[proc, w=4.2cm] (t4) at (-16.4,-4.5)
+      {\texttt{train\_parsbert.py}\\[1pt]\scriptsize \en{ParsBERT} fine-tune (CPU)};
+  \draw[arr] (raw) -- (bld);
+  \draw[arr] (bld) -- (sp);
+  \draw[arr] (bld.south) to[out=-90,in=90] (pc.north);
+  \draw[arr] (sp.south) to[out=-90,in=90] (t1.north east);
+  \draw[arr] (sp.south) to[out=-90,in=90] (t2.north);
+  \draw[arr] (sp.south) to[out=-90,in=90] (t3.north);
+  \draw[arr] (sp.west) -| (t4.north);
+  \draw[arr] (pc.south) to[out=-90,in=60] (t1.north);
+  \draw[arr] (pc.south) to[out=-90,in=90] (t2.north west);
+  % unified GPU notebook
+  \node[proc, w=5.6cm] (nb) at (-13.2,-7.2)
+      {\texttt{notebooks/colab\_training.ipynb}\\[1pt]\scriptsize unified \en{GPU} retraining (all models)\\
+       \scriptsize $\to$ \texttt{models.json} fragment to merge};
+  % JEV line: teacher -> soft targets -> training
+  \node[proc, w=4.4cm] (jd) at (-7.0,-7.2)
+      {\texttt{prepare\_jev\_data.py}\\[1pt]\scriptsize teacher soft targets \en{(JSONL)}};
+  \node[proc, w=4.0cm] (t5) at (-11.9,-9.2)
+      {\texttt{train\_jev.py}\\[1pt]\scriptsize decision heads $\to$ \texttt{jevModel.pt}};
+  \draw[arrd] (t3.south) to[out=-90,in=90] node[lbl, pos=0.45] {teacher} (jd.north);
+  \draw[arr] (jd) -- (t5);
+  % final artifacts
+  \node[art, w=9.0cm] (art) at (-8.2,-11.4)
+      {\texttt{models.json} + \texttt{models/} artifacts + tokenizers\\$\to$ loaded in server \texttt{init()}};
+  \draw[arr] (t1.south) |- (art.east);
+  \draw[arr] (t2.south) -- (t2.south |- art.north);
+  \draw[arr] (t4.south) |- (art.west);
+  \draw[arr] (nb.south) to[out=-90,in=160] (art.north west);
+  \draw[arr] (t5.south) to[out=-90,in=90] (art.north);
+\end{tikzpicture}}%
+\caption{زنجیرهٔ بازتولید: از منابع خام تا آرتیفکت‌های سرویس. چهار آموزش
+محلی سمت راست مستقل و روی پردازندهٔ مرکزی اجراشدنی‌اند؛ نوت‌بوک یکپارچهٔ
+\en{Colab} (پایین چپ) همهٔ مدل‌ها را با \en{GPU} بازآموزی و قطعه‌ای برای
+ادغام در \texttt{\lr{models.json}} تولید می‌کند. پیکان نقطه‌چین «معلم»،
+مصرف خروجی دسته‌بند \en{GPT-2} برای ساخت هدف‌های نرم بخش~\ref{sec:jev}
+است.}
+\label{fig:training-flow}
+\end{figure}
+
+اسکریپت مستقل \texttt{\lr{eval\_perplexity.py}} نیز ارزیابی
+بخش~\ref{sec:perplexity-signal} را بازتولید می‌کند.
 
 هر سطر خروجی \texttt{\lr{prepare\_jev\_data.py}} یک رکورد \en{JSONL} به
 سبک \en{Valen} است: «وضعیت» (متن)، شمای سه سؤال نوع‌بندی‌شده، و هدف‌های
 نرم تقطیرشده از معلم. ساختار هر رکورد (مقادیر متنی نمونه خلاصه شده است):
 
+\begin{LTRverb}
 \begin{verbatim}
 {
   "id": "train-000014",
@@ -1198,11 +1744,92 @@ python server.py
   "teacherAiProbability": 0.9968
 }
 \end{verbatim}
+\end{LTRverb}
 
 پس از آموزش، چک‌پوینت \texttt{\lr{jevModel.pt}} به‌همراه آستانه‌های سیاست
 تصمیم ذخیره می‌شود و ورود \texttt{\lr{jev\_system\_one}} به فایل
 \texttt{models.json} به‌طور خودکار نوشته می‌شود؛ با بازراه‌اندازی سرور،
 مدل در رابط وب قابل انتخاب است.
+
+\section{اجرای سرویس بک‌اند}
+سرور از ریشهٔ پروژه و با محیط مجازی فعال اجرا می‌شود:
+\begin{LTRverb}
+\begin{verbatim}
+# serve on 0.0.0.0:8000 (loads all artifacts at startup)
+.venv/bin/python server.py
+
+# or, during development, with live reload:
+.venv/bin/uvicorn aitextd.api:app --reload --port 8000
+\end{verbatim}
+\end{LTRverb}
+راه‌اندازی، همهٔ مدل‌ها، بردارساز و توکن‌سازها را یک‌بار بار و گرم می‌کند
+(شکل~\ref{fig:inference-flow})؛ بنابراین نخستین پاسخ هم سریع است و هزینهٔ
+بارگذاری سرد به درخواست کاربر منتقل نمی‌شود. صحت اجرا با فراخوانی فهرست
+مدل‌ها بررسی می‌شود؛ پاسخ باید ۱۰ مدخل داشته باشد: ۹ مدل واقعی و «مدل
+ترکیبی» در رأس فهرست:
+\begin{LTRverb}
+\begin{verbatim}
+curl -s http://localhost:8000/models
+
+# sample detection request (modelId can be any id from /models):
+curl -s -X POST http://localhost:8000/detect \
+  -H "Content-Type: application/json" \
+  -d '{"text": "<a Persian sample of at least 20 chars>",
+       "modelId": "ensemble"}'
+\end{verbatim}
+\end{LTRverb}
+
+\section{اجرای رابط کاربری وب}
+رابط وب در پوشهٔ \texttt{\lr{web-app/}} اجرا می‌شود:
+\begin{LTRverb}
+\begin{verbatim}
+cd web-app
+pnpm install
+pnpm dev        # serves on http://localhost:3000
+\end{verbatim}
+\end{LTRverb}
+یک نکتهٔ پیکربندی مهم: در نسخهٔ کنونی، مسیرهای پروکسی سمت سرور نشانی
+بک‌اند را ثابت روی \texttt{\lr{0.0.0.0:8000}} فرض می‌کنند؛ پس سرور پایتون
+باید روی همین درگاه در حال اجرا باشد (محدودیت شناخته‌شدهٔ فعلی و کاندیدای
+طبیعی برای پارامتری‌شدن با متغیر محیطی). پس از اجرا، آدرس
+\texttt{\lr{localhost:3000}} در مرورگر باز می‌شود؛ صحت اتصال با ارسال یک
+متن حداقل ۲۰کاراکتری و دیدن نتیجهٔ تشخیص و جزئیات تحلیلی بررسی می‌شود.
+تنظیمات سرویس آنلاین \en{TypeSafe} (نشانی پایه، نام مدل و کلید) از پنل
+صفحهٔ اصلی وارد و فقط در \texttt{\lr{localStorage}} مرورگر ذخیره می‌شود
+(بخش~\ref{sec:online-systemone}).
+
+\section{آزمون‌های خودکار}
+مجموعهٔ آزمون از ریشهٔ پروژه اجرا می‌شود:
+\begin{LTRverb}
+\begin{verbatim}
+.venv/bin/python -m pytest tests/ -m "not slow"   # fast behavior tests
+.venv/bin/python -m pytest tests/ -m slow         # full stack + golden
+\end{verbatim}
+\end{LTRverb}
+آزمون‌های سریع، منطق خالص (پیش‌پردازش، ویژگی‌های سبکی، معماری مدل‌ها و
+بسته‌بندی پاسخ \en{JEV}) را بدون نیاز به چک‌پوینت می‌آزمایند؛ آزمون با نشان
+\en{slow}، کل پشتهٔ سرویس را بار می‌کند و خروجی دقیق
+\texttt{\lr{detection()}} را با مقادیر ثبت‌شده در
+\texttt{\lr{tests/golden/detection\_golden.json}} مقایسه می‌کند: در نخستین
+اجرا خروجی‌ها ثبت و سپس قفل می‌شوند و هر تغییری که یک پیش‌بینی
+سرویس‌شده را عوض کند، مجموعهٔ آزمون را شکست می‌دهد — همان سازوکاری که
+ناهم‌خوانی آموزش/سرویس (بخش~\ref{sec:style-features}) را پس از هر
+بازآموزی آشکار می‌سازد.
+
+\section{افزودن یک مدل تازه به سرویس}
+برای مدلی که از یکی از مقادیر شناخته‌شدهٔ \texttt{runtime} (جدول~\ref{tab:runtimes})
+پیروی می‌کند، تنها دو گام لازم است: (۱) ذخیرهٔ آرتیفکت با نام فایل
+ثبت‌شده در پوشهٔ \texttt{\lr{models/}}، و (۲) افزودن مدخل آن به
+\texttt{\lr{models.json}} با فیلدهای \texttt{\lr{id}}،
+\texttt{\lr{runtime}}، \texttt{\lr{filename}}،
+\texttt{\lr{ensembleWeight}} و معیارهای ارزیابی؛ سپس راه‌اندازی مجدد سرور.
+نقاط پایانی \en{API} و رابط وب هیچ تغییری لازم ندارند — همان مزیت اعزام
+زمان اجرا که افزودن \en{GPT-2}، \en{ParsBERT} و \en{JEV} را بدون تغییر
+معماری ممکن کرد. افزودن یک مقدار \texttt{runtime} تازه (چنان‌که برای
+\texttt{\lr{pytorch-parsbert}} و \texttt{\lr{pytorch-jev}} رخ داد) نیز
+تنها به یک جفت تابع بارگذار/پیش‌بین نیاز دارد که در
+\texttt{\lr{aitextd/loaders.py}} و \texttt{\lr{aitextd/predictors.py}} به
+نگاشت‌های زمان اجرا افزوده می‌شوند.
 
 % =============================================================================
 % ۸) مراجع

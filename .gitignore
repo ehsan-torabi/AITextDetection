@@ -18,3 +18,8 @@ edt_params.txt
 
 # Local safety backups of model artifacts before retraining
 backups/
+
+# Temporary online-eval config (holds API keys) and its response cache
+training/eval_online_providers.json
+training/.online_eval_cache.jsonl
+training/online_eval_results.json

@@ -24,6 +24,9 @@ export interface ModelConfusionMatrix {
 
 export type ModelType = "ml" | "dl" | "ensemble";
 
+/** Which engine(s) a detection run should use. */
+export type DetectionMode = "local" | "online" | "compare";
+
 export interface Model {
   id: string;
   name: string;
@@ -64,7 +67,7 @@ export interface EnsembleVote {
   weight: number;
 }
 
-export interface JevChoiceAnswer {
+export interface SystemOneChoiceAnswer {
   question: string;
   questionFa: string;
   candidates: string[];
@@ -74,7 +77,7 @@ export interface JevChoiceAnswer {
   answerFa: string;
 }
 
-export interface JevScoreAnswer {
+export interface SystemOneScoreAnswer {
   question: string;
   questionFa: string;
   levels: string[];
@@ -85,7 +88,7 @@ export interface JevScoreAnswer {
   answerFa: string;
 }
 
-export interface JevNoulAnswer {
+export interface SystemOneNoulAnswer {
   question: string;
   questionFa: string;
   probability: number;
@@ -93,17 +96,17 @@ export interface JevNoulAnswer {
   answerFa: string;
 }
 
-export interface JevPolicyDecision {
+export interface SystemOnePolicyDecision {
   tier: string;
   tierFa: string;
   descriptionFa: string;
 }
 
-export interface JevTypedAnswers {
-  choice: JevChoiceAnswer;
-  score: JevScoreAnswer;
-  noul: JevNoulAnswer;
-  policy: JevPolicyDecision;
+export interface SystemOneTypedAnswers {
+  choice: SystemOneChoiceAnswer;
+  score: SystemOneScoreAnswer;
+  noul: SystemOneNoulAnswer;
+  policy: SystemOnePolicyDecision;
 }
 
 export interface DetectionResponse {
@@ -116,5 +119,44 @@ export interface DetectionResponse {
   textLength: number;
   wordCount: number;
   ensembleVotes?: EnsembleVote[] | null;
-  typedAnswers?: JevTypedAnswers | null;
+  typedAnswers?: SystemOneTypedAnswers | null;
+}
+
+// ---------------------------------------------------------------------------
+// Online System One (TypeSafe) detection
+// ---------------------------------------------------------------------------
+
+/** Connection settings for the online System One provider, kept in
+ * localStorage on the client; the API key never touches server storage. */
+export interface TypeSafeProviderSettings {
+  baseUrl: string;
+  model: string;
+  apiKey: string;
+}
+
+export interface TypeSafeUsage {
+  inputTokens: number;
+  outputTokens: number;
+}
+
+/** Online System One result. Extends DetectionResponse so the existing
+ * result UI renders it directly; the extra fields carry online-specific
+ * metadata (resolved model, token usage, latency). */
+export interface TypeSafeDetectionResponse extends DetectionResponse {
+  typedAnswers: SystemOneTypedAnswers;
+  /** TypeSafe's choice-question confidence (distribution concentration). */
+  choiceConfidence: number;
+  requestedModel: string;
+  resolvedModel?: string;
+  usage: TypeSafeUsage | null;
+  latencyMs: number;
+}
+
+/** Outcome of running one text through both the online System One model and
+ * a local model; either side may be missing when its request failed. */
+export interface OnlineLocalComparison {
+  local: DetectionResponse | null;
+  online: TypeSafeDetectionResponse | null;
+  localError?: string;
+  onlineError?: string;
 }

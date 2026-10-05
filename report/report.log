@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.9.7)  4 OCT 2026 17:35
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.10.5)  5 OCT 2026 02:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -307,7 +307,277 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 )
-(/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks30
+\pgfutil@tempdima=\dimen193
+\pgfutil@tempdimb=\dimen194
+)
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box61
+)
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+
+(/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks31
+\pgfkeys@temptoks=\toks32
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.te
+x
+\pgfkeys@tmptoks=\toks33
+))
+\pgf@x=\dimen195
+\pgf@y=\dimen196
+\pgf@xa=\dimen197
+\pgf@ya=\dimen198
+\pgf@xb=\dimen199
+\pgf@yb=\dimen256
+\pgf@xc=\dimen257
+\pgf@yc=\dimen258
+\pgf@xd=\dimen259
+\pgf@yd=\dimen260
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count307
+\c@pgf@countb=\count308
+\c@pgf@countc=\count309
+\c@pgf@countd=\count310
+\t@pgf@toka=\toks34
+\t@pgf@tokb=\toks35
+\t@pgf@tokc=\toks36
+\pgf@sys@id@count=\count311
+ (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-xetex.def
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
+File: pgfsys-xetex.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
+File: pgfsys-dvipdfmx.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
+)
+\pgfsys@objnum=\count312
+)))
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count313
+\pgfsyssoftpath@bigbuffer@items=\count314
+)
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen261
+\pgfmath@count=\count315
+\pgfmath@box=\box62
+\pgfmath@toks=\toks37
+\pgfmath@stack@operand=\toks38
+\pgfmath@stack@operation=\toks39
+)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code
+.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.te
+x) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics
+.code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count316
+))
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen262
+\pgf@picmaxx=\dimen263
+\pgf@picminy=\dimen264
+\pgf@picmaxy=\dimen265
+\pgf@pathminx=\dimen266
+\pgf@pathmaxx=\dimen267
+\pgf@pathminy=\dimen268
+\pgf@pathmaxy=\dimen269
+\pgf@xx=\dimen270
+\pgf@xy=\dimen271
+\pgf@yx=\dimen272
+\pgf@yy=\dimen273
+\pgf@zx=\dimen274
+\pgf@zy=\dimen275
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen276
+\pgf@path@lasty=\dimen277
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen278
+\pgf@shorten@start@additional=\dimen279
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box63
+\pgf@hbox=\box64
+\pgf@layerbox@main=\box65
+\pgf@picture@serial@count=\count317
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen280
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.t
+ex
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen281
+\pgf@pt@y=\dimen282
+\pgf@pt@temp=\dimen283
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.te
+x
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen284
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen285
+\pgf@sys@shading@range@num=\count318
+\pgf@shadingcount=\count319
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box66
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box67
+)
+(/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen286
+\pgf@nodesepend=\dimen287
+)
+(/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+))
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen288
+\pgffor@skip=\dimen289
+\pgffor@stack=\toks40
+\pgffor@toks=\toks41
+))
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.te
+x
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count320
+\pgfplotmarksize=\dimen290
+)
+\tikz@lastx=\dimen291
+\tikz@lasty=\dimen292
+\tikz@lastxsaved=\dimen293
+\tikz@lastysaved=\dimen294
+\tikz@lastmovetox=\dimen295
+\tikz@lastmovetoy=\dimen296
+\tikzleveldistance=\dimen297
+\tikzsiblingdistance=\dimen298
+\tikz@figbox=\box68
+\tikz@figbox@bg=\box69
+\tikz@tempbox=\box70
+\tikz@tempbox@bg=\box71
+\tikztreelevel=\count321
+\tikznumberofchildren=\count322
+\tikznumberofcurrentchild=\count323
+\tikz@fig@count=\count324
+ (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count325
+\pgfmatrixcurrentcolumn=\count326
+\pgf@matrix@numberofcolumns=\count327
+)
+\tikz@expandcount=\count328
+
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+topaths.code.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowinset=\dimen299
+\pgfarrowlength=\dimen300
+\pgfarrowwidth=\dimen301
+\pgfarrowlinewidth=\dimen302
+)
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+positioning.code.tex
+File: tikzlibrarypositioning.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+fit.code.tex
+File: tikzlibraryfit.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+calc.code.tex
+File: tikzlibrarycalc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+backgrounds.code.tex
+File: tikzlibrarybackgrounds.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@layerbox@background=\box72
+\pgf@layerboxsaved@background=\box73
+) (/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
 
 (/usr/share/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
@@ -348,15 +618,15 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count307
+\c@section@level=\count329
 )
 (/usr/share/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen193
-\Hy@linkcounter=\count308
-\Hy@pagecounter=\count309
+\@linkdim=\dimen303
+\Hy@linkcounter=\count330
+\Hy@pagecounter=\count331
 
 (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
@@ -364,7 +634,7 @@ File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
 (/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count310
+\Hy@SavedSpaceFactor=\count332
 
 (/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2026-01-29 v7.01p Hyperref: PDF Unicode definition (HO)
@@ -376,9 +646,9 @@ Package hyperref Info: Plain pages OFF on input line 4216.
 Package hyperref Info: Backreferencing OFF on input line 4221.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4468.
-\c@Hy@tempcnt=\count311
+\c@Hy@tempcnt=\count333
 LaTeX Info: Redefining \url on input line 4807.
-\XeTeXLinkMargin=\dimen194
+\XeTeXLinkMargin=\dimen304
 
 (/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -387,9 +657,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count312
-\Field@Width=\dimen195
-\Fld@charsize=\dimen196
+\Fld@menulength=\count334
+\Field@Width=\dimen305
+\Fld@charsize=\dimen306
 Package hyperref Info: Hyper figures OFF on input line 6084.
 Package hyperref Info: Link nesting OFF on input line 6089.
 Package hyperref Info: Hyper index ON on input line 6092.
@@ -397,19 +667,19 @@ Package hyperref Info: backreferencing OFF on input line 6099.
 Package hyperref Info: Link coloring OFF on input line 6104.
 Package hyperref Info: Link coloring with OCG OFF on input line 6109.
 Package hyperref Info: PDF/A mode OFF on input line 6114.
-\Hy@abspage=\count313
-\c@Item=\count314
-\c@Hfootnote=\count315
+\Hy@abspage=\count335
+\c@Item=\count336
+\c@Hfootnote=\count337
 )
 Package hyperref Info: Driver (autodetected): hxetex.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/hxetex.def
 File: hxetex.def 2026-01-29 v7.01p Hyperref driver for XeTeX
-\pdfm@box=\box61
-\c@Hy@AnnotLevel=\count316
-\HyField@AnnotCount=\count317
-\Fld@listcount=\count318
-\c@bookmark@seq@number=\count319
+\pdfm@box=\box74
+\c@Hy@AnnotLevel=\count338
+\HyField@AnnotCount=\count339
+\Fld@listcount=\count340
+\c@bookmark@seq@number=\count341
 
 (/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
@@ -422,11 +692,11 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip58
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 44.
+Package hyperref Info: Option `colorlinks' set `true' on input line 68.
 
 
 Package hyperref Warning: Option `hyperfootnotes' has already been used,
-(hyperref)                setting the option has no effect on input line 44.
+(hyperref)                setting the option has no effect on input line 68.
 
 (/home/ehsan/texmf/tex/latex/xepersian.sty
 Package: xepersian 2025/02/02 v25.2.2 (Release Persian Gate) Persian typesettin
@@ -464,9 +734,9 @@ Package: expl3 2026-01-19 L3 programming layer (loader)
 
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2025-10-09 L3 backend support: XeTeX
-\g__graphics_track_int=\count320
-\g__pdfannot_backend_int=\count321
-\g__pdfannot_backend_link_int=\count322
+\g__graphics_track_int=\count342
+\g__pdfannot_backend_int=\count343
+\g__pdfannot_backend_link_int=\count344
 ))
 Package: xparse 2025-10-09 L3 Experimental document command parser
 )
@@ -475,20 +745,20 @@ Package: fontspec 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTeX
 (/usr/share/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
 Package: fontspec-xetex 2025/09/29 v2.9g Font selection for XeLaTeX and LuaLaTe
 X
-\l__fontspec_script_int=\count323
-\l__fontspec_language_int=\count324
-\l__fontspec_strnum_int=\count325
-\l__fontspec_tmp_int=\count326
-\l__fontspec_tmpa_int=\count327
-\l__fontspec_tmpb_int=\count328
-\l__fontspec_tmpc_int=\count329
-\l__fontspec_em_int=\count330
-\l__fontspec_emdef_int=\count331
-\l__fontspec_strong_int=\count332
-\l__fontspec_strongdef_int=\count333
-\l__fontspec_tmpa_dim=\dimen197
-\l__fontspec_tmpb_dim=\dimen198
-\l__fontspec_tmpc_dim=\dimen199
+\l__fontspec_script_int=\count345
+\l__fontspec_language_int=\count346
+\l__fontspec_strnum_int=\count347
+\l__fontspec_tmp_int=\count348
+\l__fontspec_tmpa_int=\count349
+\l__fontspec_tmpb_int=\count350
+\l__fontspec_tmpc_int=\count351
+\l__fontspec_em_int=\count352
+\l__fontspec_emdef_int=\count353
+\l__fontspec_strong_int=\count354
+\l__fontspec_strongdef_int=\count355
+\l__fontspec_tmpa_dim=\dimen307
+\l__fontspec_tmpb_dim=\dimen308
+\l__fontspec_tmpc_dim=\dimen309
 
 (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
@@ -496,43 +766,43 @@ Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 (/usr/share/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
 (/home/ehsan/texmf/tex/latex/xepersian-persiancal.sty
 Package: xepersian-persiancal 2025/01/01 v0.3 provides Persian calendar
-\XePersian@i=\count334
-\XePersian@y=\count335
-\XePersian@m=\count336
-\XePersian@d=\count337
-\XePersian@latini=\count338
-\XePersian@persiani=\count339
-\XePersian@latinii=\count340
-\XePersian@persianii=\count341
-\XePersian@latiniii=\count342
-\XePersian@persianiii=\count343
-\XePersian@latiniv=\count344
-\XePersian@persianiv=\count345
-\XePersian@latinv=\count346
-\XePersian@persianv=\count347
-\XePersian@latinvi=\count348
-\XePersian@persianvi=\count349
-\XePersian@latinvii=\count350
-\XePersian@persianvii=\count351
-\XePersian@latinviii=\count352
-\XePersian@persianviii=\count353
-\XePersian@latinix=\count354
-\XePersian@persianix=\count355
-\XePersian@latinx=\count356
-\XePersian@persianx=\count357
-\XePersian@latinxi=\count358
-\XePersian@persianxi=\count359
-\XePersian@latinxii=\count360
-\XePersian@persianxii=\count361
-\XePersian@persianxiii=\count362
-\XePersian@temp=\count363
-\XePersian@temptwo=\count364
-\XePersian@tempthree=\count365
-\XePersian@yModHundred=\count366
-\XePersian@thirtytwo=\count367
-\XePersian@dn=\count368
-\XePersian@sn=\count369
-\XePersian@mminusone=\count370
+\XePersian@i=\count356
+\XePersian@y=\count357
+\XePersian@m=\count358
+\XePersian@d=\count359
+\XePersian@latini=\count360
+\XePersian@persiani=\count361
+\XePersian@latinii=\count362
+\XePersian@persianii=\count363
+\XePersian@latiniii=\count364
+\XePersian@persianiii=\count365
+\XePersian@latiniv=\count366
+\XePersian@persianiv=\count367
+\XePersian@latinv=\count368
+\XePersian@persianv=\count369
+\XePersian@latinvi=\count370
+\XePersian@persianvi=\count371
+\XePersian@latinvii=\count372
+\XePersian@persianvii=\count373
+\XePersian@latinviii=\count374
+\XePersian@persianviii=\count375
+\XePersian@latinix=\count376
+\XePersian@persianix=\count377
+\XePersian@latinx=\count378
+\XePersian@persianx=\count379
+\XePersian@latinxi=\count380
+\XePersian@persianxi=\count381
+\XePersian@latinxii=\count382
+\XePersian@persianxii=\count383
+\XePersian@persianxiii=\count384
+\XePersian@temp=\count385
+\XePersian@temptwo=\count386
+\XePersian@tempthree=\count387
+\XePersian@yModHundred=\count388
+\XePersian@thirtytwo=\count389
+\XePersian@dn=\count390
+\XePersian@sn=\count391
+\XePersian@mminusone=\count392
 )
 (/home/ehsan/texmf/tex/latex/unicode-persianmath.sty
 Package: unicode-persianmath 2025/02/02 v1.2.3 Unicode Persian math
@@ -568,19 +838,19 @@ plain TeX and LaTeX
 ****************************************************
 (/usr/share/texmf-dist/tex/latex/bidi/biditools.sty
 Package: biditools 2025/12/19 v2.9 Programming tools for bidi package
-\@bidi@envbody=\toks30
-\@bidi@emptytoks=\toks31
-\bidi@poscount=\count371
-\bidi@tempcountb=\count372
-\bidi@temptoksa=\toks32
-\bidi@temptoksb=\toks33
-\bidi@dummies=\count373
-\bidi@are@these@correct=\toks34
-\bidi@toks@lista=\toks35
-\bidi@toks@listb=\toks36
-\bidi@stack@length=\count374
-\bidi@empty@stack=\toks37
-\bidi@looprepeat@depth=\count375
+\@bidi@envbody=\toks42
+\@bidi@emptytoks=\toks43
+\bidi@poscount=\count393
+\bidi@tempcountb=\count394
+\bidi@temptoksa=\toks44
+\bidi@temptoksb=\toks45
+\bidi@dummies=\count395
+\bidi@are@these@correct=\toks46
+\bidi@toks@lista=\toks47
+\bidi@toks@listb=\toks48
+\bidi@stack@length=\count396
+\bidi@empty@stack=\toks49
+\bidi@looprepeat@depth=\count397
 )
 (/usr/share/texmf-dist/tex/latex/zref/zref-abspage.sty
 Package: zref-abspage 2025-06-08 v2.36 Module abspage for zref (HO)
@@ -598,28 +868,28 @@ Package zref Info: New property list: main on input line 767.
 Package zref Info: New property: default on input line 768.
 Package zref Info: New property: page on input line 769.
 )
-\c@abspage=\count376
+\c@abspage=\count398
 Package zref Info: New property: abspage on input line 67.
 )
 \@bidi@copyins@=\insert252
-\bidi@typesethour=\count377
-\bidi@typesetminute=\count378
+\bidi@typesethour=\count399
+\bidi@typesetminute=\count400
 
 (/usr/share/texmf-dist/tex/latex/bidi/latex-xetex-bidi.def
 File: latex-xetex-bidi.def 2025/12/19 v1.5.6 bidi adaptations for `latex.ltx' f
 or XeTeX engine
-\bidi@n@everypar=\toks38
+\bidi@n@everypar=\toks50
 LaTeX Info: Redefining \centerline on input line 317.
 LaTeX Info: Redefining \leftline on input line 326.
 LaTeX Info: Redefining \rightline on input line 327.
 LaTeX Info: Redefining \underline on input line 335.
-\bidi@column@check@number=\count379
+\bidi@column@check@number=\count401
 
 (/usr/share/texmf-dist/tex/latex/bidi/footnote-xetex-bidi.def
 File: footnote-xetex-bidi.def 2025/09/30 v1.6 bidi footnote macros for XeTeX en
 gine
-\c@footdir@label=\count380
-\footdir@toks=\toks39
+\c@footdir@label=\count402
+\footdir@toks=\toks51
 )
 (/usr/share/texmf-dist/tex/latex/bidi/report-xetex-bidi.def
 File: report-xetex-bidi.def 2025/12/19 v1.3 bidi adaptations for standard repor
@@ -666,19 +936,27 @@ kage for XeTeX engine
 File: hyperref-xetex-bidi.def 2025/12/06 v1.5 bidi adaptations for hyperref pac
 kage for XeTeX engine
 )
+(/usr/share/texmf-dist/tex/latex/bidi/pgfsys-xetex-bidi.def
+File: pgfsys-xetex-bidi.def 2025/01/05 v0.1 bidi adaptations for pgfsys package
+ for XeTeX engine
+)
 (/usr/share/texmf-dist/tex/latex/bidi/xcolor-xetex-bidi.def
 File: xcolor-xetex-bidi.def 2022/06/13 v0.3 bidi adaptations for xcolor package
  for XeTeX engine
 LaTeX Info: Redefining \color on input line 49.
 LaTeX Info: Redefining \bidicolor on input line 92.
+)
+(/usr/share/texmf-dist/tex/latex/bidi/pgfcorescopes.code-xetex-bidi.def
+File: pgfcorescopes.code-xetex-bidi.def 2015/11/14 v0.1 bidi adaptations for pg
+f package for XeTeX engine
 ))
-\bidi@digits=\count381
+\bidi@digits=\count403
 \bidi@digits@charclass=\XeTeXcharclass1
 \bidi@sepmark@charclass=\XeTeXcharclass2
 )
-\xepersian@tcl=\count382
-\xepersian@ilg=\dimen256
-\xepersian@strutilg=\dimen257
+\xepersian@tcl=\count404
+\xepersian@ilg=\dimen310
+\xepersian@strutilg=\dimen311
 
 (/home/ehsan/texmf/tex/latex/footnote-xetex-bidi-xetex-xepersian.def
 File: footnote-xetex-bidi-xetex-xepersian.def 2017/08/09 v0.6 xepersian adaptat
@@ -700,7 +978,7 @@ perref package for XeTeX engine
 File: url-xetex-xepersian.def 2022/02/18 v0.1 xepersian adaptations for url pac
 kage for XeTeX engine
 )
-\xepersian@toks=\toks40
+\xepersian@toks=\toks52
 )
 
 Package fontspec Info: 
@@ -789,7 +1067,7 @@ Package fontspec Info:
 (fontspec)             Serif/BI/OT:script=latn;language=dflt;mapping=tex-text;"
 
 
-LaTeX Info: Redefining \latinfont on input line 102.
+LaTeX Info: Redefining \latinfont on input line 126.
 
 Package fontspec Info: 
 (fontspec)             Font family 'XBZar(1)' created for font 'XB Zar' with
@@ -827,7 +1105,7 @@ Package fontspec Info:
 (fontspec)             Zar.ttf]/OT:script=latn;language=dflt;embolden=2.5;"
 
 Package unicode-persianmath Info: DefiningthedefaultPersianmathdigitsfontas'XB 
-Zar' on input line 108.
+Zar' on input line 132.
 \sympersianoperators=\mathgroup8
 \sympersianoperatorsbf=\mathgroup9
 \sympersianoperatorsit=\mathgroup10
@@ -838,26 +1116,26 @@ or XeTeX engine
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 125.
-LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 156.
+LaTeX Font Info:    ... okay on input line 156.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -893,15 +1171,15 @@ LaTeX Font Info:    ... okay on input line 125.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 125.
-Package microtype Info: Applying patch `item' on input line 125.
-Package microtype Info: Applying patch `toc' on input line 125.
-Package microtype Info: Applying patch `eqnum' on input line 125.
+LaTeX Info: Redefining \microtypecontext on input line 156.
+Package microtype Info: Applying patch `item' on input line 156.
+Package microtype Info: Applying patch `toc' on input line 156.
+Package microtype Info: Applying patch `eqnum' on input line 156.
 
-Package microtype Warning: Unable to apply patch `footnote' on input line 125.
+Package microtype Warning: Unable to apply patch `footnote' on input line 156.
 
-Package microtype Info: Applying patch `verbatim' on input line 125.
-LaTeX Info: Redefining \microtypesetup on input line 125.
+Package microtype Info: Applying patch `verbatim' on input line 156.
+LaTeX Info: Redefining \microtypesetup on input line 156.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
@@ -1170,19 +1448,19 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 125.
+Package hyperref Info: Link coloring ON on input line 156.
 (./report.out) (./report.out)
-\@outlinefile=\write3
-\openout3 = `report.out'.
+\@outlinefile=\write4
+\openout4 = `report.out'.
 
  [1
 
 ] [2
 
 ]
-LaTeX Font Info:    Calculating math sizes for size <13> on input line 156.
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 187.
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 156.
+ 187.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
@@ -1192,39 +1470,39 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 156.
+ 187.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 156.
+ 187.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 156.
+ 187.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
-56.
+87.
 
 (/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 156.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 187.
 
 (/usr/share/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9.62007> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 156.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 187.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.80008> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 156.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 187.
 
 (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
@@ -1233,20 +1511,20 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <13> not available
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 15
-6.
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 18
+7.
 LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <9.62007> not availab
 le
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 15
-6.
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 18
+7.
 LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <7.80008> not availab
 le
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 15
-6.
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 18
+7.
 
 
 LaTeX Font Warning: Font shape `TU/XBZar(2)/m/it' undefined
-(Font)              using `TU/XBZar(2)/m/n' instead on input line 156.
+(Font)              using `TU/XBZar(2)/m/n' instead on input line 187.
 
 [3
 
@@ -1261,8 +1539,8 @@ Package microtype Info: Loading generic protrusion settings for font family
 ] (./report.toc [2
 
 ] [3])
-\tf@toc=\write4
-\openout4 = `report.toc'.
+\tf@toc=\write5
+\openout5 = `report.toc'.
 
  [4] [5
 
@@ -1271,169 +1549,343 @@ Package microtype Info: Loading generic protrusion settings for font family
 [1
 
 
-] [2]
-فصل 2.
+]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 372.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 372.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 372.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <8> not available
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 37
+2.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <6> not available
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 37
+2.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <5> not available
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 37
+2.
+ [2] [3]
+فصل 2.
 
-Underfull \hbox (badness 2875) in paragraph at lines 282--287
+Underfull \hbox (badness 2875) in paragraph at lines 391--396
 []\TU/XBZar(0)/m/n/13 نمونه‌های کلاس هوش مصنوعی نمونه‌برداری تصادفی انجام شده ا
 ست. مجموعهٔ نهایی[]
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 306--310
+Underfull \hbox (badness 1616) in paragraph at lines 415--419
 []\TU/XBZar(0)/m/n/13 بخش هوش‌مصنوعی مجموعه داده (\TU/lmtt/m/n/13 persian_ai_ge
 nerated_final.csv\TU/XBZar(0)/m/n/13 ) را خط‌لولهٔ[]
  []
 
-[3
+[4
 
 ]
-Underfull \hbox (badness 5726) in paragraph at lines 319--324
+Underfull \hbox (badness 5726) in paragraph at lines 428--433
 []\TU/XBZar(0)/m/n/13 ([]\TU/LiberationSerif(0)/m/n/13 conversational_blog[]\TU
 /XBZar(0)/m/n/13 )، پاسخ پرسش‌وپاسخی گام‌به‌گام ([]\TU/LiberationSerif(0)/m/n/1
 3 qa_explainer[]\TU/XBZar(0)/m/n/13 )، متن[]
  []
 
-[4] [5]
+[5] [6]
 فصل 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--387
+Underfull \hbox (badness 10000) in paragraph at lines 493--496
 [][]\TU/XBZar(0)/b/n/13 نرمال‌سازی ([]\TU/LiberationSerif(0)/b/n/13 Normalizer[
 ]\TU/XBZar(0)/b/n/13 )\TU/XBZar(0)/m/n/13 : یکسان‌سازی حروف عربی/فارسی، نرمال‌س
 ازی[]
  []
 
 
-Underfull \hbox (badness 3209) in paragraph at lines 384--387
+Underfull \hbox (badness 3209) in paragraph at lines 493--496
 []\TU/XBZar(0)/m/n/13 ارقام، نرمال‌سازی نشانه‌گذاری، حذف اعراب، نرمال‌سازی حروف
  تکراری (مانند[]
  []
 
-[6
+[7
 
 ]
-Underfull \hbox (badness 3568) in paragraph at lines 428--439
+Underfull \hbox (badness 3568) in paragraph at lines 537--548
 [][]\TU/XBZar(0)/b/n/13 جایگزینی با توکن‌ساز سریع\TU/XBZar(0)/m/n/13 : در خط‌لو
 لهٔ بازآموزش []\TU/LiberationSerif(0)/m/n/13 Colab[]\TU/XBZar(0)/m/n/13 ، توکن‌
 ساز از طریق[]
  []
 
-[7] [8]
+[8] [9]
 فصل 4.
-[9
+[10
 
-] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 509--514
+] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 618--623
 [][]\TU/XBZar(0)/b/n/13 آنتروپی کاراکتری نرمال‌شده: \TU/XBZar(0)/m/n/13 آنتروپی
  شانون توزیع کاراکترها، $\OML/ztmcm/m/it/13 H\OT1/ztmcm/m/n/13 (\OML/ztmcm/m/it
 /13 d\OT1/ztmcm/m/n/13 ) =$[]
  []
 
-[11]
+
+Underfull \hbox (badness 1314) in paragraph at lines 636--644
+[]\TU/XBZar(0)/b/n/13 نکتهٔ حیاتی برای صحت استنتاج: \TU/XBZar(0)/m/n/13 فرمول ا
+ین چهار ویژگی تنها یک‌بار، در ماژول مشترک[]
+ []
+
+[12]
 فصل 5.
-[12
+[13
 
-] [13] [14]
+] [14] [15]
 فصل 6.
-[15
+[16
 
-] [16] [17] [18]
-Underfull \hbox (badness 1527) in paragraph at lines 755--765
+] [17] [18] [19]
+Underfull \hbox (badness 1527) in paragraph at lines 864--874
 []\TU/XBZar(0)/m/n/13 معماری سرویس‌دهی موجود (بخش [][][][][][]\TU/XBZar(1)/m/n/
 13 ۹\TU/XBZar(0)/m/n/13 .‏\TU/XBZar(1)/m/n/13 ۱[][][][][][]\TU/XBZar(0)/m/n/13 
 )، که بر پایهٔ اعزام بر اساس فیلد \TU/lmtt/m/n/13 runtime \TU/XBZar(0)/m/n/13 د
 ر[]
  []
 
-[19] [20]
-Underfull \hbox (badness 5578) in paragraph at lines 833--836
+[20] [21]
+Underfull \hbox (badness 5578) in paragraph at lines 995--998
 [][]\TU/XBZar(0)/b/n/13 هدف انتخاب: \TU/XBZar(0)/m/n/13 ترکیب برچسب واقعی و احت
 مال معلم، $\OML/ztmcm/m/it/13 t[] \OT1/ztmcm/m/n/13 = []([][][] \OML/ztmcm/m/it
 /13 y \OT1/ztmcm/m/n/13 +$[]
  []
 
 
-Underfull \hbox (badness 2181) in paragraph at lines 833--836
+Underfull \hbox (badness 2181) in paragraph at lines 995--998
 []$[][][] \OML/ztmcm/m/it/13 p[];  [][][][];  [][][][]\OT1/ztmcm/m/n/13 )$\TU/X
 BZar(0)/m/n/13 ؛ در نمونه‌های ناسازگار با معلم، هدف عمداً مرزی[]
  []
 
-[21] [22]
+[22] [23] [24]
 فصل 7.
-[23
+[25
 
 ]
 فصل 8.
-[24
+[26
 
 ]
 فصل 9.
+[27
 
-Overfull \hbox (29.37148pt too wide) in paragraph at lines 960--970
+]
+Underfull \hbox (badness 1910) in paragraph at lines 1183--1191
+[]\TU/XBZar(0)/m/n/13 به یک جفت تابع بارگذار/پیش‌بین در بستهٔ \TU/lmtt/m/n/13 a
+itextd \TU/XBZar(0)/m/n/13 نگاشت می‌شود (\TU/lmtt/m/n/13 loaders.py \TU/XBZar(0
+)/m/n/13 و[]
+ []
+
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <13> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1198.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1200--1200
+[][]|\TU/XBZar(1)/m/n/13 ۵ \TU/XBZar(0)/m/n/13 مدل[]
+ []
+
+
+Underfull \hbox (badness 2237) in paragraph at lines 1201--1201
+[][]|\TU/XBZar(0)/m/n/13 چک‌پوینت []\TU/LiberationSerif(0)/m/n/13 joblib[] \TU/
+XBZar(0)/m/n/13 هر مدل[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1201--1201
+[]\TU/XBZar(0)/m/n/13 به‌همراه بردارساز مشترک[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1202--1203
+[][]|\TU/XBZar(0)/m/n/13 خط‌لولهٔ کامل[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1204--1204
+[][]|\TU/XBZar(0)/m/n/13 چک‌پوینت شامل وزن‌ها،[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1205--1206
+[][]|\TU/XBZar(0)/m/n/13 خط‌لولهٔ کامل[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1207--1207
+[][]|\TU/XBZar(0)/m/n/13 سر طبقه‌بندی + بدنهٔ[]
+ []
+
+
+Underfull \hbox (badness 4699) in paragraph at lines 1207--1207
+[]\TU/XBZar(0)/m/n/13 پیش‌آموزش‌دیده + توکن‌ساز[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1208--1209
+[][]|\TU/XBZar(0)/m/n/13 فقط نرمال‌سازی[]
+ []
+
+
+Overfull \hbox (1.84491pt too wide) in paragraph at lines 1209--1209
+[][]|\TU/lmtt/m/n/13 pytorch-parsbert| []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1210--1210
+[][]|\TU/XBZar(0)/m/n/13 چک‌پوینت خودکفا[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1210--1210
+[]\TU/XBZar(0)/m/n/13 (پیکربندی بدنه درون[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1211--1212
+[][]|\TU/XBZar(0)/m/n/13 فقط نرمال‌سازی[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1212--1212
+[][]|\TU/XBZar(0)/m/n/13 لایهٔ تصمیم[]
+ []
+
+
+Underfull \hbox (badness 3568) in paragraph at lines 1213--1213
+[][]|\TU/XBZar(0)/m/n/13 چک‌پوینت بدنه + سه سر[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1214--1215
+[][]|\TU/XBZar(0)/m/n/13 فقط نرمال‌سازی[]
+ []
+
+
+Overfull \hbox (5.32083pt too wide) in paragraph at lines 1196--1217
  [][][][] 
  []
 
-[25
+[28] [29]
+Overfull \hbox (20.92444pt too wide) in paragraph at lines 1294--1294
+[][]\TU/lmtt/m/n/13 |-- models.json           registry of the 9 models (runtime
+, weights)[] []
+ []
 
-] [26]
+[30] [31]
+Underfull \hbox (badness 1117) in paragraph at lines 1377--1377
+[][]\TU/XBZar(0)/m/n/13 شکل \TU/XBZar(1)/m/n/13 ۹\TU/XBZar(0)/m/n/13 .‏\TU/XBZa
+r(1)/m/n/13 ۳\TU/XBZar(0)/m/n/13 : |حالت مقایسهٔ آنلاین/محلی. دو درخواست مستقل 
+و موازی ارسال می‌شوند و[]
+ []
+
+[32]
+Overfull \hbox (29.37148pt too wide) in paragraph at lines 1396--1406
+ [][][][] 
+ []
+
+[33] [34]
 فصل 10.
-[27
+[35
 
-] [28] [29]
+] [36] [37]
 فصل 11.
-[30
+[38
 
-]
+] [39]
 فصل 12.
-[31
 
-] [32]
+Overfull \hbox (1.54092pt too wide) in paragraph at lines 1559--1581
+[]\TU/XBZar(0)/m/n/13 بهره‌گیری از منابع محاسباتی []\TU/LiberationSerif(0)/m/n/
+13 Google Colab[] \TU/XBZar(0)/m/n/13 برای فاین‌تیون کامل []\TU/LiberationSerif
+(0)/m/n/13 GPT-2[]\TU/XBZar(0)/m/n/13 —نسخهٔ دوم (جدول [][][][][][]\TU/XBZar(1)
+/m/n/13 ۱۰\TU/XBZar(0)/m/n/13 .‏\TU/XBZar(1)/m/n/13 ۲[][][][][][]\TU/XBZar(0)/m
+/n/13 )[]
+ []
+
+[40
+
+] [41]
 پیوست آ.
-[33
+[42
 
 ]
-Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
+Overfull \hbox (20.9374pt too wide) in paragraph at lines 1652--1652
+[][]\TU/lmtt/m/n/13 #   2) train the typed decision-head model (writes models/j
+evModel.pt[] []
+ []
 
-Overfull \hbox (27.63248pt too wide) in paragraph at lines 1200--1200
+
+Overfull \hbox (6.83507pt too wide) in paragraph at lines 1705--1705
+ [][][]\TU/lmtt/m/n/10.5 train_gpt2_classifier.py[] 
+ []
+
+
+Overfull \hbox (6.0394pt too wide) in paragraph at lines 1705--1705
+ [][][]\TU/lmtt/m/n/10.5 notebooks/colab_training.ipynb[] 
+ []
+
+LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 1705.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1705.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.77005> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1705.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6.30006> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1705.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <10.5> not available
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 17
+05.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <7.77005> not availab
+le
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 17
+05.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <6.30006> not availab
+le
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 17
+05.
+[43] [44]
+Overfull \hbox (27.63248pt too wide) in paragraph at lines 1746--1746
 [][]                     \TU/lmtt/m/n/13 "candidates": ["human_written", "ai_ge
 nerated"]},[] []
  []
 
 
-Overfull \hbox (20.93747pt too wide) in paragraph at lines 1200--1200
+Overfull \hbox (20.93747pt too wide) in paragraph at lines 1746--1746
 [][]                     \TU/lmtt/m/n/13 "levels": ["definitely_human", "probab
 ly_human",[] []
  []
 
-Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
-Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
 
-Overfull \hbox (0.8394pt too wide) in paragraph at lines 1200--1200
-[][]    \TU/lmtt/m/n/13 "source":       {"human_written": 0.‏02, "ai_generated"
-: 0.‏98},[] []
+Overfull \hbox (0.8394pt too wide) in paragraph at lines 1746--1746
+[][]    \TU/lmtt/m/n/13 "source":       {"human_written": 0.02, "ai_generated":
+ 0.98},[] []
  []
 
-Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
-Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
-Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
-Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
-Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
-Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
-Missing character: There is no ‏ (U+200F) in font [lmmono12-regular]:!
-[34] [35]
-Underfull \hbox (badness 1881) in paragraph at lines 1254--1255
+[45] [46]
+Overfull \hbox (34.32738pt too wide) in paragraph at lines 1807--1807
+[][]\TU/lmtt/m/n/13 .venv/bin/python -m pytest tests/ -m "not slow"   # fast be
+havior tests[] []
+ []
+
+
+Overfull \hbox (34.32742pt too wide) in paragraph at lines 1807--1807
+[][]\TU/lmtt/m/n/13 .venv/bin/python -m pytest tests/ -m slow         # full st
+ack + golden[] []
+ []
+
+[47]
+Underfull \hbox (badness 1881) in paragraph at lines 1881--1882
 [][][]\TU/LiberationSerif(0)/m/n/13 M. Farahani, M. Gharachorloo, M. Farahani, 
 M. Manthouri. \TU/LiberationSerif(0)/m/it/13 ParsBERT:[][]
  []
 
-[36
+[48
 
 
-] [37] (./report.aux)
+] [49] (./report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1443,15 +1895,15 @@ L3 programming layer <2026-01-19>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: EDB60DF399539588B59E02A65397D153;10696.
+(rerunfilecheck)             Checksum: 7CC57BA71995204B6A9B0846EA4D2A08;13341.
  ) 
 Here is how much of TeX's memory you used:
- 19308 strings out of 470179
- 393485 string characters out of 5479299
- 864594 words of memory out of 5000000
- 47565 multiletter control sequences out of 15000+600000
- 637875 words of font info for 120 fonts, out of 8000000 for 9000
+ 30559 strings out of 470177
+ 640434 string characters out of 5479161
+ 1073782 words of memory out of 5000000
+ 58561 multiletter control sequences out of 15000+600000
+ 656775 words of font info for 192 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 88i,14n,93p,1196b,550s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,14n,94p,1196b,904s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.pdf (46 pages).
+Output written on report.xdv (58 pages, 813636 bytes).

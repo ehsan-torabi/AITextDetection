@@ -1,7 +1,11 @@
 "use client";
 
 import * as React from "react";
-import type { DetectionResponse, JevTypedAnswers } from "@/lib/types";
+import type {
+  DetectionResponse,
+  SystemOneTypedAnswers,
+  TypeSafeDetectionResponse,
+} from "@/lib/types";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import {
@@ -20,7 +24,10 @@ import {
 } from "lucide-react";
 
 interface DetectionResultProps {
-  result: DetectionResponse;
+  result: DetectionResponse | TypeSafeDetectionResponse;
+  /** Optional provenance label shown next to the card title, e.g. for the
+   * online System One result in compare mode. */
+  sourceLabel?: string;
 }
 
 const metricIcons: Record<string, React.ReactNode> = {
@@ -30,7 +37,8 @@ const metricIcons: Record<string, React.ReactNode> = {
   coherence: <TrendingUp className="size-4" />,
 };
 
-export function DetectionResult({ result }: DetectionResultProps) {
+export function DetectionResult({ result, sourceLabel }: DetectionResultProps) {
+  const online = "usage" in result ? (result as TypeSafeDetectionResponse) : null;
   const percentage = Math.round(result.confidence * 100);
   const circumference = 2 * Math.PI * 58;
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
@@ -48,7 +56,14 @@ export function DetectionResult({ result }: DetectionResultProps) {
         <CardHeader className="pb-0">
           <div className="flex items-center justify-between">
             <CardTitle className="text-base">نتیجه تحلیل</CardTitle>
-            <Badge variant={confidenceVariant}>اطمینان: {confidenceLevel}</Badge>
+            <div className="flex items-center gap-1.5">
+              {sourceLabel && (
+                <Badge variant="outline" className="gap-1 text-[10px]">
+                  {sourceLabel}
+                </Badge>
+              )}
+              <Badge variant={confidenceVariant}>اطمینان: {confidenceLevel}</Badge>
+            </div>
           </div>
         </CardHeader>
         <CardContent>
@@ -96,15 +111,26 @@ export function DetectionResult({ result }: DetectionResultProps) {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 text-sm text-muted-foreground justify-center sm:justify-start">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground justify-center sm:justify-start">
                 <span className="flex items-center gap-1.5">
                   {result.isAI ? (
                     <ShieldAlert className="size-3.5 text-destructive" />
                   ) : (
                     <ShieldCheck className="size-3.5 text-primary" />
                   )}
-                  مدل: {result.modelUsed}
+                  مدل: {online?.resolvedModel ?? result.modelUsed}
                 </span>
+                {online && (
+                  <span className="tabular-nums" dir="ltr">
+                    اطمینان انتخاب: {Math.round(online.choiceConfidence * 100)}٪
+                  </span>
+                )}
+                {online?.usage && (
+                  <span className="tabular-nums" dir="ltr">
+                    {online.usage.inputTokens}/{online.usage.outputTokens} tokens ·{" "}
+                    {(online.latencyMs / 1000).toFixed(1)}s
+                  </span>
+                )}
                 <span className="text-border">|</span>
                 <span>{result.wordCount} کلمه</span>
                 <span className="text-border">|</span>
@@ -115,8 +141,8 @@ export function DetectionResult({ result }: DetectionResultProps) {
         </CardContent>
       </Card>
 
-      {/* JEV System-One typed answers */}
-      {result.typedAnswers && <JevAnswersPanel answers={result.typedAnswers} />}
+      {/* System One typed answers (choice / score / noul) */}
+      {result.typedAnswers && <SystemOneAnswersPanel answers={result.typedAnswers} />}
 
       {/* Ensemble Breakdown */}
       {result.ensembleVotes && result.ensembleVotes.length > 0 && (
@@ -139,7 +165,7 @@ export function DetectionResult({ result }: DetectionResultProps) {
   );
 }
 
-function JevAnswersPanel({ answers }: { answers: JevTypedAnswers }) {
+function SystemOneAnswersPanel({ answers }: { answers: SystemOneTypedAnswers }) {
   const policyVariant: "default" | "destructive" | "secondary" =
     answers.policy.tier === "proceed"
       ? "default"
