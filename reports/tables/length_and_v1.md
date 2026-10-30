@@ -1,0 +1,30 @@
+| subset | model | n | macro-F1 | recall AI | FPR@TPR95 | ROC-AUC |
+|---|---|---|---|---|---|---|
+| length__short__test | tfidf_svm | 1319 | 0.6491 | 0.2086 | 0.0000 | 0.6390 |
+| length__short__test | tfidf_logreg | 1319 | 0.6302 | 0.1871 | 0.0000 | 0.6169 |
+| length__short__test | tfidf_nb | 1319 | 0.5785 | 0.1151 | 0.0000 | 0.6162 |
+| length__short__test | style_rf | 1319 | 0.6316 | 0.1871 | 0.0000 | 0.6777 |
+| length__short__test | tfidf_style_rf | 1319 | 0.6186 | 0.1655 | 0.0000 | 0.6474 |
+| length__short__test | length_only | 1319 | 0.4918 | 0.0216 | 0.0093 | 0.5298 |
+| length__short__test | perplexity_only | 1319 | 0.4722 | 0.0000 | 0.8314 | 0.4730 |
+| length__long__test | tfidf_svm | 3333 | 0.9925 | 0.9960 | 0.0013 | 0.9992 |
+| length__long__test | tfidf_logreg | 3333 | 0.9858 | 0.9983 | 0.0013 | 0.9989 |
+| length__long__test | tfidf_nb | 3333 | 0.9648 | 0.9536 | 0.0006 | 0.9925 |
+| length__long__test | style_rf | 3333 | 0.9733 | 0.9919 | 0.0087 | 0.9942 |
+| length__long__test | tfidf_style_rf | 3333 | 0.9882 | 0.9972 | 0.0013 | 0.9990 |
+| length__long__test | length_only | 3333 | 0.8092 | 0.7973 | 0.0045 | 0.8913 |
+| length__long__test | perplexity_only | 3333 | 0.3198 | 0.0000 | 0.3899 | 0.6475 |
+| v1_test | tfidf_svm | 4056 | 0.9914 | 0.9976 | 0.0005 | 0.9994 |
+| v1_test | tfidf_logreg | 4056 | 0.9936 | 0.9957 | 0.0005 | 0.9992 |
+| v1_test | tfidf_nb | 4056 | 0.9682 | 0.9473 | 0.0005 | 0.9922 |
+| v1_test | style_rf | 4056 | 0.9947 | 0.9954 | 0.0000 | 0.9998 |
+| v1_test | tfidf_style_rf | 4056 | 0.9948 | 0.9948 | 0.0005 | 0.9996 |
+| v1_test | length_only | 4056 | 0.8301 | 0.7243 | 0.0010 | 0.9397 |
+| v1_test | perplexity_only | 4056 | 0.3246 | 0.0000 | 0.3186 | 0.6598 |
+| revision_sensitivity__all | tfidf_svm | 2189 | 0.4122 | 0.7012 | — | — |
+| revision_sensitivity__all | tfidf_logreg | 2189 | 0.1740 | 0.2106 | — | — |
+| revision_sensitivity__all | tfidf_nb | 2189 | 0.0894 | 0.0982 | — | — |
+| revision_sensitivity__all | style_rf | 2189 | 0.4385 | 0.7809 | — | — |
+| revision_sensitivity__all | tfidf_style_rf | 2189 | 0.4311 | 0.7579 | — | — |
+| revision_sensitivity__all | length_only | 2189 | 0.0454 | 0.0475 | — | — |
+| revision_sensitivity__all | perplexity_only | 2189 | 0.0000 | 0.0000 | — | — |

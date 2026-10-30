@@ -1,0 +1,85 @@
+{
+  "generated_at": "2026-10-18T20:07:44+00:00",
+  "model": "tfidf_svm",
+  "condition": "in_domain_group",
+  "split": "in_domain_group__test",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "policy_thresholds": {
+    "review_threshold": 0.09916201117318436,
+    "auto_threshold": 0.4981249999999591
+  },
+  "min_per_direction": 100,
+  "fp": {
+    "reviewed_rows": 100,
+    "above_decision_point": 21,
+    "decision_mix": {
+      "review": 79,
+      "automated_ai": 21
+    },
+    "domain_mix": {
+      "blog": 57,
+      "encyclopedia": 18,
+      "social_media": 15,
+      "legal_admin": 9,
+      "news": 1
+    },
+    "length_bucket_mix": {
+      "long": 55,
+      "short": 27,
+      "medium": 18
+    },
+    "formality_mix": {
+      "neutral": 66,
+      "informal": 26,
+      "formal": 8
+    },
+    "taxonomy_mix": {
+      "short_document": 27,
+      "long_formal_text": 22,
+      "informal_register": 21,
+      "encyclopedic_style": 17,
+      "unclassified": 12,
+      "news_style": 1
+    },
+    "csv": "fp_review.csv"
+  },
+  "fn": {
+    "reviewed_rows": 346,
+    "above_decision_point": 346,
+    "decision_mix": {
+      "review": 271,
+      "human": 75
+    },
+    "domain_mix": {
+      "news": 115,
+      "encyclopedia": 68,
+      "blog": 54,
+      "social_media": 49,
+      "legal_admin": 42,
+      "ai_multi": 18
+    },
+    "length_bucket_mix": {
+      "medium": 229,
+      "short": 110,
+      "long": 7
+    },
+    "formality_mix": {
+      "neutral": 246,
+      "formal": 55,
+      "informal": 45
+    },
+    "taxonomy_mix": {
+      "informal_generation": 156,
+      "short_generation": 110,
+      "unclassified": 55,
+      "formal_generation": 16,
+      "qa_style_generation": 8,
+      "summary_style_generation": 1
+    },
+    "csv": "fn_review.csv"
+  }
+}

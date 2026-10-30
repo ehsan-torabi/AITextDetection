@@ -1,0 +1,30 @@
+| model | method | n | mean AI prob. | recall | recall 95% CI | drop vs clean |
+|---|---|---|---|---|---|---|
+| tfidf_svm | backtranslation | 300 | 1.0000 | 1.0000 [1.0000, 1.0000] | -0.0033 |
+| tfidf_svm | lexical_substitution | 300 | 0.9889 | 0.9967 [0.9889, 1.0000] | 0.0000 |
+| tfidf_svm | punct_spacing_noise | 300 | 0.9871 | 0.9967 [0.9889, 1.0000] | 0.0000 |
+| tfidf_svm | sentence_perturbation | 300 | 0.9890 | 0.9967 [0.9889, 1.0000] | 0.0000 |
+| tfidf_logreg | backtranslation | 300 | 0.9992 | 1.0000 [1.0000, 1.0000] | 0.0000 |
+| tfidf_logreg | lexical_substitution | 300 | 0.9806 | 1.0000 [1.0000, 1.0000] | 0.0000 |
+| tfidf_logreg | punct_spacing_noise | 300 | 0.9754 | 0.9967 [0.9900, 1.0000] | 0.0033 |
+| tfidf_logreg | sentence_perturbation | 300 | 0.9827 | 1.0000 [1.0000, 1.0000] | 0.0000 |
+| tfidf_nb | backtranslation | 300 | 0.9656 | 1.0000 [1.0000, 1.0000] | -0.0467 |
+| tfidf_nb | lexical_substitution | 300 | 0.9354 | 0.9433 [0.9156, 0.9678] | 0.0100 |
+| tfidf_nb | punct_spacing_noise | 300 | 0.9268 | 0.9367 [0.9089, 0.9622] | 0.0167 |
+| tfidf_nb | sentence_perturbation | 300 | 0.9441 | 0.9533 [0.9289, 0.9744] | 0.0000 |
+| style_rf | backtranslation | 300 | 0.9993 | 1.0000 [1.0000, 1.0000] | -0.0189 |
+| style_rf | lexical_substitution | 300 | 0.9701 | 0.9756 [0.9567, 0.9911] | 0.0056 |
+| style_rf | punct_spacing_noise | 300 | 0.9732 | 0.9800 [0.9622, 0.9933] | 0.0011 |
+| style_rf | sentence_perturbation | 300 | 0.9820 | 0.9822 [0.9667, 0.9944] | -0.0011 |
+| tfidf_style_rf | backtranslation | 300 | 1.0000 | 1.0000 [1.0000, 1.0000] | -0.0122 |
+| tfidf_style_rf | lexical_substitution | 300 | 0.9739 | 0.9811 [0.9644, 0.9944] | 0.0067 |
+| tfidf_style_rf | punct_spacing_noise | 300 | 0.9654 | 0.9767 [0.9578, 0.9911] | 0.0111 |
+| tfidf_style_rf | sentence_perturbation | 300 | 0.9790 | 0.9889 [0.9766, 0.9989] | -0.0011 |
+| length_only | backtranslation | 300 | 0.3442 | 0.2600 [0.2122, 0.3100] | 0.5200 |
+| length_only | lexical_substitution | 300 | 0.6790 | 0.7200 [0.6667, 0.7700] | 0.0600 |
+| length_only | punct_spacing_noise | 300 | 0.5857 | 0.5800 [0.5233, 0.6378] | 0.2000 |
+| length_only | sentence_perturbation | 300 | 0.7233 | 0.7800 [0.7322, 0.8267] | 0.0000 |
+| perplexity_only | backtranslation | 300 | 0.4609 | 0.0000 [0.0000, 0.0000] | 0.0000 |
+| perplexity_only | lexical_substitution | 300 | 0.4609 | 0.0000 [0.0000, 0.0000] | 0.0000 |
+| perplexity_only | punct_spacing_noise | 300 | 0.4609 | 0.0000 [0.0000, 0.0000] | 0.0000 |
+| perplexity_only | sentence_perturbation | 300 | 0.4609 | 0.0000 [0.0000, 0.0000] | 0.0000 |

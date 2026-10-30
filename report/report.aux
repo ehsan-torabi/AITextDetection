@@ -10,10 +10,11 @@
 \HyPL@Entry{4<</P(\376\377\006\050)>>}
 \HyPL@Entry{5<</P(\376\377\006\054)>>}
 \HyPL@Entry{6<</P(\376\377\006\057)>>}
-\@writefile{toc}{\contentsline {chapter}{چکیده}{د}{section*.4}\protected@file@percent }
 \HyPL@Entry{7<</P(\376\377\006\107)>>}
+\@writefile{toc}{\contentsline {chapter}{چکیده}{ه}{section*.4}\protected@file@percent }
 \HyPL@Entry{8<</P(\376\377\006\110)>>}
-\HyPL@Entry{9<</S/D>>}
+\HyPL@Entry{9<</P(\376\377\006\062)>>}
+\HyPL@Entry{10<</S/D>>}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}مقدمه}{1}{chapter.1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -66,134 +67,217 @@
 \@writefile{toc}{\contentsline {section}{\numberline {6.1}شبکهٔ حافظهٔ کوتاه‌مدت پایدار دوسویه (\en  {BiLSTM})}{18}{section.6.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}معماری}{18}{subsection.6.1.1}\protected@file@percent }
 \citation{vaswani2017attention}
+\citation{vaswani2017attention}
+\citation{diaz2026llmarch}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}بهبودهای نسخهٔ دوم}{19}{subsection.6.1.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {6.2}ترنسفورمر \en  {GPT-2} فاین‌تیون‌شده}{19}{section.6.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}مبانی مکانیزم توجه}{19}{subsection.6.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}از مدل زبانی تا طبقه‌بند}{19}{subsection.6.2.2}\protected@file@percent }
-\citation{howard2018ulmfit}
+\citation{radford2019gpt2}
+\citation{diaz2026llmarch}
+\citation{diaz2026llmarch}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}از مدل زبانی تا طبقه‌بند}{20}{subsection.6.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.2.3}راهبرد فاین‌تیون: کدام لایه‌ها آموزش ببینند؟}{20}{subsection.6.2.3}\protected@file@percent }
 \citation{howard2018ulmfit}
-\citation{farahani2021parsbert}
+\citation{howard2018ulmfit}
 \@writefile{toc}{\contentsline {section}{\numberline {6.3}مدل چهارم: \en  {ParsBERT} فاین‌تیون‌شده}{21}{section.6.3}\protected@file@percent }
 \newlabel{sec:parsbert}{{6.3}{21}{مدل چهارم: \en {ParsBERT} فاین‌تیون‌شده}{section.6.3}{}}
+\citation{farahani2021parsbert}
+\citation{devlin2019bert}
+\citation{muller2022bert101}
+\citation{huggingface-bert}
+\citation{huggingface-bert}
 \citation{jev-typesafe}
+\citation{chudmunge2026jev}
+\citation{chudmunge2026jev}
+\citation{chudmunge2026jev}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces درون‌مایهٔ دو مدل ترنسفورمر و نقشهٔ انجماد پارامترها در نسخهٔ مستقر (آموزش \en  {GPU}): خاکستری پارامتر منجمد و سبز پارامتر آموزش‌پذیر است. در هر دو مدل جدول \en  {embedding} منجمد می‌ماند، بدنه در نسخهٔ مستقر کامل باز است و سر طبقه‌بندی از صفر مقداردهی و با نرخ یادگیری بزرگ‌تر آموزش دیده می‌شود. در اجرای محلی \en  {CPU} برای صرفه‌جویی زمان تنها $4$ لایهٔ پایانی همین پشته باز می‌شود. مدل سنجش سرگشتگی بخش~\ref {sec:perplexity-signal} از همین بدنهٔ \en  {GPT-2} ولی دست‌نخورده و بدون هیچ فاین‌تیونی است.}}{24}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:transformer-arch}{{6.1}{24}{درون‌مایهٔ دو مدل ترنسفورمر و نقشهٔ انجماد پارامترها در نسخهٔ مستقر (آموزش \en {GPU}): خاکستری پارامتر منجمد و سبز پارامتر آموزش‌پذیر است. در هر دو مدل جدول \en {embedding} منجمد می‌ماند، بدنه در نسخهٔ مستقر کامل باز است و سر طبقه‌بندی از صفر مقداردهی و با نرخ یادگیری بزرگ‌تر آموزش دیده می‌شود. در اجرای محلی \en {CPU} برای صرفه‌جویی زمان تنها $4$ لایهٔ پایانی همین پشته باز می‌شود. مدل سنجش سرگشتگی بخش~\ref {sec:perplexity-signal} از همین بدنهٔ \en {GPT-2} ولی دست‌نخورده و بدون هیچ فاین‌تیونی است}{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}لایهٔ تصمیم «سیستم-یک» به سبک \en  {JEV}}{24}{section.6.4}\protected@file@percent }
+\newlabel{sec:jev}{{6.4}{24}{لایهٔ تصمیم «سیستم-یک» به سبک \en {JEV}}{section.6.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}انگیزه: از تولید متن تا رابط تصمیم}{24}{subsection.6.4.1}\protected@file@percent }
 \citation{valen2026}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces درون‌مایهٔ دو مدل ترنسفورمر و نقشهٔ انجماد پارامترها در نسخهٔ مستقر (آموزش \en  {GPU}): خاکستری پارامتر منجمد و سبز پارامتر آموزش‌پذیر است. در هر دو مدل جدول \en  {embedding} منجمد می‌ماند، بدنه در نسخهٔ مستقر کامل باز است و سر طبقه‌بندی از صفر مقداردهی و با نرخ یادگیری بزرگ‌تر آموزش دیده می‌شود. در اجرای محلی \en  {CPU} برای صرفه‌جویی زمان تنها $4$ لایهٔ پایانی همین پشته باز می‌شود. مدل سنجش سرگشتگی بخش~\ref {sec:perplexity-signal} از همین بدنهٔ \en  {GPT-2} ولی دست‌نخورده و بدون هیچ فاین‌تیونی است.}}{23}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:transformer-arch}{{6.1}{23}{درون‌مایهٔ دو مدل ترنسفورمر و نقشهٔ انجماد پارامترها در نسخهٔ مستقر (آموزش \en {GPU}): خاکستری پارامتر منجمد و سبز پارامتر آموزش‌پذیر است. در هر دو مدل جدول \en {embedding} منجمد می‌ماند، بدنه در نسخهٔ مستقر کامل باز است و سر طبقه‌بندی از صفر مقداردهی و با نرخ یادگیری بزرگ‌تر آموزش دیده می‌شود. در اجرای محلی \en {CPU} برای صرفه‌جویی زمان تنها $4$ لایهٔ پایانی همین پشته باز می‌شود. مدل سنجش سرگشتگی بخش~\ref {sec:perplexity-signal} از همین بدنهٔ \en {GPT-2} ولی دست‌نخورده و بدون هیچ فاین‌تیونی است}{figure.caption.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}لایهٔ تصمیم «سیستم-یک» به سبک \en  {JEV}}{23}{section.6.4}\protected@file@percent }
-\newlabel{sec:jev}{{6.4}{23}{لایهٔ تصمیم «سیستم-یک» به سبک \en {JEV}}{section.6.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}انگیزه: از تولید متن تا رابط تصمیم}{23}{subsection.6.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}سه سؤال نوع‌بندی‌شدهٔ پروژه}{24}{subsection.6.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}معماری}{24}{subsection.6.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces معماری لایهٔ تصمیم سیستم-یک (\en  {JEV}): بدنهٔ مشترک \en  {ParsBERT} و سه سر تصمیم موازی. پیکان نقطه‌چین از معلم \en  {GPT-2} فقط در زمان آموزش (ساخت هدف‌های نرم) برقرار است؛ در زمان سرویس، سه سر خروجی خود را به سیاست سه‌سطحی در لایهٔ برنامه می‌دهند.}}{25}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:jev-arch}{{6.2}{25}{معماری لایهٔ تصمیم سیستم-یک (\en {JEV}): بدنهٔ مشترک \en {ParsBERT} و سه سر تصمیم موازی. پیکان نقطه‌چین از معلم \en {GPT-2} فقط در زمان آموزش (ساخت هدف‌های نرم) برقرار است؛ در زمان سرویس، سه سر خروجی خود را به سیاست سه‌سطحی در لایهٔ برنامه می‌دهند}{figure.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces درون‌مایهٔ مدل تصمیم \en  {System One} مستقر (آموزش محلی \en  {CPU} در \texttt  {\lr {training/train\_system\_one.py}}): از بدنهٔ \en  {ParsBERT} تنها $4$ لایهٔ پایانی باز می‌ماند؛ جدول \en  {embedding} و لایهٔ \en  {pooler} منجمدند (\en  {pooler} اصلاً فراخوانی نمی‌شود، زیرا مدل \en  {[CLS]} خام را برمی‌دارد) و سه سر تصمیم از صفر مقداردهی و با نرخ یادگیری بزرگ‌تر آموزش می‌بینند. رنگ‌ها همان قرارداد شکل~\ref {fig:transformer-arch} را دارند و پیکان نقطه‌چین معلم تنها در زمان آموزش برقرار است؛ جریان سرویس در شکل~\ref {fig:jev-arch} آمده است.}}{26}{figure.caption.10}\protected@file@percent }
-\newlabel{fig:system-one-internals}{{6.3}{26}{درون‌مایهٔ مدل تصمیم \en {System One} مستقر (آموزش محلی \en {CPU} در \texttt {\lr {training/train\_system\_one.py}}): از بدنهٔ \en {ParsBERT} تنها $4$ لایهٔ پایانی باز می‌ماند؛ جدول \en {embedding} و لایهٔ \en {pooler} منجمدند (\en {pooler} اصلاً فراخوانی نمی‌شود، زیرا مدل \en {[CLS]} خام را برمی‌دارد) و سه سر تصمیم از صفر مقداردهی و با نرخ یادگیری بزرگ‌تر آموزش می‌بینند. رنگ‌ها همان قرارداد شکل~\ref {fig:transformer-arch} را دارند و پیکان نقطه‌چین معلم تنها در زمان آموزش برقرار است؛ جریان سرویس در شکل~\ref {fig:jev-arch} آمده است}{figure.caption.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.4}هدف‌های نرمِ تقطیرشده از معلم}{26}{subsection.6.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.5}سیاست تصمیم و یکپارچه‌سازی در سرویس}{27}{subsection.6.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.6}ارزیابی}{27}{subsection.6.4.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}سیگنال سرگشتگی مدل زبانی خام: یک بررسی تجربی}{28}{section.6.5}\protected@file@percent }
-\newlabel{sec:perplexity-signal}{{6.5}{28}{سیگنال سرگشتگی مدل زبانی خام: یک بررسی تجربی}{section.6.5}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}تنظیم هایپرپارامتر و اعتبارسنجی متقابل}{30}{chapter.7}\protected@file@percent }
+\citation{chudmunge2026jev}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}سه سؤال نوع‌بندی‌شدهٔ پروژه}{25}{subsection.6.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}معماری}{26}{subsection.6.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces معماری لایهٔ تصمیم سیستم-یک (\en  {JEV}): بدنهٔ مشترک \en  {ParsBERT} و سه سر تصمیم موازی. پیکان نقطه‌چین از معلم \en  {GPT-2} فقط در زمان آموزش (ساخت هدف‌های نرم) برقرار است؛ در زمان سرویس، سه سر خروجی خود را به سیاست سه‌سطحی در لایهٔ برنامه می‌دهند.}}{27}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:jev-arch}{{6.2}{27}{معماری لایهٔ تصمیم سیستم-یک (\en {JEV}): بدنهٔ مشترک \en {ParsBERT} و سه سر تصمیم موازی. پیکان نقطه‌چین از معلم \en {GPT-2} فقط در زمان آموزش (ساخت هدف‌های نرم) برقرار است؛ در زمان سرویس، سه سر خروجی خود را به سیاست سه‌سطحی در لایهٔ برنامه می‌دهند}{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces درون‌مایهٔ مدل تصمیم \en  {System One} مستقر (آموزش محلی \en  {CPU} در \texttt  {\lr {training/train\_system\_one.py}}): از بدنهٔ \en  {ParsBERT} تنها $4$ لایهٔ پایانی باز می‌ماند؛ جدول \en  {embedding} و لایهٔ \en  {pooler} منجمدند (\en  {pooler} اصلاً فراخوانی نمی‌شود، زیرا مدل \en  {[CLS]} خام را برمی‌دارد) و سه سر تصمیم از صفر مقداردهی و با نرخ یادگیری بزرگ‌تر آموزش می‌بینند. رنگ‌ها همان قرارداد شکل~\ref {fig:transformer-arch} را دارند و پیکان نقطه‌چین معلم تنها در زمان آموزش برقرار است؛ جریان سرویس در شکل~\ref {fig:jev-arch} آمده است.}}{28}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:system-one-internals}{{6.3}{28}{درون‌مایهٔ مدل تصمیم \en {System One} مستقر (آموزش محلی \en {CPU} در \texttt {\lr {training/train\_system\_one.py}}): از بدنهٔ \en {ParsBERT} تنها $4$ لایهٔ پایانی باز می‌ماند؛ جدول \en {embedding} و لایهٔ \en {pooler} منجمدند (\en {pooler} اصلاً فراخوانی نمی‌شود، زیرا مدل \en {[CLS]} خام را برمی‌دارد) و سه سر تصمیم از صفر مقداردهی و با نرخ یادگیری بزرگ‌تر آموزش می‌بینند. رنگ‌ها همان قرارداد شکل~\ref {fig:transformer-arch} را دارند و پیکان نقطه‌چین معلم تنها در زمان آموزش برقرار است؛ جریان سرویس در شکل~\ref {fig:jev-arch} آمده است}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.4}هدف‌های نرمِ تقطیرشده از معلم}{28}{subsection.6.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.5}سیاست تصمیم و یکپارچه‌سازی در سرویس}{29}{subsection.6.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.6}ارزیابی}{29}{subsection.6.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}سیگنال سرگشتگی مدل زبانی خام: یک بررسی تجربی}{30}{section.6.5}\protected@file@percent }
+\newlabel{sec:perplexity-signal}{{6.5}{30}{سیگنال سرگشتگی مدل زبانی خام: یک بررسی تجربی}{section.6.5}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}تنظیم هایپرپارامتر و اعتبارسنجی متقابل}{32}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{sec:hpo}{{7}{30}{تنظیم هایپرپارامتر و اعتبارسنجی متقابل}{chapter.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces فضای جست‌وجوی هایپرپارامتر برای هر مدل کلاسیک}}{30}{table.caption.11}\protected@file@percent }
-\newlabel{tab:hpo}{{7.1}{30}{فضای جست‌وجوی هایپرپارامتر برای هر مدل کلاسیک}{table.caption.11}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}معیارهای ارزیابی}{31}{chapter.8}\protected@file@percent }
+\newlabel{sec:hpo}{{7}{32}{تنظیم هایپرپارامتر و اعتبارسنجی متقابل}{chapter.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces فضای جست‌وجوی هایپرپارامتر برای هر مدل کلاسیک}}{32}{table.caption.11}\protected@file@percent }
+\newlabel{tab:hpo}{{7.1}{32}{فضای جست‌وجوی هایپرپارامتر برای هر مدل کلاسیک}{table.caption.11}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}معیارهای ارزیابی}{33}{chapter.8}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {9}زیرساخت پیاده‌سازی}{32}{chapter.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}زیرساخت پیاده‌سازی}{34}{chapter.9}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {9.1}معماری سرویس}{32}{section.9.1}\protected@file@percent }
-\newlabel{sec:service-arch}{{9.1}{32}{معماری سرویس}{section.9.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9.1}{\ignorespaces نمای استقرار سامانه. مرورگر فقط با رابط وب \en  {Next.js} حرف می‌زند؛ درخواست‌های محلی از پروکسی سمت سرور به \en  {FastAPI} و درخواست آنلاین به سرویس بیرونی \en  {TypeSafe} می‌رود. پیکان‌ها جهت فراخوانی را نشان می‌دهند و پاسخ در همان مسیر برمی‌گردد.}}{33}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:deployment}{{9.1}{33}{نمای استقرار سامانه. مرورگر فقط با رابط وب \en {Next.js} حرف می‌زند؛ درخواست‌های محلی از پروکسی سمت سرور به \en {FastAPI} و درخواست آنلاین به سرویس بیرونی \en {TypeSafe} می‌رود. پیکان‌ها جهت فراخوانی را نشان می‌دهند و پاسخ در همان مسیر برمی‌گردد}{figure.caption.12}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {9.1}{\ignorespaces رجیستری زمان اجرا: نگاشت فیلد \texttt  {runtime} به بارگذار، آرتیفکت و مسیر پیش‌پردازش}}{34}{table.caption.13}\protected@file@percent }
-\newlabel{tab:runtimes}{{9.1}{34}{رجیستری زمان اجرا: نگاشت فیلد \texttt {runtime} به بارگذار، آرتیفکت و مسیر پیش‌پردازش}{table.caption.13}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {9.2}جریان پردازش یک درخواست تشخیص}{34}{section.9.2}\protected@file@percent }
-\newlabel{sec:inference-flow}{{9.2}{34}{جریان پردازش یک درخواست تشخیص}{section.9.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9.2}{\ignorespaces جریان پردازش یک درخواست تشخیص در بک‌اند. تمام مدل‌ها و توکن‌سازها در زمان راه‌اندازی سرور بار و گرم می‌شوند؛ درخواست هر کاربر صرفاً یک گذر استنتاج است.}}{35}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:inference-flow}{{9.2}{35}{جریان پردازش یک درخواست تشخیص در بک‌اند. تمام مدل‌ها و توکن‌سازها در زمان راه‌اندازی سرور بار و گرم می‌شوند؛ درخواست هر کاربر صرفاً یک گذر استنتاج است}{figure.caption.14}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {9.3}ساختار پروژه}{35}{section.9.3}\protected@file@percent }
-\newlabel{sec:repo-layout}{{9.3}{35}{ساختار پروژه}{section.9.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {9.4}تحلیل آنلاین با مدل \en  {System One} سرویس \en  {TypeSafe}}{37}{section.9.4}\protected@file@percent }
-\newlabel{sec:online-systemone}{{9.4}{37}{تحلیل آنلاین با مدل \en {System One} سرویس \en {TypeSafe}}{section.9.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.1}معماری سرویس}{34}{section.9.1}\protected@file@percent }
+\newlabel{sec:service-arch}{{9.1}{34}{معماری سرویس}{section.9.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.1}{\ignorespaces نمای استقرار سامانه. مرورگر فقط با رابط وب \en  {Next.js} حرف می‌زند؛ درخواست‌های محلی از پروکسی سمت سرور به \en  {FastAPI} و درخواست آنلاین به سرویس بیرونی \en  {TypeSafe} می‌رود. پیکان‌ها جهت فراخوانی را نشان می‌دهند و پاسخ در همان مسیر برمی‌گردد.}}{35}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:deployment}{{9.1}{35}{نمای استقرار سامانه. مرورگر فقط با رابط وب \en {Next.js} حرف می‌زند؛ درخواست‌های محلی از پروکسی سمت سرور به \en {FastAPI} و درخواست آنلاین به سرویس بیرونی \en {TypeSafe} می‌رود. پیکان‌ها جهت فراخوانی را نشان می‌دهند و پاسخ در همان مسیر برمی‌گردد}{figure.caption.12}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9.1}{\ignorespaces رجیستری زمان اجرا: نگاشت فیلد \texttt  {runtime} به بارگذار، آرتیفکت و مسیر پیش‌پردازش}}{36}{table.caption.13}\protected@file@percent }
+\newlabel{tab:runtimes}{{9.1}{36}{رجیستری زمان اجرا: نگاشت فیلد \texttt {runtime} به بارگذار، آرتیفکت و مسیر پیش‌پردازش}{table.caption.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.2}جریان پردازش یک درخواست تشخیص}{36}{section.9.2}\protected@file@percent }
+\newlabel{sec:inference-flow}{{9.2}{36}{جریان پردازش یک درخواست تشخیص}{section.9.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.2}{\ignorespaces جریان پردازش یک درخواست تشخیص در بک‌اند. تمام مدل‌ها و توکن‌سازها در زمان راه‌اندازی سرور بار و گرم می‌شوند؛ درخواست هر کاربر صرفاً یک گذر استنتاج است.}}{37}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:inference-flow}{{9.2}{37}{جریان پردازش یک درخواست تشخیص در بک‌اند. تمام مدل‌ها و توکن‌سازها در زمان راه‌اندازی سرور بار و گرم می‌شوند؛ درخواست هر کاربر صرفاً یک گذر استنتاج است}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.3}ساختار پروژه}{37}{section.9.3}\protected@file@percent }
+\newlabel{sec:repo-layout}{{9.3}{37}{ساختار پروژه}{section.9.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.4}تحلیل آنلاین با مدل \en  {System One} سرویس \en  {TypeSafe}}{39}{section.9.4}\protected@file@percent }
+\newlabel{sec:online-systemone}{{9.4}{39}{تحلیل آنلاین با مدل \en {System One} سرویس \en {TypeSafe}}{section.9.4}{}}
 \citation{laya2026}
-\@writefile{lof}{\contentsline {figure}{\numberline {9.3}{\ignorespaces حالت مقایسهٔ آنلاین/محلی. دو درخواست مستقل و موازی ارسال می‌شوند و \texttt  {\lr {Promise.allSettled}} تضمین می‌کند خطای یک مسیر، نتیجهٔ مسیر دیگر را پنهان نکند.}}{38}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:online-flow}{{9.3}{38}{حالت مقایسهٔ آنلاین/محلی. دو درخواست مستقل و موازی ارسال می‌شوند و \texttt {\lr {Promise.allSettled}} تضمین می‌کند خطای یک مسیر، نتیجهٔ مسیر دیگر را پنهان نکند}{figure.caption.15}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {9.5}فاین‌تیون مدل متن‌باز \en  {Laya} روی دادهٔ فارسی}{38}{section.9.5}\protected@file@percent }
-\newlabel{sec:laya-finetune}{{9.5}{38}{فاین‌تیون مدل متن‌باز \en {Laya} روی دادهٔ فارسی}{section.9.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.3}{\ignorespaces حالت مقایسهٔ آنلاین/محلی. دو درخواست مستقل و موازی ارسال می‌شوند و \texttt  {\lr {Promise.allSettled}} تضمین می‌کند خطای یک مسیر، نتیجهٔ مسیر دیگر را پنهان نکند.}}{40}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:online-flow}{{9.3}{40}{حالت مقایسهٔ آنلاین/محلی. دو درخواست مستقل و موازی ارسال می‌شوند و \texttt {\lr {Promise.allSettled}} تضمین می‌کند خطای یک مسیر، نتیجهٔ مسیر دیگر را پنهان نکند}{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.5}فاین‌تیون مدل متن‌باز \en  {Laya} روی دادهٔ فارسی}{40}{section.9.5}\protected@file@percent }
+\newlabel{sec:laya-finetune}{{9.5}{40}{فاین‌تیون مدل متن‌باز \en {Laya} روی دادهٔ فارسی}{section.9.5}{}}
 \citation{laya2026}
-\@writefile{lot}{\contentsline {table}{\numberline {9.2}{\ignorespaces معیارهای \en  {Laya} فاین‌تیون‌شده روی تقسیم آزمون نگه‌داشته‌شده (کلاس مثبت: \texttt  {\lr {ai\_generated}}) در برابر دو نقطهٔ مرجع}}{40}{table.caption.16}\protected@file@percent }
-\newlabel{tab:laya-results}{{9.2}{40}{معیارهای \en {Laya} فاین‌تیون‌شده روی تقسیم آزمون نگه‌داشته‌شده (کلاس مثبت: \texttt {\lr {ai\_generated}}) در برابر دو نقطهٔ مرجع}{table.caption.16}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.1}معماری لایا}{40}{subsection.9.5.1}\protected@file@percent }
-\newlabel{sec:laya-arch}{{9.5.1}{40}{معماری لایا}{subsection.9.5.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9.4}{\ignorespaces معماری \en  {Laya}: برای هر سؤال یک دنباله ساخته می‌شود، هر گزینه روی توکن \en  {[MASK]} خودش نمره می‌خورد و هر سه سؤال در یک گذر رو به جلو پاسخ داده می‌شوند. پیکان نقطه‌چین (معلم و پاداش \en  {RLCD}) فقط در زمان آموزش معنا دارد.}}{41}{figure.caption.17}\protected@file@percent }
-\newlabel{fig:laya-arch}{{9.4}{41}{معماری \en {Laya}: برای هر سؤال یک دنباله ساخته می‌شود، هر گزینه روی توکن \en {[MASK]} خودش نمره می‌خورد و هر سه سؤال در یک گذر رو به جلو پاسخ داده می‌شوند. پیکان نقطه‌چین (معلم و پاداش \en {RLCD}) فقط در زمان آموزش معنا دارد}{figure.caption.17}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.2}در فاین‌تیون چه چیزی آموزش دید؟}{41}{subsection.9.5.2}\protected@file@percent }
-\newlabel{sec:laya-finetuned}{{9.5.2}{41}{در فاین‌تیون چه چیزی آموزش دید؟}{subsection.9.5.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9.5}{\ignorespaces نقشهٔ انجماد و آموزش در فاین‌تیون \en  {Laya}. جاسازی‌ها و توکن‌ساز هیچ‌گاه آموزش نمی‌بینند؛ سر تصمیم و لایه‌های پایانی رمزگذار با دو نرخ یادگیری متفاوت بهینه می‌شوند و دماها جدا از گرادیان، روی نمونهٔ کالیبراسیون برازش می‌شوند.}}{42}{figure.caption.18}\protected@file@percent }
-\newlabel{fig:laya-freeze}{{9.5}{42}{نقشهٔ انجماد و آموزش در فاین‌تیون \en {Laya}. جاسازی‌ها و توکن‌ساز هیچ‌گاه آموزش نمی‌بینند؛ سر تصمیم و لایه‌های پایانی رمزگذار با دو نرخ یادگیری متفاوت بهینه می‌شوند و دماها جدا از گرادیان، روی نمونهٔ کالیبراسیون برازش می‌شوند}{figure.caption.18}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.3}لایا در رأی ترکیبی}{42}{subsection.9.5.3}\protected@file@percent }
-\newlabel{sec:laya-ensemble}{{9.5.3}{42}{لایا در رأی ترکیبی}{subsection.9.5.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {9.3}{\ignorespaces رأی‌های واقعی مدل‌ها روی یک نمونهٔ کوتاه رسمی از آزمون‌های سرویس (کلاس درست: \texttt  {\lr {ai\_generated}})}}{43}{table.caption.19}\protected@file@percent }
-\newlabel{tab:ensemble-votes}{{9.3}{43}{رأی‌های واقعی مدل‌ها روی یک نمونهٔ کوتاه رسمی از آزمون‌های سرویس (کلاس درست: \texttt {\lr {ai\_generated}})}{table.caption.19}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {9.6}محدودیت‌های سخت‌افزار محلی در برابر \en  {Google Colab}}{43}{section.9.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {9.4}{\ignorespaces مقایسهٔ محیط آموزش}}{44}{table.caption.20}\protected@file@percent }
-\newlabel{tab:infra}{{9.4}{44}{مقایسهٔ محیط آموزش}{table.caption.20}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {10}نتایج و تحلیل خطا}{45}{chapter.10}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.2}{\ignorespaces معیارهای \en  {Laya} فاین‌تیون‌شده روی تقسیم آزمون نگه‌داشته‌شده (کلاس مثبت: \texttt  {\lr {ai\_generated}}) در برابر دو نقطهٔ مرجع}}{42}{table.caption.16}\protected@file@percent }
+\newlabel{tab:laya-results}{{9.2}{42}{معیارهای \en {Laya} فاین‌تیون‌شده روی تقسیم آزمون نگه‌داشته‌شده (کلاس مثبت: \texttt {\lr {ai\_generated}}) در برابر دو نقطهٔ مرجع}{table.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.1}معماری لایا}{42}{subsection.9.5.1}\protected@file@percent }
+\newlabel{sec:laya-arch}{{9.5.1}{42}{معماری لایا}{subsection.9.5.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.4}{\ignorespaces معماری \en  {Laya}: برای هر سؤال یک دنباله ساخته می‌شود، هر گزینه روی توکن \en  {[MASK]} خودش نمره می‌خورد و هر سه سؤال در یک گذر رو به جلو پاسخ داده می‌شوند. پیکان نقطه‌چین (معلم و پاداش \en  {RLCD}) فقط در زمان آموزش معنا دارد.}}{43}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:laya-arch}{{9.4}{43}{معماری \en {Laya}: برای هر سؤال یک دنباله ساخته می‌شود، هر گزینه روی توکن \en {[MASK]} خودش نمره می‌خورد و هر سه سؤال در یک گذر رو به جلو پاسخ داده می‌شوند. پیکان نقطه‌چین (معلم و پاداش \en {RLCD}) فقط در زمان آموزش معنا دارد}{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.2}در فاین‌تیون چه چیزی آموزش دید؟}{43}{subsection.9.5.2}\protected@file@percent }
+\newlabel{sec:laya-finetuned}{{9.5.2}{43}{در فاین‌تیون چه چیزی آموزش دید؟}{subsection.9.5.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.5}{\ignorespaces نقشهٔ انجماد و آموزش در فاین‌تیون \en  {Laya}. جاسازی‌ها و توکن‌ساز هیچ‌گاه آموزش نمی‌بینند؛ سر تصمیم و لایه‌های پایانی رمزگذار با دو نرخ یادگیری متفاوت بهینه می‌شوند و دماها جدا از گرادیان، روی نمونهٔ کالیبراسیون برازش می‌شوند.}}{44}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:laya-freeze}{{9.5}{44}{نقشهٔ انجماد و آموزش در فاین‌تیون \en {Laya}. جاسازی‌ها و توکن‌ساز هیچ‌گاه آموزش نمی‌بینند؛ سر تصمیم و لایه‌های پایانی رمزگذار با دو نرخ یادگیری متفاوت بهینه می‌شوند و دماها جدا از گرادیان، روی نمونهٔ کالیبراسیون برازش می‌شوند}{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.5.3}لایا در رأی ترکیبی}{44}{subsection.9.5.3}\protected@file@percent }
+\newlabel{sec:laya-ensemble}{{9.5.3}{44}{لایا در رأی ترکیبی}{subsection.9.5.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9.3}{\ignorespaces رأی‌های واقعی مدل‌ها روی یک نمونهٔ کوتاه رسمی از آزمون‌های سرویس (کلاس درست: \texttt  {\lr {ai\_generated}})}}{45}{table.caption.19}\protected@file@percent }
+\newlabel{tab:ensemble-votes}{{9.3}{45}{رأی‌های واقعی مدل‌ها روی یک نمونهٔ کوتاه رسمی از آزمون‌های سرویس (کلاس درست: \texttt {\lr {ai\_generated}})}{table.caption.19}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.6}محدودیت‌های سخت‌افزار محلی در برابر \en  {Google Colab}}{45}{section.9.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9.4}{\ignorespaces مقایسهٔ محیط آموزش}}{46}{table.caption.20}\protected@file@percent }
+\newlabel{tab:infra}{{9.4}{46}{مقایسهٔ محیط آموزش}{table.caption.20}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {10}روش‌شناسی ارزیابی سخت‌گیرانه (نسخهٔ دوم)}{47}{chapter.10}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {10.1}نتایج نسخهٔ نخست (محلی)}{45}{section.10.1}\protected@file@percent }
-\newlabel{sec:results-v1}{{10.1}{45}{نتایج نسخهٔ نخست (محلی)}{section.10.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {10.1}{\ignorespaces معیارهای مدل‌های نسخهٔ نخست (محلی، بدون تنظیم هایپرپارامتر)}}{45}{table.caption.21}\protected@file@percent }
-\newlabel{tab:results-v1}{{10.1}{45}{معیارهای مدل‌های نسخهٔ نخست (محلی، بدون تنظیم هایپرپارامتر)}{table.caption.21}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.2}چرا مدل‌ها روی متن واقعی اشتباه می‌کردند؟}{45}{section.10.2}\protected@file@percent }
-\newlabel{sec:v1-error-causes}{{10.2}{45}{چرا مدل‌ها روی متن واقعی اشتباه می‌کردند؟}{section.10.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.3}اصلاحات اعمال‌شده در نسخهٔ دوم}{46}{section.10.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.4}نتایج نسخهٔ دوم (\en  {Colab}, واقعی)}{46}{section.10.4}\protected@file@percent }
-\newlabel{sec:results-v1-vs-v2}{{10.4}{46}{نتایج نسخهٔ دوم (\en {Colab}, واقعی)}{section.10.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {10.2}{\ignorespaces معیارهای مدل‌ها پس از بازآموزی نسخهٔ دوم (\en  {Colab})}}{47}{table.caption.22}\protected@file@percent }
-\newlabel{tab:results-v2}{{10.2}{47}{معیارهای مدل‌ها پس از بازآموزی نسخهٔ دوم (\en {Colab})}{table.caption.22}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.5}بازآموزی با ویژگی‌های ده‌گانهٔ سبکی}{47}{section.10.5}\protected@file@percent }
-\newlabel{sec:results-v3}{{10.5}{47}{بازآموزی با ویژگی‌های ده‌گانهٔ سبکی}{section.10.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {10.3}{\ignorespaces معیارهای مدل‌های کلاسیک پس از بازآموزی با ده ویژگی سبکی}}{48}{table.caption.23}\protected@file@percent }
-\newlabel{tab:results-v3}{{10.3}{48}{معیارهای مدل‌های کلاسیک پس از بازآموزی با ده ویژگی سبکی}{table.caption.23}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {10.6}تحلیل خطای هدفمند \en  {BiLSTM}: چرا «دقیقاً معکوس» اشتباه می‌کند}{48}{section.10.6}\protected@file@percent }
-\newlabel{sec:bilstm-error-analysis}{{10.6}{48}{تحلیل خطای هدفمند \en {BiLSTM}: چرا «دقیقاً معکوس» اشتباه می‌کند}{section.10.6}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {11}رابط کاربری وب}{50}{chapter.11}\protected@file@percent }
+\newlabel{sec:v2-methodology}{{10}{47}{روش‌شناسی ارزیابی سخت‌گیرانه (نسخهٔ دوم)}{chapter.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.1}انگیزه: چرا یک لایهٔ ارزیابی جداگانه لازم شد}{47}{section.10.1}\protected@file@percent }
+\newlabel{sec:v2-motivation}{{10.1}{47}{انگیزه: چرا یک لایهٔ ارزیابی جداگانه لازم شد}{section.10.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.2}مسئله در سه کلاس و فروکاست دودویی}{48}{section.10.2}\protected@file@percent }
+\newlabel{sec:v2-three-class}{{10.2}{48}{مسئله در سه کلاس و فروکاست دودویی}{section.10.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.3}طرح‌وارهٔ داده و ردگیری منشأ}{48}{section.10.3}\protected@file@percent }
+\newlabel{sec:v2-schema}{{10.3}{48}{طرح‌وارهٔ داده و ردگیری منشأ}{section.10.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.4}دامنه‌های انسانی و مجوزها}{49}{section.10.4}\protected@file@percent }
+\newlabel{sec:v2-domains}{{10.4}{49}{دامنه‌های انسانی و مجوزها}{section.10.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {10.1}{\ignorespaces دامنه‌های انسانی: منبع، مجوز و شمار ردیف‌های حاضر در قاب داده (شناسهٔ کامل منابع و درهم‌ساز فایل‌ها در \texttt  {\lr {data/human/provenance.json}})}}{49}{table.caption.21}\protected@file@percent }
+\newlabel{tab:v2-provenance}{{10.1}{49}{دامنه‌های انسانی: منبع، مجوز و شمار ردیف‌های حاضر در قاب داده (شناسهٔ کامل منابع و درهم‌ساز فایل‌ها در \texttt {\lr {data/human/provenance.json}})}{table.caption.21}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.5}حذف داده‌های تکراری و هم‌خوشه‌سازی موضوعی}{50}{section.10.5}\protected@file@percent }
+\newlabel{sec:v2-dedup}{{10.5}{50}{حذف داده‌های تکراری و هم‌خوشه‌سازی موضوعی}{section.10.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {10.2}{\ignorespaces ترکیب قاب دادهٔ نسخهٔ دوم (پس از حذف تکراری‌ها)}}{50}{table.caption.22}\protected@file@percent }
+\newlabel{tab:v2-dataset}{{10.2}{50}{ترکیب قاب دادهٔ نسخهٔ دوم (پس از حذف تکراری‌ها)}{table.caption.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {10.3}{\ignorespaces ترکیب طول، فرمالیته و اصلِ زبان در قاب دادهٔ نسخهٔ دوم}}{51}{table.caption.23}\protected@file@percent }
+\newlabel{tab:v2-mix}{{10.3}{51}{ترکیب طول، فرمالیته و اصلِ زبان در قاب دادهٔ نسخهٔ دوم}{table.caption.23}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.6}تفکیک گروه‌آگاه و شرایط ارزیابی}{51}{section.10.6}\protected@file@percent }
+\newlabel{sec:v2-splits}{{10.6}{51}{تفکیک گروه‌آگاه و شرایط ارزیابی}{section.10.6}{}}
+\newlabel{sec:v2-cross-conditions}{{10.6}{51}{تفکیک گروه‌آگاه و شرایط ارزیابی}{section.10.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {10.4}{\ignorespaces شرط‌های ارزیابی و اندازهٔ بخش‌های هر شرط (ردیف)}}{52}{table.caption.24}\protected@file@percent }
+\newlabel{tab:v2-splits}{{10.4}{52}{شرط‌های ارزیابی و اندازهٔ بخش‌های هر شرط (ردیف)}{table.caption.24}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.7}پیش‌پردازش و سیاست نویسه‌ها}{53}{section.10.7}\protected@file@percent }
+\newlabel{sec:v2-preprocess}{{10.7}{53}{پیش‌پردازش و سیاست نویسه‌ها}{section.10.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.8}مدل‌های ارزیابی‌شده}{54}{section.10.8}\protected@file@percent }
+\newlabel{sec:v2-models}{{10.8}{54}{مدل‌های ارزیابی‌شده}{section.10.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.9}کالیبراسیون و سیاست دومرحله‌ای}{55}{section.10.9}\protected@file@percent }
+\newlabel{sec:v2-calibration}{{10.9}{55}{کالیبراسیون و سیاست دومرحله‌ای}{section.10.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.10}بازنویسی: کلاس سوم و حملهٔ تقلب}{56}{section.10.10}\protected@file@percent }
+\newlabel{sec:v2-revision}{{10.10}{56}{بازنویسی: کلاس سوم و حملهٔ تقلب}{section.10.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.11}معیارها و عدم قطعیت}{56}{section.10.11}\protected@file@percent }
+\newlabel{sec:v2-metrics}{{10.11}{56}{معیارها و عدم قطعیت}{section.10.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.12}تحلیل خطا با بازبینی انسانی}{57}{section.10.12}\protected@file@percent }
+\newlabel{sec:v2-error-analysis}{{10.12}{57}{تحلیل خطا با بازبینی انسانی}{section.10.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.13}معیارهای پذیرش}{58}{section.10.13}\protected@file@percent }
+\newlabel{sec:v2-acceptance}{{10.13}{58}{معیارهای پذیرش}{section.10.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10.14}محدودیت‌ها}{58}{section.10.14}\protected@file@percent }
+\newlabel{sec:v2-limitations}{{10.14}{58}{محدودیت‌ها}{section.10.14}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {11}نتایج و تحلیل خطا}{60}{chapter.11}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {12}نتیجه‌گیری و کارهای آینده}{52}{chapter.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11.1}نتایج نسخهٔ نخست (محلی)}{60}{section.11.1}\protected@file@percent }
+\newlabel{sec:results-v1}{{11.1}{60}{نتایج نسخهٔ نخست (محلی)}{section.11.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11.1}{\ignorespaces معیارهای مدل‌های نسخهٔ نخست (محلی، بدون تنظیم هایپرپارامتر)}}{60}{table.caption.25}\protected@file@percent }
+\newlabel{tab:results-v1}{{11.1}{60}{معیارهای مدل‌های نسخهٔ نخست (محلی، بدون تنظیم هایپرپارامتر)}{table.caption.25}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.2}چرا مدل‌ها روی متن واقعی اشتباه می‌کردند؟}{60}{section.11.2}\protected@file@percent }
+\newlabel{sec:v1-error-causes}{{11.2}{60}{چرا مدل‌ها روی متن واقعی اشتباه می‌کردند؟}{section.11.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.3}اصلاحات اعمال‌شده در نسخهٔ دوم}{61}{section.11.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {11.4}نتایج نسخهٔ دوم (\en  {Colab}, واقعی)}{61}{section.11.4}\protected@file@percent }
+\newlabel{sec:results-v1-vs-v2}{{11.4}{61}{نتایج نسخهٔ دوم (\en {Colab}, واقعی)}{section.11.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11.2}{\ignorespaces معیارهای مدل‌ها پس از بازآموزی نسخهٔ دوم (\en  {Colab})}}{62}{table.caption.26}\protected@file@percent }
+\newlabel{tab:results-v2}{{11.2}{62}{معیارهای مدل‌ها پس از بازآموزی نسخهٔ دوم (\en {Colab})}{table.caption.26}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.5}بازآموزی با ویژگی‌های ده‌گانهٔ سبکی}{62}{section.11.5}\protected@file@percent }
+\newlabel{sec:results-v3}{{11.5}{62}{بازآموزی با ویژگی‌های ده‌گانهٔ سبکی}{section.11.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11.3}{\ignorespaces معیارهای مدل‌های کلاسیک پس از بازآموزی با ده ویژگی سبکی}}{63}{table.caption.27}\protected@file@percent }
+\newlabel{tab:results-v3}{{11.3}{63}{معیارهای مدل‌های کلاسیک پس از بازآموزی با ده ویژگی سبکی}{table.caption.27}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.6}تحلیل خطای هدفمند \en  {BiLSTM}: چرا «دقیقاً معکوس» اشتباه می‌کند}{63}{section.11.6}\protected@file@percent }
+\newlabel{sec:bilstm-error-analysis}{{11.6}{63}{تحلیل خطای هدفمند \en {BiLSTM}: چرا «دقیقاً معکوس» اشتباه می‌کند}{section.11.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.7}نسخهٔ دوم: کارنامهٔ درون‌دامنه و کالیبراسیون}{64}{section.11.7}\protected@file@percent }
+\newlabel{sec:v2-res-indomain}{{11.7}{64}{نسخهٔ دوم: کارنامهٔ درون‌دامنه و کالیبراسیون}{section.11.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11.4}{\ignorespaces این جدول هنوز تولید نشده است (بدون reports/eval\_results.json)}}{64}{table.caption.28}\protected@file@percent }
+\newlabel{tab:v2-results}{{11.4}{64}{این جدول هنوز تولید نشده است (بدون reports/eval\_results.json)}{table.caption.28}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.8}تعمیم: تولیدکننده، دامنه، سبک، طول و نمونهٔ کم}{65}{section.11.8}\protected@file@percent }
+\newlabel{sec:v2-res-generalisation}{{11.8}{65}{تعمیم: تولیدکننده، دامنه، سبک، طول و نمونهٔ کم}{section.11.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11.5}{\ignorespaces این جدول هنوز تولید نشده است (بدون reports/eval\_results.json)}}{65}{table.caption.29}\protected@file@percent }
+\newlabel{tab:v2-conditions}{{11.5}{65}{این جدول هنوز تولید نشده است (بدون reports/eval\_results.json)}{table.caption.29}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.9}حملهٔ بازنویسی}{65}{section.11.9}\protected@file@percent }
+\newlabel{sec:v2-res-attack}{{11.9}{65}{حملهٔ بازنویسی}{section.11.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11.6}{\ignorespaces این جدول هنوز تولید نشده است (بدون شرط paraphrase\_attack)}}{66}{table.caption.30}\protected@file@percent }
+\newlabel{tab:v2-attack}{{11.6}{66}{این جدول هنوز تولید نشده است (بدون شرط paraphrase\_attack)}{table.caption.30}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.10}نمای سه‌کلاسه و کلاس بازنویسی‌شده}{66}{section.11.10}\protected@file@percent }
+\newlabel{sec:v2-res-three-class}{{11.10}{66}{نمای سه‌کلاسه و کلاس بازنویسی‌شده}{section.11.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11.7}{\ignorespaces این جدول هنوز تولید نشده است (بدون شرط three\_class)}}{66}{table.caption.31}\protected@file@percent }
+\newlabel{tab:v2-three-class}{{11.7}{66}{این جدول هنوز تولید نشده است (بدون شرط three\_class)}{table.caption.31}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.11}بازبینی خطاها}{66}{section.11.11}\protected@file@percent }
+\newlabel{sec:v2-res-errors}{{11.11}{66}{بازبینی خطاها}{section.11.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11.8}{\ignorespaces این جدول هنوز تولید نشده است (بدون reports/error\_analysis/summary.json)}}{67}{table.caption.32}\protected@file@percent }
+\newlabel{tab:v2-errors}{{11.8}{67}{این جدول هنوز تولید نشده است (بدون reports/error\_analysis/summary.json)}{table.caption.32}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11.12}سنجش معیارهای پذیرش}{67}{section.11.12}\protected@file@percent }
+\newlabel{sec:v2-res-acceptance}{{11.12}{67}{سنجش معیارهای پذیرش}{section.11.12}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {12}رابط کاربری وب}{69}{chapter.12}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {آ}راهنمای اجرا، استفاده و بازتولید}{54}{appendix.Alph1}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {13}نتیجه‌گیری و کارهای آینده}{71}{chapter.13}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{app:runbook}{{آ}{54}{راهنمای اجرا، استفاده و بازتولید}{appendix.Alph1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {آ.1}پیش‌نیازها}{54}{section.Alph1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {آ.2}بازتولید مدل‌ها از صفر}{54}{section.Alph1.2}\protected@file@percent }
-\newlabel{app:retrain}{{آ.2}{54}{بازتولید مدل‌ها از صفر}{section.Alph1.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {آ.1}{\ignorespaces زنجیرهٔ بازتولید: از منابع خام تا آرتیفکت‌های سرویس. چهار آموزش محلی سمت راست مستقل و روی پردازندهٔ مرکزی اجراشدنی‌اند؛ نوت‌بوک یکپارچهٔ \en  {Colab} (پایین چپ) همهٔ مدل‌ها را با \en  {GPU} بازآموزی و قطعه‌ای برای ادغام در \texttt  {\lr {models.json}} تولید می‌کند. پیکان نقطه‌چین «معلم»، مصرف خروجی دسته‌بند \en  {GPT-2} برای ساخت هدف‌های نرم بخش~\ref {sec:jev} است.}}{56}{figure.caption.24}\protected@file@percent }
-\newlabel{fig:training-flow}{{آ.1}{56}{زنجیرهٔ بازتولید: از منابع خام تا آرتیفکت‌های سرویس. چهار آموزش محلی سمت راست مستقل و روی پردازندهٔ مرکزی اجراشدنی‌اند؛ نوت‌بوک یکپارچهٔ \en {Colab} (پایین چپ) همهٔ مدل‌ها را با \en {GPU} بازآموزی و قطعه‌ای برای ادغام در \texttt {\lr {models.json}} تولید می‌کند. پیکان نقطه‌چین «معلم»، مصرف خروجی دسته‌بند \en {GPT-2} برای ساخت هدف‌های نرم بخش~\ref {sec:jev} است}{figure.caption.24}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {آ.3}اجرای سرویس بک‌اند}{57}{section.Alph1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {آ.4}اجرای رابط کاربری وب}{58}{section.Alph1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {آ.5}آزمون‌های خودکار}{59}{section.Alph1.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {آ.6}افزودن یک مدل تازه به سرویس}{59}{section.Alph1.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {آ}راهنمای اجرا، استفاده و بازتولید}{73}{appendix.Alph1}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{app:runbook}{{آ}{73}{راهنمای اجرا، استفاده و بازتولید}{appendix.Alph1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {آ.1}پیش‌نیازها}{73}{section.Alph1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {آ.2}بازتولید مدل‌ها از صفر}{73}{section.Alph1.2}\protected@file@percent }
+\newlabel{app:retrain}{{آ.2}{73}{بازتولید مدل‌ها از صفر}{section.Alph1.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {آ.1}{\ignorespaces زنجیرهٔ بازتولید: از منابع خام تا آرتیفکت‌های سرویس. چهار آموزش محلی سمت راست مستقل و روی پردازندهٔ مرکزی اجراشدنی‌اند؛ نوت‌بوک یکپارچهٔ \en  {Colab} (پایین چپ) همهٔ مدل‌ها را با \en  {GPU} بازآموزی و قطعه‌ای برای ادغام در \texttt  {\lr {models.json}} تولید می‌کند. پیکان نقطه‌چین «معلم»، مصرف خروجی دسته‌بند \en  {GPT-2} برای ساخت هدف‌های نرم بخش~\ref {sec:jev} است.}}{75}{figure.caption.33}\protected@file@percent }
+\newlabel{fig:training-flow}{{آ.1}{75}{زنجیرهٔ بازتولید: از منابع خام تا آرتیفکت‌های سرویس. چهار آموزش محلی سمت راست مستقل و روی پردازندهٔ مرکزی اجراشدنی‌اند؛ نوت‌بوک یکپارچهٔ \en {Colab} (پایین چپ) همهٔ مدل‌ها را با \en {GPU} بازآموزی و قطعه‌ای برای ادغام در \texttt {\lr {models.json}} تولید می‌کند. پیکان نقطه‌چین «معلم»، مصرف خروجی دسته‌بند \en {GPT-2} برای ساخت هدف‌های نرم بخش~\ref {sec:jev} است}{figure.caption.33}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {آ.3}بازتولید لایهٔ ارزیابی سخت‌گیرانه (نسخهٔ دوم)}{76}{section.Alph1.3}\protected@file@percent }
+\newlabel{app:retrain-v2}{{آ.3}{76}{بازتولید لایهٔ ارزیابی سخت‌گیرانه (نسخهٔ دوم)}{section.Alph1.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {آ.4}اجرای سرویس بک‌اند}{78}{section.Alph1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {آ.5}اجرای رابط کاربری وب}{79}{section.Alph1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {آ.6}آزمون‌های خودکار}{80}{section.Alph1.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {آ.7}افزودن یک مدل تازه به سرویس}{80}{section.Alph1.7}\protected@file@percent }
 \bibcite{vaswani2017attention}{1}
-\bibcite{radford2019gpt2}{2}
-\bibcite{hochreiter1997lstm}{3}
-\bibcite{breiman2001randomforest}{4}
-\bibcite{friedman2001gbm}{5}
-\bibcite{salton1988tfidf}{6}
-\bibcite{howard2018ulmfit}{7}
-\bibcite{farahani2021parsbert}{8}
-\bibcite{hoosman-gpt2fa}{9}
-\@writefile{toc}{\contentsline {chapter}{مراجع}{60}{section*.25}\protected@file@percent }
-\bibcite{torabifarsani2026dataset}{10}
-\bibcite{jev-typesafe}{11}
-\bibcite{valen2026}{12}
-\bibcite{laya2026}{13}
-\gdef \@abspage@last{70}
+\bibcite{devlin2019bert}{2}
+\bibcite{muller2022bert101}{3}
+\bibcite{huggingface-bert}{4}
+\bibcite{diaz2026llmarch}{5}
+\bibcite{radford2019gpt2}{6}
+\bibcite{hochreiter1997lstm}{7}
+\bibcite{breiman2001randomforest}{8}
+\bibcite{friedman2001gbm}{9}
+\@writefile{toc}{\contentsline {chapter}{مراجع}{81}{section*.34}\protected@file@percent }
+\bibcite{salton1988tfidf}{10}
+\bibcite{howard2018ulmfit}{11}
+\bibcite{farahani2021parsbert}{12}
+\bibcite{hoosman-gpt2fa}{13}
+\bibcite{torabifarsani2026dataset}{14}
+\bibcite{jev-typesafe}{15}
+\bibcite{chudmunge2026jev}{16}
+\bibcite{valen2026}{17}
+\bibcite{laya2026}{18}
+\gdef \@abspage@last{93}

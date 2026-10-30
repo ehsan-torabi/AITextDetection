@@ -1,0 +1,21 @@
+                    feature  error_median  correct_median  error_n  correct_n  mann_whitney_p  significant_at_0.01
+                    entropy        0.7119          0.7972       21      20943    6.876975e-08                 True
+                hapax_ratio        0.3015          0.4513       21      20943    1.823991e-06                 True
+          lexical_diversity        0.4192          0.5694       21      20943    2.599051e-06                 True
+                  zwnj_rate        0.0944          0.0530       21      20943    3.362552e-05                 True
+         lexical_burstiness        1.0000          0.9995       21      20943    2.310764e-04                 True
+             clause_variety        0.7908          0.6661       21      20943    1.396036e-03                 True
+                  coherence        0.1122          0.1427       21      20943    1.074316e-02                False
+           punctuation_rate        0.0217          0.0173       21      20943    1.242135e-02                False
+         formal_marker_rate        0.0008          0.0000       21      20943    1.452593e-02                False
+           sentence_variety        0.5623          0.4964       21      20943    3.412016e-02                False
+                 repetition        0.0217          0.0167       21      20943    1.328177e-01                False
+         p90_sentence_words       40.7000         37.9000       21      20943    1.958683e-01                False
+       informal_marker_rate        0.0110          0.0084       21      20943    2.994542e-01                False
+                 digit_rate        0.0030          0.0029       21      20943    5.481064e-01                False
+             diacritic_rate        0.0000          0.0000       21      20943    5.827837e-01                False
+        function_word_ratio        0.2355          0.2261       21      20943    6.255647e-01                False
+        mean_sentence_words       24.9615         24.5776       21      20943    8.882100e-01                False
+            sentence_length        0.4568          0.4587       21      20943    8.975874e-01                False
+informal_strong_marker_rate        0.0000          0.0000       21      20943    9.460094e-01                False
+               avg_word_len        3.9862          3.9394       21      20943    9.497328e-01                False

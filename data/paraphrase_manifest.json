@@ -1,0 +1,60 @@
+{
+  "revision": {
+    "rows": 2209,
+    "methods": {
+      "lexical_substitution": 966,
+      "sentence_perturbation": 521,
+      "punct_spacing_noise": 422,
+      "backtranslation": 300
+    },
+    "models": {
+      "HooshvareLab/bert-fa-base-uncased": 966,
+      "rule-based": 943,
+      "Helsinki-NLP/opus-mt-mul-en->Helsinki-NLP/opus-mt-en-mul": 300
+    },
+    "domains": {
+      "news": 561,
+      "encyclopedia": 530,
+      "blog": 528,
+      "legal_admin": 305,
+      "social_media": 285
+    },
+    "seconds": 4472.9,
+    "llm_used": false,
+    "llm_pending_note": "LLM-based paraphrase (five prompt templates) is implemented but was not run: no OpenAI-compatible endpoint was reachable from this host.",
+    "file": "ai_revised.parquet",
+    "file_sha256": "6e3126a407d63ccf3c78fcce6c14b581a976a5f2150f9c7916e92cb5ce39166f",
+    "built_at": "2026-10-18T16:47:46+00:00",
+    "source_words_window": {
+      "rule": "per-domain p10-p90, clipped",
+      "clip": [
+        8,
+        300
+      ]
+    },
+    "bt_per_domain": 60
+  },
+  "attack": {
+    "rows": 1200,
+    "methods": {
+      "backtranslation": 300,
+      "lexical_substitution": 300,
+      "sentence_perturbation": 300,
+      "punct_spacing_noise": 300
+    },
+    "models": {
+      "rule-based": 600,
+      "Helsinki-NLP/opus-mt-mul-en->Helsinki-NLP/opus-mt-en-mul": 300,
+      "HooshvareLab/bert-fa-base-uncased": 300
+    },
+    "domains": {
+      "ai_multi": 1200
+    },
+    "seconds": 5139.4,
+    "llm_used": false,
+    "llm_pending_note": "LLM-based paraphrase (five prompt templates) is implemented but was not run: no OpenAI-compatible endpoint was reachable from this host.",
+    "file": "paraphrase_attack.parquet",
+    "file_sha256": "f02c4d56e8018f7f2197ae637db853e4603fecc74b13bef25330ebcff41e7ab0",
+    "built_at": "2026-10-18T18:40:41+00:00"
+  }
+}

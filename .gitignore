@@ -14,7 +14,13 @@ __pycache__/
 *.mdl
 *.pt
 *.pth
+*.parquet
+*.npz
 edt_params.txt
+
+# Personal VPN configs (not part of the project)
+aether*.toml
+aether.toml-psiphon/
 
 # Local safety backups of model artifacts before retraining
 backups/

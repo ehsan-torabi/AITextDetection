@@ -1,0 +1,277 @@
+{
+  "built_at": "2026-10-18T17:01:54+00:00",
+  "rows": 33687,
+  "label_counts": {
+    "human": 20964,
+    "ai": 10534,
+    "ai_revised": 2189
+  },
+  "label_domain_counts": {
+    "ai_multi": {
+      "ai": 10534,
+      "ai_revised": 0,
+      "human": 0
+    },
+    "blog": {
+      "ai": 0,
+      "ai_revised": 526,
+      "human": 9796
+    },
+    "encyclopedia": {
+      "ai": 0,
+      "ai_revised": 521,
+      "human": 2999
+    },
+    "legal_admin": {
+      "ai": 0,
+      "ai_revised": 303,
+      "human": 2937
+    },
+    "news": {
+      "ai": 0,
+      "ai_revised": 558,
+      "human": 2963
+    },
+    "social_media": {
+      "ai": 0,
+      "ai_revised": 281,
+      "human": 2206
+    },
+    "translated_subtitles": {
+      "ai": 0,
+      "ai_revised": 0,
+      "human": 63
+    }
+  },
+  "origin_counts": {
+    "persian": 33624,
+    "translated": 63
+  },
+  "formality_counts": {
+    "neutral": 25256,
+    "informal": 4750,
+    "formal": 3681
+  },
+  "length_bucket_counts": {
+    "long": 14588,
+    "medium": 12139,
+    "short": 6960
+  },
+  "n_generators": 94,
+  "generators": {
+    "HooshvareLab/bert-fa-base-uncased": 966,
+    "Qwen3.6-35B-A3B-FP8": 950,
+    "rule-based": 943,
+    "Devstral-2-123B-Instruct-2512-int4-AutoRound": 618,
+    "deepseek-v4-flash": 602,
+    "gemini3.5-flash": 488,
+    "hy3": 376,
+    "deepseek-v4-flash-vision-exp": 339,
+    "Helsinki-NLP/opus-mt-mul-en->Helsinki-NLP/opus-mt-en-mul": 280,
+    "Qwen3.6-27B-FP8": 241,
+    "qwen/qwen3.7-flash": 226,
+    "qwen/qwen3.8-max-free": 196,
+    "openai/gpt-oss-20b": 182,
+    "openai/gpt-oss-120b": 178,
+    "nvidia/nemotron-3-super-120b-a12b": 175,
+    "deepseek/deepseek-v4-pro": 175,
+    "meta/llama-3.3-70b-instruct": 146,
+    "nvidia/nemotron-3-super-120b-a12b:free": 145,
+    "nvidia/nemotron-3-ultra-550b-a55b:free": 137,
+    "nvidia/nemotron-3-nano-30b-a3b:free": 136,
+    "poolside/laguna-s-2.1:free": 136,
+    "nvidia/nemotron-nano-9b-v2:free": 132,
+    "meta/llama-3.2-90b-vision-instruct": 132,
+    "gemma-4-31B-it-fp8": 130,
+    "poolside/laguna-xs-2.1:free": 127,
+    "z-ai/glm-5.2": 124,
+    "openai/gpt-4o-mini": 121,
+    "ibm-granite/granite-4.0-h-micro": 121,
+    "xiaomi/mimo-v2.5": 119,
+    "z-ai/glm-4.7-flash": 118,
+    "meta-llama/llama-3.1-8b-instruct": 118,
+    "deepseek/deepseek-v4-flash-0731": 117,
+    "deepseek/deepseek-v4-flash": 114,
+    "cohere/north-mini-code:free": 113,
+    "openai/gpt-5.4-mini": 111,
+    "openai/gpt-5.6-luna": 110,
+    "x-ai/grok-4.3": 110,
+    "google/gemini-2.5-flash-lite": 107,
+    "google/gemma-4-26b-a4b-it:free": 107,
+    "inclusionai/ling-2.6-flash": 106,
+    "openai/gpt-oss-20b:free": 105,
+    "google/gemini-3.5-flash-lite": 104,
+    "minimax/minimax-m2.5": 102,
+    "inclusionai/ring-2.6-1t": 102,
+    "stepfun/step-3.5-flash": 101,
+    "openai/gpt-5.4-nano": 100,
+    "tencent/hy3-preview": 100,
+    "claude-opus-4-8": 99,
+    "mistralai/mistral-nemo": 98,
+    "microsoft/phi-4": 98,
+    "moonshotai/kimi-k3": 96,
+    "am/gpt-oss-20b": 94,
+    "meta/muse-glimmer-30b": 94,
+    "nvidia/nemotron-3.5-lightning-30b-a3b": 91,
+    "am/free": 90,
+    "nvidia/nemotron-nano-12b-v2-vl:free": 85,
+    "claude-opus-4-8-thinking": 84,
+    "qwen/qwen3.7-plus": 84,
+    "am/nemotron-3.5-lightning-30b-a3b": 81,
+    "inclusionai/ling-3.0-flash:free": 73,
+    "am/nemotron-3-super-120b-a12b": 71,
+    "am/llama-3.2-11b-vision-instruct": 69,
+    "meta/muse-spark-1.2": 63,
+    "claude-opus-5": 60,
+    "claude-opus-5-thinking": 59,
+    "am/mistral-nemotron": 58,
+    "am/llama-3.1-nemotron-nano-vl-8b-v1": 56,
+    "qwen/qwen3.8-max": 54,
+    "am/nemotron-3-ultra-550b-a55b": 49,
+    "deepseek-ai/deepseek-v4-flash-0731": 43,
+    "stealth/ox-alpha": 39,
+    "nvidia/nemotron-3.5-lightning:free": 35,
+    "inclusionai/ling-3.0-tiny:free": 32,
+    "liquid/lfm-2.5-2.6b:free": 32,
+    "dots-studio/dots-3-note-preview:free": 29,
+    "am/minimax-m3": 25,
+    "minimaxai/minimax-m3": 24,
+    "am/laguna-xs-2.1": 23,
+    "google/gemma-4-31b-it": 21,
+    "am/deepseek-v4-flash": 19,
+    "am/gemma-4-31b-it": 18,
+    "google/gemma-4-31b-it:free": 14,
+    "am/deepseek-v4-pro": 12,
+    "deepseek/deepseek-v4-flash-free": 11,
+    "qwen/qwen3.8-27b-free": 11,
+    "tencent/hy3-free": 10,
+    "deepseek/deepseek-v4-pro-free": 9,
+    "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": 8,
+    "meta-llama/llama-3.3-70b-instruct": 4,
+    "openai/gpt-5.6-sol": 3,
+    "am/step-3.7-flash": 3,
+    "z-ai/glm-5.2:free": 3,
+    "deepseek-ai/DeepSeek-V4-Flash-0731": 2,
+    "deepseek/deepseek-chat": 1
+  },
+  "prompt_style_counts": {
+    "qa_explainer": 2751,
+    "summary_overview": 2005,
+    "opinion_critical": 1948,
+    "conversational_blog": 1945,
+    "formal_essay": 1885
+  },
+  "topic_group_counts": {
+    "ai_unique_topics": 1463,
+    "human_clusters": 749
+  },
+  "v1_membership": {
+    "train": 16218,
+    "test": 4056,
+    "not_in_v1": 13413
+  },
+  "dedup": {
+    "input_rows": 33832,
+    "exact_duplicates_removed": 112,
+    "near_duplicates_removed": 31,
+    "cross_label_near_duplicates_removed": 2,
+    "revised_cross_label_duplicates_removed": 0,
+    "revised_rows_kept": 2189,
+    "revised_sources_kept": 980,
+    "revised_kept_per_source_mean": 2.23,
+    "revised_methods_kept": {
+      "lexical_substitution": 966,
+      "sentence_perturbation": 521,
+      "punct_spacing_noise": 422,
+      "backtranslation": 280
+    },
+    "output_rows": 33687
+  },
+  "human_provenance": {
+    "blog": {
+      "rows": 9799,
+      "file": "blog.csv"
+    },
+    "encyclopedia": {
+      "rows": 3000,
+      "file": "encyclopedia.csv"
+    },
+    "legal_admin": {
+      "rows": 3000,
+      "file": "legal_admin.csv"
+    },
+    "news": {
+      "rows": 3000,
+      "file": "news.csv"
+    },
+    "social_media": {
+      "rows": 2224,
+      "file": "social_media.csv"
+    },
+    "translated_subtitles": {
+      "rows": 63,
+      "file": "translated_subtitles.csv"
+    }
+  },
+  "revised_provenance": {
+    "present": true,
+    "file": "ai_revised.parquet",
+    "rows": 2209,
+    "methods": {
+      "lexical_substitution": 966,
+      "sentence_perturbation": 521,
+      "punct_spacing_noise": 422,
+      "backtranslation": 300
+    },
+    "rewriters": {
+      "HooshvareLab/bert-fa-base-uncased": 966,
+      "rule-based": 943,
+      "Helsinki-NLP/opus-mt-mul-en->Helsinki-NLP/opus-mt-en-mul": 300
+    },
+    "domains": {
+      "news": 561,
+      "encyclopedia": 530,
+      "blog": 528,
+      "legal_admin": 305,
+      "social_media": 285
+    }
+  },
+  "revised_topic_inheritance": {
+    "revised_rows": 2189,
+    "topic_inherited": 2189,
+    "source_missing": 0
+  },
+  "files": {
+    "dataset_v2.csv": "57c0782733b6ad8ffa9ad59959db4fea8b53012126c2056164b3e02450c7aac2",
+    "dataset_v2.parquet": "9e90ce0a0c455b91d6c5013d3b0bafb0200d14d2918c1594d35c7b69299eeaa0"
+  },
+  "dataset_fingerprint": "2d83c9cdbc876b5a7758796400a6034c544c0306c2bd675a0565c1154b18543f",
+  "builder": "training/build_dataset_v2.py",
+  "style_features_v2": {
+    "file": "style_features_v2.parquet",
+    "rows": 33687,
+    "columns": [
+      "entropy",
+      "sentence_variety",
+      "repetition",
+      "coherence",
+      "lexical_diversity",
+      "sentence_length",
+      "function_word_ratio",
+      "punctuation_rate",
+      "lexical_burstiness",
+      "clause_variety",
+      "zwnj_rate",
+      "diacritic_rate",
+      "digit_rate",
+      "formal_marker_rate",
+      "informal_marker_rate",
+      "informal_strong_marker_rate",
+      "hapax_ratio",
+      "avg_word_len",
+      "p90_sentence_words",
+      "mean_sentence_words"
+    ],
+    "sha256": "48fbc5485fcb68090a383003a263e194b54479276b6610e058fe0aa9f8530a9f"
+  }
+}

@@ -1,0 +1,21 @@
+                    feature  error_median  correct_median  error_n  correct_n  mann_whitney_p  significant_at_0.01
+         lexical_burstiness        0.8686          1.0000      346      12377   2.010229e-239                 True
+          lexical_diversity        0.6320          0.4223      346      12377   7.888053e-144                 True
+                    entropy        0.8064          0.7392      346      12377   1.023939e-121                 True
+                hapax_ratio        0.5341          0.3763      346      12377   6.100761e-118                 True
+                  zwnj_rate        0.0343          0.1059      346      12377   1.008883e-100                 True
+           punctuation_rate        0.0181          0.0336      346      12377   9.165311e-100                 True
+                  coherence        0.1432          0.0608      346      12377    7.025119e-63                 True
+                 repetition        0.0090          0.0304      346      12377    6.503631e-60                 True
+             diacritic_rate        0.0000          0.0006      346      12377    1.324850e-44                 True
+           sentence_variety        0.4871          0.6124      346      12377    2.058565e-37                 True
+            sentence_length        0.4844          0.3450      346      12377    6.614823e-37                 True
+        mean_sentence_words       25.5227         20.0851      346      12377    5.722290e-20                 True
+               avg_word_len        4.0596          4.1978      346      12377    8.391257e-20                 True
+             clause_variety        0.6796          0.7290      346      12377    3.546825e-12                 True
+        function_word_ratio        0.1940          0.1809      346      12377    2.296352e-11                 True
+         formal_marker_rate        0.0000          0.0000      346      12377    2.605116e-07                 True
+       informal_marker_rate        0.0073          0.0102      346      12377    4.270792e-06                 True
+                 digit_rate        0.0018          0.0026      346      12377    8.230702e-05                 True
+informal_strong_marker_rate        0.0000          0.0000      346      12377    1.508376e-02                False
+         p90_sentence_words       36.7000         34.0000      346      12377    2.256966e-02                False

@@ -1,0 +1,115 @@
+{
+  "social_media": {
+    "domain": "social_media",
+    "source": "moali-mkh-2000/PersianTwitterDataset-SentimentAnalysis",
+    "license": "odbl",
+    "origin": "persian",
+    "rows": 2224,
+    "scanned_cap": 30000,
+    "unique_doc_ids": 2207,
+    "pii_scrubbed_rows": 1,
+    "length_words_median": 15.0,
+    "formality_mix": {
+      "neutral": 1196,
+      "informal": 1020,
+      "formal": 8
+    },
+    "file": "social_media.csv",
+    "file_sha256": "fee6a66b2deb389c98fbe5e00715c7df2eb48d3068e791c7e22632518b2b22a2",
+    "collected_at": "2026-10-18T12:00:07+00:00"
+  },
+  "_failures": {},
+  "news": {
+    "domain": "news",
+    "source": "pourmand1376/isna-news",
+    "license": "apache-2.0",
+    "origin": "persian",
+    "rows": 3000,
+    "scanned_cap": 270000,
+    "unique_doc_ids": 2965,
+    "pii_scrubbed_rows": 9,
+    "length_words_median": 201.0,
+    "formality_mix": {
+      "informal": 1848,
+      "neutral": 850,
+      "formal": 302
+    },
+    "file": "news.csv",
+    "file_sha256": "4fc11e6cff93375fe461e2f27c97642d0a052ec2538c8bd33b746f47ef931dd9",
+    "collected_at": "2026-10-18T11:59:24+00:00"
+  },
+  "encyclopedia": {
+    "domain": "encyclopedia",
+    "source": "wikimedia/wikipedia:20231101.fa",
+    "license": "cc-by-sa-4.0",
+    "origin": "persian",
+    "rows": 3000,
+    "scanned_cap": 75000,
+    "unique_doc_ids": 3000,
+    "pii_scrubbed_rows": 270,
+    "length_words_median": 468.0,
+    "formality_mix": {
+      "informal": 2462,
+      "neutral": 347,
+      "formal": 191
+    },
+    "file": "encyclopedia.csv",
+    "file_sha256": "cb9d484cb4fdfc3a565cee3889917995390dce2e8f594e4394c99e2201ea35d4",
+    "collected_at": "2026-10-18T11:59:57+00:00"
+  },
+  "legal_admin": {
+    "domain": "legal_admin",
+    "source": "PerSets/iran-legal-persian-qa",
+    "license": "cc",
+    "origin": "persian",
+    "rows": 3000,
+    "scanned_cap": 180000,
+    "unique_doc_ids": 2944,
+    "pii_scrubbed_rows": 0,
+    "length_words_median": 39.5,
+    "formality_mix": {
+      "neutral": 1498,
+      "informal": 1369,
+      "formal": 133
+    },
+    "file": "legal_admin.csv",
+    "file_sha256": "312c8350f20a7f4b73d77be249b7b807ff7071364e7930dfa578aa0f15e51d37",
+    "collected_at": "2026-10-18T12:00:22+00:00"
+  },
+  "translated_subtitles": {
+    "domain": "translated_subtitles",
+    "source": "Maral/conversational-persian-subtitles",
+    "license": "cc-by-4.0",
+    "origin": "translated",
+    "rows": 63,
+    "scanned_cap": 48000,
+    "unique_doc_ids": 63,
+    "pii_scrubbed_rows": 0,
+    "length_words_median": 2799.0,
+    "formality_mix": {
+      "informal": 63
+    },
+    "file": "translated_subtitles.csv",
+    "file_sha256": "b77b9ed80353fac741e0be0ea95d9c54272d72821ae0688fe5df7698b479b96c",
+    "collected_at": "2026-10-18T12:00:49+00:00"
+  },
+  "blog": {
+    "domain": "blog",
+    "source": "blogs.csv (project corpus, via processedDataset.csv)",
+    "license": "see project README",
+    "origin": "persian",
+    "rows": 9799,
+    "scanned_cap": 24000,
+    "unique_doc_ids": 9798,
+    "pii_scrubbed_rows": 56,
+    "length_words_median": 389.0,
+    "formality_mix": {
+      "informal": 7727,
+      "neutral": 1345,
+      "formal": 727
+    },
+    "file": "blog.csv",
+    "file_sha256": "e298d36f4d208ee08bad6d1395912da709a6467b1ef06868d152f34b40f28db5",
+    "collected_at": "2026-10-18T12:01:08+00:00"
+  }
+}

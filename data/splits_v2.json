@@ -1,0 +1,224 @@
+{
+  "seed": 42,
+  "dataset_fingerprint": "2d83c9cdbc876b5a7758796400a6034c544c0306c2bd675a0565c1154b18543f",
+  "counts": {
+    "cross_domain__blog__test": 4214,
+    "cross_domain__blog__train": 15167,
+    "cross_domain__encyclopedia__test": 4214,
+    "cross_domain__encyclopedia__train": 19890,
+    "cross_domain__legal_admin__test": 4214,
+    "cross_domain__legal_admin__train": 19914,
+    "cross_domain__news__test": 4214,
+    "cross_domain__news__train": 19896,
+    "cross_domain__social_media__test": 4214,
+    "cross_domain__social_media__train": 20425,
+    "cross_domain__translated_subtitles__test": 126,
+    "cross_domain__translated_subtitles__train": 21926,
+    "cross_generator__test": 940,
+    "cross_generator__train": 20469,
+    "cross_generator__val": 3047,
+    "cross_style__conversational_blog__test": 762,
+    "cross_style__conversational_blog__train": 20594,
+    "cross_style__formal_essay__test": 758,
+    "cross_style__formal_essay__train": 20650,
+    "cross_style__opinion_critical__test": 806,
+    "cross_style__opinion_critical__train": 20636,
+    "cross_style__qa_explainer__test": 1084,
+    "cross_style__qa_explainer__train": 20043,
+    "cross_style__summary_overview__test": 804,
+    "cross_style__summary_overview__train": 20549,
+    "few_shot__128__test": 6645,
+    "few_shot__128__train": 256,
+    "few_shot__32__test": 6645,
+    "few_shot__32__train": 64,
+    "few_shot__8__test": 6645,
+    "few_shot__8__train": 16,
+    "human_vs_ai_revised__test": 746,
+    "human_vs_ai_revised__train": 16191,
+    "human_vs_ai_revised__val": 442,
+    "in_domain_group__test": 6645,
+    "in_domain_group__train": 23564,
+    "in_domain_group__val": 3478,
+    "length__long__test": 3333,
+    "length__short__test": 1319,
+    "paraphrase_attention__test": 300,
+    "v1_test": 4056
+  },
+  "assignment_counts": {
+    "train": 23564,
+    "test": 6645,
+    "val": 3478
+  },
+  "class_mix_in_domain_test": {
+    "human": 4165,
+    "ai": 2107,
+    "ai_revised": 373
+  },
+  "domain_mix_in_domain_test": {
+    "ai_multi": 2107,
+    "blog": 2003,
+    "news": 719,
+    "encyclopedia": 672,
+    "legal_admin": 645,
+    "social_media": 494,
+    "translated_subtitles": 5
+  },
+  "details": {
+    "cross_generator": {
+      "n_generators": 37,
+      "covered_rows": 2180,
+      "target_rows": 2107,
+      "extension_rounds_to_reach_test_floor": 0,
+      "unseen_generators": [
+        "am/deepseek-v4-flash",
+        "am/deepseek-v4-pro",
+        "am/gemma-4-31b-it",
+        "am/llama-3.1-nemotron-nano-vl-8b-v1",
+        "am/llama-3.2-11b-vision-instruct",
+        "am/minimax-m3",
+        "am/mistral-nemotron",
+        "am/nemotron-3-ultra-550b-a55b",
+        "am/nemotron-3.5-lightning-30b-a3b",
+        "am/step-3.7-flash",
+        "claude-opus-4-8",
+        "claude-opus-5-thinking",
+        "deepseek-ai/DeepSeek-V4-Flash-0731",
+        "deepseek-ai/deepseek-v4-flash-0731",
+        "google/gemma-4-31b-it",
+        "google/gemma-4-31b-it:free",
+        "liquid/lfm-2.5-2.6b:free",
+        "meta-llama/llama-3.1-8b-instruct",
+        "meta/muse-glimmer-30b",
+        "meta/muse-spark-1.2",
+        "minimax/minimax-m2.5",
+        "mistralai/mistral-nemo",
+        "moonshotai/kimi-k3",
+        "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+        "nvidia/nemotron-3.5-lightning-30b-a3b",
+        "nvidia/nemotron-nano-9b-v2:free",
+        "openai/gpt-5.4-nano",
+        "openai/gpt-5.6-sol",
+        "openai/gpt-oss-20b:free",
+        "qwen/qwen3.7-plus",
+        "qwen/qwen3.8-27b-free",
+        "qwen/qwen3.8-max",
+        "stealth/ox-alpha",
+        "stepfun/step-3.5-flash",
+        "tencent/hy3-preview",
+        "z-ai/glm-4.7-flash",
+        "z-ai/glm-5.2:free"
+      ],
+      "unseen_generator_rows_in_test": 470,
+      "test_human_rows": 470,
+      "train_rows_seen_generators": 5873,
+      "rows_dropped_unseen_generator_on_train_topic": 1500,
+      "shared_generators": [],
+      "unseen_test_topics": 229
+    },
+    "cross_domain__blog": {
+      "held_out_domain": "blog",
+      "train_human_rows": 7794,
+      "test_human_rows": 2107,
+      "test_ai_rows": 2107,
+      "note": "the held-out domain is tested in full (every human document of that domain), not only its main-split share"
+    },
+    "cross_domain__encyclopedia": {
+      "held_out_domain": "encyclopedia",
+      "train_human_rows": 12517,
+      "test_human_rows": 2107,
+      "test_ai_rows": 2107,
+      "note": "the held-out domain is tested in full (every human document of that domain), not only its main-split share"
+    },
+    "cross_domain__legal_admin": {
+      "held_out_domain": "legal_admin",
+      "train_human_rows": 12541,
+      "test_human_rows": 2107,
+      "test_ai_rows": 2107,
+      "note": "the held-out domain is tested in full (every human document of that domain), not only its main-split share"
+    },
+    "cross_domain__news": {
+      "held_out_domain": "news",
+      "train_human_rows": 12523,
+      "test_human_rows": 2107,
+      "test_ai_rows": 2107,
+      "note": "the held-out domain is tested in full (every human document of that domain), not only its main-split share"
+    },
+    "cross_domain__social_media": {
+      "held_out_domain": "social_media",
+      "train_human_rows": 13052,
+      "test_human_rows": 2107,
+      "test_ai_rows": 2107,
+      "note": "the held-out domain is tested in full (every human document of that domain), not only its main-split share"
+    },
+    "cross_domain__translated_subtitles": {
+      "held_out_domain": "translated_subtitles",
+      "train_human_rows": 14553,
+      "test_human_rows": 63,
+      "test_ai_rows": 63,
+      "note": "the held-out domain is tested in full (every human document of that domain), not only its main-split share"
+    },
+    "cross_style__conversational_blog": {
+      "held_out_style": "conversational_blog",
+      "test_style_rows": 381,
+      "test_human_rows": 381,
+      "train_ai_rows_other_styles": 5998
+    },
+    "cross_style__formal_essay": {
+      "held_out_style": "formal_essay",
+      "test_style_rows": 379,
+      "test_human_rows": 379,
+      "train_ai_rows_other_styles": 6054
+    },
+    "cross_style__opinion_critical": {
+      "held_out_style": "opinion_critical",
+      "test_style_rows": 403,
+      "test_human_rows": 403,
+      "train_ai_rows_other_styles": 6040
+    },
+    "cross_style__qa_explainer": {
+      "held_out_style": "qa_explainer",
+      "test_style_rows": 542,
+      "test_human_rows": 542,
+      "train_ai_rows_other_styles": 5447
+    },
+    "cross_style__summary_overview": {
+      "held_out_style": "summary_overview",
+      "test_style_rows": 402,
+      "test_human_rows": 402,
+      "train_ai_rows_other_styles": 5953
+    },
+    "human_vs_ai_revised": {
+      "train_revised_rows": 1595,
+      "val_revised_rows": 221,
+      "test_revised_rows": 373
+    },
+    "v1_test": {
+      "rows": 4056,
+      "note": "rows present in processedDataset.csv test_idx; pre-existing checkpoints trained only on v1 train_idx"
+    }
+  },
+  "revised_split_inheritance": {
+    "revised_rows": 2189,
+    "inherited": 2189
+  },
+  "integrity": {
+    "group_disjoint_train_val_test": true,
+    "unseen_generators_absent_from_train": true,
+    "unseen_topics_absent_from_train": true,
+    "held_out_domains_absent_from_train": true,
+    "assertions_ran": [
+      "disjointness(in_domain_group)",
+      "no_group_leak(in_domain_group)",
+      "no_unseen_generator_in_train(cross_generator)",
+      "no_unseen_topic_in_train(cross_generator)",
+      "test_rows_from_unseen_generators(cross_generator)",
+      "no_held_out_domain_in_train(cross_domain)",
+      "no_held_out_style_in_train(cross_style)"
+    ]
+  },
+  "built_at": "2026-10-18T17:14:30+00:00",
+  "file": {
+    "splits": "splits_v2.joblib",
+    "sha256": "a124832f8bc8771c4707c7de4da2006ea0fadbb3dfe32cb1f2fe6ba858e0c122"
+  }
+}
