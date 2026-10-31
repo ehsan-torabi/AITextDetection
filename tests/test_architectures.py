@@ -7,10 +7,12 @@ the tests verify tensor shapes and state_dict key structure, not weights.
 import torch
 
 from aitextd.architectures import (
+    AttentionBiLSTMClassifier,
     BiLSTMClassifier,
     GPT2Classifier,
     ParsBERTClassifier,
     SystemOneDecisionModel,
+    TextCNNClassifier,
 )
 
 
@@ -21,6 +23,103 @@ def test_bilstm_forward_shape():
     with torch.no_grad():
         out = model(x)
     assert out.shape == (3,)
+
+
+def test_textcnn_forward_shape():
+    model = TextCNNClassifier(
+        vocab_size=50, embed_dim=8, n_filters=6, kernel_sizes=(3, 4, 5), pad_idx=0
+    )
+    model.eval()
+    x = torch.randint(0, 50, (3, 10))
+    with torch.no_grad():
+        out = model(x)
+    assert out.shape == (3,)
+
+
+def test_attention_bilstm_forward_shape():
+    model = AttentionBiLSTMClassifier(vocab_size=50, embed_dim=8, hidden_dim=16, pad_idx=0)
+    model.eval()
+    x = torch.randint(0, 50, (3, 10))
+    with torch.no_grad():
+        out = model(x)
+    assert out.shape == (3,)
+
+
+def test_textcnn_state_dict_matches_checkpoint_layout():
+    model = TextCNNClassifier(
+        vocab_size=20, embed_dim=4, n_filters=3, kernel_sizes=(3, 4, 5), pad_idx=0
+    )
+    keys = set(model.state_dict())
+    assert "embedding.weight" in keys
+    for i in range(3):
+        assert f"convs.{i}.weight" in keys and f"convs.{i}.bias" in keys
+    assert "fc.weight" in keys and "fc.bias" in keys
+
+
+def test_attention_bilstm_state_dict_matches_checkpoint_layout():
+    model = AttentionBiLSTMClassifier(vocab_size=20, embed_dim=4, hidden_dim=4, pad_idx=0)
+    keys = set(model.state_dict())
+    assert "embedding.weight" in keys
+    for direction in ("", "_reverse"):
+        assert f"lstm.weight_ih_l0{direction}" in keys
+        assert f"lstm.weight_hh_l0{direction}" in keys
+    assert "score.weight" in keys and "score.bias" in keys
+    assert "fc.weight" in keys and "fc.bias" in keys
+
+
+def test_textcnn_masked_pooling_excludes_all_pad_windows():
+    # Zero conv weights + bias 1 -> every window's post-ReLU activation is
+    # exactly 1. A row with at least one real token therefore pools 1 per
+    # filter, while an all-pad row must pool exactly 0 (pad-only windows are
+    # masked out), even though the pad embedding is nonzero here.
+    model = TextCNNClassifier(
+        vocab_size=10, embed_dim=4, n_filters=2, kernel_sizes=(3, 4), pad_idx=0
+    )
+    model.eval()
+    with torch.no_grad():
+        model.embedding.weight[0].fill_(1.0)  # nonzero pad embedding
+        for conv in model.convs:
+            conv.weight.zero_()
+            conv.bias.fill_(1.0)
+        out_pad = model(torch.zeros(1, 8, dtype=torch.long))
+        out_real = model(torch.ones(1, 8, dtype=torch.long))
+    assert torch.allclose(out_pad, model.fc.bias)  # zero features -> bias only
+    expected_real = model.fc.bias + model.fc.weight.sum()  # every filter pools 1.0
+    assert torch.allclose(out_real, expected_real)
+
+
+def test_attention_bilstm_attention_ignores_pad_positions():
+    # A fake LSTM returns hidden state i at position i and 99 at pad
+    # positions; a zero score vector gives uniform weights over real tokens.
+    # If pad positions leaked into the softmax the pooled value would jump,
+    # so the head output pins the exact masked average.
+    model = AttentionBiLSTMClassifier(vocab_size=10, embed_dim=4, hidden_dim=2, pad_idx=0)
+    model.eval()
+
+    class FakeLSTM(torch.nn.Module):
+        def forward(self, emb):
+            h = torch.full((emb.shape[0], emb.shape[1], 4), 99.0)
+            h[:, 0] = 0.0
+            h[:, 1] = 1.0
+            h[:, 2] = 2.0
+            return h, None
+
+    model.lstm = FakeLSTM()
+    with torch.no_grad():
+        model.score.weight.zero_()
+        model.score.bias.zero_()
+        model.fc.weight.fill_(1.0)
+        out = model(torch.tensor([[5, 6, 7, 0, 0]]))
+    expected = model.fc.bias + model.fc.weight.sum() * (0.0 + 1.0 + 2.0) / 3.0
+    assert torch.allclose(out, expected.expand_as(out))
+
+
+def test_attention_bilstm_all_pad_row_is_finite():
+    model = AttentionBiLSTMClassifier(vocab_size=10, embed_dim=4, hidden_dim=4, pad_idx=0)
+    model.eval()
+    with torch.no_grad():
+        out = model(torch.zeros(1, 6, dtype=torch.long))
+    assert torch.isfinite(out).all()
 
 
 def test_gpt2_classifier_pools_last_real_token():

@@ -30,6 +30,77 @@ class BiLSTMClassifier(nn.Module):
         return self.fc(h).squeeze(-1)
 
 
+class TextCNNClassifier(nn.Module):
+    """TextCNN: parallel 1D-convolution n-gram detectors over learned word
+    embeddings, ReLU, then a global max-pool per kernel size, concatenated
+    into one linear head with a single logit.
+
+    Variable lengths are handled with a length mask: a convolution window
+    counts only if it covers at least one real (non-pad) token, so windows of
+    pure padding are excluded from pooling. Sequences shorter than the largest
+    kernel size must still be padded before the forward pass (the serving
+    predictor always pads to the checkpoint's max_len, so this only matters
+    for ad-hoc callers). Must match the training cells of
+    notebooks/03_deep_learning_models.ipynb exactly so the saved state_dict
+    loads correctly at serving time."""
+
+    def __init__(
+        self, vocab_size, embed_dim, n_filters, kernel_sizes=(3, 4, 5), pad_idx=0, dropout=0.3
+    ):
+        super().__init__()
+        self.pad_idx = pad_idx
+        self.embedding = nn.Embedding(vocab_size, embed_dim, padding_idx=pad_idx)
+        self.convs = nn.ModuleList(
+            nn.Conv1d(embed_dim, n_filters, kernel_size) for kernel_size in kernel_sizes
+        )
+        self.dropout = nn.Dropout(dropout)
+        self.fc = nn.Linear(n_filters * len(kernel_sizes), 1)
+
+    def forward(self, x):
+        emb = self.embedding(x).transpose(1, 2)  # (B, E, T)
+        real = x.ne(self.pad_idx).float()  # (B, T), 1 on real tokens
+        pooled = []
+        for conv in self.convs:
+            h = torch.relu(conv(emb))  # (B, n_filters, T - k + 1)
+            # A window is valid iff it covers at least one real token; since
+            # ReLU output is non-negative, zeroing invalid windows is exactly
+            # "exclude them from the max" (no -inf/NaN edge cases).
+            window_ones = torch.ones(1, 1, conv.kernel_size[0], device=x.device)
+            valid = torch.nn.functional.conv1d(real.unsqueeze(1), window_ones) > 0
+            pooled.append((h * valid).max(dim=2).values)
+        h = self.dropout(torch.cat(pooled, dim=1))  # (B, n_filters * len(kernel_sizes))
+        return self.fc(h).squeeze(-1)
+
+
+class AttentionBiLSTMClassifier(nn.Module):
+    """BiLSTM encoder with additive attention pooling: a learned score vector
+    produces one attention score per hidden state, softmaxed with the pad
+    positions masked out so the pooled summary is built only from real tokens,
+    then a linear head with a single logit. Must match the training cells of
+    notebooks/03_deep_learning_models.ipynb exactly so the saved state_dict
+    loads correctly at serving time."""
+
+    def __init__(self, vocab_size, embed_dim, hidden_dim, pad_idx=0, dropout=0.3):
+        super().__init__()
+        self.pad_idx = pad_idx
+        self.embedding = nn.Embedding(vocab_size, embed_dim, padding_idx=pad_idx)
+        self.lstm = nn.LSTM(embed_dim, hidden_dim, batch_first=True, bidirectional=True)
+        self.score = nn.Linear(hidden_dim * 2, 1)
+        self.dropout = nn.Dropout(dropout)
+        self.fc = nn.Linear(hidden_dim * 2, 1)
+
+    def forward(self, x):
+        mask = x.ne(self.pad_idx)  # (B, T), True on real tokens
+        h, _ = self.lstm(self.embedding(x))  # (B, T, 2H)
+        scores = self.score(h).squeeze(-1)  # (B, T)
+        # finfo.min (not -inf) so an all-pad row softmaxes to a uniform
+        # distribution instead of NaN; on mixed rows it underflows to exactly 0.
+        scores = scores.masked_fill(~mask, torch.finfo(scores.dtype).min)
+        weights = torch.softmax(scores, dim=1)  # (B, T)
+        pooled = (h * weights.unsqueeze(-1)).sum(dim=1)  # (B, 2H)
+        return self.fc(self.dropout(pooled)).squeeze(-1)
+
+
 class GPT2Classifier(nn.Module):
     """GPT2 backbone (causal, so pooled on the last real token) + linear head."""
 

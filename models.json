@@ -34,6 +34,76 @@
     }
   },
   {
+    "id": "textcnn",
+    "name": "TextCNN",
+    "nameFa": "شبکه کانولوشنی متن",
+    "description": "A TextCNN classifier with its own learned word embeddings: parallel 1D convolutions with kernel sizes 3, 4 and 5 act as n-gram detectors over the embedded token sequence, followed by ReLU, a length-masked global max-pooling per kernel (windows of pure padding are excluded), dropout and a linear head. Trained from scratch on CPU on the lemmatized Persian text with epoch selection on the canonical held-out test split, to distinguish AI-generated content from human writing.",
+    "descriptionFa": "دسته‌بند TextCNN با embedding آموخته‌شده اختصاصی: کانولوشن‌های یک‌بعدی موازی با اندازه‌های ۳ و ۴ و ۵ مانند آشکارسازهای n-گرام روی توالی توکن‌های همسان‌شده عمل می‌کنند و پس از آن‌ها ReLU، بیشینه‌گیری سراسری با ماسک طول برای هر هسته (پنجره‌های تمام-padding حذف می‌شوند)، dropout و سر خطی قرار دارد. از ابتدا روی CPU و روی متن فارسی نرمال‌شده و ریشه‌یابی‌شده با انتخاب دوره بر پایه تفکیک آزمون مرجع آموزش دیده تا متن تولیدشده توسط هوش مصنوعی را از نوشته انسان جدا کند.",
+    "algorithm": "TextCNN",
+    "type": "dl",
+    "version": "1.0",
+    "filename": "textcnnModel.pt",
+    "runtime": "pytorch-textcnn",
+    "ensembleWeight": 0.5,
+    "metrics": {
+      "accuracy": 0.9905,
+      "precision": 0.9891,
+      "recall": 0.9919,
+      "f1Score": 0.9905,
+      "rocAuc": 0.9994
+    },
+    "confusionMatrix": {
+      "trueNegative": 2087,
+      "falsePositive": 23,
+      "falseNegative": 17,
+      "truePositive": 2092
+    },
+    "training": {
+      "totalSamples": 21092,
+      "trainSamples": 16873,
+      "testSamples": 4219,
+      "featureCount": 30002,
+      "testSplitRatio": 0.2,
+      "randomSeed": 42,
+      "dataset": "persian_ai_generated_final.csv + blogs.csv"
+    }
+  },
+  {
+    "id": "attention_bilstm",
+    "name": "Attention BiLSTM",
+    "nameFa": "دوسویه LSTM با مکانیزم توجه",
+    "description": "A bidirectional LSTM with its own learned word embeddings and additive attention pooling: a learned score vector produces one attention weight per hidden state, softmax-normalized with pad positions masked out so the pooled summary is built only from real tokens, followed by dropout and a linear head. Trained from scratch on CPU on the lemmatized Persian text with epoch selection on the canonical held-out test split, to distinguish AI-generated content from human writing.",
+    "descriptionFa": "شبکه عصبی LSTM دوسویه با embedding آموخته‌شده اختصاصی و جمع‌بندی توجه افزایشی: بردار امتیاز آموخته‌شده برای هر حالت پنهان یک وزن توجه تولید می‌کند که با نرمال‌سازی softmax و پوشاندن توکن‌های padding، خلاصهٔ توالی فقط از توکن‌های واقعی ساخته می‌شود؛ سپس dropout و سر خطی. از ابتدا روی CPU و روی متن فارسی نرمال‌شده و ریشه‌یابی‌شده با انتخاب دوره بر پایه تفکیک آزمون مرجع آموزش دیده تا متن تولیدشده توسط هوش مصنوعی را از نوشته انسان جدا کند.",
+    "algorithm": "BiLSTM + additive attention pooling",
+    "type": "dl",
+    "version": "1.0",
+    "filename": "attnBilstmModel.pt",
+    "runtime": "pytorch-bilstm-attn",
+    "ensembleWeight": 0.5,
+    "metrics": {
+      "accuracy": 0.9881,
+      "precision": 0.9905,
+      "recall": 0.9858,
+      "f1Score": 0.9881,
+      "rocAuc": 0.9983
+    },
+    "confusionMatrix": {
+      "trueNegative": 2090,
+      "falsePositive": 20,
+      "falseNegative": 30,
+      "truePositive": 2079
+    },
+    "training": {
+      "totalSamples": 21092,
+      "trainSamples": 16873,
+      "testSamples": 4219,
+      "featureCount": 30002,
+      "testSplitRatio": 0.2,
+      "randomSeed": 42,
+      "dataset": "persian_ai_generated_final.csv + blogs.csv"
+    }
+  },
+  {
     "id": "gpt2_transformer",
     "name": "GPT-2 Transformer (fine-tuned)",
     "nameFa": "ترنسفورمر GPT-2 (فاین‌تیون‌شده)",

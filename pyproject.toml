@@ -49,13 +49,8 @@ ignore = [
     "RUF001", "RUF002", "RUF003",
 ]
 
-[tool.ruff.lint.per-file-ignores]
-# Training scripts bootstrap sys.path (repo root) before their imports so they
-# can run as `python training/train_*.py` from the project root.
-"training/*.py" = ["E402"]
-
 [tool.ruff.lint.isort]
-known-first-party = ["aitextd", "split", "preprocess_cache", "eval_online_systemone"]
+known-first-party = ["aitextd"]
 
 [tool.pytest.ini_options]
 markers = ["slow: loads the full model registry (needs local artifacts)"]

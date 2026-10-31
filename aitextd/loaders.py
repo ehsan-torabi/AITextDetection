@@ -15,10 +15,12 @@ from transformers import AutoModel, AutoTokenizer, BertConfig
 
 from aitextd import paths
 from aitextd.architectures import (
+    AttentionBiLSTMClassifier,
     BiLSTMClassifier,
     GPT2Classifier,
     ParsBERTClassifier,
     SystemOneDecisionModel,
+    TextCNNClassifier,
 )
 from aitextd.features import STYLE_FEATURE_NAMES
 
@@ -81,6 +83,43 @@ def load_lstm_model(md: dict) -> dict:
         embed_dim=config["embed_dim"],
         hidden_dim=config["hidden_dim"],
         pad_idx=config["pad_idx"],
+    )
+    model.load_state_dict(checkpoint["state_dict"])
+    model.eval()
+    return {"model": model, "vocab": vocab, "config": config}
+
+
+def load_textcnn_model(md: dict) -> dict:
+    checkpoint = torch.load(
+        paths.model_path(md["filename"]), map_location="cpu", weights_only=False
+    )
+    config = checkpoint["config"]
+    vocab = checkpoint["vocab"]
+    model = TextCNNClassifier(
+        vocab_size=len(vocab),
+        embed_dim=config["embed_dim"],
+        n_filters=config["n_filters"],
+        kernel_sizes=tuple(config["kernel_sizes"]),
+        pad_idx=config["pad_idx"],
+        dropout=config.get("dropout", 0.3),
+    )
+    model.load_state_dict(checkpoint["state_dict"])
+    model.eval()
+    return {"model": model, "vocab": vocab, "config": config}
+
+
+def load_attention_bilstm_model(md: dict) -> dict:
+    checkpoint = torch.load(
+        paths.model_path(md["filename"]), map_location="cpu", weights_only=False
+    )
+    config = checkpoint["config"]
+    vocab = checkpoint["vocab"]
+    model = AttentionBiLSTMClassifier(
+        vocab_size=len(vocab),
+        embed_dim=config["embed_dim"],
+        hidden_dim=config["hidden_dim"],
+        pad_idx=config["pad_idx"],
+        dropout=config.get("dropout", 0.3),
     )
     model.load_state_dict(checkpoint["state_dict"])
     model.eval()
@@ -194,6 +233,8 @@ def load_laya_model(md: dict) -> dict:
 LOADERS = {
     "sklearn-tfidf": load_sklearn_model,
     "pytorch-lstm": load_lstm_model,
+    "pytorch-textcnn": load_textcnn_model,
+    "pytorch-bilstm-attn": load_attention_bilstm_model,
     "pytorch-gpt2": load_gpt2_model,
     "pytorch-parsbert": load_parsbert_model,
     "pytorch-system-one": load_system_one_model,

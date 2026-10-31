@@ -36,6 +36,8 @@ REQUIRED_ARTIFACTS = [
     paths.TFIDF_VECTORIZER_JOBLIB,
     paths.GPT2_LM_MDL,
     paths.model_path("lstmModel.pt"),
+    paths.model_path("textcnnModel.pt"),
+    paths.model_path("attnBilstmModel.pt"),
     paths.model_path("gpt2ClassifierModel.pt"),
     paths.model_path("parsbertClassifierModel.pt"),
     paths.model_path("systemOneModel.pt"),
@@ -53,6 +55,8 @@ ALL_MODEL_IDS = [
     "parsbert",
     "system_one",
     "laya",
+    "textcnn",
+    "attention_bilstm",
     "ensemble",
 ]
 

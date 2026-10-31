@@ -41,7 +41,11 @@ def predict_sklearn(bundle, text: str, cleaned_text: str, style_features: dict) 
     return 1.0 if model.predict(vect_text)[0] else 0.0
 
 
-def predict_lstm(bundle, text: str, cleaned_text: str, style_features: dict) -> float:
+def _vocab_encode_and_predict(bundle, cleaned_text: str) -> float:
+    """Shared forward pass for the vocab-based DL runtimes (pytorch-lstm,
+    pytorch-textcnn, pytorch-bilstm-attn): whitespace tokens of the cleaned
+    text -> ids via the checkpoint's vocab -> pad/truncate to config max_len
+    -> single forward pass -> sigmoid."""
     model = bundle["model"]
     vocab = bundle["vocab"]
     config = bundle["config"]
@@ -53,6 +57,18 @@ def predict_lstm(bundle, text: str, cleaned_text: str, style_features: dict) -> 
         logits = model(torch.tensor([ids], dtype=torch.long))
         prob = torch.sigmoid(logits).item()
     return prob
+
+
+def predict_lstm(bundle, text: str, cleaned_text: str, style_features: dict) -> float:
+    return _vocab_encode_and_predict(bundle, cleaned_text)
+
+
+def predict_textcnn(bundle, text: str, cleaned_text: str, style_features: dict) -> float:
+    return _vocab_encode_and_predict(bundle, cleaned_text)
+
+
+def predict_attention_bilstm(bundle, text: str, cleaned_text: str, style_features: dict) -> float:
+    return _vocab_encode_and_predict(bundle, cleaned_text)
 
 
 def _encode_and_predict(
@@ -171,6 +187,8 @@ def predict_laya(bundle, text: str, cleaned_text: str, style_features: dict) -> 
 PREDICTORS = {
     "sklearn-tfidf": predict_sklearn,
     "pytorch-lstm": predict_lstm,
+    "pytorch-textcnn": predict_textcnn,
+    "pytorch-bilstm-attn": predict_attention_bilstm,
     "pytorch-gpt2": predict_gpt2,
     "pytorch-parsbert": predict_parsbert,
     "pytorch-system-one": predict_system_one,
