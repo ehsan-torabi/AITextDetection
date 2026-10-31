@@ -1,93 +1,57 @@
 \contentsline {chapter}{تشکر و قدردانی}{آ}{section*.1}%
-\contentsline {chapter}{چکیده}{ه}{section*.4}%
+\contentsline {chapter}{چکیده}{د}{section*.4}%
 \contentsline {chapter}{\numberline {1}مقدمه}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}انگیزه و اهمیت مسئله}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}چالش‌های خاص زبان فارسی}{1}{section.1.2}%
-\contentsline {section}{\numberline {1.3}نمای کلی سامانه}{2}{section.1.3}%
-\contentsline {chapter}{\numberline {2}مجموعه داده}{4}{chapter.2}%
-\contentsline {section}{\numberline {2.1}منابع داده}{4}{section.2.1}%
-\contentsline {section}{\numberline {2.2}روش گردآوری بخش هوش‌مصنوعی داده}{5}{section.2.2}%
-\contentsline {section}{\numberline {2.3}تفکیک داده به آموزش، اعتبارسنجی و آزمون}{6}{section.2.3}%
-\contentsline {chapter}{\numberline {3}پیش‌پردازش متن}{7}{chapter.3}%
-\contentsline {section}{\numberline {3.1}پیش‌پردازش کامل (برای مدل‌های کلاسیک و \en {BiLSTM})}{7}{section.3.1}%
-\contentsline {section}{\numberline {3.2}پیش‌پردازش سبک (برای \en {GPT-2})}{8}{section.3.2}%
-\contentsline {section}{\numberline {3.3}رویکرد بهتر توکن‌سازی برای \en {GPT-2}}{8}{section.3.3}%
-\contentsline {chapter}{\numberline {4}استخراج ویژگی: \en {TF-IDF}}{10}{chapter.4}%
-\contentsline {section}{\numberline {4.1}تعریف ریاضی}{10}{section.4.1}%
-\contentsline {section}{\numberline {4.2}مسئلهٔ فضای ویژگی نسخهٔ نخست}{10}{section.4.2}%
-\contentsline {section}{\numberline {4.3}راه‌حل اصلاح‌شده}{11}{section.4.3}%
-\contentsline {section}{\numberline {4.4}ویژگی‌های سبک‌شناسی متن (\en {stylometric features})}{11}{section.4.4}%
-\contentsline {chapter}{\numberline {5}مدل‌های یادگیری ماشین کلاسیک}{15}{chapter.5}%
-\contentsline {section}{\numberline {5.1}ماشین بردار پشتیبان خطی (\en {Linear SVM})}{15}{section.5.1}%
-\contentsline {section}{\numberline {5.2}رگرسیون لجستیک}{15}{section.5.2}%
-\contentsline {section}{\numberline {5.3}بیز ساده چندجمله‌ای}{16}{section.5.3}%
-\contentsline {section}{\numberline {5.4}جنگل تصادفی}{16}{section.5.4}%
-\contentsline {section}{\numberline {5.5}گرادیان بوستینگ}{17}{section.5.5}%
-\contentsline {chapter}{\numberline {6}مدل‌های یادگیری عمیق}{18}{chapter.6}%
-\contentsline {section}{\numberline {6.1}شبکهٔ حافظهٔ کوتاه‌مدت پایدار دوسویه (\en {BiLSTM})}{18}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}معماری}{18}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}بهبودهای نسخهٔ دوم}{19}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}ترنسفورمر \en {GPT-2} فاین‌تیون‌شده}{19}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}مبانی مکانیزم توجه}{19}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}از مدل زبانی تا طبقه‌بند}{20}{subsection.6.2.2}%
-\contentsline {subsection}{\numberline {6.2.3}راهبرد فاین‌تیون: کدام لایه‌ها آموزش ببینند؟}{20}{subsection.6.2.3}%
-\contentsline {section}{\numberline {6.3}مدل چهارم: \en {ParsBERT} فاین‌تیون‌شده}{21}{section.6.3}%
-\contentsline {section}{\numberline {6.4}لایهٔ تصمیم «سیستم-یک» به سبک \en {JEV}}{24}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}انگیزه: از تولید متن تا رابط تصمیم}{24}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}سه سؤال نوع‌بندی‌شدهٔ پروژه}{25}{subsection.6.4.2}%
-\contentsline {subsection}{\numberline {6.4.3}معماری}{26}{subsection.6.4.3}%
-\contentsline {subsection}{\numberline {6.4.4}هدف‌های نرمِ تقطیرشده از معلم}{28}{subsection.6.4.4}%
-\contentsline {subsection}{\numberline {6.4.5}سیاست تصمیم و یکپارچه‌سازی در سرویس}{29}{subsection.6.4.5}%
-\contentsline {subsection}{\numberline {6.4.6}ارزیابی}{29}{subsection.6.4.6}%
-\contentsline {section}{\numberline {6.5}سیگنال سرگشتگی مدل زبانی خام: یک بررسی تجربی}{30}{section.6.5}%
-\contentsline {chapter}{\numberline {7}تنظیم هایپرپارامتر و اعتبارسنجی متقابل}{32}{chapter.7}%
-\contentsline {chapter}{\numberline {8}معیارهای ارزیابی}{33}{chapter.8}%
-\contentsline {chapter}{\numberline {9}زیرساخت پیاده‌سازی}{34}{chapter.9}%
-\contentsline {section}{\numberline {9.1}معماری سرویس}{34}{section.9.1}%
-\contentsline {section}{\numberline {9.2}جریان پردازش یک درخواست تشخیص}{36}{section.9.2}%
-\contentsline {section}{\numberline {9.3}ساختار پروژه}{37}{section.9.3}%
-\contentsline {section}{\numberline {9.4}تحلیل آنلاین با مدل \en {System One} سرویس \en {TypeSafe}}{39}{section.9.4}%
-\contentsline {section}{\numberline {9.5}فاین‌تیون مدل متن‌باز \en {Laya} روی دادهٔ فارسی}{40}{section.9.5}%
-\contentsline {subsection}{\numberline {9.5.1}معماری لایا}{42}{subsection.9.5.1}%
-\contentsline {subsection}{\numberline {9.5.2}در فاین‌تیون چه چیزی آموزش دید؟}{43}{subsection.9.5.2}%
-\contentsline {subsection}{\numberline {9.5.3}لایا در رأی ترکیبی}{44}{subsection.9.5.3}%
-\contentsline {section}{\numberline {9.6}محدودیت‌های سخت‌افزار محلی در برابر \en {Google Colab}}{45}{section.9.6}%
-\contentsline {chapter}{\numberline {10}روش‌شناسی ارزیابی سخت‌گیرانه (نسخهٔ دوم)}{47}{chapter.10}%
-\contentsline {section}{\numberline {10.1}انگیزه: چرا یک لایهٔ ارزیابی جداگانه لازم شد}{47}{section.10.1}%
-\contentsline {section}{\numberline {10.2}مسئله در سه کلاس و فروکاست دودویی}{48}{section.10.2}%
-\contentsline {section}{\numberline {10.3}طرح‌وارهٔ داده و ردگیری منشأ}{48}{section.10.3}%
-\contentsline {section}{\numberline {10.4}دامنه‌های انسانی و مجوزها}{49}{section.10.4}%
-\contentsline {section}{\numberline {10.5}حذف داده‌های تکراری و هم‌خوشه‌سازی موضوعی}{50}{section.10.5}%
-\contentsline {section}{\numberline {10.6}تفکیک گروه‌آگاه و شرایط ارزیابی}{51}{section.10.6}%
-\contentsline {section}{\numberline {10.7}پیش‌پردازش و سیاست نویسه‌ها}{53}{section.10.7}%
-\contentsline {section}{\numberline {10.8}مدل‌های ارزیابی‌شده}{54}{section.10.8}%
-\contentsline {section}{\numberline {10.9}کالیبراسیون و سیاست دومرحله‌ای}{55}{section.10.9}%
-\contentsline {section}{\numberline {10.10}بازنویسی: کلاس سوم و حملهٔ تقلب}{56}{section.10.10}%
-\contentsline {section}{\numberline {10.11}معیارها و عدم قطعیت}{56}{section.10.11}%
-\contentsline {section}{\numberline {10.12}تحلیل خطا با بازبینی انسانی}{57}{section.10.12}%
-\contentsline {section}{\numberline {10.13}معیارهای پذیرش}{58}{section.10.13}%
-\contentsline {section}{\numberline {10.14}محدودیت‌ها}{58}{section.10.14}%
-\contentsline {chapter}{\numberline {11}نتایج و تحلیل خطا}{60}{chapter.11}%
-\contentsline {section}{\numberline {11.1}نتایج نسخهٔ نخست (محلی)}{60}{section.11.1}%
-\contentsline {section}{\numberline {11.2}چرا مدل‌ها روی متن واقعی اشتباه می‌کردند؟}{60}{section.11.2}%
-\contentsline {section}{\numberline {11.3}اصلاحات اعمال‌شده در نسخهٔ دوم}{61}{section.11.3}%
-\contentsline {section}{\numberline {11.4}نتایج نسخهٔ دوم (\en {Colab}, واقعی)}{61}{section.11.4}%
-\contentsline {section}{\numberline {11.5}بازآموزی با ویژگی‌های ده‌گانهٔ سبکی}{62}{section.11.5}%
-\contentsline {section}{\numberline {11.6}تحلیل خطای هدفمند \en {BiLSTM}: چرا «دقیقاً معکوس» اشتباه می‌کند}{63}{section.11.6}%
-\contentsline {section}{\numberline {11.7}نسخهٔ دوم: کارنامهٔ درون‌دامنه و کالیبراسیون}{64}{section.11.7}%
-\contentsline {section}{\numberline {11.8}تعمیم: تولیدکننده، دامنه، سبک، طول و نمونهٔ کم}{65}{section.11.8}%
-\contentsline {section}{\numberline {11.9}حملهٔ بازنویسی}{65}{section.11.9}%
-\contentsline {section}{\numberline {11.10}نمای سه‌کلاسه و کلاس بازنویسی‌شده}{66}{section.11.10}%
-\contentsline {section}{\numberline {11.11}بازبینی خطاها}{66}{section.11.11}%
-\contentsline {section}{\numberline {11.12}سنجش معیارهای پذیرش}{67}{section.11.12}%
-\contentsline {chapter}{\numberline {12}رابط کاربری وب}{69}{chapter.12}%
-\contentsline {chapter}{\numberline {13}نتیجه‌گیری و کارهای آینده}{71}{chapter.13}%
-\contentsline {chapter}{\numberline {آ}راهنمای اجرا، استفاده و بازتولید}{73}{appendix.Alph1}%
-\contentsline {section}{\numberline {آ.1}پیش‌نیازها}{73}{section.Alph1.1}%
-\contentsline {section}{\numberline {آ.2}بازتولید مدل‌ها از صفر}{73}{section.Alph1.2}%
-\contentsline {section}{\numberline {آ.3}بازتولید لایهٔ ارزیابی سخت‌گیرانه (نسخهٔ دوم)}{76}{section.Alph1.3}%
-\contentsline {section}{\numberline {آ.4}اجرای سرویس بک‌اند}{78}{section.Alph1.4}%
-\contentsline {section}{\numberline {آ.5}اجرای رابط کاربری وب}{79}{section.Alph1.5}%
-\contentsline {section}{\numberline {آ.6}آزمون‌های خودکار}{80}{section.Alph1.6}%
-\contentsline {section}{\numberline {آ.7}افزودن یک مدل تازه به سرویس}{80}{section.Alph1.7}%
-\contentsline {chapter}{مراجع}{81}{section*.34}%
+\contentsline {section}{\numberline {1.3}سامانه در یک نگاه}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}ساختار گزارش}{3}{section.1.4}%
+\contentsline {chapter}{\numberline {2}داده‌ها}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}گردآوری نسخهٔ نخست}{4}{section.2.1}%
+\contentsline {section}{\numberline {2.2}بازسازی نسخهٔ دوم}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}تفکیک گروه‌آگاه}{7}{section.2.3}%
+\contentsline {section}{\numberline {2.4}مجموعهٔ حملهٔ بازنویسی}{9}{section.2.4}%
+\contentsline {chapter}{\numberline {3}پیش‌پردازش و ویژگی‌ها}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}دو خط‌لولهٔ پیش‌پردازش}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}استخراج ویژگی TF-IDF}{12}{section.3.2}%
+\contentsline {section}{\numberline {3.3}ویژگی‌های سبک‌شناسی}{13}{section.3.3}%
+\contentsline {chapter}{\numberline {4}مدل‌های کلاسیک}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}آرایش ویژگی‌ها و آموزش}{15}{section.4.1}%
+\contentsline {section}{\numberline {4.2}نتایج روی تفکیک مرجع}{16}{section.4.2}%
+\contentsline {chapter}{\numberline {5}مدل‌های عمیق واژگانی}{17}{chapter.5}%
+\contentsline {section}{\numberline {5.1}سازوکار مشترک}{17}{section.5.1}%
+\contentsline {section}{\numberline {5.2}شبکهٔ BiLSTM}{17}{section.5.2}%
+\contentsline {section}{\numberline {5.3}TextCNN و BiLSTM توجهی}{18}{section.5.3}%
+\contentsline {section}{\numberline {5.4}آزمون گذری برون‌دامنه}{20}{section.5.4}%
+\contentsline {chapter}{\numberline {6}مدل‌های زبانی و لایهٔ تصمیم}{21}{chapter.6}%
+\contentsline {section}{\numberline {6.1}فاین‌تیون GPT-2 فارسی}{21}{section.6.1}%
+\contentsline {section}{\numberline {6.2}فاین‌تیون ParsBERT}{22}{section.6.2}%
+\contentsline {section}{\numberline {6.3}مطالعهٔ سرگشتگی بی‌آموزش}{23}{section.6.3}%
+\contentsline {section}{\numberline {6.4}لایهٔ تصمیم سیستم-یک}{23}{section.6.4}%
+\contentsline {section}{\numberline {6.5}فاین‌تیون Laya با RLCD}{25}{section.6.5}%
+\contentsline {section}{\numberline {6.6}دفتر ثبت مدل‌ها}{26}{section.6.6}%
+\contentsline {chapter}{\numberline {7}زیرساخت و استقرار}{28}{chapter.7}%
+\contentsline {section}{\numberline {7.1}سرویس تشخیص}{28}{section.7.1}%
+\contentsline {section}{\numberline {7.2}جریان پردازش درخواست}{29}{section.7.2}%
+\contentsline {section}{\numberline {7.3}آزمون طلایی}{29}{section.7.3}%
+\contentsline {section}{\numberline {7.4}رابط کاربری وب}{30}{section.7.4}%
+\contentsline {section}{\numberline {7.5}تحلیل برخط با TypeSafe System One}{30}{section.7.5}%
+\contentsline {chapter}{\numberline {8}ارزیابی سخت‌گیرانه و نتایج}{32}{chapter.8}%
+\contentsline {section}{\numberline {8.1}پروتکل ارزیابی}{32}{section.8.1}%
+\contentsline {section}{\numberline {8.2}نتایج درون‌دامنه}{33}{section.8.2}%
+\contentsline {section}{\numberline {8.3}رویارویی با تولیدکننده و دامنهٔ تازه}{34}{section.8.3}%
+\contentsline {section}{\numberline {8.4}حملهٔ بازنویسی}{36}{section.8.4}%
+\contentsline {section}{\numberline {8.5}نگاه سه‌کلاسه}{37}{section.8.5}%
+\contentsline {section}{\numberline {8.6}تحلیل خطا}{37}{section.8.6}%
+\contentsline {section}{\numberline {8.7}معیارهای پذیرش}{38}{section.8.7}%
+\contentsline {section}{\numberline {8.8}محدودیت‌ها}{39}{section.8.8}%
+\contentsline {chapter}{\numberline {9}نتیجه‌گیری}{40}{chapter.9}%
+\contentsline {section}{\numberline {9.1}جمع‌بندی و درس‌ها}{40}{section.9.1}%
+\contentsline {section}{\numberline {9.2}کارهای آینده}{41}{section.9.2}%
+\contentsline {chapter}{\numberline {آ}راهنمای اجرا و بازتولید}{42}{appendix.Alph1}%
+\contentsline {section}{\numberline {آ.1}پیش‌نیازها}{42}{section.Alph1.1}%
+\contentsline {section}{\numberline {آ.2}بازتولید با نوت‌بوک‌ها}{42}{section.Alph1.2}%
+\contentsline {section}{\numberline {آ.3}اجرای سرویس و رابط وب}{46}{section.Alph1.3}%
+\contentsline {section}{\numberline {آ.4}آزمون‌های خودکار}{47}{section.Alph1.4}%
+\contentsline {section}{\numberline {آ.5}افزودن مدل تازه}{48}{section.Alph1.5}%
+\contentsline {section}{\numberline {آ.6}آموزش روی Colab}{48}{section.Alph1.6}%
+\contentsline {chapter}{مراجع}{50}{section*.22}%
