@@ -171,8 +171,9 @@ def predict_laya(bundle, text: str, cleaned_text: str, style_features: dict) -> 
     answers = result["answers"]
     choice = answers["source"]["probabilities"]
     score = answers["machine_likeness"]
-    score_probs = [float(score["probabilities"][str(i)])
-                   for i in range(len(SYSTEM_ONE_SCORE_LEVELS))]
+    score_probs = [
+        float(score["probabilities"][str(i)]) for i in range(len(SYSTEM_ONE_SCORE_LEVELS))
+    ]
     return {
         # choice probabilities follow SYSTEM_ONE_CHOICE_CANDIDATES order
         # (index 1 == "ai_generated")

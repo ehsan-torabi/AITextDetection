@@ -85,8 +85,7 @@ SYSTEM_ONE_DETECTION_QUESTIONS = {
     "needs_review": {
         "type": "noul",
         "instructions": (
-            "Should a human expert review this text before its AI-or-human origin "
-            "is acted upon?"
+            "Should a human expert review this text before its AI-or-human origin is acted upon?"
         ),
         "criteria": {
             "true": (

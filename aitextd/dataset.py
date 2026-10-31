@@ -184,16 +184,13 @@ def simhash64(text: str, shingle_words: int = 4) -> int:
         shingles = [" ".join(words)] if words else []
     else:
         shingles = [
-            " ".join(words[i : i + shingle_words])
-            for i in range(len(words) - shingle_words + 1)
+            " ".join(words[i : i + shingle_words]) for i in range(len(words) - shingle_words + 1)
         ]
     if not shingles:
         return 0
     vector = [0] * 64
     for shingle in shingles:
-        h = int.from_bytes(
-            hashlib.blake2b(shingle.encode("utf-8"), digest_size=8).digest(), "big"
-        )
+        h = int.from_bytes(hashlib.blake2b(shingle.encode("utf-8"), digest_size=8).digest(), "big")
         for bit in range(64):
             vector[bit] += 1 if (h >> bit) & 1 else -1
     out = 0
@@ -278,9 +275,7 @@ def text_statistics(text: str) -> dict:
         "informal_strong_marker_rate": strong,
         "informal_weak_marker_rate": weak,
         "hapax_ratio": (hapax / len(words)) if words else 0.0,
-        "avg_word_len": (
-            sum(len(w) for w in words) / len(words) if words else 0.0
-        ),
+        "avg_word_len": (sum(len(w) for w in words) / len(words) if words else 0.0),
     }
 
 
@@ -361,8 +356,6 @@ def dataset_fingerprint(df: pd.DataFrame) -> str:
     """Content fingerprint of the labelled data (ignores split assignment so
     the same data can be re-split reproducibly with a different seed)."""
     h = hashlib.sha256()
-    for doc_id, label, domain in sorted(
-        zip(df["doc_id"], df["label"], df["domain"], strict=True)
-    ):
+    for doc_id, label, domain in sorted(zip(df["doc_id"], df["label"], df["domain"], strict=True)):
         h.update(f"{doc_id}|{label}|{domain}\n".encode())
     return h.hexdigest()
