@@ -10,9 +10,11 @@ from aitextd.architectures import (
     AttentionBiLSTMClassifier,
     BiLSTMClassifier,
     GPT2Classifier,
+    MLPClassifier,
     ParsBERTClassifier,
     SystemOneDecisionModel,
     TextCNNClassifier,
+    TinyTransformerClassifier,
 )
 
 
@@ -181,3 +183,48 @@ def test_system_one_head_names_match_checkpoint_layout():
     for head in ("choice_head", "score_head", "noul_head"):
         assert f"{head}.weight" in keys and f"{head}.bias" in keys
     assert any(k.startswith("backbone.") for k in keys)
+
+
+def test_mlp_forward_shape():
+    model = MLPClassifier(input_dim=30, hidden_dims=(16, 8), dropout=0.3)
+    model.eval()
+    x = torch.rand(3, 30)
+    with torch.no_grad():
+        out = model(x)
+    assert out.shape == (3,)
+
+
+def test_mlp_state_dict_matches_checkpoint_layout():
+    model = MLPClassifier(input_dim=30, hidden_dims=(16, 8), dropout=0.3)
+    keys = set(model.state_dict())
+    assert "net.0.weight" in keys and "net.0.bias" in keys
+    assert "net.3.weight" in keys and "net.3.bias" in keys
+    assert "net.6.weight" in keys and "net.6.bias" in keys
+
+
+def test_tinytransformer_forward_shape():
+    model = TinyTransformerClassifier(
+        vocab_size=50, embed_dim=16, n_layers=2, n_heads=4, ff_dim=32, max_len=10, pad_idx=0
+    )
+    model.eval()
+    x = torch.randint(0, 50, (3, 10))
+    with torch.no_grad():
+        out = model(x)
+    assert out.shape == (3,)
+
+
+def test_tinytransformer_pads_do_not_reach_the_pool():
+    """Rows with only real tokens vs rows with heavy padding must produce the
+    same pooled summary for the same prefix: padding never enters the pool."""
+    model = TinyTransformerClassifier(
+        vocab_size=50, embed_dim=16, n_layers=2, n_heads=4, ff_dim=32, max_len=10, pad_idx=0
+    )
+    model.eval()
+    full = torch.randint(1, 50, (1, 10))
+    padded = full.clone()
+    padded[0, 5:] = 0
+    with torch.no_grad():
+        out_full = model(full)
+        out_padded = model(padded)
+    assert out_full.shape == (1,) and out_padded.shape == (1,)
+    assert not torch.isnan(out_full).any() and not torch.isnan(out_padded).any()

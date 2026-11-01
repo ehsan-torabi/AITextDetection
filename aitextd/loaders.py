@@ -18,9 +18,11 @@ from aitextd.architectures import (
     AttentionBiLSTMClassifier,
     BiLSTMClassifier,
     GPT2Classifier,
+    MLPClassifier,
     ParsBERTClassifier,
     SystemOneDecisionModel,
     TextCNNClassifier,
+    TinyTransformerClassifier,
 )
 from aitextd.features import STYLE_FEATURE_NAMES
 
@@ -230,6 +232,72 @@ def load_laya_model(md: dict) -> dict:
     return {"agent": agent, "config": config}
 
 
+def load_mlp_model(md: dict) -> dict:
+    """MLP over the chi2-reduced TF-IDF + style vector. The fitted feature
+    selector travels inside the checkpoint (torch.save pickles it alongside
+    the weights), so serving rebuilds the exact train-time feature pipeline."""
+    checkpoint = torch.load(
+        paths.model_path(md["filename"]), map_location="cpu", weights_only=False
+    )
+    config = checkpoint["config"]
+    model = MLPClassifier(
+        input_dim=config["input_dim"],
+        hidden_dims=tuple(config["hidden_dims"]),
+        dropout=config.get("dropout", 0.3),
+    )
+    model.load_state_dict(checkpoint["state_dict"])
+    model.eval()
+    vectorizer = joblib.load(paths.TFIDF_VECTORIZER_JOBLIB)
+    return {
+        "model": model,
+        "config": config,
+        "selector": checkpoint["selector"],
+        "vectorizer": vectorizer,
+    }
+
+
+def load_charcnn_model(md: dict) -> dict:
+    """Character-level CNN: the same TextCNNClassifier architecture over a
+    character vocabulary (config carries char-level max_len)."""
+    checkpoint = torch.load(
+        paths.model_path(md["filename"]), map_location="cpu", weights_only=False
+    )
+    config = checkpoint["config"]
+    vocab = checkpoint["vocab"]
+    model = TextCNNClassifier(
+        vocab_size=len(vocab),
+        embed_dim=config["embed_dim"],
+        n_filters=config["n_filters"],
+        kernel_sizes=tuple(config["kernel_sizes"]),
+        pad_idx=config["pad_idx"],
+        dropout=config.get("dropout", 0.3),
+    )
+    model.load_state_dict(checkpoint["state_dict"])
+    model.eval()
+    return {"model": model, "vocab": vocab, "config": config}
+
+
+def load_tinytransformer_model(md: dict) -> dict:
+    checkpoint = torch.load(
+        paths.model_path(md["filename"]), map_location="cpu", weights_only=False
+    )
+    config = checkpoint["config"]
+    vocab = checkpoint["vocab"]
+    model = TinyTransformerClassifier(
+        vocab_size=len(vocab),
+        embed_dim=config["embed_dim"],
+        n_layers=config["n_layers"],
+        n_heads=config["n_heads"],
+        ff_dim=config["ff_dim"],
+        max_len=config["max_len"],
+        pad_idx=config["pad_idx"],
+        dropout=config.get("dropout", 0.3),
+    )
+    model.load_state_dict(checkpoint["state_dict"])
+    model.eval()
+    return {"model": model, "vocab": vocab, "config": config}
+
+
 LOADERS = {
     "sklearn-tfidf": load_sklearn_model,
     "pytorch-lstm": load_lstm_model,
@@ -239,4 +307,7 @@ LOADERS = {
     "pytorch-parsbert": load_parsbert_model,
     "pytorch-system-one": load_system_one_model,
     "pytorch-laya": load_laya_model,
+    "pytorch-mlp": load_mlp_model,
+    "pytorch-charcnn": load_charcnn_model,
+    "pytorch-tinytransformer": load_tinytransformer_model,
 }

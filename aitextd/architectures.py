@@ -14,6 +14,61 @@ import torch.nn as nn
 torch.set_num_threads(4)
 
 
+class MLPClassifier(nn.Module):
+    """Plain feed-forward network over a reduced TF-IDF + style feature vector
+    (the same joint layout the sklearn-tfidf models consume, chi2-reduced to
+    keep the input layer dense-trainable)."""
+
+    def __init__(self, input_dim, hidden_dims=(512, 128), dropout=0.3):
+        super().__init__()
+        layers = []
+        prev = input_dim
+        for hidden in hidden_dims:
+            layers += [nn.Linear(prev, hidden), nn.ReLU(), nn.Dropout(dropout)]
+            prev = hidden
+        layers.append(nn.Linear(prev, 1))
+        self.net = nn.Sequential(*layers)
+
+    def forward(self, x):
+        return self.net(x).squeeze(-1)
+
+
+class TinyTransformerClassifier(nn.Module):
+    """A small from-scratch Transformer encoder over the shared word vocabulary
+    (no pretraining): learned positional embeddings, `n_layers` self-attention
+    blocks with `n_heads`, masked mean-pooling over real tokens, linear head."""
+
+    def __init__(
+        self, vocab_size, embed_dim, n_layers, n_heads, ff_dim, max_len, pad_idx=0, dropout=0.3
+    ):
+        super().__init__()
+        self.pad_idx = pad_idx
+        self.embedding = nn.Embedding(vocab_size, embed_dim, padding_idx=pad_idx)
+        self.pos_embedding = nn.Embedding(max_len, embed_dim)
+        self.max_len = max_len
+        layer = nn.TransformerEncoderLayer(
+            d_model=embed_dim,
+            nhead=n_heads,
+            dim_feedforward=ff_dim,
+            dropout=dropout,
+            batch_first=True,
+            activation="gelu",
+        )
+        self.encoder = nn.TransformerEncoder(layer, n_layers)
+        self.dropout = nn.Dropout(dropout)
+        self.fc = nn.Linear(embed_dim, 1)
+
+    def forward(self, x):
+        positions = torch.arange(x.size(1), device=x.device).unsqueeze(0)
+        emb = self.embedding(x) + self.pos_embedding(positions)
+        mask = x != self.pad_idx
+        hidden = self.encoder(emb, src_key_padding_mask=~mask)
+        pooled = (hidden * mask.unsqueeze(-1)).sum(dim=1) / mask.sum(dim=1, keepdim=True).clamp(
+            min=1
+        )
+        return self.fc(self.dropout(pooled)).squeeze(-1)
+
+
 class BiLSTMClassifier(nn.Module):
     def __init__(self, vocab_size, embed_dim, hidden_dim, pad_idx=0):
         super().__init__()

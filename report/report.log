@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.10.5)  31 OCT 2026 08:10
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.10.5)  1 NOV 2026 11:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -692,11 +692,11 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip58
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 70.
+Package hyperref Info: Option `colorlinks' set `true' on input line 62.
 
 
 Package hyperref Warning: Option `hyperfootnotes' has already been used,
-(hyperref)                setting the option has no effect on input line 70.
+(hyperref)                setting the option has no effect on input line 62.
 
 (./generated/macros.tex) (/home/ehsan/texmf/tex/latex/xepersian.sty
 Package: xepersian 2025/02/02 v25.2.2 (Release Persian Gate) Persian typesettin
@@ -1067,7 +1067,7 @@ Package fontspec Info:
 (fontspec)             Serif/BI/OT:script=latn;language=dflt;mapping=tex-text;"
 
 
-LaTeX Info: Redefining \latinfont on input line 132.
+LaTeX Info: Redefining \latinfont on input line 108.
 
 Package fontspec Info: 
 (fontspec)             Font family 'XBZar(1)' created for font 'XB Zar' with
@@ -1105,7 +1105,7 @@ Package fontspec Info:
 (fontspec)             Zar.ttf]/OT:script=latn;language=dflt;embolden=2.5;"
 
 Package unicode-persianmath Info: DefiningthedefaultPersianmathdigitsfontas'XB 
-Zar' on input line 138.
+Zar' on input line 114.
 \sympersianoperators=\mathgroup8
 \sympersianoperatorsbf=\mathgroup9
 \sympersianoperatorsit=\mathgroup10
@@ -1116,26 +1116,26 @@ or XeTeX engine
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 168.
-LaTeX Font Info:    ... okay on input line 168.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 168.
-LaTeX Font Info:    ... okay on input line 168.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 168.
-LaTeX Font Info:    ... okay on input line 168.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 168.
-LaTeX Font Info:    ... okay on input line 168.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 168.
-LaTeX Font Info:    ... okay on input line 168.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 168.
-LaTeX Font Info:    ... okay on input line 168.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 168.
-LaTeX Font Info:    ... okay on input line 168.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 168.
-LaTeX Font Info:    ... okay on input line 168.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 168.
-LaTeX Font Info:    ... okay on input line 168.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 168.
-LaTeX Font Info:    ... okay on input line 168.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 146.
+LaTeX Font Info:    ... okay on input line 146.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1171,15 +1171,15 @@ LaTeX Font Info:    ... okay on input line 168.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 168.
-Package microtype Info: Applying patch `item' on input line 168.
-Package microtype Info: Applying patch `toc' on input line 168.
-Package microtype Info: Applying patch `eqnum' on input line 168.
+LaTeX Info: Redefining \microtypecontext on input line 146.
+Package microtype Info: Applying patch `item' on input line 146.
+Package microtype Info: Applying patch `toc' on input line 146.
+Package microtype Info: Applying patch `eqnum' on input line 146.
 
-Package microtype Warning: Unable to apply patch `footnote' on input line 168.
+Package microtype Warning: Unable to apply patch `footnote' on input line 146.
 
-Package microtype Info: Applying patch `verbatim' on input line 168.
-LaTeX Info: Redefining \microtypesetup on input line 168.
+Package microtype Info: Applying patch `verbatim' on input line 146.
+LaTeX Info: Redefining \microtypesetup on input line 146.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
@@ -1448,7 +1448,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 168.
+Package hyperref Info: Link coloring ON on input line 146.
 (./report.out) (./report.out)
 \@outlinefile=\write4
 \openout4 = `report.out'.
@@ -1553,30 +1553,38 @@ LaTeX Font Warning: Font shape `TU/XBZar(2)/m/it' undefined
 
 
 ]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 296.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 296.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 296.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <8> not available
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 29
+6.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <6> not available
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 29
+6.
+LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <5> not available
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 29
+6.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 406.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 406.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 406.
-LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <8> not available
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 40
-6.
-LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <6> not available
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 40
-6.
-LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <5> not available
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 40
-6.
- [2] [3]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.5> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 296.
+ [2] [3] [4] [5]
 فصل 2.
-[4
 
-] (./generated/tab_domains.tex
+Overfull \hbox (57.53055pt too wide) in paragraph at lines 323--324
+[]\TU/XBZar(0)/m/n/13 نسخهٔ نخست مجموعه‌داده از ترکیب دو منبع متنی شکل گرفت: پر
+وندهٔ []\TU/lmtt/m/n/13 persian_ai_generated_final.csv[][]
+ []
+
+[6
+
+] [7] (./generated/tab_domains.tex
 LaTeX Font Info:    Calculating math sizes for size <11.5> on input line 6.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <11.5> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 6.
@@ -1596,305 +1604,374 @@ le
 (Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 6.
 
 )
-Underfull \hbox (badness 4217) in paragraph at lines 478--485
-[][]\TU/XBZar(0)/m/n/13 برچسب‌گذاری سه‌کلاسه شد: انسان ([]\TU/LiberationSerif(0
-)/m/n/13 human[]\TU/XBZar(0)/m/n/13 )، ماشین ([]\TU/LiberationSerif(0)/m/n/13 a
-i[]\TU/XBZar(0)/m/n/13 ) و ماشینِ بازنویسی‌شده[]
+Underfull \hbox (badness 1028) in paragraph at lines 385--386
+[]\TU/XBZar(0)/m/n/13 آن، ستون []\TU/lmtt/m/n/13 label_binary[] \TU/XBZar(0)/m/
+n/13 نیز برای سازگاری با آزمایش‌های دودویی حفظ شده و صحت[]
  []
 
-[5] (./generated/tab_dataset.tex) [6] (./generated/tab_splits.tex [7]) [8]
-[9] [10]
-فصل 3.
-[11
+[8] (./generated/tab_dataset.tex) [9]
+Underfull \hbox (badness 2818) in paragraph at lines 398--399
+[][]\TU/XBZar(0)/m/n/13 در استفاده از این پیکره، دو نکتهٔ احتیاطی باید مد نظر ب
+اشد: نخست آنکه دامنهٔ[]
+ []
 
-] [12] [13] [14]
-فصل 4.
+[10] (./generated/tab_splits.tex [11]) [12] [13] [14]
+فصل 3.
+
+Underfull \hbox (badness 1210) in paragraph at lines 436--437
+[]\TU/XBZar(0)/m/n/13 پردازش زبان فارسی []\TU/LiberationSerif(0)/m/n/13 shekar[
+] \TU/XBZar(0)/m/n/13 بنا شده و شامل مراحل زیر است: حذف شکلک‌ها[]
+ []
+
 [15
 
 ] [16]
-فصل 5.
-[17
-
-] [18] [19] [20]
-فصل 6.
-[21
-
-] [22] [23] [24]
-Underfull \hbox (badness 1688) in paragraph at lines 1140--1152
-[]\TU/XBZar(0)/m/n/13 مدل تجاری سیستم-یک سرویس []\TU/LiberationSerif(0)/m/n/13 
-TypeSafe[] \TU/XBZar(0)/m/n/13 روی متن فارسی رتبه‌بندی تقریباً کاملی دارد[]
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
+[][]\TU/XBZar(0)/m/n/13 در دور اول آزمایش‌ها، بردارساز []\TU/LiberationSerif(0)
+/m/n/13 TF-IDF[] \TU/XBZar(0)/m/n/13 صرفاً روی سه‌گرم‌های واژگانی[]
  []
 
 
-Underfull \hbox (badness 3128) in paragraph at lines 1140--1152
-[]\TU/XBZar(0)/m/n/13 ($[] \OT1/ztmcm/m/n/13 = [][][][][]$ \TU/XBZar(0)/m/n/13 
-روی صد نمونه، بخش [][][][][][]\TU/XBZar(1)/m/n/13 ۷\TU/XBZar(0)/m/n/13 .‏\TU/XB
-Zar(1)/m/n/13 ۵[][][][][][]\TU/XBZar(0)/m/n/13 ) اما کالیبراسیونش ضعیف است[]
+Underfull \hbox (badness 1478) in paragraph at lines 487--488
+[]\TU/XBZar(0)/m/n/13 ([]\TU/lmtt/m/n/13 ngram_range=(3,3)[]\TU/XBZar(0)/m/n/13
+ ) و بدون هیچ سقفی برای تعداد ویژگی‌ها تنظیم شده بود که به[]
  []
 
-[25]
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <11.5> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1204.
- [26] [27]
-فصل 7.
-
-Underfull \hbox (badness 1052) in paragraph at lines 1254--1264
-[][]\TU/XBZar(0)/m/n/13 سرور همهٔ آرتیفکت‌ها را یک‌بار در زمان راه‌اندازی ([]\T
-U/LiberationSerif(0)/m/n/13 init()[]\TU/XBZar(0)/m/n/13 ) بار و گرم می‌کند تا ه
-یچ[]
- []
-
-[28
-
-] [29] [30] [31]
-فصل 8.
-
-Underfull \hbox (badness 1762) in paragraph at lines 1355--1363
-[][]\TU/LiberationSerif(0)/m/n/13 data/dataset_v2.parquet[] \TU/XBZar(0)/m/n/13
- با طرح‌وارهٔ کانونیک و []\TU/LiberationSerif(0)/m/n/13 data/splits_v2.joblib[]
- \TU/XBZar(0)/m/n/13 با تخصیص‌های[]
- []
-
-[32
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 1414--1414
-[][]\TU/XBZar(0)/m/n/13 جدول \TU/XBZar(1)/m/n/13 ۸\TU/XBZar(0)/m/n/13 .‏\TU/XBZ
-ar(1)/m/n/13 ۱\TU/XBZar(0)/m/n/13 : |نتایج درون‌دامنه روی آزمون گروه‌آگاه ($\OM
-L/ztmcm/m/it/13 n[][][][][][]$\TU/XBZar(0)/m/n/13 ؛ منبع:[]
- []
-
-LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 1416.
+[17] [18]
+LaTeX Font Info:    Calculating math sizes for size <10.5> on input line 548.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1416.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 548.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.77005> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1416.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 548.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6.30006> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1416.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 548.
 LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <10.5> not available
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 14
-16.
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 54
+8.
 LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <7.77005> not availab
 le
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 14
-16.
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 54
+8.
 LaTeX Font Info:    Font shape `TU/XBZar(2)/bx/n' in size <6.30006> not availab
 le
-(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 14
-16.
+(Font)              Font shape `TU/XBZar(2)/b/n' tried instead on input line 54
+8.
+ [19] [20]
+فصل 4.
+[21
 
-Overfull \hbox (200.91806pt too wide) in paragraph at lines 1416--1433
+] [22] [23]
+فصل 5.
+[24
+
+] [25] [26] [27]
+Underfull \hbox (badness 1596) in paragraph at lines 695--695
+[][]\TU/XBZar(0)/b/n/17.28 سه شبکهٔ عصبی تکمیلی: پرسپترون چندلایه، []\TU/Libera
+tionSerif(0)/b/n/17.28 CharCNN[] \TU/XBZar(0)/b/n/17.28 و[]
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\XeTeXinterchartokenstate' on input line 69
+5.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\XeTeXinterchartokenstate' on input line 69
+5.
+
+[28]
+Overfull \hbox (19.97603pt too wide) in paragraph at lines 702--712
  [][][][] 
  []
 
-[33]
-Underfull \hbox (badness 1117) in paragraph at lines 1469--1469
-[][]\TU/XBZar(0)/m/n/13 جدول \TU/XBZar(1)/m/n/13 ۸\TU/XBZar(0)/m/n/13 .‏\TU/XBZ
-ar(1)/m/n/13 ۲\TU/XBZar(0)/m/n/13 : |شرط‌های تعمیم؛ ردیف‌های منتخب از []\TU/Lib
-erationSerif(0)/m/n/13 reports/tables/conditions.md[] \TU/XBZar(0)/m/n/13 (شرط[
-]
- []
+[29]
+فصل 6.
+[30
 
+] [31] [32]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <13> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 791.
+ [33] [34] [35] [36] [37]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <11.5> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 893.
 
-Overfull \hbox (32.1296pt too wide) in paragraph at lines 1471--1503
- [][][][] 
- []
-
-[34] [35]
-Missing character: There is no ا (U+0627) in font Liberation Serif Bold/OT:scri
-pt=latn;language=dflt;mapping=tex-text;!
-Missing character: There is no ف (U+0641) in font Liberation Serif Bold/OT:scri
-pt=latn;language=dflt;mapping=tex-text;!
-Missing character: There is no ت (U+062A) in font Liberation Serif Bold/OT:scri
-pt=latn;language=dflt;mapping=tex-text;!
-
-Overfull \hbox (3.74963pt too wide) in paragraph at lines 1541--1555
- [][][][] 
- []
-
-[36]
-Underfull \hbox (badness 10000) in paragraph at lines 1583--1583
-[][]\TU/XBZar(0)/m/n/13 جدول \TU/XBZar(1)/m/n/13 ۸\TU/XBZar(0)/m/n/13 .‏\TU/XBZ
-ar(1)/m/n/13 ۴\TU/XBZar(0)/m/n/13 : |نمای سه‌کلاسه روی آزمون گروه‌آگاه ($\OML/z
-tmcm/m/it/13 n[][][][][][]$\TU/XBZar(0)/m/n/13 ، سه بذر؛ منبع:[]
- []
-
-
-Overfull \hbox (164.83179pt too wide) in paragraph at lines 1585--1598
- [][][][] 
- []
-
-[37]
-Overfull \hbox (15.07297pt too wide) in paragraph at lines 1629--1647
+Overfull \hbox (46.27275pt too wide) in paragraph at lines 891--916
  [][][][] 
  []
 
 [38] [39]
-فصل 9.
+فصل 7.
+
+Underfull \hbox (badness 1460) in paragraph at lines 930--931
+[][]\TU/XBZar(0)/m/n/13 محیط []\TU/lmtt/m/n/13 pytorch-charcnn[] \TU/XBZar(0)/m
+/n/13 که نویسه‌های متن خام را بدون هیچ توکنیزه‌کننده و[]
+ []
+
 [40
 
 ] [41]
+Underfull \hbox (badness 4242) in paragraph at lines 998--999
+[][]\TU/XBZar(0)/b/n/13 بسته‌بندی پاسخ: \TU/XBZar(0)/m/n/13 تولید خروجی شامل بر
+چسب نهایی ([]\TU/lmtt/m/n/13 isAI[]\TU/XBZar(0)/m/n/13 )، درصد اطمینان[]
+ []
+
+
+Underfull \hbox (badness 1082) in paragraph at lines 998--999
+[]\TU/XBZar(0)/m/n/13 ([]\TU/lmtt/m/n/13 confidence[]\TU/XBZar(0)/m/n/13 )، ویژ
+گی‌های سبکی، آرای تفکیکی مدل‌ها ([]\TU/lmtt/m/n/13 ensembleVotes[]\TU/XBZar(0)/
+m/n/13 ) و[]
+ []
+
+
+Underfull \hbox (badness 1270) in paragraph at lines 1004--1005
+[][]\TU/XBZar(0)/b/n/13 آزمون‌های واحد سریع ([]\TU/lmtt/b/n/13 -m "not slow"[]\
+TU/XBZar(0)/b/n/13 ): \TU/XBZar(0)/m/n/13 این آزمون‌ها بدون نیاز به بارگذاری[]
+ []
+
+
+Underfull \hbox (badness 1048) in paragraph at lines 1005--1006
+[]\TU/XBZar(0)/m/n/13 بارگذاری شده و تابع []\TU/lmtt/m/n/13 detection()[] \TU/X
+BZar(0)/m/n/13 روی متون نمونه به ازای هر شانزده مدل و[]
+ []
+
+[42] [43] [44]
+فصل 8.
+
+Underfull \hbox (badness 2837) in paragraph at lines 1038--1039
+[][]\TU/XBZar(0)/m/n/13 جنگل تصادفی روی ترکیب $[][][][][][]$ ویژگی برتر $\OML/z
+tmcm/m/it/13 ^^_[]$ \TU/XBZar(0)/m/n/13 و ویژگی‌های سبک‌شناسی[]
+ []
+
+[45
+
+] [46]
+Underfull \hbox (badness 4303) in paragraph at lines 1093--1093
+[][]\TU/XBZar(0)/m/n/13 جدول \TU/XBZar(1)/m/n/13 ۸\TU/XBZar(0)/m/n/13 .‏\TU/XBZ
+ar(1)/m/n/13 ۱\TU/XBZar(0)/m/n/13 : |نتایج ارزیابی درون‌دامنه‌ای روی تفکیک گروه
+‌آگاه ($\OML/ztmcm/m/it/13 n \OT1/ztmcm/m/n/13 = [][][][][]$\TU/XBZar(0)/m/n/13
+ ؛ منبع:[]
+ []
+
+[47] [48] [49] [50]
+Underfull \hbox (badness 1661) in paragraph at lines 1169--1170
+[]\TU/XBZar(0)/m/n/13 جدول [][][][][][]\TU/XBZar(1)/m/n/13 ۸\TU/XBZar(0)/m/n/13
+ .‏\TU/XBZar(1)/m/n/13 ۳[][][][][][] \TU/XBZar(0)/m/n/13 نتایج ارزیابی جفتی ([]
+\TU/LiberationSerif(0)/m/n/13 paired evaluation[]\TU/XBZar(0)/m/n/13 ) مدل‌ها ر
+ا روی \TU/XBZar(1)/m/n/13 ۳۰۰ \TU/XBZar(0)/m/n/13 سند ماشینیِ[]
+ []
+
+[51] [52]
+Overfull \hbox (9.64491pt too wide) in paragraph at lines 1231--1249
+ [][][][] 
+ []
+
+[53] [54] [55]
+فصل 9.
+[56
+
+] [57]
 پیوست آ.
-[42
+[58
 
 ]
-Overfull \hbox (14.24239pt too wide) in paragraph at lines 1803--1803
-[][]\TU/lmtt/m/n/13 # environment (installs .venv from pyproject.toml, incl. de
-v extras)[] []
- []
-
-LaTeX Font Info:    Font shape `TU/LiberationSerif(0)/bx/n' in size <11.5> not 
-available
-(Font)              Font shape `TU/LiberationSerif(0)/b/n' tried instead on inp
-ut line 1813.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1816--1816
-[][]|\TU/XBZar(1)/m/n/11.5 ۰۱ \TU/XBZar(0)/m/n/11.5 آماده‌سازی[]
+Underfull \hbox (badness 2680) in paragraph at lines 1312--1313
+[][][]\TU/lmtt/m/n/13 05_reinforcement_learning.ipynb[]\TU/XBZar(0)/m/n/13 : سی
+است تصمیم باندیت با الگوریتم[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1817--1818
-[][]|[]\TU/LiberationSerif(0)/m/n/11.5 FORCE_REBUILD_V1[]\TU/XBZar(0)/m/n/11.5 
-،[]
+Underfull \hbox (badness 1400) in paragraph at lines 1316--1317
+[][]\TU/XBZar(0)/m/n/13 تمامی نوت‌بوک‌ها با رویکرد **بارگذاری‌محور ([]\TU/Liber
+ationSerif(0)/m/n/13 load-first[]\TU/XBZar(0)/m/n/13 )** نوشته شده‌اند؛ یعنی اگ
+ر[]
+ []
+
+[59]
+Underfull \hbox (badness 10000) in paragraph at lines 1345--1345
+[][]|\TU/XBZar(0)/b/n/11.5 شماره و عنوان[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1817--1818
-[][]\TU/LiberationSerif(0)/m/n/11.5 FORCE_REBUILD_V2[]\TU/XBZar(0)/m/n/11.5 ،[]
-
+Underfull \hbox (badness 10000) in paragraph at lines 1349--1350
+[][]|[]\TU/lmtt/m/n/11.5 FORCE_REBUILD_V1[]\TU/XBZar(0)/m/n/11.5 ،[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1821--1821
+Underfull \hbox (badness 10000) in paragraph at lines 1349--1350
+[][]\TU/lmtt/m/n/11.5 FORCE_REBUILD_V2[]\TU/XBZar(0)/m/n/11.5 ،[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1353--1353
 [][]|\TU/XBZar(1)/m/n/11.5 ۰۲ \TU/XBZar(0)/m/n/11.5 مدل‌های[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1823--1823
-[][]|\TU/XBZar(1)/m/n/11.5 ۰۳ \TU/XBZar(0)/m/n/11.5 مدل‌های[]
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1355
+[][]|\TU/XBZar(1)/m/n/11.5 ۰۳ \TU/XBZar(0)/m/n/11.5 شبکه‌های[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1824--1826
-[][]|[]\TU/LiberationSerif(0)/m/n/11.5 lstmModel.pt[]\TU/XBZar(0)/m/n/11.5 ، []
-\TU/LiberationSerif(0)/m/n/11.5 textcnnModel.pt[]\TU/XBZar(0)/m/n/11.5 ،[]
+Underfull \hbox (badness 10000) in paragraph at lines 1356--1358
+[][]|\TU/XBZar(0)/m/n/11.5 چک‌پوینت‌های []\TU/lmtt/m/n/11.5 lstmModel.pt[]\TU/X
+BZar(0)/m/n/11.5 ،[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1824--1826
-[][]\TU/LiberationSerif(0)/m/n/11.5 attnBilstmModel.pt[] \TU/XBZar(0)/m/n/11.5 
-و مدخل‌های[]
+Underfull \hbox (badness 10000) in paragraph at lines 1356--1358
+[][]\TU/lmtt/m/n/11.5 textcnnModel.pt[] \TU/XBZar(0)/m/n/11.5 و[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1826--1826
-[][]|\TU/XBZar(1)/m/n/11.5 ۰۴ \TU/XBZar(0)/m/n/11.5 مدل‌های[]
+Underfull \hbox (badness 10000) in paragraph at lines 1359--1361
+[][]|[]\TU/lmtt/m/n/11.5 FORCE_TRAIN_GPT2[]\TU/XBZar(0)/m/n/11.5 ،[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1827--1829
-[][]|[]\TU/LiberationSerif(0)/m/n/11.5 FORCE_TRAIN_GPT2[]\TU/XBZar(0)/m/n/11.5 
-،[]
+Underfull \hbox (badness 10000) in paragraph at lines 1359--1361
+[][]\TU/lmtt/m/n/11.5 FORCE_TRAIN_PARSBERT[]\TU/XBZar(0)/m/n/11.5 ،[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1827--1829
-[][]\TU/LiberationSerif(0)/m/n/11.5 FORCE_TRAIN_PARSBERT[]\TU/XBZar(0)/m/n/11.5
- ،[]
+Underfull \hbox (badness 10000) in paragraph at lines 1359--1361
+[][]\TU/lmtt/m/n/11.5 FORCE_BUILD_S1_DATA[]\TU/XBZar(0)/m/n/11.5 ،[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1827--1829
-[][]\TU/LiberationSerif(0)/m/n/11.5 FORCE_BUILD_S1_DATA[]\TU/XBZar(0)/m/n/11.5 
-،[]
+Underfull \hbox (badness 10000) in paragraph at lines 1359--1361
+[][]\TU/lmtt/m/n/11.5 FORCE_TRAIN_S1[]\TU/XBZar(0)/m/n/11.5 ،[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1827--1829
-[][]\TU/LiberationSerif(0)/m/n/11.5 FORCE_TRAIN_S1[]\TU/XBZar(0)/m/n/11.5 ،[]
+Underfull \hbox (badness 10000) in paragraph at lines 1362--1365
+[][]|\TU/XBZar(0)/m/n/11.5 چک‌پوینت‌های[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1830--1834
-[][]|[]\TU/LiberationSerif(0)/m/n/11.5 gpt2ClassifierModel.pt[]\TU/XBZar(0)/m/n
-/11.5 ،[]
+Underfull \hbox (badness 10000) in paragraph at lines 1362--1365
+[][]\TU/lmtt/m/n/11.5 gpt2ClassifierModel.pt[]\TU/XBZar(0)/m/n/11.5 ،[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1830--1834
-[][]\TU/LiberationSerif(0)/m/n/11.5 parsbertClassifierModel.pt[]\TU/XBZar(0)/m/
-n/11.5 ،[]
+Underfull \hbox (badness 10000) in paragraph at lines 1362--1365
+[][]\TU/lmtt/m/n/11.5 parsbertClassifierModel.pt[]\TU/XBZar(0)/m/n/11.5 ،[]
  []
 
 
-Overfull \hbox (10.39223pt too wide) in paragraph at lines 1811--1836
+Underfull \hbox (badness 10000) in paragraph at lines 1362--1365
+[][]\TU/lmtt/m/n/11.5 systemOneModel.pt[]\TU/XBZar(0)/m/n/11.5 ، پوشهٔ[]
+ []
+
+
+Underfull \hbox (badness 6220) in paragraph at lines 1362--1365
+[][]\TU/lmtt/m/n/11.5 laya_persian[] \TU/XBZar(0)/m/n/11.5 و فایل‌های []\TU/Lib
+erationSerif(0)/m/n/11.5 JSONL[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1365--1365
+[][]|\TU/XBZar(1)/m/n/11.5 ۰۵ \TU/XBZar(0)/m/n/11.5 یادگیری[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1365--1365
+[][]|[]\TU/lmtt/m/n/11.5 FORCE_TRAIN_RLCD[]\TU/XBZar(0)/m/n/11.5 ،[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1366--1367
+[][]|\TU/XBZar(0)/m/n/11.5 چک‌پوینت‌های[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1366--1367
+[][]\TU/lmtt/m/n/11.5 textcnnRlcdModel.pt[] \TU/XBZar(0)/m/n/11.5 و[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1366--1367
+[][]\TU/lmtt/m/n/11.5 rlPolicyModel.pt[] \TU/XBZar(0)/m/n/11.5 به‌همراه مدخل[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1367--1367
+[][]|\TU/XBZar(1)/m/n/11.5 ۰۶ \TU/XBZar(0)/m/n/11.5 شبکه‌های[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1368--1369
+[][]|\TU/XBZar(0)/m/n/11.5 چک‌پوینت‌های []\TU/lmtt/m/n/11.5 mlpModel.pt[]\TU/XB
+Zar(0)/m/n/11.5 ،[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1368--1369
+[][]\TU/lmtt/m/n/11.5 charcnnModel.pt[] \TU/XBZar(0)/m/n/11.5 و[]
+ []
+
+
+Overfull \hbox (10.39264pt too wide) in paragraph at lines 1343--1371
  [][][][] 
  []
 
-[43] [44]
-Overfull \hbox (18.31102pt too wide) in paragraph at lines 1914--1914
- [][][]\TU/lmtt/m/n/10.5 02_classical_models.ipynb[] 
+[60]
+Overfull \hbox (18.31102pt too wide) in paragraph at lines 1451--1451
+ [][][]\TU/lmtt/b/n/10.5 02_classical_models.ipynb[] 
  []
 
 
-Overfull \hbox (28.97966pt too wide) in paragraph at lines 1914--1914
- [][][]\TU/lmtt/m/n/10.5 03_deep_learning_models.ipynb[] 
+Overfull \hbox (31.8251pt too wide) in paragraph at lines 1451--1451
+ [][][]\TU/lmtt/b/n/10.5 03_deep_learning_models.ipynb[] 
  []
 
-[45] [46]
-Underfull \hbox (badness 1275) in paragraph at lines 1957--1965
-[][]\TU/XBZar(0)/m/n/13 یک نکتهٔ پیکربندی فعلی: مسیرهای پروکسی سمت سرور نشانی ب
-ک‌اند را ثابت روی[]
+[61]
+Overfull \hbox (34.31438pt too wide) in paragraph at lines 1466--1466
+[][]\TU/lmtt/m/n/13 # Production startup (loads and warms up all 16 models on 0
+.0.0.0:8000)[] []
  []
 
-
-Underfull \hbox (badness 1728) in paragraph at lines 1974--1981
-[]\TU/XBZar(0)/m/n/13 پاسخ سیستم-یک) را بدون چک‌پوینت می‌آزمایند؛ آزمون با نشان
- []\TU/LiberationSerif(0)/m/n/13 slow[] \TU/XBZar(0)/m/n/13 کل پشته را بار[]
- []
-
-
-Underfull \hbox (badness 1173) in paragraph at lines 1983--1997
-[]\TU/XBZar(0)/m/n/13 برای مدلی که از یکی از مقادیر شناخته‌شدهٔ \TU/lmtt/m/n/13
- runtime \TU/XBZar(0)/m/n/13 پیروی می‌کند، دو گام کافی است:[]
- []
-
-[47]
-Underfull \hbox (badness 2065) in paragraph at lines 1999--2023
-[]\TU/XBZar(0)/m/n/13 و هیچ آرتیفکت سرویس محلی بازنویسی نمی‌شود. فایل‌های داده 
-([]\TU/LiberationSerif(0)/m/n/13 dataset_v2.parquet[][]
+[62]
+Overfull \hbox (34.32741pt too wide) in paragraph at lines 1486--1486
+[][]\TU/lmtt/m/n/13 pnpm dev        # Starts Next.js web interface on http://lo
+calhost:3000[] []
  []
 
 
-Underfull \hbox (badness 1968) in paragraph at lines 1999--2023
-[]\TU/XBZar(0)/m/n/13 و []\TU/LiberationSerif(0)/m/n/13 splits_v2.joblib[] \TU/
-XBZar(0)/m/n/13 و در صورت تمایل فایل‌های اختیاری حمله) یک‌بار در []\TU/Liberati
-onSerif(0)/m/n/13 Drive[]\TU/XBZar(0)/m/n/13 ، در[]
+Overfull \hbox (7.54738pt too wide) in paragraph at lines 1496--1496
+[][]\TU/lmtt/m/n/13 .venv/bin/python -m pytest tests/ -m "not slow"   # Fast un
+it tests[] []
  []
 
 
-Underfull \hbox (badness 1789) in paragraph at lines 1999--2023
-[][]\TU/LiberationSerif(0)/m/n/13 01_setup_and_data.ipynb[] \TU/XBZar(0)/m/n/13
- (ران‌تایم []\TU/LiberationSerif(0)/m/n/13 CPU[]\TU/XBZar(0)/m/n/13 ؛ چند دقیقه
-) نصب وابستگی‌ها، اتصال درایو،[]
+Overfull \hbox (54.4124pt too wide) in paragraph at lines 1496--1496
+[][]\TU/lmtt/m/n/13 .venv/bin/python -m pytest tests/ -m slow         # Golden 
+regression test[] []
  []
 
-[48] [49]
-Underfull \hbox (badness 1715) in paragraph at lines 2042--2043
+
+Underfull \hbox (badness 6001) in paragraph at lines 1509--1510
+[]\TU/XBZar(0)/m/n/13 پرونده‌های داده ([]\TU/lmtt/m/n/13 dataset_v2.parquet[] \
+TU/XBZar(0)/m/n/13 و []\TU/lmtt/m/n/13 splits_v2.joblib[]\TU/XBZar(0)/m/n/13 ) 
+یک‌بار در مسیر[]
+ []
+
+[63] [64]
+Underfull \hbox (badness 1715) in paragraph at lines 1536--1537
 [][][]\TU/LiberationSerif(0)/m/n/13 J. Devlin, M.-W. Chang, K. Lee, K. Toutanov
 a. \TU/LiberationSerif(0)/m/it/13 BERT: Pre-training of[][]
  []
 
-[50
+[65
 
 
 ]
-Underfull \hbox (badness 1881) in paragraph at lines 2094--2095
+Underfull \hbox (badness 1881) in paragraph at lines 1588--1589
 [][][]\TU/LiberationSerif(0)/m/n/13 M. Farahani, M. Gharachorloo, M. Farahani, 
 M. Manthouri. \TU/LiberationSerif(0)/m/it/13 ParsBERT:[][]
  []
 
-[51] [52] (./report.aux)
+[66] [67] (./report.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1904,15 +1981,15 @@ L3 programming layer <2026-01-19>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 30F8409667B15235015A9F65AD713E12;10615.
+(rerunfilecheck)             Checksum: 8BB603276EA7D01B4DE0FD31F56A0CA5;16418.
  ) 
 Here is how much of TeX's memory you used:
- 30722 strings out of 470179
- 644420 string characters out of 5479298
- 1083981 words of memory out of 5000000
- 58698 multiletter control sequences out of 15000+600000
- 666209 words of font info for 226 fonts, out of 8000000 for 9000
+ 31106 strings out of 470179
+ 649734 string characters out of 5479298
+ 1091771 words of memory out of 5000000
+ 59080 multiletter control sequences out of 15000+600000
+ 666241 words of font info for 230 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 88i,14n,94p,1196b,904s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,22n,94p,1448b,992s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report.xdv (61 pages, 1004884 bytes).
+Output written on report.xdv (76 pages, 1311052 bytes).

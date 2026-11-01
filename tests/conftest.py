@@ -41,6 +41,10 @@ REQUIRED_ARTIFACTS = [
     paths.model_path("gpt2ClassifierModel.pt"),
     paths.model_path("parsbertClassifierModel.pt"),
     paths.model_path("systemOneModel.pt"),
+    paths.model_path("textcnnRlcdModel.pt"),
+    paths.model_path("mlpModel.pt"),
+    paths.model_path("charcnnModel.pt"),
+    paths.model_path("tinyTransformerModel.pt"),
     paths.LAYA_OUTPUT_DIR / "model.safetensors",
 ]
 
@@ -56,7 +60,11 @@ ALL_MODEL_IDS = [
     "system_one",
     "laya",
     "textcnn",
+    "textcnn_rlcd",
     "attention_bilstm",
+    "mlp",
+    "charcnn",
+    "tinytransformer",
     "ensemble",
 ]
 

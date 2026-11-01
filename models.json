@@ -69,6 +69,41 @@
     }
   },
   {
+    "id": "textcnn_rlcd",
+    "name": "TextCNN (RLCD fine-tune)",
+    "nameFa": "شبکه کانولوشنی متن (فاین‌تیون RLCD)",
+    "description": "The deployed TextCNN classifier fine-tuned with RLCD (reinforcement learning with contrastive decoding): Gaussian noise is drawn on the answer logits, a strictly proper scoring reward (spherical + ranked probability score) scores each noisy candidate against soft targets distilled from the supervised model (0.8 ground-truth / 0.2 teacher blend), and a REINFORCE term plus a soft cross-entropy anchor update the weights. An RL experiment selectable per request; ensembleWeight 0 keeps it out of the ensemble vote so the TextCNN family is not double-counted.",
+    "descriptionFa": "همان دسته‌بند TextCNN مستقر که با RLCD (یادگیری تقویتی با رمزگشایی متضاد) فاین‌تیون شده است: نویز گاوسی روی لاجیت پاسخ‌ها کشیده می‌شود، یک پاداش امتیازدهیِ کاملاً درست (کروی + امتیاز احتمال رتبه‌ای) هر نامزد نویزی را در برابر هدف‌های نرم تقطیرشده از مدل نظارت‌شده (ترکیب ۰٫۸ برچسب واقعی و ۰٫۲ دبیر) می‌سنجد و یک جملهٔ REINFORCE به‌همراه لنگرِ آنتروپی متقاطع نرم وزن‌ها را به‌روزرسانی می‌کند. یک آزمایش یادگیری تقویتی که به‌ازای هر درخواست قابل انتخاب است؛ وزن صفرِ رأی ترکیبی آن را از رأی‌گیری کنار گذاشته تا خانوادهٔ TextCNN دوبار شمرده نشود.",
+    "algorithm": "TextCNN + RLCD fine-tune",
+    "type": "dl",
+    "version": "1.0",
+    "filename": "textcnnRlcdModel.pt",
+    "runtime": "pytorch-textcnn",
+    "ensembleWeight": 0.0,
+    "metrics": {
+      "accuracy": 0.99,
+      "precision": 0.99,
+      "recall": 0.99,
+      "f1Score": 0.99,
+      "rocAuc": 0.9994
+    },
+    "confusionMatrix": {
+      "trueNegative": 2089,
+      "falsePositive": 21,
+      "falseNegative": 21,
+      "truePositive": 2088
+    },
+    "training": {
+      "totalSamples": 21092,
+      "trainSamples": 6000,
+      "testSamples": 4219,
+      "featureCount": 30002,
+      "testSplitRatio": 0.2,
+      "randomSeed": 42,
+      "dataset": "persian_ai_generated_final.csv + blogs.csv (RLCD fine-tune of textcnnModel.pt, 6000-doc stratified subsample)"
+    }
+  },
+  {
     "id": "attention_bilstm",
     "name": "Attention BiLSTM",
     "nameFa": "دوسویه LSTM با مکانیزم توجه",
@@ -428,6 +463,111 @@
       "maxLen": 512,
       "base": "convaiinnovations/laya [multilingual]",
       "dataset": "processedDataset.csv (System One JSONL, soft targets distilled from the fine-tuned GPT-2 classifier)"
+    }
+  },
+  {
+    "id": "mlp",
+    "name": "MLP",
+    "nameFa": "پرسپترون چندلایه",
+    "description": "A two-hidden-layer perceptron over the chi2-reduced TF-IDF and stylometric feature vector (the same joint layout the classical models consume, reduced to 10,000 TF-IDF columns). The fitted feature selector travels inside the checkpoint so the serving path rebuilds the exact train-time feature pipeline. Trained from scratch on CPU on the canonical split to distinguish AI-generated content from human writing.",
+    "descriptionFa": "پرسپترون چندلایه با دو لایهٔ پنهان روی بردار TF-IDF کاهش‌یافته با آزمون chi2 و ویژگی‌های سبک‌شناسی (همان چیدمان مشترک مدل‌های کلاسیک که به ۱۰ هزار ستون TF-IDF کاهش می‌یابد). انتخاب‌گر ویژگی آموخته‌شده درون چک‌پوینت ذخیره می‌شود تا مسیر سرویس، خط‌لولهٔ ویژگی زمان آموزش را عیناً بازسازی کند. از ابتدا روی CPU و تفکیک مرجع آموزش دیده تا متن تولیدشده توسط هوش مصنوعی را از نوشته انسان جدا کند.",
+    "algorithm": "MLP (2 hidden layers)",
+    "type": "dl",
+    "version": "1.0",
+    "filename": "mlpModel.pt",
+    "runtime": "pytorch-mlp",
+    "ensembleWeight": 0.5,
+    "metrics": {
+      "accuracy": 0.9964,
+      "precision": 0.9943,
+      "recall": 0.9986,
+      "f1Score": 0.9965,
+      "rocAuc": 0.9999
+    },
+    "confusionMatrix": {
+      "trueNegative": 2098,
+      "falsePositive": 12,
+      "falseNegative": 3,
+      "truePositive": 2106
+    },
+    "training": {
+      "totalSamples": 21092,
+      "trainSamples": 16873,
+      "testSamples": 4219,
+      "featureCount": 10010,
+      "testSplitRatio": 0.2,
+      "randomSeed": 42,
+      "dataset": "persian_ai_generated_final.csv + blogs.csv"
+    }
+  },
+  {
+    "id": "charcnn",
+    "name": "CharCNN",
+    "nameFa": "شبکه کانولوشنی نویسه‌ای",
+    "description": "The TextCNN architecture applied at the character level: a character vocabulary built from the raw train texts (no tokenizer, no lemmatization) feeds parallel 1D convolutions with kernel sizes 3, 4 and 5 over 512-character windows, followed by ReLU, a length-masked global max-pooling per kernel, dropout and a linear head. Trained from scratch on CPU on the canonical split to distinguish AI-generated content from human writing.",
+    "descriptionFa": "معماری TextCNN در سطح نویسه: واژگان نویسه‌ای ساخته‌شده از متن خام مجموعهٔ آموزش (بدون توکنیزه‌کننده و بدون ریشه‌یابی) به کانولوشن‌های یک‌بعدی موازی با اندازه‌های ۳ و ۴ و ۵ روی پنجره‌های ۵۱۲ نویسه‌ای می‌رود و پس از آن‌ها ReLU، بیشینه‌گیری سراسری با ماسک طول برای هر هسته، dropout و سر خطی قرار دارد. از ابتدا روی CPU و تفکیک مرجع آموزش دیده تا متن تولیدشده توسط هوش مصنوعی را از نوشته انسان جدا کند.",
+    "algorithm": "CharCNN (character-level TextCNN)",
+    "type": "dl",
+    "version": "1.0",
+    "filename": "charcnnModel.pt",
+    "runtime": "pytorch-charcnn",
+    "ensembleWeight": 0.5,
+    "metrics": {
+      "accuracy": 0.9983,
+      "precision": 1.0,
+      "recall": 0.9967,
+      "f1Score": 0.9983,
+      "rocAuc": 1.0
+    },
+    "confusionMatrix": {
+      "trueNegative": 2110,
+      "falsePositive": 0,
+      "falseNegative": 7,
+      "truePositive": 2102
+    },
+    "training": {
+      "totalSamples": 21092,
+      "trainSamples": 16873,
+      "testSamples": 4219,
+      "featureCount": 1002,
+      "testSplitRatio": 0.2,
+      "randomSeed": 42,
+      "dataset": "persian_ai_generated_final.csv + blogs.csv"
+    }
+  },
+  {
+    "id": "tinytransformer",
+    "name": "Tiny Transformer (from scratch)",
+    "nameFa": "ترنسفورمر کوچک (از ابتدا)",
+    "description": "A small Transformer encoder trained from scratch (no pretraining): two self-attention layers with 4 heads over the shared word vocabulary, learned positional embeddings and a feed-forward width of 256, pooled by masked mean over real tokens, followed by dropout and a linear head. Trained from scratch on CPU on the canonical split to distinguish AI-generated content from human writing.",
+    "descriptionFa": "رمزگذار کوچک ترنسفورمر آموزش‌دیده از ابتدا (بدون پیش‌آموزش): دو لایهٔ توجه خودکار با ۴ سر روی همان واژگان مشترک مدل‌های واژگانی، embeddingهای موقعیتی آموخته‌شده و بازخورد پیش‌رو با عرض ۲۵۶ که با میانگین‌گیری ماسک‌شده از توکن‌های واقعی جمع‌بندی می‌شود و پس از آن dropout و سر خطی قرار دارد. از ابتدا روی CPU و تفکیک مرجع آموزش دیده تا متن تولیدشده توسط هوش مصنوعی را از نوشته انسان جدا کند.",
+    "algorithm": "Transformer encoder (2 layers, from scratch)",
+    "type": "dl",
+    "version": "1.0",
+    "filename": "tinyTransformerModel.pt",
+    "runtime": "pytorch-tinytransformer",
+    "ensembleWeight": 0.5,
+    "metrics": {
+      "accuracy": 0.9891,
+      "precision": 0.991,
+      "recall": 0.9872,
+      "f1Score": 0.9891,
+      "rocAuc": 0.9989
+    },
+    "confusionMatrix": {
+      "trueNegative": 2091,
+      "falsePositive": 19,
+      "falseNegative": 27,
+      "truePositive": 2082
+    },
+    "training": {
+      "totalSamples": 21092,
+      "trainSamples": 16873,
+      "testSamples": 4219,
+      "featureCount": 30002,
+      "testSplitRatio": 0.2,
+      "randomSeed": 42,
+      "dataset": "persian_ai_generated_final.csv + blogs.csv"
     }
   }
 ]

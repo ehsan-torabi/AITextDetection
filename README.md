@@ -1,7 +1,7 @@
 # AITextDetection — Persian AI-Generated Text Detection
 
 Detect whether Persian text is AI-generated or human-written. A FastAPI serving
-stack scores text with twelve trained models plus a weighted ensemble, and a
+stack scores text with sixteen trained models plus a weighted ensemble, and a
 System One decision model answers typed questions (source, machine-likeness,
 need-for-review) with calibrated probabilities instead of a bare score.
 
@@ -53,6 +53,12 @@ has the artifacts:
    decision model (soft targets distilled from the GPT-2 classifier) and the
    Laya RLCD fine-tune. By default each section loads the deployed checkpoint
    and scores it through the exact serving path.
+5. **`05_reinforcement_learning.ipynb`** — a REINFORCE contextual-bandit
+   decision policy (auto-human / review / auto-AI) and an RLCD fine-tune of
+   the supervised TextCNN (registered as `textcnn_rlcd`, ensemble weight 0).
+6. **`06_neural_networks.ipynb`** — three more from-scratch networks: an MLP
+   over the chi2-reduced TF-IDF + style features, a character-level CharCNN
+   and a small from-scratch Transformer encoder.
 
 ## Running the API
 
@@ -78,7 +84,7 @@ cd web-app && pnpm install && pnpm dev
 .venv/bin/python -m pytest tests -m slow         # full serving stack + golden parity
 ```
 
-The golden test pins exact `detection()` outputs for all twelve models and the
+The golden test pins exact `detection()` outputs for all sixteen models and the
 ensemble: any change that alters a served prediction fails the suite. To
 re-baseline (e.g. after registering a new model), delete
 `tests/golden/detection_golden.json` and run the slow suite twice.

@@ -71,6 +71,48 @@ def predict_attention_bilstm(bundle, text: str, cleaned_text: str, style_feature
     return _vocab_encode_and_predict(bundle, cleaned_text)
 
 
+def _char_encode_and_predict(bundle, text: str) -> float:
+    """Forward pass for the char-level CNN runtime: characters of the raw text
+    -> ids via the checkpoint's char vocab -> pad/truncate to config max_len
+    -> single forward pass -> sigmoid."""
+    model = bundle["model"]
+    vocab = bundle["vocab"]
+    config = bundle["config"]
+    chars = list(text[: config["max_len"]])
+    ids = [vocab.get(ch, config["unk_idx"]) for ch in chars]
+    if len(ids) < config["max_len"]:
+        ids = ids + [config["pad_idx"]] * (config["max_len"] - len(ids))
+    with torch.no_grad():
+        logits = model(torch.tensor([ids], dtype=torch.long))
+        return torch.sigmoid(logits).item()
+
+
+def predict_charcnn(bundle, text: str, cleaned_text: str, style_features: dict) -> float:
+    return _char_encode_and_predict(bundle, text)
+
+
+def predict_tinytransformer(bundle, text: str, cleaned_text: str, style_features: dict) -> float:
+    # Same word-level encoding semantics as the other vocab-based runtimes.
+    return _vocab_encode_and_predict(bundle, cleaned_text)
+
+
+def predict_mlp(bundle, text: str, cleaned_text: str, style_features: dict) -> float:
+    """MLP over the chi2-reduced TF-IDF + style vector: build the same joint
+    layout the sklearn-tfidf runtimes consume, apply the checkpoint's own
+    feature selector, then one dense forward pass."""
+    model = bundle["model"]
+    selector = bundle["selector"]
+    n_style = bundle["config"].get("style_feature_count", len(STYLE_FEATURE_NAMES))
+    tfidf_vect = bundle["vectorizer"].transform([cleaned_text])
+    style_vec = style_features_vector(style_features)[:, :n_style]
+    joint = hstack([tfidf_vect, style_vec]).tocsr()
+    reduced = selector.transform(joint)
+    dense = torch.tensor(reduced.toarray(), dtype=torch.float32)
+    with torch.no_grad():
+        logits = model(dense)
+        return torch.sigmoid(logits).item()
+
+
 def _encode_and_predict(
     model, tokenizer, normalized: str, seq_len: int, char_budget: int | None
 ) -> float:
@@ -194,4 +236,7 @@ PREDICTORS = {
     "pytorch-parsbert": predict_parsbert,
     "pytorch-system-one": predict_system_one,
     "pytorch-laya": predict_laya,
+    "pytorch-mlp": predict_mlp,
+    "pytorch-charcnn": predict_charcnn,
+    "pytorch-tinytransformer": predict_tinytransformer,
 }
