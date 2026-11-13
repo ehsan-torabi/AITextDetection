@@ -13,7 +13,7 @@ node_modules/
 
 # --- Large artifacts: datasets live locally, models live on Hugging Face ------
 # (the trained checkpoints under models/ are published at
-#  https://huggingface.co/<user>/aitextd-models -- see README for download)
+#  https://huggingface.co/ehsantorabi/aitextd-models -- see README for download)
 *.csv
 *.joblib
 *.mdl

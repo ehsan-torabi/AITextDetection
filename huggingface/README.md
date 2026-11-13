@@ -29,7 +29,7 @@ single download drops every serving artifact into place:
 
 ```bash
 # from the project root, after cloning the GitHub repo
-hf download ehsan-torabi/aitextd-models --local-dir models/
+hf download ehsantorabi/aitextd-models --local-dir models/
 ```
 
 ## What is inside
@@ -91,7 +91,7 @@ the six training notebooks, the web front end and tests:
 
 ```bash
 uv sync
-hf download ehsan-torabi/aitextd-models --local-dir models/
+hf download ehsantorabi/aitextd-models --local-dir models/
 uv run python server.py          # API on :8000
 ```
 

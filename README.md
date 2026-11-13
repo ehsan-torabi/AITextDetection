@@ -38,17 +38,17 @@ web-app/                  the Next.js front end (talks to the API on :8000)
 ## Models on Hugging Face
 
 The trained checkpoints are not stored in git — they are published, one-to-one
-mirroring `models/`, in the [aitextd-models](https://huggingface.co/ehsan-torabi/aitextd-models)
+mirroring `models/`, in the [aitextd-models](https://huggingface.co/ehsantorabi/aitextd-models)
 repo. After cloning this repo, download them into place and start serving:
 
 ```bash
-hf download ehsan-torabi/aitextd-models --local-dir models/
+hf download ehsantorabi/aitextd-models --local-dir models/
 ```
 
 To re-publish after retraining (any machine logged in with `hf auth login`):
 
 ```bash
-HF_USER=ehsan-torabi ./huggingface/upload_models.sh
+HF_USER=ehsantorabi ./huggingface/upload_models.sh
 ```
 
 ## Notebooks
