@@ -1417,12 +1417,12 @@ uv run jupyter nbconvert --to notebook --execute \
   \draw[arr] (nb1) -- (d);
 
   % Training notebooks — first row
-  \node[proc, w=4.2cm, below=8mm of raw, xshift=3mm] (nb2)
-      {\textbf{\texttt{02\_classical\_models.ipynb}}\\[1pt]\scriptsize 5 scikit-learn models + HPO};
-  \node[proc, w=4.5cm, right=6mm of nb2] (nb3)
-      {\textbf{\texttt{03\_deep\_learning\_models.ipynb}}\\[1pt]\scriptsize BiLSTM / TextCNN / Attn-BiLSTM};
-  \node[proc, w=4.8cm, right=6mm of nb3] (nb4)
-      {\textbf{\texttt{04\_llm\_models.ipynb}}\\[1pt]\scriptsize GPT-2 / ParsBERT / System-One / Laya};
+  \node[proc, w=4.9cm, below=8mm of raw, xshift=3mm] (nb2)
+      {\small\textbf{\texttt{02\_classical\_models.ipynb}}\\[1pt]\scriptsize 5 scikit-learn models + HPO};
+  \node[proc, w=5.3cm, right=5mm of nb2] (nb3)
+      {\small\textbf{\texttt{03\_deep\_learning\_models.ipynb}}\\[1pt]\scriptsize BiLSTM / TextCNN / Attn-BiLSTM};
+  \node[proc, w=4.8cm, right=5mm of nb3] (nb4)
+      {\small\textbf{\texttt{04\_llm\_models.ipynb}}\\[1pt]\scriptsize GPT-2 / ParsBERT / System-One / Laya};
 
   \draw[arr] (nb1.south) -- ++(0,-3.5mm) -| (nb2.north);
   \draw[arr] (nb1.south) -- ++(0,-3.5mm) -| (nb3.north);
