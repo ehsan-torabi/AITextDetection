@@ -16,6 +16,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from aitextd import paths  # noqa: E402  (needs PROJECT_ROOT on sys.path first)
+from aitextd.download import required_repo_paths  # noqa: E402
 
 GOLDEN_PATH = Path(__file__).parent / "golden" / "detection_golden.json"
 
@@ -31,21 +32,11 @@ SAMPLE_AI_TEXT = (
     "کاربردهای آن در سال‌های آینده گسترش بیشتری خواهد یافت."
 )
 
+# Exactly what the serving stack needs (same source of truth the
+# --download-online flag fetches from the Hub), plus the registry itself.
 REQUIRED_ARTIFACTS = [
     paths.MODELS_JSON,
-    paths.TFIDF_VECTORIZER_JOBLIB,
-    paths.GPT2_LM_MDL,
-    paths.model_path("lstmModel.pt"),
-    paths.model_path("textcnnModel.pt"),
-    paths.model_path("attnBilstmModel.pt"),
-    paths.model_path("gpt2ClassifierModel.pt"),
-    paths.model_path("parsbertClassifierModel.pt"),
-    paths.model_path("systemOneModel.pt"),
-    paths.model_path("textcnnRlcdModel.pt"),
-    paths.model_path("mlpModel.pt"),
-    paths.model_path("charcnnModel.pt"),
-    paths.model_path("tinyTransformerModel.pt"),
-    paths.LAYA_OUTPUT_DIR / "model.safetensors",
+    *(paths.MODELS_DIR / repo_path for repo_path in required_repo_paths()),
 ]
 
 ALL_MODEL_IDS = [

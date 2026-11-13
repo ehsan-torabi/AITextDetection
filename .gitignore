@@ -38,6 +38,8 @@ training/online_eval_results.json
 # Laya fine-tuning: base checkpoint (~650MB), fine-tuned output, cached items
 models/laya_multilingual/
 models/laya_persian/
+# Resume metadata written by huggingface_hub's local_dir downloads
+models/.cache/
 training/laya_data/
 # Disposable Drive-upload bundle for the Colab fine-tune notebook
 colab_laya_files.zip

@@ -45,6 +45,10 @@ repo. After cloning this repo, download them into place and start serving:
 hf download ehsantorabi/aitextd-models --local-dir models/
 ```
 
+(An unfiltered download also lands the model card and two small laya metadata
+files — harmless to serving; for exactly the serving set use
+`server.py --download-online`.)
+
 To re-publish after retraining (any machine logged in with `hf auth login`):
 
 ```bash
@@ -82,6 +86,21 @@ has the artifacts:
 ```bash
 .venv/bin/python server.py        # serves on 0.0.0.0:8000
 ```
+
+The trained artifacts under `models/` are not stored in git. Without them the
+launcher prints exactly what is missing and exits; pass `--download-online` to
+fetch the missing artifacts from the Hugging Face repo before startup:
+
+```bash
+.venv/bin/python server.py --download-online
+```
+
+The download is resumable (an interrupted run keeps what landed and the next
+run continues) and skips anything already present, so a machine with some
+artifacts only fetches the gap. On a restricted network, `huggingface_hub`
+respects `HF_ENDPOINT` (e.g. a mirror) and `HF_TOKEN` as usual. Note that the
+flag is a launcher feature: starting the app directly via
+`uvicorn aitextd.api:app` bypasses the check.
 
 Endpoints: `POST /detect` (`{"text": ..., "modelId": ...}`), `POST /details`
 (`{"text": ...}` → the model-independent style + perplexity breakdown) and

@@ -11,6 +11,7 @@ silently feed them garbage.
 
 import math
 from collections import Counter
+from itertools import pairwise
 
 import numpy as np
 from shekar import SentenceTokenizer, WordTokenizer
@@ -170,7 +171,7 @@ def lexical_burstiness(text: str) -> float:
     positions: dict[str, list[int]] = {}
     for i, token in enumerate(tokens):
         positions.setdefault(token, []).append(i)
-    gaps = [b - a for idxs in positions.values() for a, b in zip(idxs, idxs[1:])]
+    gaps = [b - a for idxs in positions.values() for a, b in pairwise(idxs)]
     if not gaps:
         return 0.0
     mean_gap = float(np.mean(gaps))
