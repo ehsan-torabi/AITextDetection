@@ -1,14 +1,19 @@
-# Python virtualenv
-.env
-
-# Python
+# --- Python -----------------------------------------------------------------
+.venv/
 __pycache__/
 .ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+.env
 
-# IDE
+# --- IDE / local tooling state ------------------------------------------------
 .idea/
+.zcode/
+node_modules/
 
-# Datasets and trained artifacts (too large for git)
+# --- Large artifacts: datasets live locally, models live on Hugging Face ------
+# (the trained checkpoints under models/ are published at
+#  https://huggingface.co/<user>/aitextd-models -- see README for download)
 *.csv
 *.joblib
 *.mdl
@@ -37,9 +42,14 @@ training/laya_data/
 # Disposable Drive-upload bundle for the Colab fine-tune notebook
 colab_laya_files.zip
 
-# XeLaTeX build residue (report.pdf and its .aux/.log/.out/.toc are tracked)
-report/report.xdv
+# LaTeX build residue (report.pdf, report.tex and report/generated/ are tracked)
+report/atd-pptx/
+report/*.aux
+report/*.dvi
+report/*.log
+report/*.out
+report/*.toc
+report/*.xdv
 report/texput.log
 report/texsys.aux
 report/xelatex.fmt
-report/xelatex.log
