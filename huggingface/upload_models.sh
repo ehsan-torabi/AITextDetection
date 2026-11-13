@@ -18,9 +18,18 @@ set -euo pipefail
 HF_USER="${HF_USER:?set HF_USER=<your-huggingface-username>}"
 REPO_ID="$HF_USER/aitextd-models"
 
+# Prefer the project venv's hf (uv sync installs huggingface-hub there); fall
+# back to whatever `hf` is on PATH.
+PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+if [ -x "$PROJECT_ROOT/.venv/bin/hf" ]; then
+    HF="$PROJECT_ROOT/.venv/bin/hf"
+else
+    HF="hf"
+fi
+
 run() {
-    echo "+ hf upload $REPO_ID $*"
-    hf upload "$REPO_ID" "$@"
+    echo "+ $HF upload $REPO_ID $*"
+    "$HF" upload "$REPO_ID" "$@"
 }
 
 # --- model card ---------------------------------------------------------------
