@@ -28,10 +28,27 @@ models.json               the model registry (ids, filenames, weights, metrics)
 notebooks/                the whole retraining pipeline, four notebooks
 data/                     datasets and derived artifacts (gitignored)
 models/                   trained artifacts (gitignored binaries + exported tokenizers)
+huggingface/              HF model card + upload script (publishes models/ 1:1)
 report/                   the Persian LaTeX project report
 reports/                  frozen evaluation evidence (leak-free v2 protocol)
 tests/                    pytest suite; golden test pins exact serving outputs
 web-app/                  the Next.js front end (talks to the API on :8000)
+```
+
+## Models on Hugging Face
+
+The trained checkpoints are not stored in git — they are published, one-to-one
+mirroring `models/`, in the [aitextd-models](https://huggingface.co/ehsan-torabi/aitextd-models)
+repo. After cloning this repo, download them into place and start serving:
+
+```bash
+hf download ehsan-torabi/aitextd-models --local-dir models/
+```
+
+To re-publish after retraining (any machine logged in with `hf auth login`):
+
+```bash
+HF_USER=ehsan-torabi ./huggingface/upload_models.sh
 ```
 
 ## Notebooks
@@ -88,3 +105,10 @@ The golden test pins exact `detection()` outputs for all sixteen models and the
 ensemble: any change that alters a served prediction fails the suite. To
 re-baseline (e.g. after registering a new model), delete
 `tests/golden/detection_golden.json` and run the slow suite twice.
+
+## License
+
+MIT — see [LICENSE](LICENSE). The fine-tunes build on ParsBERT
+([HooshvareLab/bert-fa-base-uncased](https://huggingface.co/HooshvareLab/bert-fa-base-uncased)),
+Persian GPT-2 ([HooshvareLab/gpt2-fa](https://huggingface.co/HooshvareLab/gpt2-fa)) and
+Laya ([convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya)).
