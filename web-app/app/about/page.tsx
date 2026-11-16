@@ -26,8 +26,8 @@ export default function AboutPage() {
         {/* Student-project warning */}
         <section className="rounded-xl border border-amber-500/40 bg-amber-500/5 p-4 text-xs text-amber-700 leading-relaxed">
           <strong className="font-bold block mb-1">هشدار — پروژه پایان‌ترم دانشجویی</strong>
-          این ابزار در cadrul پروژه پایان‌ترم دانشجویی توسط{' '}
-          <strong className="font-bold">احسان ترابی فرسانی (Ehsan Torabi Farsani)</strong> توسعه یافته است.
+          این ابزار یک  پروژه پایان‌ترم دانشجویی است که توسط{' '}
+          <strong className="font-bold">احسان ترابی فارسانی (Ehsan Torabi Farsani)</strong> توسعه یافته است.
           خروجی‌های آن تخمینی هستند، دقت قطعی ندارند و برای تصمیمات مهم یا استفادهٔ تجاری مناسب نیستند.
         </section>
 
@@ -313,6 +313,13 @@ export default function AboutPage() {
           >
             <FileText className="size-3.5" />
             دانلود گزارش کامل (PDF)
+          </a>
+          <a
+            href="https://ehsantorabi.ir"
+            className="inline-flex items-center gap-1.5 text-primary hover:underline underline-offset-4"
+          >
+            <FileText className="size-3.5" />
+           وب‌سایت
           </a>
         </footer>
       </div>
