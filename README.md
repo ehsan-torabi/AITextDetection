@@ -4,6 +4,7 @@ Detect whether Persian text is AI-generated or human-written. A FastAPI serving
 stack scores text with sixteen trained models plus a weighted ensemble, and a
 System One decision model answers typed questions (source, machine-likeness,
 need-for-review) with calibrated probabilities instead of a bare score.
+https://huggingface.co/ehsantorabi/aitextd-models
 
 ## Layout
 
