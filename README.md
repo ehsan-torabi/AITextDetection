@@ -131,3 +131,8 @@ MIT — see [LICENSE](LICENSE). The fine-tunes build on ParsBERT
 ([HooshvareLab/bert-fa-base-uncased](https://huggingface.co/HooshvareLab/bert-fa-base-uncased)),
 Persian GPT-2 ([HooshvareLab/gpt2-fa](https://huggingface.co/HooshvareLab/gpt2-fa)) and
 Laya ([convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya)).
+
+## Deployment sizing
+
+See [PROFILE.md](PROFILE.md) for measured RAM/CPU/disk numbers and worker sizing
+recommendations (profiled with `aitextd/profiling.py`).
