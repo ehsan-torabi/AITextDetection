@@ -1,4 +1,5 @@
 import type { DetectionRequest } from "@/lib/types";
+import { backendUrl } from "@/lib/backend-url";
 
 export async function POST(request: Request) {
   const body: DetectionRequest = await request.json();
@@ -11,7 +12,7 @@ export async function POST(request: Request) {
     return Response.json({ error: "لطفاً یک مدل انتخاب کنید." }, { status: 400 });
   }
 
-  const res = await fetch(`http://0.0.0.0:8000/detect`, {
+  const res = await fetch(backendUrl("/detect"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),

@@ -6,6 +6,7 @@ import type {
   SystemOneTypedAnswers,
   TypeSafeDetectionResponse,
 } from "@/lib/types";
+import { backendUrl } from "@/lib/backend-url";
 import { DEFAULT_PROVIDER_SETTINGS, normalizeBaseUrl } from "@/lib/provider-settings";
 
 // Server-side proxy for the online System One detection: the browser posts the
@@ -22,7 +23,7 @@ const PROVIDER_TIMEOUT_MS = 45_000;
 // rows; lift into a pure-JS fallback if backend-free online mode ever matters.
 async function fetchLocalDetails(text: string): Promise<TypeSafeDetectionResponse["details"]> {
   try {
-    const res = await fetch("http://0.0.0.0:8000/details", {
+    const res = await fetch(backendUrl("/details"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text }),

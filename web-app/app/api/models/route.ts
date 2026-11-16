@@ -1,5 +1,7 @@
+import { backendUrl } from "@/lib/backend-url";
+
 export async function GET() {
-  const res = await fetch(`http://0.0.0.0:8000/models`);
+  const res = await fetch(backendUrl("/models"));
   const data = await res.json();
   return Response.json(data);
 }
