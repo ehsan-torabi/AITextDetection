@@ -10,8 +10,8 @@ export default function HomePage() {
         <header className="space-y-3">
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">تشخیص متن هوش مصنوعی</h1>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
-            متن خود را وارد کنید تا با استفاده از مدل‌های یادگیری ماشین بررسی کنیم آیا توسط هوش
-            مصنوعی نوشته شده یا انسان.
+            متن خود را وارد کنید تا مدل‌های آموزش‌دیده بررسی کنند آیا متن توسط انسان نوشته شده یا
+            توسط هوش مصنوعی تولید شده است. نتیجه تخمینی است و دقت قطعی ندارد.
           </p>
         </header>
 
@@ -20,7 +20,7 @@ export default function HomePage() {
 
         {/* Footer */}
         <footer className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground pt-4 border-t border-border">
-          <p>نتایج این ابزار تخمینی است و دقت قطعی ندارد.</p>
+          <p>نتیجه تخمینی است — دقت قطعی ندارد.</p>
           <Link href="/about" className="text-primary hover:underline underline-offset-4">
             مدل‌ها چگونه آموزش دیده‌اند؟
           </Link>

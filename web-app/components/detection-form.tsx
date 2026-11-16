@@ -187,6 +187,11 @@ export function DetectionForm() {
               حداقل {MIN_TEXT_LENGTH} کاراکتر وارد کنید ({MIN_TEXT_LENGTH - charCount} کاراکتر دیگر)
             </p>
           )}
+          {charCount >= MIN_TEXT_LENGTH && (
+            <p className="text-xs text-muted-foreground">
+              نتیجه تخمینی است — دقت قطعی ندارد و برای متن‌های کوتاه قابلاعتمادتر نیست.
+            </p>
+          )}
         </div>
 
         {/* Detection mode */}

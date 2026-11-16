@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Web app — AI Text Detection (Persian)
 
-## Getting Started
+Next.js front end for the Persian AI-generated text detection tool. It talks to the FastAPI serving stack (`aitextd.api`, port 8000) for local model detections and proxies the online System One (TypeSafe) requests.
 
-First, run the development server:
+## Layout
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+web-app/
+app/                  Next.js App Router pages and API routes
+  page.tsx            home: detection form + result
+  about/              methodology, data, and model docs
+  api/detect/         proxy → backend POST /detect
+  api/models/         proxy → backend GET /models
+  api/typesafe/detect/ server-side proxy for online System One detection
+components/           detection UI (form, result, model stats, comparison, provider settings)
+components/ui/        shadcn-style primitives (button, input, textarea, card, ...)
+lib/                  types, models hook, provider settings (localStorage), utils
+public/               static assets (report.pdf, icons)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Routes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Route | Purpose |
+|---|---|
+| `/` | Detection form: choose mode (local / online / compare), pick a model, submit text, view results |
+| `/about` | Methodology: training data, preprocessing, model training, System One typed answers, error analysis, live model table |
+| `/api/detect` | Server proxy to the local backend `POST /detect` |
+| `/api/models` | Server proxy to the backend `GET /models` |
+| `/api/typesafe/detect` | Server-side proxy to the online System One provider |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Getting started
 
-## Learn More
+```bash
+cd web-app
+pnpm install
+pnpm dev        # http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+The front end expects the Python API on `http://0.0.0.0:8000` (see the repo root `server.py`). Start it first:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# repo root
+.venv/bin/python server.py --download-online
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Then `pnpm dev` in `web-app/`.
 
-## Deploy on Vercel
+## Online System One mode
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The online mode calls TypeSafe's Jev model through the `/api/typesafe/detect` server proxy. Connection settings (base URL, model, API key) live in the browser's `localStorage` only — the key is forwarded with each request and never stored on the server. Fill them in via the "سرویس آنلاین System One" panel before running an online or compare detection.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Build & lint
+
+```bash
+pnpm build      # production build
+pnpm start      # run production server
+pnpm lint       # ESLint
+```
+
+## Notes
+
+- Persian UI (RTL, Vazirmatn font). Copy is in Persian; English terms kept where they match the backend (model ids, metric names).
+- Model metrics come from `models.json` served by the backend; without a running backend the model list is empty.
+- This is a detection tool, not a marketing landing page — keep copy functional, concise, and in Persian. Avoid generic AI-marketing phrasing.
+
+## License
+
+MIT — see the repo root `LICENSE`.
