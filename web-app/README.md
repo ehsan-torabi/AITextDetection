@@ -1,5 +1,7 @@
 # Web app — AI Text Detection (Persian)
 
+> **هشدار — پروژه پایان‌ترم دانشجویی:** این ابزار در cadrul پروژه پایان‌ترم دانشجویی توسط احسان ترابی فرسانی (Ehsan Torabi Farsani) توسعه یافته است. خروجی‌های آن تخمینی هستند، دقت قطعی ندارند و برای تصمیمات مهم یا استفادهٔ تجاری مناسب نیستند.
+
 Next.js front end for the Persian AI-generated text detection tool. It talks to the FastAPI serving stack (`aitextd.api`, port 8000) for local model detections and proxies the online System One (TypeSafe) requests.
 
 ## Layout
