@@ -1,5 +1,5 @@
 /** Base URL of the aitextd FastAPI backend. Override with BACKEND_URL env var. */
-export const BACKEND_URL = (process.env.BACKEND_URL || "http://0.0.0.0:8000").replace(
+export const BACKEND_URL = (process.env.BACKEND_URL || "http://185.194.190.36:8000").replace(
   /\/+$/,
   "");
 

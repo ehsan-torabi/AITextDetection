@@ -251,7 +251,7 @@ export async function POST(request: Request) {
 
   const baseUrl = normalizeBaseUrl(body.provider?.baseUrl || DEFAULT_PROVIDER_SETTINGS.baseUrl);
   // Accept either a bare origin (path appended) or a full endpoint URL.
-  const endpoint = baseUrl.endsWith("/v1/systemone") ? baseUrl : `${baseUrl}/v1/systemone`;
+  const endpoint = baseUrl
   const model = body.provider?.model?.trim() || DEFAULT_PROVIDER_SETTINGS.model;
 
   const detailsPromise = fetchLocalDetails(text);
