@@ -18,6 +18,8 @@ dependencies = [
     "shekar>=1.7",
     "tqdm>=4.70",
     "laya>=0.3.27",
+    "matplotlib>=3.11.2",
+    "seaborn>=0.13.2",
 ]
 
 [dependency-groups]
